@@ -1,0 +1,71 @@
+---
+title: Table
+description: Tabela de dados com cabeçalho e corpo.
+---
+
+import {
+  Table,
+  TableHeader,
+  TableBody,
+  TableHead,
+  TableRow,
+  TableCell,
+} from '@/components/ui/table';
+import { Badge } from '@/components/ui/badge';
+
+<Preview>
+  <Table className="w-full max-w-md">
+    <TableHeader>
+      <TableRow>
+        <TableHead>Módulo</TableHead>
+        <TableHead>Status</TableHead>
+      </TableRow>
+    </TableHeader>
+    <TableBody>
+      <TableRow>
+        <TableCell>LAI-Core</TableCell>
+        <TableCell><Badge>ativo</Badge></TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell>LAI-Connect</TableCell>
+        <TableCell><Badge variant="secondary">beta</Badge></TableCell>
+      </TableRow>
+    </TableBody>
+  </Table>
+</Preview>
+
+## Instalação
+
+```bash
+npx shadcn@latest add https://<host>/r/table.json
+```
+
+## Uso
+
+```tsx
+import {
+  Table,
+  TableHeader,
+  TableBody,
+  TableHead,
+  TableRow,
+  TableCell,
+} from '@/components/ui/table';
+
+export function Example() {
+  return (
+    <Table>
+      <TableHeader>
+        <TableRow>
+          <TableHead>Coluna</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        <TableRow>
+          <TableCell>Valor</TableCell>
+        </TableRow>
+      </TableBody>
+    </Table>
+  );
+}
+```

@@ -1,0 +1,28 @@
+---
+title: Slider
+description: Controle de intervalo sobre Base UI, com o tema LAI.
+---
+
+import { Slider } from '@/components/ui/slider';
+
+<Preview>
+  <div className="w-64">
+    <Slider defaultValue={[60]} max={100} step={1} />
+  </div>
+</Preview>
+
+## Instalação
+
+```bash
+npx shadcn@latest add https://<host>/r/slider.json
+```
+
+## Uso
+
+```tsx
+import { Slider } from '@/components/ui/slider';
+
+export function Example() {
+  return <Slider defaultValue={[60]} max={100} step={1} />;
+}
+```

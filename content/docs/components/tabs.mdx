@@ -1,0 +1,46 @@
+---
+title: Tabs
+description: Navegação por abas sobre Base UI.
+---
+
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
+
+<Preview>
+  <Tabs defaultValue="visao" className="w-72">
+    <TabsList>
+      <TabsTrigger value="visao">Visão</TabsTrigger>
+      <TabsTrigger value="dados">Dados</TabsTrigger>
+    </TabsList>
+    <TabsContent value="visao" className="text-sm text-muted-foreground">
+      Resumo do módulo.
+    </TabsContent>
+    <TabsContent value="dados" className="text-sm text-muted-foreground">
+      Métricas detalhadas.
+    </TabsContent>
+  </Tabs>
+</Preview>
+
+## Instalação
+
+```bash
+npx shadcn@latest add https://<host>/r/tabs.json
+```
+
+## Uso
+
+```tsx
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
+
+export function Example() {
+  return (
+    <Tabs defaultValue="a">
+      <TabsList>
+        <TabsTrigger value="a">A</TabsTrigger>
+        <TabsTrigger value="b">B</TabsTrigger>
+      </TabsList>
+      <TabsContent value="a">Conteúdo A</TabsContent>
+      <TabsContent value="b">Conteúdo B</TabsContent>
+    </Tabs>
+  );
+}
+```

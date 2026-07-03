@@ -1,0 +1,54 @@
+---
+title: Accordion
+description: Seções expansíveis sobre Base UI.
+---
+
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from '@/components/ui/accordion';
+
+<Preview>
+  <Accordion className="w-72">
+    <AccordionItem value="1">
+      <AccordionTrigger>O que é o DNA LAI?</AccordionTrigger>
+      <AccordionContent>
+        Camada comportamental embutida em cada módulo.
+      </AccordionContent>
+    </AccordionItem>
+    <AccordionItem value="2">
+      <AccordionTrigger>Como consumir?</AccordionTrigger>
+      <AccordionContent>Via npx shadcn add apontando para o registry.</AccordionContent>
+    </AccordionItem>
+  </Accordion>
+</Preview>
+
+## Instalação
+
+```bash
+npx shadcn@latest add https://<host>/r/accordion.json
+```
+
+## Uso
+
+```tsx
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from '@/components/ui/accordion';
+
+export function Example() {
+  return (
+    <Accordion>
+      <AccordionItem value="1">
+        <AccordionTrigger>Pergunta</AccordionTrigger>
+        <AccordionContent>Resposta</AccordionContent>
+      </AccordionItem>
+    </Accordion>
+  );
+}
+```

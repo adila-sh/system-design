@@ -1,0 +1,63 @@
+---
+title: Dropdown Menu
+description: Menu suspenso sobre Base UI.
+---
+
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuLabel,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+} from '@/components/ui/dropdown-menu';
+import { Button } from '@/components/ui/button';
+import { ChevronDown } from 'lucide-react';
+
+<Preview>
+  <DropdownMenu>
+    <DropdownMenuTrigger
+      render={
+        <Button variant="outline">
+          Menu <ChevronDown />
+        </Button>
+      }
+    />
+    <DropdownMenuContent align="start">
+      <DropdownMenuLabel>Conta</DropdownMenuLabel>
+      <DropdownMenuSeparator />
+      <DropdownMenuItem>Perfil</DropdownMenuItem>
+      <DropdownMenuItem>Configurações</DropdownMenuItem>
+      <DropdownMenuItem variant="destructive">Sair</DropdownMenuItem>
+    </DropdownMenuContent>
+  </DropdownMenu>
+</Preview>
+
+## Instalação
+
+```bash
+npx shadcn@latest add https://<host>/r/dropdown-menu.json
+```
+
+## Uso
+
+```tsx
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+} from '@/components/ui/dropdown-menu';
+import { Button } from '@/components/ui/button';
+
+export function Example() {
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger render={<Button>Menu</Button>} />
+      <DropdownMenuContent>
+        <DropdownMenuItem>Item</DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+}
+```

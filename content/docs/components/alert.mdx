@@ -1,0 +1,34 @@
+---
+title: Alert
+description: Aviso contextual com título e descrição.
+---
+
+import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
+
+<Preview>
+  <Alert className="w-96">
+    <AlertTitle>Sincronização concluída</AlertTitle>
+    <AlertDescription>Todos os leads foram processados.</AlertDescription>
+  </Alert>
+</Preview>
+
+## Instalação
+
+```bash
+npx shadcn@latest add https://<host>/r/alert.json
+```
+
+## Uso
+
+```tsx
+import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
+
+export function Example() {
+  return (
+    <Alert>
+      <AlertTitle>Atenção</AlertTitle>
+      <AlertDescription>Mensagem do aviso.</AlertDescription>
+    </Alert>
+  );
+}
+```

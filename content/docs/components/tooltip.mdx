@@ -1,0 +1,50 @@
+---
+title: Tooltip
+description: Dica flutuante sobre Base UI.
+---
+
+import {
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+  TooltipProvider,
+} from '@/components/ui/tooltip';
+import { Button } from '@/components/ui/button';
+
+<Preview>
+  <TooltipProvider>
+    <Tooltip>
+      <TooltipTrigger render={<Button variant="outline">Tooltip</Button>} />
+      <TooltipContent>Dica rápida</TooltipContent>
+    </Tooltip>
+  </TooltipProvider>
+</Preview>
+
+## Instalação
+
+```bash
+npx shadcn@latest add https://<host>/r/tooltip.json
+```
+
+## Uso
+
+```tsx
+import {
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+  TooltipProvider,
+} from '@/components/ui/tooltip';
+import { Button } from '@/components/ui/button';
+
+export function Example() {
+  return (
+    <TooltipProvider>
+      <Tooltip>
+        <TooltipTrigger render={<Button variant="outline">Passe o mouse</Button>} />
+        <TooltipContent>Dica</TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
+  );
+}
+```

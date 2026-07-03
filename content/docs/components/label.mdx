@@ -1,0 +1,30 @@
+---
+title: Label
+description: Rótulo acessível para controles de formulário.
+---
+
+import { Label } from '@/components/ui/label';
+import { Input } from '@/components/ui/input';
+
+<Preview>
+  <div className="grid w-72 gap-2">
+    <Label htmlFor="nome">Nome</Label>
+    <Input id="nome" placeholder="Seu nome" />
+  </div>
+</Preview>
+
+## Instalação
+
+```bash
+npx shadcn@latest add https://<host>/r/label.json
+```
+
+## Uso
+
+```tsx
+import { Label } from '@/components/ui/label';
+
+export function Example() {
+  return <Label htmlFor="nome">Nome</Label>;
+}
+```

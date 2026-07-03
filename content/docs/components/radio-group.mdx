@@ -1,0 +1,41 @@
+---
+title: Radio Group
+description: Grupo de opções exclusivas sobre Base UI.
+---
+
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import { Label } from '@/components/ui/label';
+
+<Preview>
+  <RadioGroup defaultValue="a" className="flex gap-4">
+    <div className="flex items-center gap-2">
+      <RadioGroupItem value="a" id="r-a" />
+      <Label htmlFor="r-a">Opção A</Label>
+    </div>
+    <div className="flex items-center gap-2">
+      <RadioGroupItem value="b" id="r-b" />
+      <Label htmlFor="r-b">Opção B</Label>
+    </div>
+  </RadioGroup>
+</Preview>
+
+## Instalação
+
+```bash
+npx shadcn@latest add https://<host>/r/radio-group.json
+```
+
+## Uso
+
+```tsx
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+
+export function Example() {
+  return (
+    <RadioGroup defaultValue="a">
+      <RadioGroupItem value="a" />
+      <RadioGroupItem value="b" />
+    </RadioGroup>
+  );
+}
+```

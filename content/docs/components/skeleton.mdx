@@ -1,0 +1,29 @@
+---
+title: Skeleton
+description: Placeholder de carregamento.
+---
+
+import { Skeleton } from '@/components/ui/skeleton';
+
+<Preview>
+  <div className="w-64 space-y-2">
+    <Skeleton className="h-4 w-full" />
+    <Skeleton className="h-4 w-2/3" />
+  </div>
+</Preview>
+
+## Instalação
+
+```bash
+npx shadcn@latest add https://<host>/r/skeleton.json
+```
+
+## Uso
+
+```tsx
+import { Skeleton } from '@/components/ui/skeleton';
+
+export function Example() {
+  return <Skeleton className="h-4 w-full" />;
+}
+```

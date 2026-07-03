@@ -1,0 +1,30 @@
+---
+title: Checkbox
+description: Caixa de seleção sobre Base UI, com o tema LAI.
+---
+
+import { Checkbox } from '@/components/ui/checkbox';
+import { Label } from '@/components/ui/label';
+
+<Preview>
+  <div className="flex items-center gap-2">
+    <Checkbox id="terms" defaultChecked />
+    <Label htmlFor="terms">Aceito os termos</Label>
+  </div>
+</Preview>
+
+## Instalação
+
+```bash
+npx shadcn@latest add https://<host>/r/checkbox.json
+```
+
+## Uso
+
+```tsx
+import { Checkbox } from '@/components/ui/checkbox';
+
+export function Example() {
+  return <Checkbox defaultChecked />;
+}
+```

@@ -1,3 +1,4 @@
+import path from 'node:path';
 import react from '@vitejs/plugin-react';
 import { tanstackStart } from '@tanstack/react-start/plugin/vite';
 import { defineConfig } from 'vite';
@@ -40,6 +41,9 @@ export default defineConfig({
     tsconfigPaths: true,
     alias: {
       tslib: 'tslib/tslib.es6.js',
+      // alias explícito: o tsconfigPaths não resolve `@/` nos módulos MDX
+      // virtuais de content/, usados nos previews ao vivo dos docs.
+      '@': path.resolve(import.meta.dirname, 'src'),
     },
   },
 });

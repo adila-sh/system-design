@@ -1,0 +1,36 @@
+---
+title: Input
+description: Campo de texto sobre Base UI, com o tema LAI.
+---
+
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+
+<Preview>
+  <div className="grid w-72 gap-2">
+    <Label htmlFor="email">Email</Label>
+    <Input id="email" type="email" placeholder="voce@lai.com" />
+  </div>
+</Preview>
+
+## Instalação
+
+```bash
+npx shadcn@latest add https://<host>/r/input.json
+```
+
+## Uso
+
+```tsx
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+
+export function Example() {
+  return (
+    <div className="grid gap-2">
+      <Label htmlFor="email">Email</Label>
+      <Input id="email" type="email" placeholder="voce@lai.com" />
+    </div>
+  );
+}
+```

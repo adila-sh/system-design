@@ -1,0 +1,39 @@
+---
+title: Avatar
+description: Imagem de perfil com fallback.
+---
+
+import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
+
+<Preview>
+  <div className="flex items-center gap-3">
+    <Avatar>
+      <AvatarImage src="https://github.com/shadcn.png" alt="@lai" />
+      <AvatarFallback>LA</AvatarFallback>
+    </Avatar>
+    <Avatar>
+      <AvatarFallback>JD</AvatarFallback>
+    </Avatar>
+  </div>
+</Preview>
+
+## Instalação
+
+```bash
+npx shadcn@latest add https://<host>/r/avatar.json
+```
+
+## Uso
+
+```tsx
+import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
+
+export function Example() {
+  return (
+    <Avatar>
+      <AvatarImage src="/user.png" alt="Usuário" />
+      <AvatarFallback>US</AvatarFallback>
+    </Avatar>
+  );
+}
+```

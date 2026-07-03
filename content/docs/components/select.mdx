@@ -1,0 +1,59 @@
+---
+title: Select
+description: Seletor de opções sobre Base UI.
+---
+
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
+
+<Preview>
+  <div className="w-56">
+    <Select defaultValue="pro">
+      <SelectTrigger>
+        <SelectValue />
+      </SelectTrigger>
+      <SelectContent>
+        <SelectItem value="free">Free</SelectItem>
+        <SelectItem value="pro">Pro</SelectItem>
+        <SelectItem value="enterprise">Enterprise</SelectItem>
+      </SelectContent>
+    </Select>
+  </div>
+</Preview>
+
+## Instalação
+
+```bash
+npx shadcn@latest add https://<host>/r/select.json
+```
+
+## Uso
+
+```tsx
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
+
+export function Example() {
+  return (
+    <Select defaultValue="pro">
+      <SelectTrigger>
+        <SelectValue />
+      </SelectTrigger>
+      <SelectContent>
+        <SelectItem value="free">Free</SelectItem>
+        <SelectItem value="pro">Pro</SelectItem>
+      </SelectContent>
+    </Select>
+  );
+}
+```

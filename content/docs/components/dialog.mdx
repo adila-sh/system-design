@@ -1,0 +1,66 @@
+---
+title: Dialog
+description: Janela modal sobre Base UI.
+---
+
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '@/components/ui/dialog';
+import { Button } from '@/components/ui/button';
+
+<Preview>
+  <Dialog>
+    <DialogTrigger render={<Button variant="outline">Abrir Dialog</Button>} />
+    <DialogContent>
+      <DialogHeader>
+        <DialogTitle>Confirmar ação</DialogTitle>
+        <DialogDescription>
+          Essa ação carrega o DNA LAI. Deseja continuar?
+        </DialogDescription>
+      </DialogHeader>
+      <DialogFooter>
+        <DialogClose render={<Button variant="outline">Cancelar</Button>} />
+        <DialogClose render={<Button>Confirmar</Button>} />
+      </DialogFooter>
+    </DialogContent>
+  </Dialog>
+</Preview>
+
+## Instalação
+
+```bash
+npx shadcn@latest add https://<host>/r/dialog.json
+```
+
+## Uso
+
+```tsx
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '@/components/ui/dialog';
+import { Button } from '@/components/ui/button';
+
+export function Example() {
+  return (
+    <Dialog>
+      <DialogTrigger render={<Button>Abrir</Button>} />
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle>Título</DialogTitle>
+        </DialogHeader>
+      </DialogContent>
+    </Dialog>
+  );
+}
+```
