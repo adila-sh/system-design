@@ -7,7 +7,7 @@ import { setTimeout as sleep } from "node:timers/promises"
 
 const ROOT = process.cwd()
 const R_SRC = join(ROOT, "public/r")
-const DIST_R = join(ROOT, "dist/r")
+const SERVER = join(ROOT, ".output/server/index.mjs")
 let failures = 0
 const fail = (msg) => {
   console.error("  ✗", msg)
@@ -53,17 +53,16 @@ if (!existsSync(R_SRC)) {
   }
 }
 
-// ---- 2. serve HTTP + fetch com CORS -----------------------------------
-if (!existsSync(DIST_R)) {
-  console.log("dist/r ausente — pulando teste HTTP (rode `npm run build`).")
+// ---- 2. sobe o node server (nitro) + fetch com CORS -------------------
+if (!existsSync(SERVER)) {
+  console.log(".output/server ausente — pulando teste HTTP (rode `npm run build`).")
 } else {
   const PORT = 5099
-  console.log(`Subindo servidor estático em :${PORT}...`)
-  const srv = spawn(
-    "npx",
-    ["serve", "dist", "--cors", "-l", `tcp://127.0.0.1:${PORT}`, "--no-clipboard"],
-    { stdio: "ignore" },
-  )
+  console.log(`Subindo node server (nitro) em :${PORT}...`)
+  const srv = spawn("node", [SERVER], {
+    stdio: "ignore",
+    env: { ...process.env, PORT: String(PORT), HOST: "127.0.0.1" },
+  })
   try {
     const url = `http://127.0.0.1:${PORT}/r/button.json`
     let res

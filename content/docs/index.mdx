@@ -1,0 +1,32 @@
+---
+title: Introdução
+description: Design system LAI distribuído como registry shadcn sobre Base UI.
+icon: Rocket
+---
+
+O **LAI UI Registry** é o design system LAI publicado como um **registry shadcn
+HTTP**. Qualquer projeto consome os componentes com a CLI do shadcn, já com o
+tema LAI (verde LAI, neutros estilo ChatGPT, Inter/JetBrains Mono), em light e
+dark.
+
+## O que tem aqui
+
+- **60+ primitives** shadcn sobre **Base UI** (não Radix), cada um como item
+  `registry:ui`.
+- Um item de tema **`lai-theme`** (`registry:style`) com os tokens LAI em OKLCH.
+- Documentação com **preview ao vivo** — os mesmos arquivos que são publicados.
+
+## Instalação rápida
+
+```bash
+# tema (tokens LAI)
+npx shadcn@latest add https://<host>/r/lai-theme.json
+
+# componentes
+npx shadcn@latest add https://<host>/r/button.json
+```
+
+<Cards>
+  <Card title="Como consumir" href="/docs/installation" />
+  <Card title="Button" href="/docs/components/button" />
+</Cards>

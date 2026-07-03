@@ -1,0 +1,37 @@
+---
+title: Button
+description: Botão sobre Base UI, com variantes e tamanhos do tema LAI.
+---
+
+<Preview>
+  <Button>Primary</Button>
+  <Button variant="secondary">Secondary</Button>
+  <Button variant="outline">Outline</Button>
+  <Button variant="ghost">Ghost</Button>
+  <Button variant="destructive">Destructive</Button>
+  <Button variant="link">Link</Button>
+</Preview>
+
+## Instalação
+
+```bash
+npx shadcn@latest add https://<host>/r/button.json
+```
+
+## Uso
+
+```tsx
+import { Button } from '@/components/ui/button';
+
+export function Example() {
+  return <Button>Primary</Button>;
+}
+```
+
+## Tamanhos
+
+<Preview>
+  <Button size="sm">Small</Button>
+  <Button size="default">Default</Button>
+  <Button size="lg">Large</Button>
+</Preview>

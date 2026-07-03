@@ -25,3 +25,12 @@ dist-ssr
 
 # registry build output (regenerado por npm run build)
 public/r/
+
+# TanStack Start / Fumadocs / Nitro
+.source
+.output
+.nitro
+.tanstack
+.vercel
+.cache
+src/routeTree.gen.ts
