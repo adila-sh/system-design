@@ -1,0 +1,14 @@
+node_modules
+.output
+.nitro
+.tanstack
+.cache
+.git
+.vercel
+dist
+public/r
+src/routeTree.gen.ts
+.source
+**/*.log
+.DS_Store
+.playwright-mcp

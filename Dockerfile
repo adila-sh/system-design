@@ -1,16 +1,16 @@
-# --- build stage ---
-FROM node:22-alpine AS build
+# --- build stage (bun) ---
+FROM oven/bun:1 AS build
 WORKDIR /app
-COPY package*.json ./
-RUN npm ci
+COPY package.json bun.lock ./
+RUN bun install --frozen-lockfile
 COPY . .
-RUN npm run build
+RUN bun run build
 
-# --- runtime stage ---
+# --- runtime stage (node) ---
+# o output do nitro (node-server) roda em node; imagem enxuta pro runtime.
 FROM node:22-alpine AS runtime
 WORKDIR /app
 ENV NODE_ENV=production
-# saída do nitro node-server preset (inclui .output/public com /r/*.json)
 COPY --from=build /app/.output ./.output
 EXPOSE 3000
 CMD ["node", ".output/server/index.mjs"]
