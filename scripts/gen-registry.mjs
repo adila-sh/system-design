@@ -58,7 +58,7 @@ function cssBlock(css, selector) {
 }
 
 // ---- item base (lai-theme) a partir do index.css ----------------------
-const css = readFileSync(join(ROOT, "src/index.css"), "utf8")
+const css = readFileSync(join(ROOT, "src/styles/lai-tokens.css"), "utf8")
 const root = cssBlock(css, ":root")
 const dark = cssBlock(css, ".dark")
 

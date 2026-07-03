@@ -1,11 +1,8 @@
-@import "tailwindcss";
-@import "tw-animate-css";
-
-@custom-variant dark (&:is(.dark *));
-
 /* ------------------------------------------------------------------ */
-/* LAI Design System — tokens (LAI UI Design Standard, OKLCH)          */
-/* Fonte canônica: espelhada no item `registry:base` (lai-theme).      */
+/* LAI Design System — tokens canônicos (LAI UI Design Standard, OKLCH) */
+/* Consumidos pelos componentes shadcn E pelo tema Fumadocs (via         */
+/* fumadocs-ui/css/shadcn.css, que mapeia --color-fd-* -> estes tokens). */
+/* Espelhados no item `registry:base` (lai-theme) por gen-registry.mjs.  */
 /* ------------------------------------------------------------------ */
 
 :root {
@@ -165,9 +162,5 @@
 @layer base {
   * {
     @apply border-border outline-ring/50;
-  }
-  body {
-    @apply bg-background text-foreground;
-    font-family: var(--font-sans);
   }
 }

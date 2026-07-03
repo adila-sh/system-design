@@ -1,0 +1,50 @@
+---
+title: Como consumir
+description: Instalar o registry LAI em outro projeto.
+icon: Download
+---
+
+O registry segue o padrão do shadcn. No projeto **consumidor**:
+
+## 1. Pré-requisitos
+
+O projeto consumidor precisa de **Tailwind v4** e do shadcn inicializado com
+**Base UI**:
+
+```bash
+npx shadcn@latest init --base base
+```
+
+## 2. Instalar o tema LAI
+
+O item `lai-theme` traz os tokens (cores, radius, tipografia) em light e dark:
+
+```bash
+npx shadcn@latest add https://<host>/r/lai-theme.json
+```
+
+## 3. Adicionar componentes
+
+```bash
+npx shadcn@latest add https://<host>/r/button.json
+npx shadcn@latest add https://<host>/r/dialog.json
+```
+
+As dependências (npm e outros componentes do registry) são resolvidas
+automaticamente pela CLI.
+
+## Opcional: alias no components.json
+
+Para encurtar os comandos, registre o host no `components.json` do consumidor:
+
+```json title="components.json"
+{
+  "registries": {
+    "@lai": "https://<host>/r/{name}.json"
+  }
+}
+```
+
+```bash
+npx shadcn@latest add @lai/button
+```

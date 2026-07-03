@@ -1,0 +1,19 @@
+@import 'tailwindcss';
+/* shadcn.css mapeia --color-fd-* para os tokens shadcn (--primary, ...),
+   unificando o tema Fumadocs com o design system LAI. */
+@import 'fumadocs-ui/css/shadcn.css';
+@import 'fumadocs-ui/css/preset.css';
+@import 'tw-animate-css';
+@import './lai-tokens.css';
+
+/* garante que o Tailwind escaneie os componentes do registry */
+@source '../components';
+
+html {
+  scrollbar-gutter: stable;
+}
+
+html > body[data-scroll-locked] {
+  margin-right: 0px !important;
+  --removed-body-scroll-bar-size: 0px !important;
+}
