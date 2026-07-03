@@ -1,10 +1,11 @@
 @import 'tailwindcss';
 /* shadcn.css mapeia --color-fd-* para os tokens shadcn (--primary, ...),
-   unificando o tema Fumadocs com o design system LAI. */
+   unificando o tema Fumadocs com o design system adila.co. */
 @import 'fumadocs-ui/css/shadcn.css';
 @import 'fumadocs-ui/css/preset.css';
 @import 'tw-animate-css';
-@import './lai-tokens.css';
+@import './fonts.css';
+@import './adila-tokens.css';
 
 /* garante que o Tailwind escaneie os componentes do registry */
 @source '../components';

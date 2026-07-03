@@ -1,14 +1,14 @@
-# LAI UI Registry
+# adila.co UI Registry
 
-Design system LAI em um **app único**: documentação **Fumadocs** + **registry
+Design system adila.co em um **app único**: documentação **Fumadocs** + **registry
 shadcn HTTP** sobre **Base UI**. Stack: **TanStack Start** (Vite) + React +
 TypeScript + Tailwind v4.
 
 Outros projetos consomem os componentes com a CLI do shadcn:
 
 ```bash
-# tema (tokens LAI: verde LAI, neutros ChatGPT, Inter/JetBrains Mono)
-npx shadcn@latest add https://<host>/r/lai-theme.json
+# tema (tokens adila.co: verde adila.co, neutros ChatGPT, Circular Std / JetBrains Mono)
+npx shadcn@latest add https://<host>/r/adila-theme.json
 
 # componentes individuais
 npx shadcn@latest add https://<host>/r/button.json
@@ -24,20 +24,20 @@ Um único app TanStack Start serve **as três coisas**:
 - **Landing** (`/`) — home do design system.
 
 O tema é unificado: `fumadocs-ui/css/shadcn.css` mapeia `--color-fd-*` para os
-tokens shadcn, então **o Fumadocs e os componentes usam a mesma paleta LAI**.
+tokens shadcn, então **o Fumadocs e os componentes usam a mesma paleta adila.co**.
 
 ## Como funciona o registry
 
-- `src/styles/lai-tokens.css` — **fonte canônica** dos tokens (light/dark, OKLCH).
+- `src/styles/adila-tokens.css` — **fonte canônica** dos tokens (light/dark, OKLCH).
 - `src/components/ui/` — os primitives Base UI publicados (fonte única; os docs
   importam exatamente estes arquivos para o preview ao vivo).
 - `scripts/gen-registry.mjs` — gera `registry.json` varrendo os componentes
-  (deps npm + registryDependencies) e extraindo os tokens de `lai-tokens.css`.
+  (deps npm + registryDependencies) e extraindo os tokens de `adila-tokens.css`.
 - `shadcn build` — transforma `registry.json` em `public/r/*.json`.
 - TanStack Start serve `public/` (com CORS em `/r/**` via `routeRules`).
 
 ```
-lai-tokens.css ─┐
+adila-tokens.css ─┐
                 ├─gen-registry─► registry.json ─shadcn build─► public/r/*.json ─(TanStack)─► HTTP
 components/ui/ ─┘
 ```
@@ -88,6 +88,21 @@ runtime. O nitro gera um node server (`.output/server`) que respeita `PORT`. Um
 
 ## Tokens
 
-Convertidos do **LAI UI Design Standard** para OKLCH. Acento primário
-`#10A37F` (verde LAI); paleta neutra estilo ChatGPT; light + dark obrigatórios.
-Para rebrandizar, edite `src/styles/lai-tokens.css` e rode `npm run registry`.
+Convertidos do **adila.co UI Design Standard** para OKLCH. Acento primário
+`#10A37F` (verde adila.co); paleta neutra estilo ChatGPT; light + dark obrigatórios.
+Para rebrandizar, edite `src/styles/adila-tokens.css` e rode `npm run registry`.
+
+## Fonte (Circular Std)
+
+A `--font-sans` é a **Circular Std**, servida via `@font-face` self-hosted no
+R2 (`https://assets.adila.co/fonts/woff2/CircularStd-*.woff2`).
+
+- **App:** importa `src/styles/fonts.css` (bundled); preload das críticas
+  (Book/Medium) em `src/routes/__root.tsx`.
+- **Consumidores do registry:** o item `adila-theme` injeta
+  `@import "https://assets.adila.co/adila-fonts.css"` no CSS global via o campo
+  `css` — a fonte carrega sozinha ao rodar `shadcn add adila-theme`.
+
+`gen-registry` copia `src/styles/fonts.css` → `adila-fonts.css` (raiz, gerado).
+**Subir esse arquivo na raiz do bucket R2** para que fique disponível em
+`https://assets.adila.co/adila-fonts.css`.

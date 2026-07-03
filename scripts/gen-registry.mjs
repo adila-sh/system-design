@@ -57,8 +57,8 @@ function cssBlock(css, selector) {
   return vars
 }
 
-// ---- item base (lai-theme) a partir do index.css ----------------------
-const css = readFileSync(join(ROOT, "src/styles/lai-tokens.css"), "utf8")
+// ---- item base (adila-theme) a partir do index.css ----------------------
+const css = readFileSync(join(ROOT, "src/styles/adila-tokens.css"), "utf8")
 const root = cssBlock(css, ":root")
 const dark = cssBlock(css, ".dark")
 
@@ -70,14 +70,26 @@ for (const [k, v] of Object.entries(root)) {
   else light[k] = v
 }
 
+// ---- artefato de fonte para o R2 --------------------------------------
+// A Circular Std (--font-sans) é servida via @font-face self-hosted. O app
+// importa src/styles/fonts.css (bundled); consumidores do registry recebem
+// um @import para a mesma folha hospedada no R2. Fonte única = fonts.css:
+// copiamos para adila-fonts.css (raiz) como o arquivo a subir no bucket.
+const FONT_CSS_URL = "https://assets.adila.co/adila-fonts.css"
+const fontCss = readFileSync(join(ROOT, "src/styles/fonts.css"), "utf8")
+writeFileSync(join(ROOT, "adila-fonts.css"), fontCss)
+
 const baseItem = {
-  name: "lai-theme",
+  name: "adila-theme",
   type: "registry:style",
-  title: "LAI Theme",
+  title: "adila.co Theme",
   description:
-    "Tokens do design system LAI (verde LAI, neutros ChatGPT, Inter/JetBrains Mono) em light e dark.",
+    "Tokens do design system adila.co (verde adila.co, neutros ChatGPT, Circular Std / JetBrains Mono) em light e dark.",
   dependencies: ["tw-animate-css"],
   registryDependencies: ["utils"],
+  // @import injetado no CSS global do consumidor (shadcn trata `@import`
+  // nativamente) — carrega os @font-face da Circular Std a partir do R2.
+  css: { [`@import "${FONT_CSS_URL}"`]: {} },
   cssVars: { theme, light, dark },
 }
 
@@ -115,8 +127,8 @@ const hookItems = readdirSync(join(ROOT, HOOKS_DIR))
 
 const registry = {
   $schema: "https://ui.shadcn.com/schema/registry.json",
-  name: "lai-ui",
-  homepage: "https://lai-ui-registry.up.railway.app",
+  name: "adila-ui",
+  homepage: "https://adila-ui-registry.up.railway.app",
   items: [baseItem, ...hookItems, ...uiItems],
 }
 

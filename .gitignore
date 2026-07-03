@@ -25,6 +25,8 @@ dist-ssr
 
 # registry build output (regenerado por npm run build)
 public/r/
+# artefato de fonte pro R2 (gerado de src/styles/fonts.css por gen-registry)
+adila-fonts.css
 
 # TanStack Start / Fumadocs / Nitro
 .source

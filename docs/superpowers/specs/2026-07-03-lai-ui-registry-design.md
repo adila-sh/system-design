@@ -1,12 +1,12 @@
-# LAI UI Registry — Design System shadcn + Base UI
+# adila.co UI Registry — Design System shadcn + Base UI
 
 **Data:** 2026-07-03
 **Status:** Aprovado
-**Autor:** LAI Engineering
+**Autor:** adila.co Engineering
 
 ## Objetivo
 
-Projeto Vite + React + TS que é a fonte de verdade de um design system LAI e
+Projeto Vite + React + TS que é a fonte de verdade de um design system adila.co e
 publica um **registry shadcn HTTP**. Outros projetos consomem componentes via:
 
 ```bash
@@ -27,9 +27,9 @@ npx shadcn@latest add https://<host-railway>/r/<item>.json
 - Servido por HTTP estático. **CORS obrigatório** (`Access-Control-Allow-Origin: *`)
   porque o `shadcn add` do consumidor faz fetch cross-origin.
 
-## Tokens LAI — item `registry:base` (`lai-theme`)
+## Tokens adila.co — item `registry:base` (`adila-theme`)
 
-Convertidos do LAI UI Design Standard para OKLCH, light + dark:
+Convertidos do adila.co UI Design Standard para OKLCH, light + dark:
 
 | Token | Claro | Escuro |
 |-------|-------|--------|
@@ -39,13 +39,13 @@ Convertidos do LAI UI Design Standard para OKLCH, light + dark:
 | foreground | `#111827` | `#ECECF1` |
 | muted-foreground | `#6B7280` | `#8E8EA0` |
 | border | `#E5E7EB` | `#4E4F60` |
-| primary (verde LAI) | `#10A37F` | `#10A37F` |
+| primary (verde adila.co) | `#10A37F` | `#10A37F` |
 | primary hover | `#0D8C6D` | `#0D8C6D` |
 | destructive | `#EF4444` | `#F87171` |
 | warning | `#F59E0B` | `#FBBF24` |
 | success | `#10B981` | `#34D399` |
 
-- Tipografia: Inter (UI) + JetBrains Mono (código). Escala 12/14/16/20/24.
+- Tipografia: Circular Std (UI) + JetBrains Mono (código). Escala 12/14/16/20/24.
 - `config`: `style` custom, `iconLibrary: lucide`, `tailwind.baseColor: neutral`.
 - Item `type: registry:base`, com `cssVars` (light/dark) e `css` base layer.
 
@@ -66,13 +66,13 @@ mesmos arquivos publicados.
 ## Estrutura
 
 ```
-lai-ui-registry/
-├── registry.json          # fonte: lai-theme + todos os ui items
+adila-ui-registry/
+├── registry.json          # fonte: adila-theme + todos os ui items
 ├── components.json        # config shadcn (base: base)
 ├── src/
 │   ├── components/ui/      # primitives Base UI (fonte publicada)
 │   ├── components/showcase/# seções de preview + theme toggle
-│   ├── styles/lai-tokens.css  # tokens canônicos do app
+│   ├── styles/adila-tokens.css  # tokens canônicos do app
 │   ├── lib/utils.ts        # cn()
 │   ├── App.tsx             # página showcase
 │   └── main.tsx
@@ -84,12 +84,12 @@ lai-ui-registry/
 ## Showcase
 
 Página única: galeria de todos os componentes, toggle light/dark, validação
-visual do tema LAI. "Storybook leve".
+visual do tema adila.co. "Storybook leve".
 
 ## Sync de tokens (decisão)
 
-`registry.json` (cssVars do `lai-theme`) é canônico. Um passo de build gera
-`src/styles/lai-tokens.css` a partir dele — zero drift entre o que o app renderiza
+`registry.json` (cssVars do `adila-theme`) é canônico. Um passo de build gera
+`src/styles/adila-tokens.css` a partir dele — zero drift entre o que o app renderiza
 e o que é publicado.
 
 ## Testes / verificação
@@ -101,7 +101,7 @@ e o que é publicado.
 
 ## Fora de escopo (YAGNI)
 
-- Blocks LAI (login-form, sidebar ChatGPT, cockpit) — futuro.
+- Blocks adila.co (login-form, sidebar ChatGPT, cockpit) — futuro.
 - Charts/dataviz — futuro.
 - Multi-tema/multi-marca — futuro.
 
@@ -111,15 +111,15 @@ e o que é publicado.
 
 O shell Vite SPA foi substituído por um **app único TanStack Start** (ainda
 Vite) que serve docs Fumadocs + registry + landing. Mantidos: os 60 primitives
-Base UI, os tokens LAI, o gerador de registry e o smoke test.
+Base UI, os tokens adila.co, o gerador de registry e o smoke test.
 
 **Mudanças:**
 - Shell: Vite SPA → **TanStack Start** (roteamento por arquivos, SSR + nitro).
 - Docs: showcase Vite → **Fumadocs** (MDX por componente, busca, preview ao vivo
   via `<Preview>`).
 - Tema unificado: `fumadocs-ui/css/shadcn.css` mapeia `--color-fd-*` para os
-  tokens shadcn — Fumadocs e componentes usam a mesma paleta LAI.
-- Tokens canônicos: `src/index.css` → `src/styles/lai-tokens.css`.
+  tokens shadcn — Fumadocs e componentes usam a mesma paleta adila.co.
+- Tokens canônicos: `src/index.css` → `src/styles/adila-tokens.css`.
 - Serving: `serve dist --cors` → node server do nitro (`node-server`), CORS em
   `/r/**` via `routeRules`.
 - Deploy: Railway continua Nixpacks (`build`/`start`); `start` roda o node server.
@@ -131,4 +131,4 @@ completo para o `.output`. Os `/r/*.json` são estáticos e não dependem disso.
 
 **Verificação:** `npm run build` (0 erros), `npm run typecheck` (0 erros),
 `npm run smoke` (registry válido + HTTP 200 + CORS), e validação no browser
-(home e `/docs/components/button` renderizam com o tema LAI e previews ao vivo).
+(home e `/docs/components/button` renderizam com o tema adila.co e previews ao vivo).

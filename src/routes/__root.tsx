@@ -16,13 +16,28 @@ export const Route = createRootRoute({
       {
         name: 'description',
         content:
-          'Design system LAI: registry shadcn sobre Base UI, tema verde LAI, light & dark.',
+          'Design system adila.co: registry shadcn sobre Base UI, tema verde adila.co, light & dark.',
       },
       {
-        title: 'LAI UI Registry — Design System',
+        title: 'adila.co UI Registry — Design System',
       },
     ],
     links: [
+      { rel: 'preconnect', href: 'https://assets.adila.co', crossOrigin: 'anonymous' },
+      {
+        rel: 'preload',
+        as: 'font',
+        type: 'font/woff2',
+        href: 'https://assets.adila.co/fonts/woff2/CircularStd-Book.woff2',
+        crossOrigin: 'anonymous',
+      },
+      {
+        rel: 'preload',
+        as: 'font',
+        type: 'font/woff2',
+        href: 'https://assets.adila.co/fonts/woff2/CircularStd-Medium.woff2',
+        crossOrigin: 'anonymous',
+      },
       { rel: 'stylesheet', href: appCss },
       { rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml' },
     ],

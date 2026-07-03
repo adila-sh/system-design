@@ -1,8 +1,8 @@
 /* ------------------------------------------------------------------ */
-/* LAI Design System — tokens canônicos (LAI UI Design Standard, OKLCH) */
+/* adila.co Design System — tokens canônicos (adila.co UI Design Standard, OKLCH) */
 /* Consumidos pelos componentes shadcn E pelo tema Fumadocs (via         */
 /* fumadocs-ui/css/shadcn.css, que mapeia --color-fd-* -> estes tokens). */
-/* Espelhados no item `registry:base` (lai-theme) por gen-registry.mjs.  */
+/* Espelhados no item `registry:base` (adila-theme) por gen-registry.mjs.  */
 /* ------------------------------------------------------------------ */
 
 :root {
@@ -57,7 +57,7 @@
   --sidebar-border: oklch(0.9276 0.0058 264.53);
   --sidebar-ring: oklch(0.6374 0.1242 169.51);
 
-  --font-sans: Inter, "SF Pro Text", "Segoe UI", system-ui, sans-serif;
+  --font-sans: "Circular Std", "SF Pro Text", "Segoe UI", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", "Fira Code", Consolas, monospace;
 }
 

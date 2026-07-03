@@ -1,6 +1,6 @@
 ---
 title: Como consumir
-description: Instalar o registry LAI em outro projeto.
+description: Instalar o registry adila.co em outro projeto.
 icon: Download
 ---
 
@@ -15,12 +15,12 @@ O projeto consumidor precisa de **Tailwind v4** e do shadcn inicializado com
 npx shadcn@latest init --base base
 ```
 
-## 2. Instalar o tema LAI
+## 2. Instalar o tema adila.co
 
-O item `lai-theme` traz os tokens (cores, radius, tipografia) em light e dark:
+O item `adila-theme` traz os tokens (cores, radius, tipografia) em light e dark:
 
 ```bash
-npx shadcn@latest add https://<host>/r/lai-theme.json
+npx shadcn@latest add https://<host>/r/adila-theme.json
 ```
 
 ## 3. Adicionar componentes
@@ -40,11 +40,11 @@ Para encurtar os comandos, registre o host no `components.json` do consumidor:
 ```json title="components.json"
 {
   "registries": {
-    "@lai": "https://<host>/r/{name}.json"
+    "@adila": "https://<host>/r/{name}.json"
   }
 }
 ```
 
 ```bash
-npx shadcn@latest add @lai/button
+npx shadcn@latest add @adila/button
 ```

@@ -1,0 +1,80 @@
+/* ------------------------------------------------------------------ */
+/* adila.co — Circular Std (fonte de marca), hospedada no R2           */
+/* https://assets.adila.co/fonts/woff2/CircularStd-*.woff2             */
+/* woff2 only; font-display: swap para não bloquear o first paint.     */
+/* ------------------------------------------------------------------ */
+
+@font-face {
+  font-family: "Circular Std";
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("https://assets.adila.co/fonts/woff2/CircularStd-Light.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Circular Std";
+  font-style: italic;
+  font-weight: 300;
+  font-display: swap;
+  src: url("https://assets.adila.co/fonts/woff2/CircularStd-LightItalic.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Circular Std";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("https://assets.adila.co/fonts/woff2/CircularStd-Book.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Circular Std";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("https://assets.adila.co/fonts/woff2/CircularStd-BookItalic.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Circular Std";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("https://assets.adila.co/fonts/woff2/CircularStd-Medium.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Circular Std";
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url("https://assets.adila.co/fonts/woff2/CircularStd-MediumItalic.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Circular Std";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("https://assets.adila.co/fonts/woff2/CircularStd-Bold.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Circular Std";
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url("https://assets.adila.co/fonts/woff2/CircularStd-BoldItalic.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Circular Std";
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url("https://assets.adila.co/fonts/woff2/CircularStd-Black.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Circular Std";
+  font-style: italic;
+  font-weight: 900;
+  font-display: swap;
+  src: url("https://assets.adila.co/fonts/woff2/CircularStd-BlackItalic.woff2") format("woff2");
+}

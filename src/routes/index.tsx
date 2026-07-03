@@ -14,11 +14,11 @@ function Home() {
       <div className="flex flex-1 flex-col items-center justify-center gap-6 px-4 py-16 text-center">
         <Badge variant="secondary">shadcn · Base UI · Tailwind v4</Badge>
         <h1 className="max-w-2xl text-4xl font-semibold tracking-tight sm:text-5xl">
-          Design System <span className="text-primary">LAI</span>
+          Design System <span className="text-primary">adila.co</span>
         </h1>
         <p className="max-w-xl text-fd-muted-foreground">
           Registry de componentes consumível por qualquer projeto via CLI do
-          shadcn. Tema verde LAI, light &amp; dark, 60+ primitives Base UI.
+          shadcn. Tema verde adila.co, light &amp; dark, 60+ primitives Base UI.
         </p>
         <div className="flex flex-wrap items-center justify-center gap-3">
           <Button
@@ -42,7 +42,7 @@ function Home() {
           />
         </div>
         <code className="mt-2 rounded-lg border bg-fd-muted px-4 py-2 font-mono text-sm">
-          npx shadcn@latest add https://&lt;host&gt;/r/lai-theme.json
+          npx shadcn@latest add https://&lt;host&gt;/r/adila-theme.json
         </code>
       </div>
     </HomeLayout>
