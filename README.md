@@ -57,11 +57,23 @@ components/ui/ ─┘
 
 ```bash
 npx shadcn@latest add <componente>   # entra em src/components/ui/
-npm run registry                     # regenera o registry
+npm run registry                     # regenera registry + doc-base + meta.json
 ```
 
-Documente-o criando `content/docs/components/<nome>.mdx` (use `<Preview>` para o
-preview ao vivo).
+`scripts/gen-docs.mjs` cria uma página-base em `content/docs/components/<nome>.mdx`
+(instalação + uso + dependências) para todo componente que ainda não tem doc, e
+regenera o `meta.json` da sidebar. Para um **preview ao vivo**, edite o MDX
+importando o componente e usando `<Preview>`:
+
+```mdx
+import { Button } from '@/components/ui/button';
+
+<Preview>
+  <Button>Primary</Button>
+</Preview>
+```
+
+Docs escritas à mão são preservadas (o gerador só cria as que faltam).
 
 ## Deploy (Railway)
 
