@@ -14,10 +14,18 @@ export const Route = createRootRoute({
         content: 'width=device-width, initial-scale=1',
       },
       {
-        title: 'Fumadocs on TanStack Start',
+        name: 'description',
+        content:
+          'Design system LAI: registry shadcn sobre Base UI, tema verde LAI, light & dark.',
+      },
+      {
+        title: 'LAI UI Registry — Design System',
       },
     ],
-    links: [{ rel: 'stylesheet', href: appCss }],
+    links: [
+      { rel: 'stylesheet', href: appCss },
+      { rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml' },
+    ],
   }),
   component: RootComponent,
 });

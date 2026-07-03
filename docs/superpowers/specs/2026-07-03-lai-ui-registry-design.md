@@ -104,3 +104,31 @@ e o que é publicado.
 - Blocks LAI (login-form, sidebar ChatGPT, cockpit) — futuro.
 - Charts/dataviz — futuro.
 - Multi-tema/multi-marca — futuro.
+
+---
+
+## Revisão 2026-07-03 — App único TanStack Start + Fumadocs
+
+O shell Vite SPA foi substituído por um **app único TanStack Start** (ainda
+Vite) que serve docs Fumadocs + registry + landing. Mantidos: os 60 primitives
+Base UI, os tokens LAI, o gerador de registry e o smoke test.
+
+**Mudanças:**
+- Shell: Vite SPA → **TanStack Start** (roteamento por arquivos, SSR + nitro).
+- Docs: showcase Vite → **Fumadocs** (MDX por componente, busca, preview ao vivo
+  via `<Preview>`).
+- Tema unificado: `fumadocs-ui/css/shadcn.css` mapeia `--color-fd-*` para os
+  tokens shadcn — Fumadocs e componentes usam a mesma paleta LAI.
+- Tokens canônicos: `src/index.css` → `src/styles/lai-tokens.css`.
+- Serving: `serve dist --cors` → node server do nitro (`node-server`), CORS em
+  `/r/**` via `routeRules`.
+- Deploy: Railway continua Nixpacks (`build`/`start`); `start` roda o node server.
+
+**Workaround tslib:** o plugin do TanStack pré-bundla `@radix-ui` (via
+Fumadocs/cmdk) importando `tslib`; o trace do nitro o copia incompleto (falta
+`modules/`). Prerender desligado + `scripts/fix-tslib.mjs` copia o `tslib`
+completo para o `.output`. Os `/r/*.json` são estáticos e não dependem disso.
+
+**Verificação:** `npm run build` (0 erros), `npm run typecheck` (0 erros),
+`npm run smoke` (registry válido + HTTP 200 + CORS), e validação no browser
+(home e `/docs/components/button` renderizam com o tema LAI e previews ao vivo).
