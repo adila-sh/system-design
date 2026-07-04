@@ -385,6 +385,9 @@
           "type": "registry:ui"
         }
       ],
+      "registryDependencies": [
+        "utils"
+      ],
       "dependencies": [
         "@base-ui/react"
       ]
