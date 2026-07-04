@@ -84,7 +84,7 @@ const baseItem = {
   type: "registry:style",
   title: "adila.co Theme",
   description:
-    "Tokens do design system adila.co (verde adila.co, neutros ChatGPT, Circular Std / JetBrains Mono) em light e dark.",
+    "Tokens do design system adila.co (indigo adila.co, neutros ChatGPT, Circular Std / JetBrains Mono) em light e dark.",
   dependencies: ["tw-animate-css"],
   registryDependencies: ["utils"],
   // @import injetado no CSS global do consumidor (shadcn trata `@import`

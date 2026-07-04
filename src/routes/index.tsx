@@ -18,7 +18,7 @@ function Home() {
         </h1>
         <p className="max-w-xl text-fd-muted-foreground">
           Registry de componentes consumível por qualquer projeto via CLI do
-          shadcn. Tema verde adila.co, light &amp; dark, 60+ primitives Base UI.
+          shadcn. Tema indigo adila.co, light &amp; dark, 60+ primitives Base UI.
         </p>
         <div className="flex flex-wrap items-center justify-center gap-3">
           <Button

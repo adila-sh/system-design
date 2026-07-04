@@ -7,7 +7,7 @@ TypeScript + Tailwind v4.
 Outros projetos consomem os componentes com a CLI do shadcn:
 
 ```bash
-# tema (tokens adila.co: verde adila.co, neutros ChatGPT, Circular Std / JetBrains Mono)
+# tema (tokens adila.co: indigo adila.co, neutros ChatGPT, Circular Std / JetBrains Mono)
 npx shadcn@latest add https://<host>/r/adila-theme.json
 
 # componentes individuais
@@ -89,7 +89,7 @@ runtime. O nitro gera um node server (`.output/server`) que respeita `PORT`. Um
 ## Tokens
 
 Convertidos do **adila.co UI Design Standard** para OKLCH. Acento primário
-`#10A37F` (verde adila.co); paleta neutra estilo ChatGPT; light + dark obrigatórios.
+`#3A4BE5` (indigo adila.co); paleta neutra estilo ChatGPT; light + dark obrigatórios.
 Para rebrandizar, edite `src/styles/adila-tokens.css` e rode `npm run registry`.
 
 ## Fonte (Circular Std)
