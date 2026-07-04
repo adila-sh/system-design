@@ -1,6 +1,5 @@
 export const appName = 'DS | Adila.co';
 export const docsRoute = '/docs';
-export const docsImageRoute = '/og/docs';
 
 export const gitConfig = {
   user: 'adila-sh',
