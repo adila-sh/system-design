@@ -3,16 +3,74 @@ title: Chart
 description: Componente chart do design system adila.co, sobre Base UI.
 ---
 
+import {
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+} from '@/components/ui/chart';
+import { Bar, BarChart, CartesianGrid, XAxis } from 'recharts';
+
+export const chartData = [
+  { mes: 'Jan', vendas: 42 },
+  { mes: 'Fev', vendas: 58 },
+  { mes: 'Mar', vendas: 51 },
+  { mes: 'Abr', vendas: 73 },
+];
+
+export const chartConfig = {
+  vendas: { label: 'Vendas', color: 'var(--primary)' },
+};
+
+<Preview>
+  <ChartContainer config={chartConfig} className="min-h-40 w-full max-w-sm">
+    <BarChart data={chartData}>
+      <CartesianGrid vertical={false} />
+      <XAxis dataKey="mes" tickLine={false} axisLine={false} tickMargin={8} />
+      <ChartTooltip content={<ChartTooltipContent />} />
+      <Bar dataKey="vendas" fill="var(--color-vendas)" radius={4} />
+    </BarChart>
+  </ChartContainer>
+</Preview>
+
 ## Instalação
 
 ```bash
-npx shadcn@latest add https://<host>/r/chart.json
+npx shadcn@latest add https://ds.adila.co/r/chart.json
 ```
 
 ## Uso
 
 ```tsx
-import { ChartContainer, ChartLegend, ChartLegendContent, ChartStyle, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart';
+import {
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+} from '@/components/ui/chart';
+import { Bar, BarChart, CartesianGrid, XAxis } from 'recharts';
+
+const chartData = [
+  { mes: 'Jan', vendas: 42 },
+  { mes: 'Fev', vendas: 58 },
+  { mes: 'Mar', vendas: 51 },
+  { mes: 'Abr', vendas: 73 },
+];
+
+const chartConfig = {
+  vendas: { label: 'Vendas', color: 'var(--primary)' },
+};
+
+export function Example() {
+  return (
+    <ChartContainer config={chartConfig} className="min-h-40 w-full">
+      <BarChart data={chartData}>
+        <CartesianGrid vertical={false} />
+        <XAxis dataKey="mes" tickLine={false} axisLine={false} tickMargin={8} />
+        <ChartTooltip content={<ChartTooltipContent />} />
+        <Bar dataKey="vendas" fill="var(--color-vendas)" radius={4} />
+      </BarChart>
+    </ChartContainer>
+  );
+}
 ```
 
 ## Dependências

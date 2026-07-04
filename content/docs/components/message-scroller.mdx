@@ -3,16 +3,76 @@ title: Message Scroller
 description: Componente message-scroller do design system adila.co, sobre Base UI.
 ---
 
+import {
+  MessageScrollerProvider,
+  MessageScroller,
+  MessageScrollerViewport,
+  MessageScrollerContent,
+  MessageScrollerItem,
+  MessageScrollerButton,
+} from '@/components/ui/message-scroller';
+import { Bubble, BubbleContent } from '@/components/ui/bubble';
+
+<Preview>
+  <div className="h-56 w-full max-w-sm">
+    <MessageScrollerProvider>
+      <MessageScroller>
+        <MessageScrollerViewport>
+          <MessageScrollerContent className="gap-3 p-1">
+            {Array.from({ length: 12 }).map((_, i) => (
+              <MessageScrollerItem key={i}>
+                <Bubble align={i % 2 ? 'end' : 'start'} variant={i % 2 ? 'default' : 'muted'}>
+                  <BubbleContent>Mensagem {i + 1}</BubbleContent>
+                </Bubble>
+              </MessageScrollerItem>
+            ))}
+          </MessageScrollerContent>
+        </MessageScrollerViewport>
+        <MessageScrollerButton direction="end" />
+      </MessageScroller>
+    </MessageScrollerProvider>
+  </div>
+</Preview>
+
 ## Instalação
 
 ```bash
-npx shadcn@latest add https://<host>/r/message-scroller.json
+npx shadcn@latest add https://ds.adila.co/r/message-scroller.json
 ```
 
 ## Uso
 
+O `MessageScrollerProvider` é obrigatório: ele detém o contexto de auto-scroll que
+`MessageScroller`, `Viewport`, `Content`, `Item` e `Button` consomem. Dê uma altura
+definida ao contêiner e habilite `autoScroll` no provider para acompanhar novas mensagens.
+
 ```tsx
-import { MessageScroller, MessageScrollerButton, MessageScrollerContent, MessageScrollerItem, MessageScrollerProvider, MessageScrollerViewport } from '@/components/ui/message-scroller';
+import {
+  MessageScrollerProvider,
+  MessageScroller,
+  MessageScrollerViewport,
+  MessageScrollerContent,
+  MessageScrollerItem,
+  MessageScrollerButton,
+} from '@/components/ui/message-scroller';
+
+export function Example() {
+  return (
+    <div className="h-96">
+      <MessageScrollerProvider autoScroll>
+        <MessageScroller>
+          <MessageScrollerViewport>
+            <MessageScrollerContent>
+              <MessageScrollerItem>Primeira mensagem</MessageScrollerItem>
+              <MessageScrollerItem scrollAnchor>Última mensagem</MessageScrollerItem>
+            </MessageScrollerContent>
+          </MessageScrollerViewport>
+          <MessageScrollerButton direction="end" />
+        </MessageScroller>
+      </MessageScrollerProvider>
+    </div>
+  );
+}
 ```
 
 ## Dependências
@@ -23,3 +83,4 @@ import { MessageScroller, MessageScrollerButton, MessageScrollerContent, Message
 ## Componentes relacionados
 
 - [Button](/docs/components/button)
+- [Message](/docs/components/message)

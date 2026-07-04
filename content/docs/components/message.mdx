@@ -3,14 +3,86 @@ title: Message
 description: Componente message do design system adila.co, sobre Base UI.
 ---
 
+import {
+  MessageGroup,
+  Message,
+  MessageAvatar,
+  MessageContent,
+  MessageHeader,
+  MessageFooter,
+} from '@/components/ui/message';
+import { Bubble, BubbleContent } from '@/components/ui/bubble';
+
+<Preview>
+  <MessageGroup className="w-full max-w-sm">
+    <Message align="start">
+      <MessageAvatar className="size-8 self-start text-xs font-medium">IA</MessageAvatar>
+      <MessageContent>
+        <MessageHeader>Assistente</MessageHeader>
+        <Bubble variant="muted">
+          <BubbleContent>Olá! Como posso ajudar hoje?</BubbleContent>
+        </Bubble>
+      </MessageContent>
+    </Message>
+    <Message align="end">
+      <MessageContent>
+        <Bubble align="end">
+          <BubbleContent>Quero ver o engajamento do lead.</BubbleContent>
+        </Bubble>
+        <MessageFooter>agora</MessageFooter>
+      </MessageContent>
+    </Message>
+  </MessageGroup>
+</Preview>
+
 ## Instalação
 
 ```bash
-npx shadcn@latest add https://<host>/r/message.json
+npx shadcn@latest add https://ds.adila.co/r/message.json
 ```
 
 ## Uso
 
+`Message` é puramente de layout: define alinhamento (`align="start" | "end"`), avatar,
+cabeçalho e rodapé. Combine com [Bubble](/docs/components/bubble) para o balão estilizado.
+
 ```tsx
-import { Message, MessageAvatar, MessageContent, MessageFooter, MessageGroup, MessageHeader } from '@/components/ui/message';
+import {
+  MessageGroup,
+  Message,
+  MessageAvatar,
+  MessageContent,
+  MessageHeader,
+  MessageFooter,
+} from '@/components/ui/message';
+import { Bubble, BubbleContent } from '@/components/ui/bubble';
+
+export function Example() {
+  return (
+    <MessageGroup>
+      <Message align="start">
+        <MessageAvatar className="size-8 text-xs font-medium">IA</MessageAvatar>
+        <MessageContent>
+          <MessageHeader>Assistente</MessageHeader>
+          <Bubble variant="muted">
+            <BubbleContent>Olá! Como posso ajudar?</BubbleContent>
+          </Bubble>
+        </MessageContent>
+      </Message>
+      <Message align="end">
+        <MessageContent>
+          <Bubble align="end">
+            <BubbleContent>Quero ver o engajamento do lead.</BubbleContent>
+          </Bubble>
+          <MessageFooter>agora</MessageFooter>
+        </MessageContent>
+      </Message>
+    </MessageGroup>
+  );
+}
 ```
+
+## Componentes relacionados
+
+- [Bubble](/docs/components/bubble)
+- [Message Scroller](/docs/components/message-scroller)

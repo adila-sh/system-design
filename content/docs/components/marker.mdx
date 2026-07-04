@@ -3,17 +3,54 @@ title: Marker
 description: Componente marker do design system adila.co, sobre Base UI.
 ---
 
+import { Marker, MarkerIcon, MarkerContent } from '@/components/ui/marker';
+import { CheckCircle2, Circle } from 'lucide-react';
+
+<Preview>
+  <div className="flex w-full max-w-sm flex-col gap-2">
+    <Marker>
+      <MarkerIcon>
+        <CheckCircle2 />
+      </MarkerIcon>
+      <MarkerContent>Pedido confirmado</MarkerContent>
+    </Marker>
+    <Marker>
+      <MarkerIcon>
+        <Circle />
+      </MarkerIcon>
+      <MarkerContent>Em separação</MarkerContent>
+    </Marker>
+    <Marker variant="separator">
+      <MarkerContent>Hoje</MarkerContent>
+    </Marker>
+  </div>
+</Preview>
+
 ## Instalação
 
 ```bash
-npx shadcn@latest add https://<host>/r/marker.json
+npx shadcn@latest add https://ds.adila.co/r/marker.json
 ```
 
 ## Uso
 
 ```tsx
-import { Marker, MarkerContent, MarkerIcon } from '@/components/ui/marker';
+import { Marker, MarkerIcon, MarkerContent } from '@/components/ui/marker';
+import { CheckCircle2 } from 'lucide-react';
+
+export function Example() {
+  return (
+    <Marker>
+      <MarkerIcon>
+        <CheckCircle2 />
+      </MarkerIcon>
+      <MarkerContent>Pedido confirmado</MarkerContent>
+    </Marker>
+  );
+}
 ```
+
+`Marker` aceita `variant`: `default`, `separator` (linhas laterais ao redor do conteúdo) e `border` (borda inferior). Use `render` para transformar o marcador em outro elemento.
 
 ## Dependências
 

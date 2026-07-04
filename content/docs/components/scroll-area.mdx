@@ -3,16 +3,46 @@ title: Scroll Area
 description: Componente scroll-area do design system adila.co, sobre Base UI.
 ---
 
+import { ScrollArea } from '@/components/ui/scroll-area';
+
+<Preview>
+  <ScrollArea className="h-40 w-full max-w-sm rounded-lg border">
+    <div className="flex flex-col gap-2 p-4">
+      <p className="text-sm font-medium">Versões</p>
+      {Array.from({ length: 20 }).map((_, i) => (
+        <div key={i} className="text-sm text-muted-foreground">
+          Versão 1.{20 - i}.0
+        </div>
+      ))}
+    </div>
+  </ScrollArea>
+</Preview>
+
 ## Instalação
 
 ```bash
-npx shadcn@latest add https://<host>/r/scroll-area.json
+npx shadcn@latest add https://ds.adila.co/r/scroll-area.json
 ```
 
 ## Uso
 
 ```tsx
-import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
+import { ScrollArea } from '@/components/ui/scroll-area';
+
+export function Example() {
+  return (
+    <ScrollArea className="h-40 w-full max-w-sm rounded-lg border">
+      <div className="flex flex-col gap-2 p-4">
+        <p className="text-sm font-medium">Versões</p>
+        {Array.from({ length: 20 }).map((_, i) => (
+          <div key={i} className="text-sm text-muted-foreground">
+            Versão 1.{20 - i}.0
+          </div>
+        ))}
+      </div>
+    </ScrollArea>
+  );
+}
 ```
 
 ## Dependências

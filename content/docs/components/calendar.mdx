@@ -3,16 +3,36 @@ title: Calendar
 description: Componente calendar do design system adila.co, sobre Base UI.
 ---
 
+import { Calendar } from '@/components/ui/calendar';
+
+<Preview>
+  <Calendar
+    mode="single"
+    defaultMonth={new Date(2026, 6, 1)}
+    className="rounded-lg border shadow-sm"
+  />
+</Preview>
+
 ## Instalação
 
 ```bash
-npx shadcn@latest add https://<host>/r/calendar.json
+npx shadcn@latest add https://ds.adila.co/r/calendar.json
 ```
 
 ## Uso
 
 ```tsx
-import { Calendar, CalendarDayButton } from '@/components/ui/calendar';
+import { Calendar } from '@/components/ui/calendar';
+
+export function Example() {
+  return (
+    <Calendar
+      mode="single"
+      captionLayout="dropdown"
+      className="rounded-lg border shadow-sm"
+    />
+  );
+}
 ```
 
 ## Dependências

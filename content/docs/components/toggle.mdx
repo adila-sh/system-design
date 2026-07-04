@@ -3,16 +3,42 @@ title: Toggle
 description: Componente toggle do design system adila.co, sobre Base UI.
 ---
 
+import { Toggle } from '@/components/ui/toggle';
+import { Bold, Italic, Underline } from 'lucide-react';
+
+<Preview>
+  <div className="flex items-center gap-2">
+    <Toggle aria-label="Negrito" defaultPressed>
+      <Bold />
+    </Toggle>
+    <Toggle aria-label="Itálico">
+      <Italic />
+    </Toggle>
+    <Toggle variant="outline" aria-label="Sublinhado">
+      <Underline />
+    </Toggle>
+  </div>
+</Preview>
+
 ## Instalação
 
 ```bash
-npx shadcn@latest add https://<host>/r/toggle.json
+npx shadcn@latest add https://ds.adila.co/r/toggle.json
 ```
 
 ## Uso
 
 ```tsx
 import { Toggle } from '@/components/ui/toggle';
+import { Bold } from 'lucide-react';
+
+export function Example() {
+  return (
+    <Toggle aria-label="Negrito" defaultPressed>
+      <Bold />
+    </Toggle>
+  );
+}
 ```
 
 ## Dependências

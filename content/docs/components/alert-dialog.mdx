@@ -3,16 +3,84 @@ title: Alert Dialog
 description: Componente alert-dialog do design system adila.co, sobre Base UI.
 ---
 
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from '@/components/ui/alert-dialog';
+import { Button } from '@/components/ui/button';
+
+<Preview>
+  <AlertDialog>
+    <AlertDialogTrigger
+      render={<Button variant="destructive">Excluir conta</Button>}
+    />
+    <AlertDialogContent>
+      <AlertDialogHeader>
+        <AlertDialogTitle>Excluir conta?</AlertDialogTitle>
+        <AlertDialogDescription>
+          Esta ação não pode ser desfeita. Todos os seus dados serão removidos
+          permanentemente dos nossos servidores.
+        </AlertDialogDescription>
+      </AlertDialogHeader>
+      <AlertDialogFooter>
+        <AlertDialogCancel>Cancelar</AlertDialogCancel>
+        <AlertDialogAction variant="destructive">Excluir</AlertDialogAction>
+      </AlertDialogFooter>
+    </AlertDialogContent>
+  </AlertDialog>
+</Preview>
+
 ## Instalação
 
 ```bash
-npx shadcn@latest add https://<host>/r/alert-dialog.json
+npx shadcn@latest add https://ds.adila.co/r/alert-dialog.json
 ```
 
 ## Uso
 
 ```tsx
-import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogMedia, AlertDialogOverlay, AlertDialogPortal, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog';
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from '@/components/ui/alert-dialog';
+import { Button } from '@/components/ui/button';
+
+export function Example() {
+  return (
+    <AlertDialog>
+      <AlertDialogTrigger
+        render={<Button variant="destructive">Excluir conta</Button>}
+      />
+      <AlertDialogContent>
+        <AlertDialogHeader>
+          <AlertDialogTitle>Excluir conta?</AlertDialogTitle>
+          <AlertDialogDescription>
+            Esta ação não pode ser desfeita. Todos os seus dados serão removidos
+            permanentemente dos nossos servidores.
+          </AlertDialogDescription>
+        </AlertDialogHeader>
+        <AlertDialogFooter>
+          <AlertDialogCancel>Cancelar</AlertDialogCancel>
+          <AlertDialogAction variant="destructive">Excluir</AlertDialogAction>
+        </AlertDialogFooter>
+      </AlertDialogContent>
+    </AlertDialog>
+  );
+}
 ```
 
 ## Dependências

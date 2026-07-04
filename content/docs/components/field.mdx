@@ -3,16 +3,56 @@ title: Field
 description: Componente field do design system adila.co, sobre Base UI.
 ---
 
+import {
+  Field,
+  FieldGroup,
+  FieldLabel,
+  FieldDescription,
+} from '@/components/ui/field';
+import { Input } from '@/components/ui/input';
+
+<Preview>
+  <FieldGroup className="w-full max-w-sm">
+    <Field>
+      <FieldLabel htmlFor="field-email">E-mail</FieldLabel>
+      <Input id="field-email" type="email" placeholder="voce@adila.co" />
+      <FieldDescription>Usaremos apenas para notificações.</FieldDescription>
+    </Field>
+    <Field>
+      <FieldLabel htmlFor="field-name">Nome</FieldLabel>
+      <Input id="field-name" placeholder="Seu nome" />
+    </Field>
+  </FieldGroup>
+</Preview>
+
 ## Instalação
 
 ```bash
-npx shadcn@latest add https://<host>/r/field.json
+npx shadcn@latest add https://ds.adila.co/r/field.json
 ```
 
 ## Uso
 
 ```tsx
-import { Field, FieldContent, FieldDescription, FieldError, FieldGroup, FieldLabel, FieldLegend, FieldSeparator, FieldSet, FieldTitle } from '@/components/ui/field';
+import {
+  Field,
+  FieldGroup,
+  FieldLabel,
+  FieldDescription,
+} from '@/components/ui/field';
+import { Input } from '@/components/ui/input';
+
+export function Example() {
+  return (
+    <FieldGroup>
+      <Field>
+        <FieldLabel htmlFor="email">E-mail</FieldLabel>
+        <Input id="email" type="email" placeholder="voce@adila.co" />
+        <FieldDescription>Usaremos apenas para notificações.</FieldDescription>
+      </Field>
+    </FieldGroup>
+  );
+}
 ```
 
 ## Dependências

@@ -3,16 +3,60 @@ title: Button Group
 description: Componente button-group do design system adila.co, sobre Base UI.
 ---
 
+import { Button } from '@/components/ui/button';
+import {
+  ButtonGroup,
+  ButtonGroupSeparator,
+} from '@/components/ui/button-group';
+import { Bold, Italic, Underline } from 'lucide-react';
+
+<Preview>
+  <ButtonGroup>
+    <Button variant="outline" size="icon" aria-label="Negrito">
+      <Bold />
+    </Button>
+    <Button variant="outline" size="icon" aria-label="Itálico">
+      <Italic />
+    </Button>
+    <ButtonGroupSeparator />
+    <Button variant="outline" size="icon" aria-label="Sublinhado">
+      <Underline />
+    </Button>
+  </ButtonGroup>
+</Preview>
+
 ## Instalação
 
 ```bash
-npx shadcn@latest add https://<host>/r/button-group.json
+npx shadcn@latest add https://ds.adila.co/r/button-group.json
 ```
 
 ## Uso
 
 ```tsx
-import { ButtonGroup, ButtonGroupSeparator, ButtonGroupText } from '@/components/ui/button-group';
+import { Button } from '@/components/ui/button';
+import {
+  ButtonGroup,
+  ButtonGroupSeparator,
+} from '@/components/ui/button-group';
+import { Bold, Italic, Underline } from 'lucide-react';
+
+export function Example() {
+  return (
+    <ButtonGroup>
+      <Button variant="outline" size="icon" aria-label="Negrito">
+        <Bold />
+      </Button>
+      <Button variant="outline" size="icon" aria-label="Itálico">
+        <Italic />
+      </Button>
+      <ButtonGroupSeparator />
+      <Button variant="outline" size="icon" aria-label="Sublinhado">
+        <Underline />
+      </Button>
+    </ButtonGroup>
+  );
+}
 ```
 
 ## Dependências

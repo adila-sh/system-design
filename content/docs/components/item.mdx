@@ -3,17 +3,80 @@ title: Item
 description: Componente item do design system adila.co, sobre Base UI.
 ---
 
+import {
+  Item,
+  ItemMedia,
+  ItemContent,
+  ItemTitle,
+  ItemDescription,
+  ItemActions,
+  ItemGroup,
+} from '@/components/ui/item';
+import { Button } from '@/components/ui/button';
+import { Music } from 'lucide-react';
+
+<Preview>
+  <div className="w-full max-w-sm">
+    <ItemGroup>
+      <Item variant="outline">
+        <ItemMedia variant="icon">
+          <Music />
+        </ItemMedia>
+        <ItemContent>
+          <ItemTitle>Playlist relaxante</ItemTitle>
+          <ItemDescription>32 músicas · 2h 14min</ItemDescription>
+        </ItemContent>
+        <ItemActions>
+          <Button variant="outline" size="sm">
+            Abrir
+          </Button>
+        </ItemActions>
+      </Item>
+    </ItemGroup>
+  </div>
+</Preview>
+
 ## Instalação
 
 ```bash
-npx shadcn@latest add https://<host>/r/item.json
+npx shadcn@latest add https://ds.adila.co/r/item.json
 ```
 
 ## Uso
 
 ```tsx
-import { Item, ItemActions, ItemContent, ItemDescription, ItemFooter, ItemGroup, ItemHeader, ItemMedia, ItemSeparator, ItemTitle } from '@/components/ui/item';
+import {
+  Item,
+  ItemMedia,
+  ItemContent,
+  ItemTitle,
+  ItemDescription,
+  ItemActions,
+} from '@/components/ui/item';
+import { Button } from '@/components/ui/button';
+import { Music } from 'lucide-react';
+
+export function Example() {
+  return (
+    <Item variant="outline">
+      <ItemMedia variant="icon">
+        <Music />
+      </ItemMedia>
+      <ItemContent>
+        <ItemTitle>Playlist relaxante</ItemTitle>
+        <ItemDescription>32 músicas · 2h 14min</ItemDescription>
+      </ItemContent>
+      <ItemActions>
+        <Button variant="outline" size="sm">
+          Abrir
+        </Button>
+      </ItemActions>
+    </Item>
+  );
+}
 ```
+
+`Item` aceita `variant` (`default`, `outline`, `muted`) e `size` (`default`, `sm`, `xs`). Use `ItemGroup` com `ItemSeparator` para listas e `render` para transformar o item em link ou botão.
 
 ## Dependências
 

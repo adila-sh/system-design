@@ -3,16 +3,133 @@ title: Sidebar
 description: Componente sidebar do design system adila.co, sobre Base UI.
 ---
 
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarGroup,
+  SidebarGroupContent,
+  SidebarGroupLabel,
+  SidebarHeader,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+  SidebarProvider,
+} from '@/components/ui/sidebar';
+import { Calendar, Home, Inbox, Search, Settings } from 'lucide-react';
+
+<Preview>
+  <div className="h-72 w-full max-w-md overflow-hidden rounded-lg border">
+    <SidebarProvider className="!min-h-0 h-full" style={{ minHeight: 0 }}>
+      <Sidebar collapsible="none">
+        <SidebarHeader className="p-3 text-sm font-medium">Aplicativo</SidebarHeader>
+        <SidebarContent>
+          <SidebarGroup>
+            <SidebarGroupLabel>Menu</SidebarGroupLabel>
+            <SidebarGroupContent>
+              <SidebarMenu>
+                <SidebarMenuItem>
+                  <SidebarMenuButton>
+                    <Home />
+                    <span>Início</span>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+                <SidebarMenuItem>
+                  <SidebarMenuButton>
+                    <Inbox />
+                    <span>Caixa de entrada</span>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+                <SidebarMenuItem>
+                  <SidebarMenuButton>
+                    <Calendar />
+                    <span>Calendário</span>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+                <SidebarMenuItem>
+                  <SidebarMenuButton>
+                    <Search />
+                    <span>Buscar</span>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+                <SidebarMenuItem>
+                  <SidebarMenuButton>
+                    <Settings />
+                    <span>Configurações</span>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              </SidebarMenu>
+            </SidebarGroupContent>
+          </SidebarGroup>
+        </SidebarContent>
+      </Sidebar>
+    </SidebarProvider>
+  </div>
+</Preview>
+
 ## Instalação
 
 ```bash
-npx shadcn@latest add https://<host>/r/sidebar.json
+npx shadcn@latest add https://ds.adila.co/r/sidebar.json
 ```
 
 ## Uso
 
+Envolva a aplicação com `SidebarProvider`, coloque a navegação dentro de
+`Sidebar` e use `SidebarInset` para o conteúdo principal. O `SidebarTrigger`
+abre e recolhe a barra (também via `Ctrl/Cmd + B`).
+
 ```tsx
-import { Sidebar, SidebarContent, SidebarFooter, SidebarGroup, SidebarGroupAction, SidebarGroupContent, SidebarGroupLabel, SidebarHeader, SidebarInput, SidebarInset, SidebarMenu, SidebarMenuAction, SidebarMenuBadge, SidebarMenuButton, SidebarMenuItem, SidebarMenuSkeleton, SidebarMenuSub, SidebarMenuSubButton, SidebarMenuSubItem, SidebarProvider, SidebarRail, SidebarSeparator, SidebarTrigger } from '@/components/ui/sidebar';
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarGroup,
+  SidebarGroupContent,
+  SidebarGroupLabel,
+  SidebarInset,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+  SidebarProvider,
+  SidebarTrigger,
+} from '@/components/ui/sidebar';
+import { Calendar, Home, Inbox, Search, Settings } from 'lucide-react';
+
+const items = [
+  { title: 'Início', url: '#', icon: Home },
+  { title: 'Caixa de entrada', url: '#', icon: Inbox },
+  { title: 'Calendário', url: '#', icon: Calendar },
+  { title: 'Buscar', url: '#', icon: Search },
+  { title: 'Configurações', url: '#', icon: Settings },
+];
+
+export function Example() {
+  return (
+    <SidebarProvider>
+      <Sidebar>
+        <SidebarContent>
+          <SidebarGroup>
+            <SidebarGroupLabel>Aplicativo</SidebarGroupLabel>
+            <SidebarGroupContent>
+              <SidebarMenu>
+                {items.map((item) => (
+                  <SidebarMenuItem key={item.title}>
+                    <SidebarMenuButton render={<a href={item.url} />}>
+                      <item.icon />
+                      <span>{item.title}</span>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                ))}
+              </SidebarMenu>
+            </SidebarGroupContent>
+          </SidebarGroup>
+        </SidebarContent>
+      </Sidebar>
+      <SidebarInset>
+        <SidebarTrigger />
+      </SidebarInset>
+    </SidebarProvider>
+  );
+}
 ```
 
 ## Dependências

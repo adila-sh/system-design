@@ -3,17 +3,69 @@ title: Input Group
 description: Componente input-group do design system adila.co, sobre Base UI.
 ---
 
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupInput,
+  InputGroupText,
+  InputGroupButton,
+} from '@/components/ui/input-group';
+import { Search } from 'lucide-react';
+
+<Preview>
+  <div className="flex w-full max-w-sm flex-col gap-3">
+    <InputGroup>
+      <InputGroupAddon>
+        <Search />
+      </InputGroupAddon>
+      <InputGroupInput placeholder="Buscar componentes..." />
+    </InputGroup>
+    <InputGroup>
+      <InputGroupAddon>
+        <InputGroupText>https://</InputGroupText>
+      </InputGroupAddon>
+      <InputGroupInput placeholder="adila.co" />
+      <InputGroupAddon align="inline-end">
+        <InputGroupButton>Copiar</InputGroupButton>
+      </InputGroupAddon>
+    </InputGroup>
+  </div>
+</Preview>
+
 ## Instalação
 
 ```bash
-npx shadcn@latest add https://<host>/r/input-group.json
+npx shadcn@latest add https://ds.adila.co/r/input-group.json
 ```
 
 ## Uso
 
 ```tsx
-import { InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput, InputGroupText, InputGroupTextarea } from '@/components/ui/input-group';
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupInput,
+  InputGroupText,
+  InputGroupButton,
+} from '@/components/ui/input-group';
+import { Search } from 'lucide-react';
+
+export function Example() {
+  return (
+    <InputGroup>
+      <InputGroupAddon>
+        <Search />
+      </InputGroupAddon>
+      <InputGroupInput placeholder="Buscar componentes..." />
+      <InputGroupAddon align="inline-end">
+        <InputGroupButton>Copiar</InputGroupButton>
+      </InputGroupAddon>
+    </InputGroup>
+  );
+}
 ```
+
+Use `align` no `InputGroupAddon` para posicionar addons: `inline-start` (padrão), `inline-end`, `block-start` e `block-end`. Para áreas de texto, troque `InputGroupInput` por `InputGroupTextarea`.
 
 ## Dependências
 

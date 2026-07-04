@@ -3,16 +3,74 @@ title: Drawer
 description: Componente drawer do design system adila.co, sobre Base UI.
 ---
 
+import {
+  Drawer,
+  DrawerTrigger,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerClose,
+} from '@/components/ui/drawer';
+import { Button } from '@/components/ui/button';
+
+<Preview>
+  <Drawer>
+    <DrawerTrigger render={<Button variant="outline">Abrir Drawer</Button>} />
+    <DrawerContent>
+      <DrawerHeader>
+        <DrawerTitle>Detalhes do plano</DrawerTitle>
+        <DrawerDescription>
+          Deslize para baixo ou toque fora para fechar.
+        </DrawerDescription>
+      </DrawerHeader>
+      <DrawerFooter>
+        <Button>Confirmar</Button>
+        <DrawerClose render={<Button variant="outline">Cancelar</Button>} />
+      </DrawerFooter>
+    </DrawerContent>
+  </Drawer>
+</Preview>
+
 ## Instalação
 
 ```bash
-npx shadcn@latest add https://<host>/r/drawer.json
+npx shadcn@latest add https://ds.adila.co/r/drawer.json
 ```
 
 ## Uso
 
 ```tsx
-import { Drawer, DrawerClose, DrawerContent, DrawerDescription, DrawerFooter, DrawerHeader, DrawerOverlay, DrawerPortal, DrawerSwipeHandle, DrawerTitle, DrawerTrigger } from '@/components/ui/drawer';
+import {
+  Drawer,
+  DrawerTrigger,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerClose,
+} from '@/components/ui/drawer';
+import { Button } from '@/components/ui/button';
+
+export function Example() {
+  return (
+    <Drawer>
+      <DrawerTrigger render={<Button variant="outline">Abrir Drawer</Button>} />
+      <DrawerContent>
+        <DrawerHeader>
+          <DrawerTitle>Detalhes do plano</DrawerTitle>
+          <DrawerDescription>Deslize para baixo para fechar.</DrawerDescription>
+        </DrawerHeader>
+        <DrawerFooter>
+          <Button>Confirmar</Button>
+          <DrawerClose render={<Button variant="outline">Cancelar</Button>} />
+        </DrawerFooter>
+      </DrawerContent>
+    </Drawer>
+  );
+}
 ```
 
 ## Dependências

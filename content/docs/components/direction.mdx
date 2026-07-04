@@ -3,16 +3,40 @@ title: Direction
 description: Componente direction do design system adila.co, sobre Base UI.
 ---
 
+import { DirectionProvider } from '@/components/ui/direction';
+
+`DirectionProvider` não tem visual próprio: é um provedor de contexto que informa aos
+componentes Base UI a direção do texto (`ltr` ou `rtl`). Envolva a árvore da aplicação
+com ele para habilitar layouts da direita para a esquerda. O exemplo abaixo demonstra
+uma seção em `rtl`.
+
+<Preview>
+  <DirectionProvider direction="rtl">
+    <div dir="rtl" className="w-full max-w-sm rounded-lg border p-4 text-sm">
+      <p className="font-medium">مرحبا بك</p>
+      <p className="text-muted-foreground">Conteúdo alinhado da direita para a esquerda.</p>
+    </div>
+  </DirectionProvider>
+</Preview>
+
 ## Instalação
 
 ```bash
-npx shadcn@latest add https://<host>/r/direction.json
+npx shadcn@latest add https://ds.adila.co/r/direction.json
 ```
 
 ## Uso
 
 ```tsx
 import { DirectionProvider } from '@/components/ui/direction';
+
+export function Example() {
+  return (
+    <DirectionProvider direction="rtl">
+      <div dir="rtl">{/* componentes Base UI herdam a direção rtl */}</div>
+    </DirectionProvider>
+  );
+}
 ```
 
 ## Dependências

@@ -3,16 +3,70 @@ title: Collapsible
 description: Componente collapsible do design system adila.co, sobre Base UI.
 ---
 
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from '@/components/ui/collapsible';
+import { Button } from '@/components/ui/button';
+import { ChevronsUpDown } from 'lucide-react';
+
+<Preview>
+  <Collapsible defaultOpen className="flex w-72 flex-col gap-2">
+    <div className="flex items-center justify-between gap-2">
+      <span className="text-sm font-medium">Módulos ativos</span>
+      <CollapsibleTrigger
+        render={
+          <Button variant="ghost" size="icon-sm">
+            <ChevronsUpDown />
+          </Button>
+        }
+      />
+    </div>
+    <CollapsibleContent className="flex flex-col gap-2">
+      <div className="rounded-md border px-3 py-2 text-sm">Núcleo comportamental</div>
+      <div className="rounded-md border px-3 py-2 text-sm">Registry shadcn</div>
+    </CollapsibleContent>
+  </Collapsible>
+</Preview>
+
 ## Instalação
 
 ```bash
-npx shadcn@latest add https://<host>/r/collapsible.json
+npx shadcn@latest add https://ds.adila.co/r/collapsible.json
 ```
 
 ## Uso
 
 ```tsx
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from '@/components/ui/collapsible';
+import { Button } from '@/components/ui/button';
+import { ChevronsUpDown } from 'lucide-react';
+
+export function Example() {
+  return (
+    <Collapsible className="flex w-72 flex-col gap-2">
+      <div className="flex items-center justify-between gap-2">
+        <span className="text-sm font-medium">Módulos ativos</span>
+        <CollapsibleTrigger
+          render={
+            <Button variant="ghost" size="icon-sm">
+              <ChevronsUpDown />
+            </Button>
+          }
+        />
+      </div>
+      <CollapsibleContent className="flex flex-col gap-2">
+        <div className="rounded-md border px-3 py-2 text-sm">Núcleo</div>
+        <div className="rounded-md border px-3 py-2 text-sm">Registry</div>
+      </CollapsibleContent>
+    </Collapsible>
+  );
+}
 ```
 
 ## Dependências

@@ -3,16 +3,90 @@ title: Pagination
 description: Componente pagination do design system adila.co, sobre Base UI.
 ---
 
+import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationLink,
+  PaginationPrevious,
+  PaginationNext,
+  PaginationEllipsis,
+} from '@/components/ui/pagination';
+
+<Preview>
+  <Pagination>
+    <PaginationContent>
+      <PaginationItem>
+        <PaginationPrevious href="#" text="Anterior" />
+      </PaginationItem>
+      <PaginationItem>
+        <PaginationLink href="#">1</PaginationLink>
+      </PaginationItem>
+      <PaginationItem>
+        <PaginationLink href="#" isActive>
+          2
+        </PaginationLink>
+      </PaginationItem>
+      <PaginationItem>
+        <PaginationLink href="#">3</PaginationLink>
+      </PaginationItem>
+      <PaginationItem>
+        <PaginationEllipsis />
+      </PaginationItem>
+      <PaginationItem>
+        <PaginationNext href="#" text="Próxima" />
+      </PaginationItem>
+    </PaginationContent>
+  </Pagination>
+</Preview>
+
 ## Instalação
 
 ```bash
-npx shadcn@latest add https://<host>/r/pagination.json
+npx shadcn@latest add https://ds.adila.co/r/pagination.json
 ```
 
 ## Uso
 
+Marque a página atual com `isActive` no `PaginationLink`. `PaginationPrevious` e
+`PaginationNext` aceitam a prop `text` para rótulos (ocultos no mobile).
+
 ```tsx
-import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from '@/components/ui/pagination';
+import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationLink,
+  PaginationPrevious,
+  PaginationNext,
+  PaginationEllipsis,
+} from '@/components/ui/pagination';
+
+export function Example() {
+  return (
+    <Pagination>
+      <PaginationContent>
+        <PaginationItem>
+          <PaginationPrevious href="#" text="Anterior" />
+        </PaginationItem>
+        <PaginationItem>
+          <PaginationLink href="#" isActive>
+            1
+          </PaginationLink>
+        </PaginationItem>
+        <PaginationItem>
+          <PaginationLink href="#">2</PaginationLink>
+        </PaginationItem>
+        <PaginationItem>
+          <PaginationEllipsis />
+        </PaginationItem>
+        <PaginationItem>
+          <PaginationNext href="#" text="Próxima" />
+        </PaginationItem>
+      </PaginationContent>
+    </Pagination>
+  );
+}
 ```
 
 ## Dependências

@@ -3,16 +3,72 @@ title: Combobox
 description: Componente combobox do design system adila.co, sobre Base UI.
 ---
 
+import {
+  Combobox,
+  ComboboxContent,
+  ComboboxEmpty,
+  ComboboxInput,
+  ComboboxItem,
+  ComboboxList,
+} from '@/components/ui/combobox';
+
+export const frameworks = ['Next.js', 'Remix', 'Astro', 'SvelteKit', 'Nuxt'];
+
+<Preview>
+  <div className="w-64">
+    <Combobox items={frameworks}>
+      <ComboboxInput placeholder="Buscar framework..." />
+      <ComboboxContent>
+        <ComboboxEmpty>Nenhum resultado.</ComboboxEmpty>
+        <ComboboxList>
+          {(item) => (
+            <ComboboxItem key={item} value={item}>
+              {item}
+            </ComboboxItem>
+          )}
+        </ComboboxList>
+      </ComboboxContent>
+    </Combobox>
+  </div>
+</Preview>
+
 ## Instalação
 
 ```bash
-npx shadcn@latest add https://<host>/r/combobox.json
+npx shadcn@latest add https://ds.adila.co/r/combobox.json
 ```
 
 ## Uso
 
 ```tsx
-import { Combobox, ComboboxChip, ComboboxChips, ComboboxChipsInput, ComboboxCollection, ComboboxContent, ComboboxEmpty, ComboboxGroup, ComboboxInput, ComboboxItem, ComboboxLabel, ComboboxList, ComboboxSeparator, ComboboxTrigger, ComboboxValue } from '@/components/ui/combobox';
+import {
+  Combobox,
+  ComboboxContent,
+  ComboboxEmpty,
+  ComboboxInput,
+  ComboboxItem,
+  ComboboxList,
+} from '@/components/ui/combobox';
+
+const frameworks = ['Next.js', 'Remix', 'Astro', 'SvelteKit', 'Nuxt'];
+
+export function Example() {
+  return (
+    <Combobox items={frameworks}>
+      <ComboboxInput placeholder="Buscar framework..." />
+      <ComboboxContent>
+        <ComboboxEmpty>Nenhum resultado.</ComboboxEmpty>
+        <ComboboxList>
+          {(item) => (
+            <ComboboxItem key={item} value={item}>
+              {item}
+            </ComboboxItem>
+          )}
+        </ComboboxList>
+      </ComboboxContent>
+    </Combobox>
+  );
+}
 ```
 
 ## Dependências

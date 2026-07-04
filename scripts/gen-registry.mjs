@@ -128,7 +128,7 @@ const hookItems = readdirSync(join(ROOT, HOOKS_DIR))
 const registry = {
   $schema: "https://ui.shadcn.com/schema/registry.json",
   name: "adila-ui",
-  homepage: "https://adila-ui-registry.up.railway.app",
+  homepage: "https://ds.adila.co",
   items: [baseItem, ...hookItems, ...uiItems],
 }
 

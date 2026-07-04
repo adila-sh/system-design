@@ -8,11 +8,11 @@ Outros projetos consomem os componentes com a CLI do shadcn:
 
 ```bash
 # tema (tokens adila.co: indigo adila.co, neutros ChatGPT, Circular Std / JetBrains Mono)
-npx shadcn@latest add https://<host>/r/adila-theme.json
+npx shadcn@latest add https://ds.adila.co/r/adila-theme.json
 
 # componentes individuais
-npx shadcn@latest add https://<host>/r/button.json
-npx shadcn@latest add https://<host>/r/dialog.json
+npx shadcn@latest add https://ds.adila.co/r/button.json
+npx shadcn@latest add https://ds.adila.co/r/dialog.json
 ```
 
 ## Arquitetura

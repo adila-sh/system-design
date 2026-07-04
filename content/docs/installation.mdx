@@ -20,14 +20,14 @@ npx shadcn@latest init --base base
 O item `adila-theme` traz os tokens (cores, radius, tipografia) em light e dark:
 
 ```bash
-npx shadcn@latest add https://<host>/r/adila-theme.json
+npx shadcn@latest add https://ds.adila.co/r/adila-theme.json
 ```
 
 ## 3. Adicionar componentes
 
 ```bash
-npx shadcn@latest add https://<host>/r/button.json
-npx shadcn@latest add https://<host>/r/dialog.json
+npx shadcn@latest add https://ds.adila.co/r/button.json
+npx shadcn@latest add https://ds.adila.co/r/dialog.json
 ```
 
 As dependências (npm e outros componentes do registry) são resolvidas
@@ -40,7 +40,7 @@ Para encurtar os comandos, registre o host no `components.json` do consumidor:
 ```json title="components.json"
 {
   "registries": {
-    "@adila": "https://<host>/r/{name}.json"
+    "@adila": "https://ds.adila.co/r/{name}.json"
   }
 }
 ```

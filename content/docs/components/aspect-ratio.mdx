@@ -3,14 +3,41 @@ title: Aspect Ratio
 description: Componente aspect-ratio do design system adila.co, sobre Base UI.
 ---
 
+import { AspectRatio } from '@/components/ui/aspect-ratio';
+
+<Preview>
+  <div className="w-full max-w-sm">
+    <AspectRatio
+      ratio={16 / 9}
+      className="flex items-center justify-center rounded-xl border bg-muted"
+    >
+      <span className="text-sm font-medium text-muted-foreground">16 / 9</span>
+    </AspectRatio>
+  </div>
+</Preview>
+
 ## Instalação
 
 ```bash
-npx shadcn@latest add https://<host>/r/aspect-ratio.json
+npx shadcn@latest add https://ds.adila.co/r/aspect-ratio.json
 ```
 
 ## Uso
 
 ```tsx
 import { AspectRatio } from '@/components/ui/aspect-ratio';
+
+export function Example() {
+  return (
+    <div className="w-full max-w-sm">
+      <AspectRatio ratio={16 / 9} className="overflow-hidden rounded-xl border">
+        <img
+          src="/paisagem.jpg"
+          alt="Paisagem ao entardecer"
+          className="h-full w-full object-cover"
+        />
+      </AspectRatio>
+    </div>
+  );
+}
 ```

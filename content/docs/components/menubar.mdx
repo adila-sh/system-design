@@ -3,17 +3,83 @@ title: Menubar
 description: Componente menubar do design system adila.co, sobre Base UI.
 ---
 
+import {
+  Menubar,
+  MenubarMenu,
+  MenubarTrigger,
+  MenubarContent,
+  MenubarItem,
+  MenubarSeparator,
+  MenubarShortcut,
+} from '@/components/ui/menubar';
+
+<Preview>
+  <Menubar>
+    <MenubarMenu>
+      <MenubarTrigger>Arquivo</MenubarTrigger>
+      <MenubarContent>
+        <MenubarItem>
+          Novo <MenubarShortcut>⌘N</MenubarShortcut>
+        </MenubarItem>
+        <MenubarItem>
+          Abrir <MenubarShortcut>⌘O</MenubarShortcut>
+        </MenubarItem>
+        <MenubarSeparator />
+        <MenubarItem variant="destructive">Sair</MenubarItem>
+      </MenubarContent>
+    </MenubarMenu>
+    <MenubarMenu>
+      <MenubarTrigger>Editar</MenubarTrigger>
+      <MenubarContent>
+        <MenubarItem>
+          Desfazer <MenubarShortcut>⌘Z</MenubarShortcut>
+        </MenubarItem>
+        <MenubarItem>
+          Refazer <MenubarShortcut>⇧⌘Z</MenubarShortcut>
+        </MenubarItem>
+      </MenubarContent>
+    </MenubarMenu>
+  </Menubar>
+</Preview>
+
 ## Instalação
 
 ```bash
-npx shadcn@latest add https://<host>/r/menubar.json
+npx shadcn@latest add https://ds.adila.co/r/menubar.json
 ```
 
 ## Uso
 
 ```tsx
-import { Menubar, MenubarCheckboxItem, MenubarContent, MenubarGroup, MenubarItem, MenubarLabel, MenubarMenu, MenubarPortal, MenubarRadioGroup, MenubarRadioItem, MenubarSeparator, MenubarShortcut, MenubarSub, MenubarSubContent, MenubarSubTrigger, MenubarTrigger } from '@/components/ui/menubar';
+import {
+  Menubar,
+  MenubarMenu,
+  MenubarTrigger,
+  MenubarContent,
+  MenubarItem,
+  MenubarSeparator,
+  MenubarShortcut,
+} from '@/components/ui/menubar';
+
+export function Example() {
+  return (
+    <Menubar>
+      <MenubarMenu>
+        <MenubarTrigger>Arquivo</MenubarTrigger>
+        <MenubarContent>
+          <MenubarItem>
+            Novo <MenubarShortcut>⌘N</MenubarShortcut>
+          </MenubarItem>
+          <MenubarSeparator />
+          <MenubarItem variant="destructive">Sair</MenubarItem>
+        </MenubarContent>
+      </MenubarMenu>
+    </Menubar>
+  );
+}
 ```
+
+Cada `MenubarMenu` combina `MenubarTrigger` e `MenubarContent`. Além dos itens simples, há `MenubarCheckboxItem`, `MenubarRadioGroup`/`MenubarRadioItem` e submenus com `MenubarSub`, `MenubarSubTrigger` e `MenubarSubContent`.
 
 ## Dependências
 

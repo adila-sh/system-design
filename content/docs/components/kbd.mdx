@@ -3,14 +3,42 @@ title: Kbd
 description: Componente kbd do design system adila.co, sobre Base UI.
 ---
 
+import { Kbd, KbdGroup } from '@/components/ui/kbd';
+
+<Preview>
+  <div className="flex items-center gap-4">
+    <KbdGroup>
+      <Kbd>⌘</Kbd>
+      <Kbd>K</Kbd>
+    </KbdGroup>
+    <KbdGroup>
+      <Kbd>Ctrl</Kbd>
+      <Kbd>Shift</Kbd>
+      <Kbd>P</Kbd>
+    </KbdGroup>
+  </div>
+</Preview>
+
 ## Instalação
 
 ```bash
-npx shadcn@latest add https://<host>/r/kbd.json
+npx shadcn@latest add https://ds.adila.co/r/kbd.json
 ```
 
 ## Uso
 
 ```tsx
 import { Kbd, KbdGroup } from '@/components/ui/kbd';
+
+export function Example() {
+  return (
+    <KbdGroup>
+      <Kbd>Ctrl</Kbd>
+      <Kbd>Shift</Kbd>
+      <Kbd>P</Kbd>
+    </KbdGroup>
+  );
+}
 ```
+
+Use `Kbd` para uma única tecla e `KbdGroup` para agrupar um atalho com múltiplas teclas.

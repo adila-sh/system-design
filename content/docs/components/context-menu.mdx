@@ -3,16 +3,72 @@ title: Context Menu
 description: Componente context-menu do design system adila.co, sobre Base UI.
 ---
 
+import {
+  ContextMenu,
+  ContextMenuTrigger,
+  ContextMenuContent,
+  ContextMenuItem,
+  ContextMenuLabel,
+  ContextMenuSeparator,
+  ContextMenuShortcut,
+} from '@/components/ui/context-menu';
+
+<Preview>
+  <ContextMenu>
+    <ContextMenuTrigger className="flex h-32 w-full max-w-sm items-center justify-center rounded-lg border border-dashed text-sm text-muted-foreground">
+      Clique com o botão direito
+    </ContextMenuTrigger>
+    <ContextMenuContent>
+      <ContextMenuLabel>Ações</ContextMenuLabel>
+      <ContextMenuItem>
+        Editar <ContextMenuShortcut>⌘E</ContextMenuShortcut>
+      </ContextMenuItem>
+      <ContextMenuItem>
+        Duplicar <ContextMenuShortcut>⌘D</ContextMenuShortcut>
+      </ContextMenuItem>
+      <ContextMenuSeparator />
+      <ContextMenuItem variant="destructive">Excluir</ContextMenuItem>
+    </ContextMenuContent>
+  </ContextMenu>
+</Preview>
+
 ## Instalação
 
 ```bash
-npx shadcn@latest add https://<host>/r/context-menu.json
+npx shadcn@latest add https://ds.adila.co/r/context-menu.json
 ```
 
 ## Uso
 
 ```tsx
-import { ContextMenu, ContextMenuCheckboxItem, ContextMenuContent, ContextMenuGroup, ContextMenuItem, ContextMenuLabel, ContextMenuPortal, ContextMenuRadioGroup, ContextMenuRadioItem, ContextMenuSeparator, ContextMenuShortcut, ContextMenuSub, ContextMenuSubContent, ContextMenuSubTrigger, ContextMenuTrigger } from '@/components/ui/context-menu';
+import {
+  ContextMenu,
+  ContextMenuTrigger,
+  ContextMenuContent,
+  ContextMenuItem,
+  ContextMenuLabel,
+  ContextMenuSeparator,
+  ContextMenuShortcut,
+} from '@/components/ui/context-menu';
+
+export function Example() {
+  return (
+    <ContextMenu>
+      <ContextMenuTrigger className="flex h-32 w-full max-w-sm items-center justify-center rounded-lg border border-dashed text-sm text-muted-foreground">
+        Clique com o botão direito
+      </ContextMenuTrigger>
+      <ContextMenuContent>
+        <ContextMenuLabel>Ações</ContextMenuLabel>
+        <ContextMenuItem>
+          Editar <ContextMenuShortcut>⌘E</ContextMenuShortcut>
+        </ContextMenuItem>
+        <ContextMenuItem>Duplicar</ContextMenuItem>
+        <ContextMenuSeparator />
+        <ContextMenuItem variant="destructive">Excluir</ContextMenuItem>
+      </ContextMenuContent>
+    </ContextMenu>
+  );
+}
 ```
 
 ## Dependências

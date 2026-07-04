@@ -3,16 +3,72 @@ title: Attachment
 description: Componente attachment do design system adila.co, sobre Base UI.
 ---
 
+import {
+  Attachment,
+  AttachmentAction,
+  AttachmentActions,
+  AttachmentContent,
+  AttachmentDescription,
+  AttachmentMedia,
+  AttachmentTitle,
+} from '@/components/ui/attachment';
+import { FileText, X } from 'lucide-react';
+
+<Preview>
+  <Attachment className="w-full max-w-xs">
+    <AttachmentMedia>
+      <FileText />
+    </AttachmentMedia>
+    <AttachmentContent>
+      <AttachmentTitle>relatorio-anual.pdf</AttachmentTitle>
+      <AttachmentDescription>2,4 MB</AttachmentDescription>
+    </AttachmentContent>
+    <AttachmentActions>
+      <AttachmentAction aria-label="Remover anexo">
+        <X />
+      </AttachmentAction>
+    </AttachmentActions>
+  </Attachment>
+</Preview>
+
 ## Instalação
 
 ```bash
-npx shadcn@latest add https://<host>/r/attachment.json
+npx shadcn@latest add https://ds.adila.co/r/attachment.json
 ```
 
 ## Uso
 
 ```tsx
-import { Attachment, AttachmentAction, AttachmentActions, AttachmentContent, AttachmentDescription, AttachmentGroup, AttachmentMedia, AttachmentTitle, AttachmentTrigger } from '@/components/ui/attachment';
+import {
+  Attachment,
+  AttachmentAction,
+  AttachmentActions,
+  AttachmentContent,
+  AttachmentDescription,
+  AttachmentMedia,
+  AttachmentTitle,
+} from '@/components/ui/attachment';
+import { FileText, X } from 'lucide-react';
+
+export function Example() {
+  return (
+    <Attachment className="w-full max-w-xs">
+      <AttachmentMedia>
+        <FileText />
+      </AttachmentMedia>
+      <AttachmentContent>
+        <AttachmentTitle>relatorio-anual.pdf</AttachmentTitle>
+        <AttachmentDescription>2,4 MB</AttachmentDescription>
+      </AttachmentContent>
+      <AttachmentActions>
+        <AttachmentAction aria-label="Remover anexo">
+          <X />
+        </AttachmentAction>
+      </AttachmentActions>
+    </Attachment>
+  );
+}
 ```
 
 ## Dependências

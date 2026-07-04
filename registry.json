@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry.json",
   "name": "adila-ui",
-  "homepage": "https://adila-ui-registry.up.railway.app",
+  "homepage": "https://ds.adila.co",
   "items": [
     {
       "name": "adila-theme",

@@ -3,16 +3,54 @@ title: Hover Card
 description: Componente hover-card do design system adila.co, sobre Base UI.
 ---
 
+import {
+  HoverCard,
+  HoverCardTrigger,
+  HoverCardContent,
+} from '@/components/ui/hover-card';
+import { Button } from '@/components/ui/button';
+
+<Preview>
+  <HoverCard>
+    <HoverCardTrigger render={<Button variant="link">@adila.co</Button>} />
+    <HoverCardContent>
+      <p className="text-sm font-medium">adila.co</p>
+      <p className="text-sm text-muted-foreground">
+        Design system sobre Base UI. Passe o mouse para ver os detalhes.
+      </p>
+    </HoverCardContent>
+  </HoverCard>
+</Preview>
+
 ## Instalação
 
 ```bash
-npx shadcn@latest add https://<host>/r/hover-card.json
+npx shadcn@latest add https://ds.adila.co/r/hover-card.json
 ```
 
 ## Uso
 
 ```tsx
-import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/hover-card';
+import {
+  HoverCard,
+  HoverCardTrigger,
+  HoverCardContent,
+} from '@/components/ui/hover-card';
+import { Button } from '@/components/ui/button';
+
+export function Example() {
+  return (
+    <HoverCard>
+      <HoverCardTrigger render={<Button variant="link">@adila.co</Button>} />
+      <HoverCardContent>
+        <p className="text-sm font-medium">adila.co</p>
+        <p className="text-sm text-muted-foreground">
+          Design system sobre Base UI.
+        </p>
+      </HoverCardContent>
+    </HoverCard>
+  );
+}
 ```
 
 ## Dependências

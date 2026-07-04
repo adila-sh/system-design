@@ -3,16 +3,83 @@ title: Navigation Menu
 description: Componente navigation-menu do design system adila.co, sobre Base UI.
 ---
 
+import {
+  NavigationMenu,
+  NavigationMenuList,
+  NavigationMenuItem,
+  NavigationMenuTrigger,
+  NavigationMenuContent,
+  NavigationMenuLink,
+} from '@/components/ui/navigation-menu';
+
+<Preview>
+  <NavigationMenu>
+    <NavigationMenuList>
+      <NavigationMenuItem>
+        <NavigationMenuTrigger>Produto</NavigationMenuTrigger>
+        <NavigationMenuContent>
+          <ul className="grid w-56 gap-1">
+            <li>
+              <NavigationMenuLink href="#">Visão geral</NavigationMenuLink>
+            </li>
+            <li>
+              <NavigationMenuLink href="#">Integrações</NavigationMenuLink>
+            </li>
+          </ul>
+        </NavigationMenuContent>
+      </NavigationMenuItem>
+      <NavigationMenuItem>
+        <NavigationMenuLink href="#">Preços</NavigationMenuLink>
+      </NavigationMenuItem>
+    </NavigationMenuList>
+  </NavigationMenu>
+</Preview>
+
 ## Instalação
 
 ```bash
-npx shadcn@latest add https://<host>/r/navigation-menu.json
+npx shadcn@latest add https://ds.adila.co/r/navigation-menu.json
 ```
 
 ## Uso
 
+O `NavigationMenu` (raiz) já renderiza o posicionador internamente — basta compor
+`List`, `Item`, `Trigger`, `Content` e `Link`. Itens sem submenu usam apenas o `Link`.
+
 ```tsx
-import { NavigationMenu, NavigationMenuContent, NavigationMenuIndicator, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuPositioner, NavigationMenuTrigger } from '@/components/ui/navigation-menu';
+import {
+  NavigationMenu,
+  NavigationMenuList,
+  NavigationMenuItem,
+  NavigationMenuTrigger,
+  NavigationMenuContent,
+  NavigationMenuLink,
+} from '@/components/ui/navigation-menu';
+
+export function Example() {
+  return (
+    <NavigationMenu>
+      <NavigationMenuList>
+        <NavigationMenuItem>
+          <NavigationMenuTrigger>Produto</NavigationMenuTrigger>
+          <NavigationMenuContent>
+            <ul className="grid w-56 gap-1">
+              <li>
+                <NavigationMenuLink href="#">Visão geral</NavigationMenuLink>
+              </li>
+              <li>
+                <NavigationMenuLink href="#">Integrações</NavigationMenuLink>
+              </li>
+            </ul>
+          </NavigationMenuContent>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <NavigationMenuLink href="#">Preços</NavigationMenuLink>
+        </NavigationMenuItem>
+      </NavigationMenuList>
+    </NavigationMenu>
+  );
+}
 ```
 
 ## Dependências

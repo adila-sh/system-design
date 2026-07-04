@@ -72,7 +72,7 @@ description: Componente ${name} do design system adila.co, sobre Base UI.
 ## Instalação
 
 \`\`\`bash
-npx shadcn@latest add https://<host>/r/${name}.json
+npx shadcn@latest add https://ds.adila.co/r/${name}.json
 \`\`\`
 
 ## Uso

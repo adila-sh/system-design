@@ -3,16 +3,72 @@ title: Empty
 description: Componente empty do design system adila.co, sobre Base UI.
 ---
 
+import {
+  Empty,
+  EmptyHeader,
+  EmptyMedia,
+  EmptyTitle,
+  EmptyDescription,
+  EmptyContent,
+} from '@/components/ui/empty';
+import { Button } from '@/components/ui/button';
+import { Inbox } from 'lucide-react';
+
+<Preview>
+  <Empty className="w-full max-w-sm border">
+    <EmptyHeader>
+      <EmptyMedia variant="icon">
+        <Inbox />
+      </EmptyMedia>
+      <EmptyTitle>Nenhuma mensagem</EmptyTitle>
+      <EmptyDescription>
+        Você está em dia. Novas mensagens aparecerão aqui.
+      </EmptyDescription>
+    </EmptyHeader>
+    <EmptyContent>
+      <Button size="sm">Atualizar</Button>
+    </EmptyContent>
+  </Empty>
+</Preview>
+
 ## Instalação
 
 ```bash
-npx shadcn@latest add https://<host>/r/empty.json
+npx shadcn@latest add https://ds.adila.co/r/empty.json
 ```
 
 ## Uso
 
 ```tsx
-import { Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from '@/components/ui/empty';
+import {
+  Empty,
+  EmptyHeader,
+  EmptyMedia,
+  EmptyTitle,
+  EmptyDescription,
+  EmptyContent,
+} from '@/components/ui/empty';
+import { Button } from '@/components/ui/button';
+import { Inbox } from 'lucide-react';
+
+export function Example() {
+  return (
+    <Empty className="border">
+      <EmptyHeader>
+        <EmptyMedia variant="icon">
+          <Inbox />
+        </EmptyMedia>
+        <EmptyTitle>Nenhuma mensagem</EmptyTitle>
+        <EmptyDescription>
+          Novas mensagens aparecerão aqui.
+        </EmptyDescription>
+      </EmptyHeader>
+      <EmptyContent>
+        <Button size="sm">Atualizar</Button>
+      </EmptyContent>
+    </Empty>
+  );
+}
 ```
 
 ## Dependências

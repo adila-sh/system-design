@@ -42,7 +42,7 @@ function Home() {
           />
         </div>
         <code className="mt-2 rounded-lg border bg-fd-muted px-4 py-2 font-mono text-sm">
-          npx shadcn@latest add https://&lt;host&gt;/r/adila-theme.json
+          npx shadcn@latest add https://ds.adila.co/r/adila-theme.json
         </code>
       </div>
     </HomeLayout>

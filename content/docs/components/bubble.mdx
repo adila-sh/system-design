@@ -3,16 +3,48 @@ title: Bubble
 description: Componente bubble do design system adila.co, sobre Base UI.
 ---
 
+import { Bubble, BubbleContent, BubbleGroup } from '@/components/ui/bubble';
+
+<Preview>
+  <BubbleGroup className="w-full max-w-xs">
+    <Bubble variant="muted" align="start">
+      <BubbleContent>Oi! Tudo bem por aí?</BubbleContent>
+    </Bubble>
+    <Bubble align="end">
+      <BubbleContent>Tudo ótimo, e com você?</BubbleContent>
+    </Bubble>
+    <Bubble variant="muted" align="start">
+      <BubbleContent>Também! Bora marcar aquela call?</BubbleContent>
+    </Bubble>
+  </BubbleGroup>
+</Preview>
+
 ## Instalação
 
 ```bash
-npx shadcn@latest add https://<host>/r/bubble.json
+npx shadcn@latest add https://ds.adila.co/r/bubble.json
 ```
 
 ## Uso
 
 ```tsx
-import { Bubble, BubbleContent, BubbleGroup, BubbleReactions } from '@/components/ui/bubble';
+import { Bubble, BubbleContent, BubbleGroup } from '@/components/ui/bubble';
+
+export function Example() {
+  return (
+    <BubbleGroup className="w-full max-w-xs">
+      <Bubble variant="muted" align="start">
+        <BubbleContent>Oi! Tudo bem por aí?</BubbleContent>
+      </Bubble>
+      <Bubble align="end">
+        <BubbleContent>Tudo ótimo, e com você?</BubbleContent>
+      </Bubble>
+      <Bubble variant="muted" align="start">
+        <BubbleContent>Também! Bora marcar aquela call?</BubbleContent>
+      </Bubble>
+    </BubbleGroup>
+  );
+}
 ```
 
 ## Dependências

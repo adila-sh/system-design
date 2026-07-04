@@ -3,16 +3,44 @@ title: Spinner
 description: Componente spinner do design system adila.co, sobre Base UI.
 ---
 
+import { Spinner } from '@/components/ui/spinner';
+import { Button } from '@/components/ui/button';
+
+<Preview>
+  <div className="flex items-center gap-6">
+    <Spinner />
+    <Spinner className="size-6 text-primary" />
+    <Button disabled>
+      <Spinner />
+      Carregando
+    </Button>
+  </div>
+</Preview>
+
 ## Instalação
 
 ```bash
-npx shadcn@latest add https://<host>/r/spinner.json
+npx shadcn@latest add https://ds.adila.co/r/spinner.json
 ```
 
 ## Uso
 
 ```tsx
 import { Spinner } from '@/components/ui/spinner';
+import { Button } from '@/components/ui/button';
+
+export function Example() {
+  return (
+    <div className="flex items-center gap-6">
+      <Spinner />
+      <Spinner className="size-6 text-primary" />
+      <Button disabled>
+        <Spinner />
+        Carregando
+      </Button>
+    </div>
+  );
+}
 ```
 
 ## Dependências

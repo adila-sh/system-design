@@ -3,16 +3,76 @@ title: Sheet
 description: Componente sheet do design system adila.co, sobre Base UI.
 ---
 
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetDescription,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from '@/components/ui/sheet';
+import { Button } from '@/components/ui/button';
+
+<Preview>
+  <Sheet>
+    <SheetTrigger render={<Button variant="outline">Abrir painel</Button>} />
+    <SheetContent>
+      <SheetHeader>
+        <SheetTitle>Editar perfil</SheetTitle>
+        <SheetDescription>
+          Faça alterações no seu perfil. Clique em salvar quando terminar.
+        </SheetDescription>
+      </SheetHeader>
+      <SheetFooter>
+        <Button>Salvar alterações</Button>
+        <SheetClose render={<Button variant="outline">Cancelar</Button>} />
+      </SheetFooter>
+    </SheetContent>
+  </Sheet>
+</Preview>
+
 ## Instalação
 
 ```bash
-npx shadcn@latest add https://<host>/r/sheet.json
+npx shadcn@latest add https://ds.adila.co/r/sheet.json
 ```
 
 ## Uso
 
 ```tsx
-import { Sheet, SheetClose, SheetContent, SheetDescription, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetDescription,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from '@/components/ui/sheet';
+import { Button } from '@/components/ui/button';
+
+export function Example() {
+  return (
+    <Sheet>
+      <SheetTrigger render={<Button variant="outline">Abrir painel</Button>} />
+      <SheetContent>
+        <SheetHeader>
+          <SheetTitle>Editar perfil</SheetTitle>
+          <SheetDescription>
+            Faça alterações no seu perfil. Clique em salvar quando terminar.
+          </SheetDescription>
+        </SheetHeader>
+        <SheetFooter>
+          <Button>Salvar alterações</Button>
+          <SheetClose render={<Button variant="outline">Cancelar</Button>} />
+        </SheetFooter>
+      </SheetContent>
+    </Sheet>
+  );
+}
 ```
 
 ## Dependências

@@ -3,16 +3,96 @@ title: Command
 description: Componente command do design system adila.co, sobre Base UI.
 ---
 
+import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+  CommandSeparator,
+  CommandShortcut,
+} from '@/components/ui/command';
+import { CalendarIcon, SearchIcon, SettingsIcon } from 'lucide-react';
+
+<Preview>
+  <Command className="w-80 rounded-lg border shadow-md">
+    <CommandInput placeholder="Digite um comando..." />
+    <CommandList>
+      <CommandEmpty>Nenhum resultado.</CommandEmpty>
+      <CommandGroup heading="Sugestões">
+        <CommandItem>
+          <CalendarIcon />
+          Agenda
+        </CommandItem>
+        <CommandItem>
+          <SearchIcon />
+          Buscar
+          <CommandShortcut>⌘K</CommandShortcut>
+        </CommandItem>
+      </CommandGroup>
+      <CommandSeparator />
+      <CommandGroup heading="Config">
+        <CommandItem>
+          <SettingsIcon />
+          Preferências
+          <CommandShortcut>⌘,</CommandShortcut>
+        </CommandItem>
+      </CommandGroup>
+    </CommandList>
+  </Command>
+</Preview>
+
 ## Instalação
 
 ```bash
-npx shadcn@latest add https://<host>/r/command.json
+npx shadcn@latest add https://ds.adila.co/r/command.json
 ```
 
 ## Uso
 
 ```tsx
-import { Command, CommandDialog, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList, CommandSeparator, CommandShortcut } from '@/components/ui/command';
+import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+  CommandSeparator,
+  CommandShortcut,
+} from '@/components/ui/command';
+import { CalendarIcon, SearchIcon, SettingsIcon } from 'lucide-react';
+
+export function Example() {
+  return (
+    <Command className="w-80 rounded-lg border shadow-md">
+      <CommandInput placeholder="Digite um comando..." />
+      <CommandList>
+        <CommandEmpty>Nenhum resultado.</CommandEmpty>
+        <CommandGroup heading="Sugestões">
+          <CommandItem>
+            <CalendarIcon />
+            Agenda
+          </CommandItem>
+          <CommandItem>
+            <SearchIcon />
+            Buscar
+            <CommandShortcut>⌘K</CommandShortcut>
+          </CommandItem>
+        </CommandGroup>
+        <CommandSeparator />
+        <CommandGroup heading="Config">
+          <CommandItem>
+            <SettingsIcon />
+            Preferências
+            <CommandShortcut>⌘,</CommandShortcut>
+          </CommandItem>
+        </CommandGroup>
+      </CommandList>
+    </Command>
+  );
+}
 ```
 
 ## Dependências

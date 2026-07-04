@@ -3,16 +3,51 @@ title: Native Select
 description: Componente native-select do design system adila.co, sobre Base UI.
 ---
 
+import {
+  NativeSelect,
+  NativeSelectOptGroup,
+  NativeSelectOption,
+} from '@/components/ui/native-select';
+
+<Preview>
+  <NativeSelect defaultValue="pro" className="w-56">
+    <NativeSelectOptGroup label="Planos">
+      <NativeSelectOption value="free">Free</NativeSelectOption>
+      <NativeSelectOption value="pro">Pro</NativeSelectOption>
+    </NativeSelectOptGroup>
+    <NativeSelectOption value="enterprise">Enterprise</NativeSelectOption>
+  </NativeSelect>
+</Preview>
+
 ## Instalação
 
 ```bash
-npx shadcn@latest add https://<host>/r/native-select.json
+npx shadcn@latest add https://ds.adila.co/r/native-select.json
 ```
 
 ## Uso
 
+`<select>` nativo estilizado — aceita todos os atributos do elemento (`name`,
+`defaultValue`, `disabled`, `required`) e a prop `size="sm" | "default"`.
+
 ```tsx
-import { NativeSelect, NativeSelectOptGroup, NativeSelectOption } from '@/components/ui/native-select';
+import {
+  NativeSelect,
+  NativeSelectOptGroup,
+  NativeSelectOption,
+} from '@/components/ui/native-select';
+
+export function Example() {
+  return (
+    <NativeSelect name="plano" defaultValue="pro">
+      <NativeSelectOptGroup label="Planos">
+        <NativeSelectOption value="free">Free</NativeSelectOption>
+        <NativeSelectOption value="pro">Pro</NativeSelectOption>
+      </NativeSelectOptGroup>
+      <NativeSelectOption value="enterprise">Enterprise</NativeSelectOption>
+    </NativeSelect>
+  );
+}
 ```
 
 ## Dependências

@@ -3,16 +3,57 @@ title: Sonner
 description: Componente sonner do design system adila.co, sobre Base UI.
 ---
 
+import { Toaster } from '@/components/ui/sonner';
+import { Button } from '@/components/ui/button';
+import { toast } from 'sonner';
+
+<Preview>
+  <Toaster />
+  <Button
+    variant="outline"
+    onClick={() =>
+      toast('Evento criado', {
+        description: 'Segunda, 3 de julho às 09:00',
+      })
+    }
+  >
+    Mostrar notificação
+  </Button>
+</Preview>
+
 ## Instalação
 
 ```bash
-npx shadcn@latest add https://<host>/r/sonner.json
+npx shadcn@latest add https://ds.adila.co/r/sonner.json
 ```
 
 ## Uso
 
+Renderize o `<Toaster />` uma única vez na raiz da aplicação e dispare
+notificações de qualquer lugar com a função `toast` importada de `sonner`.
+
 ```tsx
 import { Toaster } from '@/components/ui/sonner';
+import { Button } from '@/components/ui/button';
+import { toast } from 'sonner';
+
+export function Example() {
+  return (
+    <>
+      <Toaster />
+      <Button
+        variant="outline"
+        onClick={() =>
+          toast('Evento criado', {
+            description: 'Segunda, 3 de julho às 09:00',
+          })
+        }
+      >
+        Mostrar notificação
+      </Button>
+    </>
+  );
+}
 ```
 
 ## Dependências
