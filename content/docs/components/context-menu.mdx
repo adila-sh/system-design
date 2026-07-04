@@ -7,6 +7,7 @@ import {
   ContextMenu,
   ContextMenuTrigger,
   ContextMenuContent,
+  ContextMenuGroup,
   ContextMenuItem,
   ContextMenuLabel,
   ContextMenuSeparator,
@@ -19,13 +20,15 @@ import {
       Clique com o botão direito
     </ContextMenuTrigger>
     <ContextMenuContent>
-      <ContextMenuLabel>Ações</ContextMenuLabel>
-      <ContextMenuItem>
-        Editar <ContextMenuShortcut>⌘E</ContextMenuShortcut>
-      </ContextMenuItem>
-      <ContextMenuItem>
-        Duplicar <ContextMenuShortcut>⌘D</ContextMenuShortcut>
-      </ContextMenuItem>
+      <ContextMenuGroup>
+        <ContextMenuLabel>Ações</ContextMenuLabel>
+        <ContextMenuItem>
+          Editar <ContextMenuShortcut>⌘E</ContextMenuShortcut>
+        </ContextMenuItem>
+        <ContextMenuItem>
+          Duplicar <ContextMenuShortcut>⌘D</ContextMenuShortcut>
+        </ContextMenuItem>
+      </ContextMenuGroup>
       <ContextMenuSeparator />
       <ContextMenuItem variant="destructive">Excluir</ContextMenuItem>
     </ContextMenuContent>
@@ -45,6 +48,7 @@ import {
   ContextMenu,
   ContextMenuTrigger,
   ContextMenuContent,
+  ContextMenuGroup,
   ContextMenuItem,
   ContextMenuLabel,
   ContextMenuSeparator,
@@ -58,11 +62,13 @@ export function Example() {
         Clique com o botão direito
       </ContextMenuTrigger>
       <ContextMenuContent>
-        <ContextMenuLabel>Ações</ContextMenuLabel>
-        <ContextMenuItem>
-          Editar <ContextMenuShortcut>⌘E</ContextMenuShortcut>
-        </ContextMenuItem>
-        <ContextMenuItem>Duplicar</ContextMenuItem>
+        <ContextMenuGroup>
+          <ContextMenuLabel>Ações</ContextMenuLabel>
+          <ContextMenuItem>
+            Editar <ContextMenuShortcut>⌘E</ContextMenuShortcut>
+          </ContextMenuItem>
+          <ContextMenuItem>Duplicar</ContextMenuItem>
+        </ContextMenuGroup>
         <ContextMenuSeparator />
         <ContextMenuItem variant="destructive">Excluir</ContextMenuItem>
       </ContextMenuContent>

@@ -7,6 +7,7 @@ import {
   DropdownMenu,
   DropdownMenuTrigger,
   DropdownMenuContent,
+  DropdownMenuGroup,
   DropdownMenuLabel,
   DropdownMenuItem,
   DropdownMenuSeparator,
@@ -24,10 +25,12 @@ import { ChevronDown } from 'lucide-react';
       }
     />
     <DropdownMenuContent align="start">
-      <DropdownMenuLabel>Conta</DropdownMenuLabel>
+      <DropdownMenuGroup>
+        <DropdownMenuLabel>Conta</DropdownMenuLabel>
+        <DropdownMenuItem>Perfil</DropdownMenuItem>
+        <DropdownMenuItem>Configurações</DropdownMenuItem>
+      </DropdownMenuGroup>
       <DropdownMenuSeparator />
-      <DropdownMenuItem>Perfil</DropdownMenuItem>
-      <DropdownMenuItem>Configurações</DropdownMenuItem>
       <DropdownMenuItem variant="destructive">Sair</DropdownMenuItem>
     </DropdownMenuContent>
   </DropdownMenu>

@@ -1,4 +1,4 @@
-export const appName = 'adila.co UI Registry';
+export const appName = 'DS | Adila.co';
 export const docsRoute = '/docs';
 export const docsImageRoute = '/og/docs';
 

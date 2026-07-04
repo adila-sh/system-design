@@ -1,0 +1,61 @@
+---
+title: Filosofia
+description: Os princípios por trás do design system adila.co — por que ele é do jeito que é.
+icon: Compass
+---
+
+O **adila.co UI** não é mais uma biblioteca de componentes. É um design system
+publicado como **registry shadcn** — o código entra no seu projeto e passa a ser
+seu. Estas são as decisões que guiam cada componente.
+
+## Você é dono do código
+
+Nada de `node_modules` opaco. Ao rodar `shadcn add`, o componente é copiado para
+o seu repositório, com o mesmo Tailwind e os mesmos tokens que você já controla.
+Sem caixa-preta, sem lock-in de versão, sem esperar um maintainer para ajustar um
+padding. Se precisar mudar, você edita — é o seu código.
+
+## Acessibilidade primeiro, estilo por cima
+
+Todo componente é construído sobre **Base UI** (não Radix): foco, navegação por
+teclado, ARIA e gestão de estado vêm resolvidos pelo primitive headless. Nós
+adicionamos aparência e movimento por cima — nunca reescrevendo o comportamento.
+O resultado é acessível por padrão, não por esforço posterior.
+
+## Uma única fonte de verdade
+
+Os arquivos que você instala são **exatamente** os que renderizam o preview ao
+vivo nesta documentação. Não existe uma versão "de exemplo" e outra "de produção":
+`src/components/ui/` é a fonte, os docs importam esses mesmos arquivos, e o
+`gen-registry` os publica. O que você vê é o que você recebe.
+
+## Tokens em OKLCH, light e dark obrigatórios
+
+As cores são definidas em **OKLCH** — espaço perceptualmente uniforme, onde ajustar
+luminosidade não distorce o matiz. Os neutros são cinza de verdade (chroma zero,
+sem tinta), e há **um** acento: o indigo adila.co. Todo token existe em light e em
+dark; nenhum modo é uma reflexão tardia do outro.
+
+<Callout title="Rebrandizar é editar um arquivo">
+  Toda a paleta vive em `src/styles/adila-tokens.css`. Mude ali, rode
+  `npm run registry`, e o tema inteiro — componentes e docs — acompanha.
+</Callout>
+
+## Movimento com propósito
+
+Animação serve para esclarecer o fluxo, nunca para decorar. Só animamos
+propriedades amigáveis ao compositor (`transform`, `opacity`, `clip-path`),
+com durações curtas, e sempre respeitando `prefers-reduced-motion`. Uma interface
+que se move demais cansa; uma que não responde parece quebrada. Buscamos o meio.
+
+## Composição sobre configuração
+
+Em vez de um componente gigante cheio de props booleanas, preferimos peças
+pequenas que se compõem — `data-slot`, subcomponentes e variantes. Isso mantém a
+API previsível e deixa você montar exatamente o que precisa, sem lutar contra
+abstrações que tentaram adivinhar seu caso de uso.
+
+<Cards>
+  <Card title="Como consumir" href="/docs/installation" />
+  <Card title="Componentes" href="/docs/components/button" />
+</Cards>
