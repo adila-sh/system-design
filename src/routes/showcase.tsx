@@ -49,6 +49,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import {
   DropdownMenu,
   DropdownMenuContent,
+  DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
@@ -287,7 +288,9 @@ function AppSidebar() {
                 }
               />
               <DropdownMenuContent side="top" align="end" className="w-56">
-                <DropdownMenuLabel>Minha conta</DropdownMenuLabel>
+                <DropdownMenuGroup>
+                  <DropdownMenuLabel>Minha conta</DropdownMenuLabel>
+                </DropdownMenuGroup>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>
                   <Sparkles />
