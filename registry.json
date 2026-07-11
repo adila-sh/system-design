@@ -869,7 +869,8 @@
       ],
       "dependencies": [
         "@base-ui/react",
-        "@phosphor-icons/react"
+        "@phosphor-icons/react",
+        "framer-motion"
       ]
     },
     {

@@ -12,15 +12,17 @@ import {
 } from "@phosphor-icons/react";
 
 // Motion tuning for the popup open/close animation.
+// Tween (not spring) on purpose: Motion runs tweens through the Web Animations
+// API, which Base UI can see via `element.getAnimations()` and await before
+// unmounting the popup. Springs run on Motion's JS engine and stay invisible to
+// that check, which would leave the closed popup stuck mounted in the DOM.
 const POPUP_OPEN_TRANSITION: Transition = {
-  type: "spring",
-  stiffness: 550,
-  damping: 35,
-  mass: 0.7,
+  duration: 0.2,
+  ease: [0.16, 1, 0.3, 1], // ease-out-expo — snappy, expressive open
 };
 const POPUP_CLOSE_TRANSITION: Transition = {
   duration: 0.12,
-  ease: [0.4, 0, 1, 1],
+  ease: [0.4, 0, 1, 1], // ease-in — quick close
 };
 const POPUP_CLOSED_OFFSET = 6;
 
@@ -123,7 +125,7 @@ function SelectContent({
         <SelectPrimitive.Popup
           data-slot="select-content"
           className={cn(
-            "relative isolate z-50 max-h-(--available-height) w-(--anchor-width) min-w-36 origin-(--transform-origin) overflow-x-hidden overflow-y-auto rounded-lg bg-popover text-popover-foreground shadow-md ring-1 ring-foreground/10",
+            "relative isolate z-50 max-h-(--available-height) w-(--anchor-width) min-w-36 origin-(--transform-origin) overflow-x-hidden overflow-y-auto rounded-lg bg-popover text-popover-foreground ring-1 ring-foreground/10",
             className,
           )}
           render={(popupProps, state) => {
