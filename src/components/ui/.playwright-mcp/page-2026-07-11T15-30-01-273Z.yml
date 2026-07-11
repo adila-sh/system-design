@@ -1,0 +1,148 @@
+- generic [ref=e2]:
+  - generic [ref=e5]:
+    - list [ref=e7]:
+      - listitem [ref=e8]:
+        - button "Adila Inc. Plano Pro" [ref=e9]:
+          - generic [ref=e14]:
+            - generic [ref=e15]: Adila Inc.
+            - generic [ref=e16]: Plano Pro
+    - separator
+    - generic [ref=e17]:
+      - generic [ref=e18]:
+        - generic [ref=e19]: Plataforma
+        - list [ref=e21]:
+          - listitem [ref=e22]:
+            - button "Visão geral" [ref=e23]
+          - listitem [ref=e30]:
+            - button "Analytics" [ref=e31]
+            - generic: "3"
+          - listitem [ref=e36]:
+            - button "Clientes" [ref=e37]
+          - listitem [ref=e44]:
+            - button "Produtos" [ref=e45]
+            - generic: "12"
+      - generic [ref=e51]:
+        - generic [ref=e52]: Suporte
+        - list [ref=e54]:
+          - listitem [ref=e55]:
+            - button "Configurações" [ref=e56]
+          - listitem [ref=e61]:
+            - button "Ajuda" [ref=e62]
+    - list [ref=e72]:
+      - listitem [ref=e73]:
+        - button "JS João Sousa joao@adila.co" [ref=e74]:
+          - generic [ref=e75]: JS
+          - generic [ref=e77]:
+            - generic [ref=e78]: João Sousa
+            - generic [ref=e79]: joao@adila.co
+  - main [ref=e83]:
+    - generic [ref=e84]:
+      - button "Toggle Sidebar" [ref=e85] [cursor=pointer]
+      - separator
+      - generic [ref=e87]:
+        - heading "Visão geral" [level=1] [ref=e88]
+        - paragraph [ref=e89]: Bem-vindo de volta, João
+      - generic [ref=e90]:
+        - textbox "Buscar" [ref=e92]:
+          - /placeholder: Buscar…
+        - button "Alternar tema" [ref=e93] [cursor=pointer]
+        - button "Notificações" [ref=e94] [cursor=pointer]
+        - generic [ref=e95]: JS
+    - generic [ref=e97]:
+      - generic [ref=e98]:
+        - generic [ref=e99]:
+          - generic [ref=e100]:
+            - generic [ref=e101]: Receita total
+            - generic [ref=e102]: R$ 45.231
+          - generic [ref=e107]:
+            - generic [ref=e108]: +20,1%
+            - generic [ref=e109]: vs. mês anterior
+        - generic [ref=e110]:
+          - generic [ref=e111]:
+            - generic [ref=e112]: Assinantes
+            - generic [ref=e113]: "2.350"
+          - generic [ref=e121]:
+            - generic [ref=e122]: +180,1%
+            - generic [ref=e123]: vs. mês anterior
+        - generic [ref=e124]:
+          - generic [ref=e125]:
+            - generic [ref=e126]: Vendas
+            - generic [ref=e127]: "12.234"
+          - generic [ref=e132]:
+            - generic [ref=e133]: +19%
+            - generic [ref=e134]: vs. mês anterior
+        - generic [ref=e135]:
+          - generic [ref=e136]:
+            - generic [ref=e137]: Ativos agora
+            - generic [ref=e138]: "573"
+          - generic [ref=e143]:
+            - generic [ref=e144]: "-2,4%"
+            - generic [ref=e145]: vs. mês anterior
+      - generic [ref=e146]:
+        - generic [ref=e148]:
+          - generic [ref=e149]: Receita x Custo
+          - generic [ref=e150]: Últimos 6 meses
+          - generic [ref=e151]:
+            - combobox [ref=e152]:
+              - generic [ref=e153]: 6m
+              - img: ▼
+            - textbox [ref=e154]: 6m
+        - generic [ref=e160]:
+          - generic [ref=e161]: Tráfego por canal
+          - generic [ref=e162]: Sessões nesta semana
+      - generic [ref=e167]:
+        - generic [ref=e168]:
+          - tablist [ref=e169]:
+            - tab "Transações" [selected] [ref=e170]
+            - tab "Atividade" [ref=e171]
+            - tab "Configurações" [ref=e172]
+          - button "Nova" [ref=e173] [cursor=pointer]
+        - tabpanel [ref=e174]:
+          - generic [ref=e175]:
+            - generic [ref=e176]:
+              - generic [ref=e177]: Transações recentes
+              - generic [ref=e178]: Pagamentos processados nas últimas 24h
+            - table [ref=e181]:
+              - rowgroup [ref=e182]:
+                - row [ref=e183]:
+                  - columnheader "Pedido" [ref=e184]
+                  - columnheader "Cliente" [ref=e185]
+                  - columnheader "Status" [ref=e186]
+                  - columnheader "Valor" [ref=e187]
+                  - columnheader [ref=e188]
+              - rowgroup [ref=e189]:
+                - row [ref=e190]:
+                  - cell "#3210" [ref=e191]
+                  - cell "Ana Prado" [ref=e192]
+                  - cell "Pago" [ref=e193]
+                  - cell "R$ 320,00" [ref=e195]
+                  - cell [ref=e196]:
+                    - button [ref=e197] [cursor=pointer]
+                - row [ref=e198]:
+                  - cell "#3209" [ref=e199]
+                  - cell "Bruno Lima" [ref=e200]
+                  - cell "Pendente" [ref=e201]
+                  - cell "R$ 89,90" [ref=e203]
+                  - cell [ref=e204]:
+                    - button [ref=e205] [cursor=pointer]
+                - row [ref=e206]:
+                  - cell "#3208" [ref=e207]
+                  - cell "Carla Reis" [ref=e208]
+                  - cell "Pago" [ref=e209]
+                  - cell "R$ 1.240,00" [ref=e211]
+                  - cell [ref=e212]:
+                    - button [ref=e213] [cursor=pointer]
+                - row [ref=e214]:
+                  - cell "#3207" [ref=e215]
+                  - cell "Diego Souza" [ref=e216]
+                  - cell "Falhou" [ref=e217]
+                  - cell "R$ 45,00" [ref=e219]
+                  - cell [ref=e220]:
+                    - button [ref=e221] [cursor=pointer]
+                - row [ref=e222]:
+                  - cell "#3206" [ref=e223]
+                  - cell "Elena Costa" [ref=e224]
+                  - cell "Pago" [ref=e225]
+                  - cell "R$ 560,00" [ref=e227]
+                  - cell [ref=e228]:
+                    - button [ref=e229] [cursor=pointer]
