@@ -7,7 +7,7 @@
       "name": "adila-theme",
       "type": "registry:style",
       "title": "adila.co Theme",
-      "description": "Tokens do design system adila.co (indigo adila.co, neutros ChatGPT, Circular Std / JetBrains Mono) em light e dark.",
+      "description": "Tokens do design system adila.co (indigo adila.co, neutros ChatGPT, Adila Std / Adila Code / Adila Pixel) em light e dark.",
       "dependencies": [
         "tw-animate-css"
       ],
@@ -20,8 +20,9 @@
       "cssVars": {
         "theme": {
           "radius": "0.5rem",
-          "font-sans": "\"Circular Std\", \"SF Pro Text\", \"Segoe UI\", system-ui, sans-serif",
-          "font-mono": "\"JetBrains Mono\", \"Fira Code\", Consolas, monospace"
+          "font-sans": "\"Adila Std\", \"SF Pro Text\", \"Segoe UI\", system-ui, sans-serif",
+          "font-mono": "\"Adila Code\", \"JetBrains Mono\", \"Fira Code\", Consolas, monospace",
+          "font-pixel": "\"Adila Pixel\", \"Adila Code\", monospace"
         },
         "light": {
           "background": "oklch(1 0 0)",

@@ -59,8 +59,9 @@
   --sidebar-border: oklch(0.9276 0 0);
   --sidebar-ring: oklch(0.5060 0.2298 270.42);
 
-  --font-sans: "Circular Std", "SF Pro Text", "Segoe UI", system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", "Fira Code", Consolas, monospace;
+  --font-sans: "Adila Std", "SF Pro Text", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "Adila Code", "JetBrains Mono", "Fira Code", Consolas, monospace;
+  --font-pixel: "Adila Pixel", "Adila Code", monospace;
 }
 
 .dark {

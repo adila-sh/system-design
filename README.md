@@ -7,7 +7,7 @@ TypeScript + Tailwind v4.
 Outros projetos consomem os componentes com a CLI do shadcn:
 
 ```bash
-# tema (tokens adila.co: indigo adila.co, neutros ChatGPT, Circular Std / JetBrains Mono)
+# tema (tokens adila.co: indigo adila.co, neutros ChatGPT, Adila Std / Adila Code / Adila Pixel)
 npx shadcn@latest add https://ds.adila.co/r/adila-theme.json
 
 # componentes individuais
@@ -92,10 +92,14 @@ Convertidos do **adila.co UI Design Standard** para OKLCH. Acento primário
 `#3A4BE5` (indigo adila.co); paleta neutra estilo ChatGPT; light + dark obrigatórios.
 Para rebrandizar, edite `src/styles/adila-tokens.css` e rode `npm run registry`.
 
-## Fonte (Circular Std)
+## Fontes (Adila Std / Code / Pixel)
 
-A `--font-sans` é a **Circular Std**, servida via `@font-face` self-hosted no
-R2 (`https://assets.adila.co/fonts/woff2/CircularStd-*.woff2`).
+As famílias de marca são servidas via `@font-face` self-hosted no R2
+(`https://assets.adila.co/fonts/woff2/Adila{Std,Code,Pixel}-*.woff2`):
+
+- `--font-sans` → **Adila Std** (UI/texto)
+- `--font-mono` → **Adila Code** (código)
+- `--font-pixel` → **Adila Pixel** (display/decorativo)
 
 - **App:** importa `src/styles/fonts.css` (bundled); preload das críticas
   (Book/Medium) em `src/routes/__root.tsx`.
