@@ -1,10 +1,10 @@
-import { createFileRoute, Link } from '@tanstack/react-router';
-import { HomeLayout } from 'fumadocs-ui/layouts/home';
-import { baseOptions } from '@/lib/layout.shared';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { HomeLayout } from "fumadocs-ui/layouts/home";
+import { baseOptions } from "@/lib/layout.shared";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 
-export const Route = createFileRoute('/')({
+export const Route = createFileRoute("/")({
   component: Home,
 });
 
@@ -18,18 +18,23 @@ function Home() {
         </h1>
         <p className="max-w-xl text-fd-muted-foreground">
           Registry de componentes consumível por qualquer projeto via CLI do
-          shadcn. Tema indigo adila.co, light &amp; dark, 60+ primitives Base UI.
+          shadcn. Tema indigo adila.co, light &amp; dark, 60+ primitives Base
+          UI.
         </p>
         <div className="flex flex-wrap items-center justify-center gap-3">
           <Button
             render={
-              <Link to="/docs/$" params={{ _splat: '' }}>
+              <Link to="/docs/$" params={{ _splat: "" }}>
                 Ver documentação
               </Link>
             }
           />
           <Button
             variant="outline"
+            render={<Link to="/showcase">Ver showcase</Link>}
+          />
+          <Button
+            variant="ghost"
             render={
               <a
                 href="https://github.com/adila-sh/system-design"
