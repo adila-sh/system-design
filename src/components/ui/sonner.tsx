@@ -3,11 +3,11 @@
 import { useTheme } from "next-themes";
 import { Toaster as Sonner, type ToasterProps } from "sonner";
 import {
-  CheckCircle as CircleCheckIcon,
-  Info as InfoIcon,
-  Warning as TriangleAlertIcon,
-  XCircle as OctagonXIcon,
-  CircleNotch as Loader2Icon,
+  CheckCircleIcon as CircleCheckIcon,
+  InfoIcon,
+  WarningIcon as TriangleAlertIcon,
+  XCircleIcon as OctagonXIcon,
+  CircleNotchIcon as Loader2Icon,
 } from "@phosphor-icons/react";
 
 const Toaster = ({ ...props }: ToasterProps) => {

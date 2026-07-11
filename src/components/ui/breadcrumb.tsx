@@ -4,8 +4,8 @@ import { useRender } from "@base-ui/react/use-render";
 
 import { cn } from "@/lib/utils";
 import {
-  CaretRight as ChevronRightIcon,
-  DotsThree as MoreHorizontalIcon,
+  CaretRightIcon as ChevronRightIcon,
+  DotsThreeIcon as MoreHorizontalIcon,
 } from "@phosphor-icons/react";
 
 function Breadcrumb({ className, ...props }: React.ComponentProps<"nav">) {

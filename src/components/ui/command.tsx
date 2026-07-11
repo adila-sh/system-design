@@ -11,8 +11,8 @@ import {
 } from "@/components/ui/dialog";
 import { InputGroup, InputGroupAddon } from "@/components/ui/input-group";
 import {
-  MagnifyingGlass as SearchIcon,
-  Check as CheckIcon,
+  MagnifyingGlassIcon as SearchIcon,
+  CheckIcon,
 } from "@phosphor-icons/react";
 
 function Command({

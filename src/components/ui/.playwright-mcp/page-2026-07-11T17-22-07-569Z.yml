@@ -1,0 +1,212 @@
+- generic [ref=f3e1]:
+  - generic [ref=f3e2]:
+    - generic [ref=f3e5]:
+      - generic [ref=f3e7]:
+        - list [ref=f3e8]:
+          - listitem [ref=f3e9]:
+            - button [ref=f3e10]:
+              - generic:
+                - generic: Adila Inc.
+                - generic: Plano Pro
+        - button "Toggle Sidebar" [active] [ref=f3e17] [cursor=pointer]
+      - separator
+      - generic [ref=f3e19]:
+        - generic [ref=f3e20]:
+          - generic [ref=f3e21]: Plataforma
+          - list [ref=f3e23]:
+            - listitem [ref=f3e24]:
+              - button "Visão geral" [ref=f3e25]
+            - listitem [ref=f3e29]:
+              - button "Analytics" [ref=f3e30]
+            - listitem [ref=f3e34]:
+              - button "Clientes" [ref=f3e35]
+            - listitem [ref=f3e39]:
+              - button "Produtos" [ref=f3e40]
+        - generic [ref=f3e44]:
+          - generic [ref=f3e45]: Suporte
+          - list [ref=f3e47]:
+            - listitem [ref=f3e48]:
+              - button "Configurações" [ref=f3e49]
+            - listitem [ref=f3e53]:
+              - button "Ajuda" [ref=f3e54]
+      - list [ref=f3e59]:
+        - listitem [ref=f3e60]:
+          - button "JS João Sousa joao@adila.co" [ref=f3e61]:
+            - generic [ref=f3e62]: JS
+            - generic:
+              - generic: João Sousa
+              - generic: joao@adila.co
+    - main [ref=f3e69]:
+      - generic [ref=f3e70]:
+        - generic [ref=f3e71]:
+          - heading "Visão geral" [level=1] [ref=f3e72]
+          - paragraph [ref=f3e73]: Bem-vindo de volta, João
+        - generic [ref=f3e74]:
+          - textbox "Buscar" [ref=f3e76]:
+            - /placeholder: Buscar…
+          - button "Alternar tema" [ref=f3e77] [cursor=pointer]
+          - button "Notificações" [ref=f3e78] [cursor=pointer]
+          - generic [ref=f3e79]: JS
+      - generic [ref=f3e81]:
+        - generic [ref=f3e82]:
+          - generic [ref=f3e83]:
+            - generic [ref=f3e84]:
+              - generic [ref=f3e85]: Receita total
+              - generic [ref=f3e86]: R$ 45.231
+            - generic [ref=f3e91]:
+              - generic [ref=f3e92]: +20,1%
+              - generic [ref=f3e93]: vs. mês anterior
+          - generic [ref=f3e94]:
+            - generic [ref=f3e95]:
+              - generic [ref=f3e96]: Assinantes
+              - generic [ref=f3e97]: "2.350"
+            - generic [ref=f3e102]:
+              - generic [ref=f3e103]: +180,1%
+              - generic [ref=f3e104]: vs. mês anterior
+          - generic [ref=f3e105]:
+            - generic [ref=f3e106]:
+              - generic [ref=f3e107]: Vendas
+              - generic [ref=f3e108]: "12.234"
+            - generic [ref=f3e113]:
+              - generic [ref=f3e114]: +19%
+              - generic [ref=f3e115]: vs. mês anterior
+          - generic [ref=f3e116]:
+            - generic [ref=f3e117]:
+              - generic [ref=f3e118]: Ativos agora
+              - generic [ref=f3e119]: "573"
+            - generic [ref=f3e124]:
+              - generic [ref=f3e125]: "-2,4%"
+              - generic [ref=f3e126]: vs. mês anterior
+        - generic [ref=f3e127]:
+          - generic [ref=f3e128]:
+            - generic [ref=f3e129]:
+              - generic [ref=f3e130]: Receita x Custo
+              - generic [ref=f3e131]: Últimos 6 meses
+              - generic [ref=f3e132]:
+                - combobox [ref=f3e133]:
+                  - generic [ref=f3e134]: 6 meses
+                  - img: ▼
+                - textbox [ref=f3e135]: 6m
+            - generic [ref=f3e139]:
+              - generic [ref=f3e261]:
+                - generic [ref=f3e262]: Custo
+                - generic [ref=f3e264]: Receita
+              - application [ref=f3e266]:
+                - generic [ref=f3e282]:
+                  - generic [ref=f3e338]: Fev
+                  - generic [ref=f3e340]: Mar
+                  - generic [ref=f3e342]: Abr
+                  - generic [ref=f3e344]: Mai
+                  - generic [ref=f3e346]: Jun
+          - generic [ref=f3e140]:
+            - generic [ref=f3e141]:
+              - generic [ref=f3e142]: Tráfego por canal
+              - generic [ref=f3e143]: Sessões nesta semana
+            - application [ref=f3e293]:
+              - generic [ref=f3e317]:
+                - generic [ref=f3e364]: Orgânico
+                - generic [ref=f3e366]: Social
+                - generic [ref=f3e368]: E-mail
+                - generic [ref=f3e370]: Direto
+                - generic [ref=f3e372]: Referência
+        - generic [ref=f3e148]:
+          - generic [ref=f3e149]:
+            - tablist [ref=f3e150]:
+              - tab "Transações" [selected] [ref=f3e151]
+              - tab "Atividade" [ref=f3e152]
+              - tab "Configurações" [ref=f3e153]
+            - button "Nova" [ref=f3e154] [cursor=pointer]
+          - tabpanel "Transações" [ref=f3e328]:
+            - generic [ref=f3e156]:
+              - generic [ref=f3e157]:
+                - generic [ref=f3e158]: Transações recentes
+                - generic [ref=f3e159]: Filtre, ordene e selecione — data table completa
+              - generic [ref=f3e161]:
+                - generic [ref=f3e162]:
+                  - textbox "Filtrar cliente…" [ref=f3e163]
+                  - button "Colunas" [ref=f3e164] [cursor=pointer]
+                - table [ref=f3e167]:
+                  - rowgroup [ref=f3e168]:
+                    - row [ref=f3e169]:
+                      - columnheader [ref=f3e170]:
+                        - checkbox [ref=f3e171] [cursor=pointer]
+                        - checkbox [ref=f3e172]
+                      - columnheader "Pedido" [ref=f3e173]
+                      - columnheader [ref=f3e174]:
+                        - button "Cliente" [ref=f3e175] [cursor=pointer]
+                      - columnheader "Status" [ref=f3e176]
+                      - columnheader [ref=f3e177]:
+                        - button "Valor" [ref=f3e178] [cursor=pointer]
+                      - columnheader [ref=f3e179]
+                  - rowgroup [ref=f3e180]:
+                    - row [ref=f3e181]:
+                      - cell [ref=f3e182]:
+                        - checkbox [ref=f3e183] [cursor=pointer]
+                        - checkbox [ref=f3e184]
+                      - cell "#3210" [ref=f3e185]
+                      - cell "Ana Prado ana@adila.co" [ref=f3e186]:
+                        - generic [ref=f3e187]:
+                          - generic [ref=f3e188]: Ana Prado
+                          - generic [ref=f3e189]: ana@adila.co
+                      - cell "Pago" [ref=f3e190]
+                      - cell "R$ 320,00" [ref=f3e192]
+                      - cell [ref=f3e194]:
+                        - button "Ações" [ref=f3e195] [cursor=pointer]
+                    - row [ref=f3e196]:
+                      - cell [ref=f3e197]:
+                        - checkbox [ref=f3e198] [cursor=pointer]
+                        - checkbox [ref=f3e199]
+                      - cell "#3209" [ref=f3e200]
+                      - cell "Bruno Lima bruno@adila.co" [ref=f3e201]:
+                        - generic [ref=f3e202]:
+                          - generic [ref=f3e203]: Bruno Lima
+                          - generic [ref=f3e204]: bruno@adila.co
+                      - cell "Pendente" [ref=f3e205]
+                      - cell "R$ 89,90" [ref=f3e207]
+                      - cell [ref=f3e209]:
+                        - button "Ações" [ref=f3e210] [cursor=pointer]
+                    - row [ref=f3e211]:
+                      - cell [ref=f3e212]:
+                        - checkbox [ref=f3e213] [cursor=pointer]
+                        - checkbox [ref=f3e214]
+                      - cell "#3208" [ref=f3e215]
+                      - cell "Carla Reis carla@adila.co" [ref=f3e216]:
+                        - generic [ref=f3e217]:
+                          - generic [ref=f3e218]: Carla Reis
+                          - generic [ref=f3e219]: carla@adila.co
+                      - cell "Pago" [ref=f3e220]
+                      - cell "R$ 1.240,00" [ref=f3e222]
+                      - cell [ref=f3e224]:
+                        - button "Ações" [ref=f3e225] [cursor=pointer]
+                    - row [ref=f3e226]:
+                      - cell [ref=f3e227]:
+                        - checkbox [ref=f3e228] [cursor=pointer]
+                        - checkbox [ref=f3e229]
+                      - cell "#3207" [ref=f3e230]
+                      - cell "Diego Souza diego@adila.co" [ref=f3e231]:
+                        - generic [ref=f3e232]:
+                          - generic [ref=f3e233]: Diego Souza
+                          - generic [ref=f3e234]: diego@adila.co
+                      - cell "Falhou" [ref=f3e235]
+                      - cell "R$ 45,00" [ref=f3e237]
+                      - cell [ref=f3e239]:
+                        - button "Ações" [ref=f3e240] [cursor=pointer]
+                    - row [ref=f3e241]:
+                      - cell [ref=f3e242]:
+                        - checkbox [ref=f3e243] [cursor=pointer]
+                        - checkbox [ref=f3e244]
+                      - cell "#3206" [ref=f3e245]
+                      - cell "Elena Costa elena@adila.co" [ref=f3e246]:
+                        - generic [ref=f3e247]:
+                          - generic [ref=f3e248]: Elena Costa
+                          - generic [ref=f3e249]: elena@adila.co
+                      - cell "Pago" [ref=f3e250]
+                      - cell "R$ 560,00" [ref=f3e252]
+                      - cell [ref=f3e254]:
+                        - button "Ações" [ref=f3e255] [cursor=pointer]
+                - generic [ref=f3e256]:
+                  - generic [ref=f3e257]: 0 de 10 linha(s) selecionada(s).
+                  - generic [ref=f3e258]:
+                    - button "Anterior" [disabled]
+                    - button "Próximo" [ref=f3e259] [cursor=pointer]
+  - generic [ref=f3e329]: Orgânico

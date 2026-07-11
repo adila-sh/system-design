@@ -5,8 +5,8 @@ import { ContextMenu as ContextMenuPrimitive } from "@base-ui/react/context-menu
 
 import { cn } from "@/lib/utils";
 import {
-  CaretRight as ChevronRightIcon,
-  Check as CheckIcon,
+  CaretRightIcon as ChevronRightIcon,
+  CheckIcon,
 } from "@phosphor-icons/react";
 
 function ContextMenu({ ...props }: ContextMenuPrimitive.Root.Props) {

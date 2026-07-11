@@ -2,8 +2,8 @@ import { Accordion as AccordionPrimitive } from "@base-ui/react/accordion";
 
 import { cn } from "@/lib/utils";
 import {
-  CaretDown as ChevronDownIcon,
-  CaretUp as ChevronUpIcon,
+  CaretDownIcon as ChevronDownIcon,
+  CaretUpIcon as ChevronUpIcon,
 } from "@phosphor-icons/react";
 
 function Accordion({ className, ...props }: AccordionPrimitive.Root.Props) {

@@ -9,9 +9,9 @@ import {
 import { cn } from "@/lib/utils";
 import { Button, buttonVariants } from "@/components/ui/button";
 import {
-  CaretLeft as ChevronLeftIcon,
-  CaretRight as ChevronRightIcon,
-  CaretDown as ChevronDownIcon,
+  CaretLeftIcon as ChevronLeftIcon,
+  CaretRightIcon as ChevronRightIcon,
+  CaretDownIcon as ChevronDownIcon,
 } from "@phosphor-icons/react";
 
 function Calendar({

@@ -6,9 +6,9 @@ import { motion, type HTMLMotionProps, type Transition } from "framer-motion";
 
 import { cn } from "@/lib/utils";
 import {
-  Check as CheckIcon,
-  CaretDown as ChevronDownIcon,
-  CaretUp as ChevronUpIcon,
+  CheckIcon,
+  CaretDownIcon as ChevronDownIcon,
+  CaretUpIcon as ChevronUpIcon,
 } from "@phosphor-icons/react";
 
 // Motion tuning for the popup open/close animation.

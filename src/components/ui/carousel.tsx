@@ -8,8 +8,8 @@ import useEmblaCarousel, {
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import {
-  CaretLeft as ChevronLeftIcon,
-  CaretRight as ChevronRightIcon,
+  CaretLeftIcon as ChevronLeftIcon,
+  CaretRightIcon as ChevronRightIcon,
 } from "@phosphor-icons/react";
 
 type CarouselApi = UseEmblaCarouselType[1];

@@ -19,6 +19,35 @@ html > body[data-scroll-locked] {
   --removed-body-scroll-bar-size: 0px !important;
 }
 
+/* Scrollbar fino e discreto — adapta a light/dark via tokens.
+   O thumb usa border transparente + background-clip para parecer fino
+   dentro de uma track mais larga (mais fácil de acertar com o mouse). */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--border);
+  background-clip: content-box;
+  border: 3px solid transparent;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: color-mix(in oklch, var(--border), var(--foreground) 30%);
+}
+
 /* Respeita usuários com movimento reduzido: neutraliza animações/transições
    dos componentes sem exigir media query por componente. */
 @media (prefers-reduced-motion: reduce) {

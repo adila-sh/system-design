@@ -1,30 +1,29 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 import {
-  Pulse as Activity,
-  ArrowUpRight,
-  Bell,
-  CaretUpDown as ChevronsUpDown,
-  CreditCard,
-  CurrencyDollar as DollarSign,
-  SquaresFour as LayoutDashboard,
-  Lifebuoy as LifeBuoy,
-  ChartLine as LineChart,
-  SignOut as LogOut,
-  MoonStars as MoonStar,
-  DotsThree as MoreHorizontal,
-  Package,
-  Plus,
-  MagnifyingGlass as Search,
-  GearSix as Settings2,
-  Sparkle as Sparkles,
-  TrendDown as TrendingDown,
-  TrendUp as TrendingUp,
-  Users,
+  PulseIcon as Activity,
+  ArrowUpRightIcon as ArrowUpRight,
+  BellIcon as Bell,
+  CaretUpDownIcon as ChevronsUpDown,
+  CreditCardIcon as CreditCard,
+  CurrencyDollarIcon as DollarSign,
+  SquaresFourIcon as LayoutDashboard,
+  LifebuoyIcon as LifeBuoy,
+  ChartLineIcon as LineChart,
+  SignOutIcon as LogOut,
+  MoonStarsIcon as MoonStar,
+  PackageIcon as Package,
+  MagnifyingGlassIcon as Search,
+  GearSixIcon as Settings2,
+  SparkleIcon as Sparkles,
+  TrendDownIcon as TrendingDown,
+  TrendUpIcon as TrendingUp,
+  UsersIcon as Users,
 } from "@phosphor-icons/react";
 import { Area, AreaChart, Bar, BarChart, CartesianGrid, XAxis } from "recharts";
 
+import { DataTable } from "@/components/data-table";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -45,7 +44,10 @@ import {
   ChartTooltipContent,
   type ChartConfig,
 } from "@/components/ui/chart";
+import { CommandMenu } from "@/components/command-menu";
+import { NewTransactionDrawer } from "@/components/new-transaction-drawer";
 import { Checkbox } from "@/components/ui/checkbox";
+import { Kbd } from "@/components/ui/kbd";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -87,14 +89,6 @@ import {
 } from "@/components/ui/sidebar";
 import { Slider } from "@/components/ui/slider";
 import { Switch } from "@/components/ui/switch";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   Tooltip,
@@ -168,20 +162,6 @@ const stats = [
   },
 ];
 
-const transactions = [
-  { id: "#3210", cliente: "Ana Prado", status: "Pago", valor: "R$ 320,00" },
-  { id: "#3209", cliente: "Bruno Lima", status: "Pendente", valor: "R$ 89,90" },
-  { id: "#3208", cliente: "Carla Reis", status: "Pago", valor: "R$ 1.240,00" },
-  { id: "#3207", cliente: "Diego Souza", status: "Falhou", valor: "R$ 45,00" },
-  { id: "#3206", cliente: "Elena Costa", status: "Pago", valor: "R$ 560,00" },
-];
-
-const statusVariant: Record<string, "default" | "secondary" | "destructive"> = {
-  Pago: "default",
-  Pendente: "secondary",
-  Falhou: "destructive",
-};
-
 const activity = [
   { nome: "Deploy de produção", progresso: 100 },
   { nome: "Migração do banco", progresso: 72 },
@@ -200,30 +180,52 @@ const navMain = [
 /* Sidebar                                                             */
 /* ------------------------------------------------------------------ */
 
-function AppSidebar() {
+function AppSidebar({ onOpenCommand }: { onOpenCommand: () => void }) {
   return (
-    <Sidebar>
+    <Sidebar collapsible="icon">
       <SidebarHeader>
-        <SidebarMenu>
-          <SidebarMenuItem>
-            <SidebarMenuButton size="lg">
-              <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
-                <Sparkles className="size-4" />
-              </div>
-              <div className="grid flex-1 text-left leading-tight">
-                <span className="truncate font-medium">Adila Inc.</span>
-                <span className="truncate text-xs text-muted-foreground">
-                  Plano Pro
-                </span>
-              </div>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
-        </SidebarMenu>
+        <div className="flex items-center gap-1 group-data-[collapsible=icon]:flex-col">
+          <SidebarMenu>
+            <SidebarMenuItem>
+              <SidebarMenuButton size="lg">
+                <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
+                  <Sparkles className="size-4" />
+                </div>
+                <div className="grid flex-1 text-left leading-tight">
+                  <span className="truncate font-medium">Adila Inc.</span>
+                  <span className="truncate text-xs text-muted-foreground">
+                    Plano Pro
+                  </span>
+                </div>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+          </SidebarMenu>
+          <SidebarTrigger className="shrink-0" />
+        </div>
       </SidebarHeader>
 
       <SidebarSeparator />
 
       <SidebarContent>
+        <SidebarGroup>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              <SidebarMenuItem>
+                <SidebarMenuButton
+                  onClick={onOpenCommand}
+                  tooltip="Buscar (⌘K)"
+                >
+                  <Search />
+                  <span>Buscar</span>
+                  <Kbd className="ml-auto group-data-[collapsible=icon]:hidden">
+                    ⌘K
+                  </Kbd>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+
         <SidebarGroup>
           <SidebarGroupLabel>Plataforma</SidebarGroupLabel>
           <SidebarGroupContent>
@@ -327,17 +329,28 @@ function Showcase() {
   const { theme, setTheme } = useTheme();
   const isDark = theme === "dark";
   const [notify, setNotify] = useState(true);
+  const [cmdOpen, setCmdOpen] = useState(false);
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
+        e.preventDefault();
+        setCmdOpen((open) => !open);
+      }
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, []);
 
   return (
     <TooltipProvider>
+      <CommandMenu open={cmdOpen} onOpenChange={setCmdOpen} />
       <SidebarProvider>
-        <AppSidebar />
+        <AppSidebar onOpenCommand={() => setCmdOpen(true)} />
         <SidebarInset>
           {/* Header */}
           <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
-            <SidebarTrigger />
-            <Separator orientation="vertical" className="mr-1 h-5" />
-            <div className="hidden flex-col md:flex">
+            <div className="flex flex-col">
               <h1 className="text-sm font-medium">Visão geral</h1>
               <p className="text-xs text-muted-foreground">
                 Bem-vindo de volta, João
@@ -573,10 +586,7 @@ function Showcase() {
                   <TabsTrigger value="atividade">Atividade</TabsTrigger>
                   <TabsTrigger value="config">Configurações</TabsTrigger>
                 </TabsList>
-                <Button size="sm">
-                  <Plus />
-                  Nova
-                </Button>
+                <NewTransactionDrawer />
               </div>
 
               {/* Transações */}
@@ -585,46 +595,11 @@ function Showcase() {
                   <CardHeader>
                     <CardTitle>Transações recentes</CardTitle>
                     <CardDescription>
-                      Pagamentos processados nas últimas 24h
+                      Filtre, ordene e selecione — data table completa
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <Table>
-                      <TableHeader>
-                        <TableRow>
-                          <TableHead>Pedido</TableHead>
-                          <TableHead>Cliente</TableHead>
-                          <TableHead>Status</TableHead>
-                          <TableHead className="text-right">Valor</TableHead>
-                          <TableHead className="w-10" />
-                        </TableRow>
-                      </TableHeader>
-                      <TableBody>
-                        {transactions.map((t) => (
-                          <TableRow key={t.id}>
-                            <TableCell className="font-mono text-xs">
-                              {t.id}
-                            </TableCell>
-                            <TableCell className="font-medium">
-                              {t.cliente}
-                            </TableCell>
-                            <TableCell>
-                              <Badge variant={statusVariant[t.status]}>
-                                {t.status}
-                              </Badge>
-                            </TableCell>
-                            <TableCell className="text-right tabular-nums">
-                              {t.valor}
-                            </TableCell>
-                            <TableCell>
-                              <Button variant="ghost" size="icon-sm">
-                                <MoreHorizontal />
-                              </Button>
-                            </TableCell>
-                          </TableRow>
-                        ))}
-                      </TableBody>
-                    </Table>
+                    <DataTable />
                   </CardContent>
                 </Card>
               </TabsContent>

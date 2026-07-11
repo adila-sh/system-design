@@ -12,9 +12,9 @@ import {
 } from "@/components/ui/input-group";
 import { cn } from "@/lib/utils";
 import {
-  Check as CheckIcon,
-  CaretDown as ChevronDownIcon,
-  X as XIcon,
+  CheckIcon,
+  CaretDownIcon as ChevronDownIcon,
+  XIcon,
 } from "@phosphor-icons/react";
 
 const Combobox = ComboboxPrimitive.Root;

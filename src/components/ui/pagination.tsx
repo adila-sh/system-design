@@ -3,9 +3,9 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import {
-  CaretLeft as ChevronLeftIcon,
-  CaretRight as ChevronRightIcon,
-  DotsThree as MoreHorizontalIcon,
+  CaretLeftIcon as ChevronLeftIcon,
+  CaretRightIcon as ChevronRightIcon,
+  DotsThreeIcon as MoreHorizontalIcon,
 } from "@phosphor-icons/react";
 
 function Pagination({ className, ...props }: React.ComponentProps<"nav">) {
