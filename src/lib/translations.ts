@@ -47,4 +47,4 @@ export const ptBR: Partial<Record<string, string>> = {
   "Toggle Theme(theme switcher)(aria-label)": "Alternar tema",
   "Type(type table)": "Tipo",
   "View as Markdown(page actions)": "Ver como Markdown",
-}
+};

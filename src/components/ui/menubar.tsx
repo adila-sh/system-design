@@ -18,7 +18,7 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { CheckIcon } from "lucide-react";
+import { Check as CheckIcon } from "@phosphor-icons/react";
 
 function Menubar({ className, ...props }: MenubarPrimitive.Props) {
   return (

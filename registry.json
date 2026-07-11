@@ -126,7 +126,7 @@
       ],
       "dependencies": [
         "@base-ui/react",
-        "lucide-react"
+        "@phosphor-icons/react"
       ]
     },
     {
@@ -240,7 +240,7 @@
       ],
       "dependencies": [
         "@base-ui/react",
-        "lucide-react"
+        "@phosphor-icons/react"
       ]
     },
     {
@@ -309,7 +309,7 @@
         "utils"
       ],
       "dependencies": [
-        "lucide-react",
+        "@phosphor-icons/react",
         "react-day-picker"
       ]
     },
@@ -340,8 +340,8 @@
         "utils"
       ],
       "dependencies": [
-        "embla-carousel-react",
-        "lucide-react"
+        "@phosphor-icons/react",
+        "embla-carousel-react"
       ]
     },
     {
@@ -374,7 +374,7 @@
       ],
       "dependencies": [
         "@base-ui/react",
-        "lucide-react"
+        "@phosphor-icons/react"
       ]
     },
     {
@@ -409,7 +409,7 @@
       ],
       "dependencies": [
         "@base-ui/react",
-        "lucide-react"
+        "@phosphor-icons/react"
       ]
     },
     {
@@ -427,8 +427,8 @@
         "utils"
       ],
       "dependencies": [
-        "cmdk",
-        "lucide-react"
+        "@phosphor-icons/react",
+        "cmdk"
       ]
     },
     {
@@ -445,7 +445,7 @@
       ],
       "dependencies": [
         "@base-ui/react",
-        "lucide-react"
+        "@phosphor-icons/react"
       ]
     },
     {
@@ -463,7 +463,7 @@
       ],
       "dependencies": [
         "@base-ui/react",
-        "lucide-react"
+        "@phosphor-icons/react"
       ]
     },
     {
@@ -509,7 +509,7 @@
       ],
       "dependencies": [
         "@base-ui/react",
-        "lucide-react"
+        "@phosphor-icons/react"
       ]
     },
     {
@@ -594,8 +594,8 @@
         "utils"
       ],
       "dependencies": [
-        "input-otp",
-        "lucide-react"
+        "@phosphor-icons/react",
+        "input-otp"
       ]
     },
     {
@@ -690,7 +690,7 @@
       ],
       "dependencies": [
         "@base-ui/react",
-        "lucide-react"
+        "@phosphor-icons/react"
       ]
     },
     {
@@ -707,8 +707,8 @@
         "utils"
       ],
       "dependencies": [
-        "@shadcn/react",
-        "lucide-react"
+        "@phosphor-icons/react",
+        "@shadcn/react"
       ]
     },
     {
@@ -737,7 +737,7 @@
         "utils"
       ],
       "dependencies": [
-        "lucide-react"
+        "@phosphor-icons/react"
       ]
     },
     {
@@ -754,8 +754,8 @@
       ],
       "dependencies": [
         "@base-ui/react",
-        "class-variance-authority",
-        "lucide-react"
+        "@phosphor-icons/react",
+        "class-variance-authority"
       ]
     },
     {
@@ -772,7 +772,7 @@
         "utils"
       ],
       "dependencies": [
-        "lucide-react"
+        "@phosphor-icons/react"
       ]
     },
     {
@@ -869,7 +869,7 @@
       ],
       "dependencies": [
         "@base-ui/react",
-        "lucide-react"
+        "@phosphor-icons/react"
       ]
     },
     {
@@ -903,7 +903,7 @@
       ],
       "dependencies": [
         "@base-ui/react",
-        "lucide-react"
+        "@phosphor-icons/react"
       ]
     },
     {
@@ -927,8 +927,8 @@
       ],
       "dependencies": [
         "@base-ui/react",
-        "class-variance-authority",
-        "lucide-react"
+        "@phosphor-icons/react",
+        "class-variance-authority"
       ]
     },
     {
@@ -970,7 +970,7 @@
         }
       ],
       "dependencies": [
-        "lucide-react",
+        "@phosphor-icons/react",
         "next-themes",
         "sonner"
       ]
@@ -988,7 +988,7 @@
         "utils"
       ],
       "dependencies": [
-        "lucide-react"
+        "@phosphor-icons/react"
       ]
     },
     {

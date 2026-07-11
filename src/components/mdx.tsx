@@ -1,6 +1,6 @@
-import defaultMdxComponents from 'fumadocs-ui/mdx';
-import type { MDXComponents } from 'mdx/types';
-import { Preview } from '@/components/component-preview';
+import defaultMdxComponents from "fumadocs-ui/mdx";
+import type { MDXComponents } from "mdx/types";
+import { Preview } from "@/components/component-preview";
 
 export function getMDXComponents(components?: MDXComponents) {
   return {

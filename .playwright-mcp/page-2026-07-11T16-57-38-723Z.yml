@@ -1,0 +1,148 @@
+- generic [ref=f25e2]:
+  - generic [ref=f25e5]:
+    - list [ref=f25e7]:
+      - listitem [ref=f25e8]:
+        - button "Adila Inc. Plano Pro" [ref=f25e9]:
+          - generic [ref=f25e13]:
+            - generic [ref=f25e14]: Adila Inc.
+            - generic [ref=f25e15]: Plano Pro
+    - separator
+    - generic [ref=f25e16]:
+      - generic [ref=f25e17]:
+        - generic [ref=f25e18]: Plataforma
+        - list [ref=f25e20]:
+          - listitem [ref=f25e21]:
+            - button "Visão geral" [ref=f25e22]
+          - listitem [ref=f25e26]:
+            - button "Analytics" [ref=f25e27]
+            - generic: "3"
+          - listitem [ref=f25e31]:
+            - button "Clientes" [ref=f25e32]
+          - listitem [ref=f25e36]:
+            - button "Produtos" [ref=f25e37]
+            - generic: "12"
+      - generic [ref=f25e41]:
+        - generic [ref=f25e42]: Suporte
+        - list [ref=f25e44]:
+          - listitem [ref=f25e45]:
+            - button "Configurações" [ref=f25e46]
+          - listitem [ref=f25e50]:
+            - button "Ajuda" [ref=f25e51]
+    - list [ref=f25e56]:
+      - listitem [ref=f25e57]:
+        - button "JS João Sousa joao@adila.co" [ref=f25e58]:
+          - generic [ref=f25e59]: JS
+          - generic [ref=f25e61]:
+            - generic [ref=f25e62]: João Sousa
+            - generic [ref=f25e63]: joao@adila.co
+  - main [ref=f25e66]:
+    - generic [ref=f25e67]:
+      - button "Toggle Sidebar" [ref=f25e68] [cursor=pointer]
+      - separator
+      - generic [ref=f25e70]:
+        - heading "Visão geral" [level=1] [ref=f25e71]
+        - paragraph [ref=f25e72]: Bem-vindo de volta, João
+      - generic [ref=f25e73]:
+        - textbox "Buscar" [ref=f25e75]:
+          - /placeholder: Buscar…
+        - button "Alternar tema" [ref=f25e76] [cursor=pointer]
+        - button "Notificações" [ref=f25e77] [cursor=pointer]
+        - generic [ref=f25e78]: JS
+    - generic [ref=f25e80]:
+      - generic [ref=f25e81]:
+        - generic [ref=f25e82]:
+          - generic [ref=f25e83]:
+            - generic [ref=f25e84]: Receita total
+            - generic [ref=f25e85]: R$ 45.231
+          - generic [ref=f25e90]:
+            - generic [ref=f25e91]: +20,1%
+            - generic [ref=f25e92]: vs. mês anterior
+        - generic [ref=f25e93]:
+          - generic [ref=f25e94]:
+            - generic [ref=f25e95]: Assinantes
+            - generic [ref=f25e96]: "2.350"
+          - generic [ref=f25e101]:
+            - generic [ref=f25e102]: +180,1%
+            - generic [ref=f25e103]: vs. mês anterior
+        - generic [ref=f25e104]:
+          - generic [ref=f25e105]:
+            - generic [ref=f25e106]: Vendas
+            - generic [ref=f25e107]: "12.234"
+          - generic [ref=f25e112]:
+            - generic [ref=f25e113]: +19%
+            - generic [ref=f25e114]: vs. mês anterior
+        - generic [ref=f25e115]:
+          - generic [ref=f25e116]:
+            - generic [ref=f25e117]: Ativos agora
+            - generic [ref=f25e118]: "573"
+          - generic [ref=f25e123]:
+            - generic [ref=f25e124]: "-2,4%"
+            - generic [ref=f25e125]: vs. mês anterior
+      - generic [ref=f25e126]:
+        - generic [ref=f25e128]:
+          - generic [ref=f25e129]: Receita x Custo
+          - generic [ref=f25e130]: Últimos 6 meses
+          - generic [ref=f25e131]:
+            - combobox [ref=f25e132]:
+              - generic [ref=f25e133]: 6 meses
+              - img: ▼
+            - textbox [ref=f25e134]: 6m
+        - generic [ref=f25e140]:
+          - generic [ref=f25e141]: Tráfego por canal
+          - generic [ref=f25e142]: Sessões nesta semana
+      - generic [ref=f25e147]:
+        - generic [ref=f25e148]:
+          - tablist [ref=f25e149]:
+            - tab "Transações" [selected] [ref=f25e150]
+            - tab "Atividade" [ref=f25e151]
+            - tab "Configurações" [ref=f25e152]
+          - button "Nova" [ref=f25e153] [cursor=pointer]
+        - tabpanel [ref=f25e154]:
+          - generic [ref=f25e155]:
+            - generic [ref=f25e156]:
+              - generic [ref=f25e157]: Transações recentes
+              - generic [ref=f25e158]: Pagamentos processados nas últimas 24h
+            - table [ref=f25e161]:
+              - rowgroup [ref=f25e162]:
+                - row [ref=f25e163]:
+                  - columnheader "Pedido" [ref=f25e164]
+                  - columnheader "Cliente" [ref=f25e165]
+                  - columnheader "Status" [ref=f25e166]
+                  - columnheader "Valor" [ref=f25e167]
+                  - columnheader [ref=f25e168]
+              - rowgroup [ref=f25e169]:
+                - row [ref=f25e170]:
+                  - cell "#3210" [ref=f25e171]
+                  - cell "Ana Prado" [ref=f25e172]
+                  - cell "Pago" [ref=f25e173]
+                  - cell "R$ 320,00" [ref=f25e175]
+                  - cell [ref=f25e176]:
+                    - button [ref=f25e177] [cursor=pointer]
+                - row [ref=f25e178]:
+                  - cell "#3209" [ref=f25e179]
+                  - cell "Bruno Lima" [ref=f25e180]
+                  - cell "Pendente" [ref=f25e181]
+                  - cell "R$ 89,90" [ref=f25e183]
+                  - cell [ref=f25e184]:
+                    - button [ref=f25e185] [cursor=pointer]
+                - row [ref=f25e186]:
+                  - cell "#3208" [ref=f25e187]
+                  - cell "Carla Reis" [ref=f25e188]
+                  - cell "Pago" [ref=f25e189]
+                  - cell "R$ 1.240,00" [ref=f25e191]
+                  - cell [ref=f25e192]:
+                    - button [ref=f25e193] [cursor=pointer]
+                - row [ref=f25e194]:
+                  - cell "#3207" [ref=f25e195]
+                  - cell "Diego Souza" [ref=f25e196]
+                  - cell "Falhou" [ref=f25e197]
+                  - cell "R$ 45,00" [ref=f25e199]
+                  - cell [ref=f25e200]:
+                    - button [ref=f25e201] [cursor=pointer]
+                - row [ref=f25e202]:
+                  - cell "#3206" [ref=f25e203]
+                  - cell "Elena Costa" [ref=f25e204]
+                  - cell "Pago" [ref=f25e205]
+                  - cell "R$ 560,00" [ref=f25e207]
+                  - cell [ref=f25e208]:
+                    - button [ref=f25e209] [cursor=pointer]

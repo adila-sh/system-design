@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import type { ReactNode } from "react";
 
 /** Caixa de preview para renderizar componentes ao vivo nos docs. */
 export function Preview({ children }: { children: ReactNode }) {

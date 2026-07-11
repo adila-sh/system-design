@@ -2,9 +2,49 @@
 
 import { Select as SelectPrimitive } from "@base-ui/react/select";
 import * as React from "react";
+import { motion, type HTMLMotionProps, type Transition } from "framer-motion";
 
 import { cn } from "@/lib/utils";
-import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from "lucide-react";
+import {
+  Check as CheckIcon,
+  CaretDown as ChevronDownIcon,
+  CaretUp as ChevronUpIcon,
+} from "@phosphor-icons/react";
+
+// Motion tuning for the popup open/close animation.
+const POPUP_OPEN_TRANSITION: Transition = {
+  type: "spring",
+  stiffness: 550,
+  damping: 35,
+  mass: 0.7,
+};
+const POPUP_CLOSE_TRANSITION: Transition = {
+  duration: 0.12,
+  ease: [0.4, 0, 1, 1],
+};
+const POPUP_CLOSED_OFFSET = 6;
+
+// Starting offset per side so the popup slides in from the anchor.
+// `none` = aligned with the trigger (alignItemWithTrigger); fade only, no slide.
+function getClosedTransform(side: SelectPrimitive.Popup.State["side"]): {
+  x?: number;
+  y?: number;
+} {
+  switch (side) {
+    case "bottom":
+      return { y: -POPUP_CLOSED_OFFSET };
+    case "top":
+      return { y: POPUP_CLOSED_OFFSET };
+    case "right":
+    case "inline-end":
+      return { x: -POPUP_CLOSED_OFFSET };
+    case "left":
+    case "inline-start":
+      return { x: POPUP_CLOSED_OFFSET };
+    default:
+      return {};
+  }
+}
 
 const Select = SelectPrimitive.Root;
 
@@ -82,11 +122,34 @@ function SelectContent({
       >
         <SelectPrimitive.Popup
           data-slot="select-content"
-          data-align-trigger={alignItemWithTrigger}
           className={cn(
-            "relative isolate z-50 max-h-(--available-height) w-(--anchor-width) min-w-36 origin-(--transform-origin) overflow-x-hidden overflow-y-auto rounded-lg bg-popover text-popover-foreground shadow-md ring-1 ring-foreground/10 duration-100 data-[align-trigger=true]:animate-none data-[side=bottom]:slide-in-from-top-2 data-[side=inline-end]:slide-in-from-left-2 data-[side=inline-start]:slide-in-from-right-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95",
+            "relative isolate z-50 max-h-(--available-height) w-(--anchor-width) min-w-36 origin-(--transform-origin) overflow-x-hidden overflow-y-auto rounded-lg bg-popover text-popover-foreground shadow-md ring-1 ring-foreground/10",
             className,
           )}
+          render={(popupProps, state) => {
+            const aligned = state.side === "none";
+            const closed = getClosedTransform(state.side);
+            // Only "shown" once Base UI settles the open transition; during
+            // `starting`/`ending` we render the closed frame so motion animates
+            // both directions. Base UI waits on the opacity animation (via
+            // getAnimations) before unmounting, so no keepMounted is needed.
+            const shown = state.open && state.transitionStatus === undefined;
+            return (
+              <motion.div
+                {...(popupProps as HTMLMotionProps<"div">)}
+                initial={false}
+                animate={{
+                  opacity: shown ? 1 : 0,
+                  scale: shown || aligned ? 1 : 0.96,
+                  x: shown ? 0 : (closed.x ?? 0),
+                  y: shown ? 0 : (closed.y ?? 0),
+                }}
+                transition={
+                  shown ? POPUP_OPEN_TRANSITION : POPUP_CLOSE_TRANSITION
+                }
+              />
+            );
+          }}
           {...props}
         >
           <SelectScrollUpButton />

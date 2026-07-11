@@ -2,27 +2,27 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { useTheme } from "next-themes";
 import {
-  Activity,
+  Pulse as Activity,
   ArrowUpRight,
   Bell,
-  ChevronsUpDown,
+  CaretUpDown as ChevronsUpDown,
   CreditCard,
-  DollarSign,
-  LayoutDashboard,
-  LifeBuoy,
-  LineChart,
-  LogOut,
-  MoonStar,
-  MoreHorizontal,
+  CurrencyDollar as DollarSign,
+  SquaresFour as LayoutDashboard,
+  Lifebuoy as LifeBuoy,
+  ChartLine as LineChart,
+  SignOut as LogOut,
+  MoonStars as MoonStar,
+  DotsThree as MoreHorizontal,
   Package,
   Plus,
-  Search,
-  Settings2,
-  Sparkles,
-  TrendingDown,
-  TrendingUp,
+  MagnifyingGlass as Search,
+  GearSix as Settings2,
+  Sparkle as Sparkles,
+  TrendDown as TrendingDown,
+  TrendUp as TrendingUp,
   Users,
-} from "lucide-react";
+} from "@phosphor-icons/react";
 import { Area, AreaChart, Bar, BarChart, CartesianGrid, XAxis } from "recharts";
 
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";

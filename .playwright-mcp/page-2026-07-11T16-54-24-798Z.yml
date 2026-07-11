@@ -1,0 +1,175 @@
+- generic [ref=f24e1]:
+  - generic [ref=f24e2]:
+    - generic [ref=f24e5]:
+      - list [ref=f24e7]:
+        - listitem [ref=f24e8]:
+          - button "Adila Inc. Plano Pro" [ref=f24e9]:
+            - generic [ref=f24e13]:
+              - generic [ref=f24e14]: Adila Inc.
+              - generic [ref=f24e15]: Plano Pro
+      - separator
+      - generic [ref=f24e16]:
+        - generic [ref=f24e17]:
+          - generic [ref=f24e18]: Plataforma
+          - list [ref=f24e20]:
+            - listitem [ref=f24e21]:
+              - button "Visão geral" [ref=f24e22]
+            - listitem [ref=f24e26]:
+              - button "Analytics" [ref=f24e27]
+              - generic: "3"
+            - listitem [ref=f24e31]:
+              - button "Clientes" [ref=f24e32]
+            - listitem [ref=f24e36]:
+              - button "Produtos" [ref=f24e37]
+              - generic: "12"
+        - generic [ref=f24e41]:
+          - generic [ref=f24e42]: Suporte
+          - list [ref=f24e44]:
+            - listitem [ref=f24e45]:
+              - button "Configurações" [ref=f24e46]
+            - listitem [ref=f24e50]:
+              - button "Ajuda" [ref=f24e51]
+      - list [ref=f24e56]:
+        - listitem [ref=f24e57]:
+          - button "JS João Sousa joao@adila.co" [ref=f24e58]:
+            - generic [ref=f24e59]: JS
+            - generic [ref=f24e61]:
+              - generic [ref=f24e62]: João Sousa
+              - generic [ref=f24e63]: joao@adila.co
+    - main [ref=f24e66]:
+      - generic [ref=f24e67]:
+        - button "Toggle Sidebar" [ref=f24e68] [cursor=pointer]
+        - separator
+        - generic [ref=f24e70]:
+          - heading "Visão geral" [level=1] [ref=f24e71]
+          - paragraph [ref=f24e72]: Bem-vindo de volta, João
+        - generic [ref=f24e73]:
+          - textbox "Buscar" [ref=f24e75]:
+            - /placeholder: Buscar…
+          - button "Alternar tema" [ref=f24e76] [cursor=pointer]
+          - button "Notificações" [ref=f24e77] [cursor=pointer]
+          - generic [ref=f24e78]: JS
+      - generic [ref=f24e80]:
+        - generic [ref=f24e81]:
+          - generic [ref=f24e82]:
+            - generic [ref=f24e83]:
+              - generic [ref=f24e84]: Receita total
+              - generic [ref=f24e85]: R$ 45.231
+            - generic [ref=f24e90]:
+              - generic [ref=f24e91]: +20,1%
+              - generic [ref=f24e92]: vs. mês anterior
+          - generic [ref=f24e93]:
+            - generic [ref=f24e94]:
+              - generic [ref=f24e95]: Assinantes
+              - generic [ref=f24e96]: "2.350"
+            - generic [ref=f24e101]:
+              - generic [ref=f24e102]: +180,1%
+              - generic [ref=f24e103]: vs. mês anterior
+          - generic [ref=f24e104]:
+            - generic [ref=f24e105]:
+              - generic [ref=f24e106]: Vendas
+              - generic [ref=f24e107]: "12.234"
+            - generic [ref=f24e112]:
+              - generic [ref=f24e113]: +19%
+              - generic [ref=f24e114]: vs. mês anterior
+          - generic [ref=f24e115]:
+            - generic [ref=f24e116]:
+              - generic [ref=f24e117]: Ativos agora
+              - generic [ref=f24e118]: "573"
+            - generic [ref=f24e123]:
+              - generic [ref=f24e124]: "-2,4%"
+              - generic [ref=f24e125]: vs. mês anterior
+        - generic [ref=f24e126]:
+          - generic [ref=f24e127]:
+            - generic [ref=f24e128]:
+              - generic [ref=f24e129]: Receita x Custo
+              - generic [ref=f24e130]: Últimos 6 meses
+              - generic [ref=f24e131]:
+                - combobox [expanded] [ref=f24e132]:
+                  - generic [ref=f24e133]: 6 meses
+                  - img: ▼
+                - listbox [ref=f24e137]:
+                  - option "7 dias" [ref=f24e138]
+                  - option "30 dias" [ref=f24e140]
+                  - option "6 meses" [active] [selected] [ref=f24e142]
+                  - option "12 meses" [ref=f24e144]
+                - textbox [ref=f24e148]: 6m
+            - generic [ref=f24e152]:
+              - generic [ref=f24e154]:
+                - generic [ref=f24e155]: Custo
+                - generic [ref=f24e157]: Receita
+              - application [ref=f24e159]:
+                - generic [ref=f24e179]:
+                  - generic [ref=f24e180]: Fev
+                  - generic [ref=f24e182]: Mar
+                  - generic [ref=f24e184]: Abr
+                  - generic [ref=f24e186]: Mai
+                  - generic [ref=f24e188]: Jun
+          - generic [ref=f24e190]:
+            - generic [ref=f24e191]:
+              - generic [ref=f24e192]: Tráfego por canal
+              - generic [ref=f24e193]: Sessões nesta semana
+            - application [ref=f24e198]:
+              - generic [ref=f24e222]:
+                - generic [ref=f24e223]: Orgânico
+                - generic [ref=f24e225]: Social
+                - generic [ref=f24e227]: E-mail
+                - generic [ref=f24e229]: Direto
+                - generic [ref=f24e231]: Referência
+        - generic [ref=f24e233]:
+          - generic [ref=f24e234]:
+            - tablist [ref=f24e235]:
+              - tab "Transações" [selected] [ref=f24e236]
+              - tab "Atividade" [ref=f24e237]
+              - tab "Configurações" [ref=f24e238]
+            - button "Nova" [ref=f24e239] [cursor=pointer]
+          - tabpanel "Transações" [ref=f24e240]:
+            - generic [ref=f24e241]:
+              - generic [ref=f24e242]:
+                - generic [ref=f24e243]: Transações recentes
+                - generic [ref=f24e244]: Pagamentos processados nas últimas 24h
+              - table [ref=f24e247]:
+                - rowgroup [ref=f24e248]:
+                  - row [ref=f24e249]:
+                    - columnheader "Pedido" [ref=f24e250]
+                    - columnheader "Cliente" [ref=f24e251]
+                    - columnheader "Status" [ref=f24e252]
+                    - columnheader "Valor" [ref=f24e253]
+                    - columnheader [ref=f24e254]
+                - rowgroup [ref=f24e255]:
+                  - row [ref=f24e256]:
+                    - cell "#3210" [ref=f24e257]
+                    - cell "Ana Prado" [ref=f24e258]
+                    - cell "Pago" [ref=f24e259]
+                    - cell "R$ 320,00" [ref=f24e261]
+                    - cell [ref=f24e262]:
+                      - button [ref=f24e263] [cursor=pointer]
+                  - row [ref=f24e264]:
+                    - cell "#3209" [ref=f24e265]
+                    - cell "Bruno Lima" [ref=f24e266]
+                    - cell "Pendente" [ref=f24e267]
+                    - cell "R$ 89,90" [ref=f24e269]
+                    - cell [ref=f24e270]:
+                      - button [ref=f24e271] [cursor=pointer]
+                  - row [ref=f24e272]:
+                    - cell "#3208" [ref=f24e273]
+                    - cell "Carla Reis" [ref=f24e274]
+                    - cell "Pago" [ref=f24e275]
+                    - cell "R$ 1.240,00" [ref=f24e277]
+                    - cell [ref=f24e278]:
+                      - button [ref=f24e279] [cursor=pointer]
+                  - row [ref=f24e280]:
+                    - cell "#3207" [ref=f24e281]
+                    - cell "Diego Souza" [ref=f24e282]
+                    - cell "Falhou" [ref=f24e283]
+                    - cell "R$ 45,00" [ref=f24e285]
+                    - cell [ref=f24e286]:
+                      - button [ref=f24e287] [cursor=pointer]
+                  - row [ref=f24e288]:
+                    - cell "#3206" [ref=f24e289]
+                    - cell "Elena Costa" [ref=f24e290]
+                    - cell "Pago" [ref=f24e291]
+                    - cell "R$ 560,00" [ref=f24e293]
+                    - cell [ref=f24e294]:
+                      - button [ref=f24e295] [cursor=pointer]
+  - generic [ref=f24e296]: Orgânico

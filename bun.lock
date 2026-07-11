@@ -18,6 +18,7 @@
         "cnfast": "^0.0.8",
         "date-fns": "^4.4.0",
         "embla-carousel-react": "^8.6.0",
+        "framer-motion": "^12.42.2",
         "fumadocs-core": "^16.11.3",
         "fumadocs-ui": "^16.11.3",
         "input-otp": "^1.4.2",
@@ -51,6 +52,10 @@
         "vite": "^8.1.4",
       },
     },
+  },
+  "overrides": {
+    "react": "19.2.7",
+    "react-dom": "19.2.7",
   },
   "packages": {
     "@babel/code-frame": ["@babel/code-frame@7.29.7", "", { "dependencies": { "@babel/helper-validator-identifier": "^7.29.7", "js-tokens": "^4.0.0", "picocolors": "^1.1.1" } }, "sha512-Aup7aUOfpbAUg2ROOJN6Iw5f9DMBlzu0mIkm/malLQFN/YQgO48wCj0Kxa3sEHJvPVFg7siR+qRInwXd2qhQKw=="],
