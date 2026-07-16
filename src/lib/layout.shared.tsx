@@ -9,14 +9,14 @@ export function baseOptions(): BaseLayoutProps {
       title: (
         <>
           <img
-            src="/logo-light.png"
+            src="/logo-light-40.png"
             alt=""
             width={20}
             height={20}
             className="rounded-[4px] dark:hidden"
           />
           <img
-            src="/logo-dark.png"
+            src="/logo-dark-40.png"
             alt=""
             width={20}
             height={20}
