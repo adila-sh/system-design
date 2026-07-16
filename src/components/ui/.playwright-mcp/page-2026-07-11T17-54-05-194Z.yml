@@ -1,0 +1,221 @@
+- generic [active] [ref=f4e1]:
+  - generic [ref=f4e2]:
+    - heading "Command Palette" [level=2]
+    - paragraph: Search for a command to run...
+  - generic [ref=f4e3]:
+    - generic [ref=f4e6]:
+      - generic [ref=f4e8]:
+        - list [ref=f4e9]:
+          - listitem [ref=f4e10]:
+            - button "Adila Inc. Plano Pro" [ref=f4e11]:
+              - generic [ref=f4e15]:
+                - generic [ref=f4e16]: Adila Inc.
+                - generic [ref=f4e17]: Plano Pro
+        - button "Toggle Sidebar" [ref=f4e18] [cursor=pointer]
+      - separator
+      - generic [ref=f4e20]:
+        - list [ref=f4e23]:
+          - listitem [ref=f4e24]:
+            - button "Buscar ⌘K" [ref=f4e25]:
+              - generic [ref=f4e28]: Buscar
+              - generic: ⌘K
+        - generic [ref=f4e29]:
+          - generic [ref=f4e30]: Plataforma
+          - list [ref=f4e32]:
+            - listitem [ref=f4e33]:
+              - button "Visão geral" [ref=f4e34]
+            - listitem [ref=f4e38]:
+              - button "Analytics" [ref=f4e39]
+              - generic: "3"
+            - listitem [ref=f4e43]:
+              - button "Clientes" [ref=f4e44]
+            - listitem [ref=f4e48]:
+              - button "Produtos" [ref=f4e49]
+              - generic: "12"
+        - generic [ref=f4e53]:
+          - generic [ref=f4e54]: Suporte
+          - list [ref=f4e56]:
+            - listitem [ref=f4e57]:
+              - button "Configurações" [ref=f4e58]
+            - listitem [ref=f4e62]:
+              - button "Ajuda" [ref=f4e63]
+      - list [ref=f4e68]:
+        - listitem [ref=f4e69]:
+          - button "JS João Sousa joao@adila.co" [ref=f4e70]:
+            - generic [ref=f4e71]: JS
+            - generic [ref=f4e73]:
+              - generic [ref=f4e74]: João Sousa
+              - generic [ref=f4e75]: joao@adila.co
+    - main [ref=f4e78]:
+      - generic [ref=f4e79]:
+        - generic [ref=f4e80]:
+          - heading "Visão geral" [level=1] [ref=f4e81]
+          - paragraph [ref=f4e82]: Bem-vindo de volta, João
+        - generic [ref=f4e83]:
+          - textbox "Buscar" [ref=f4e85]:
+            - /placeholder: Buscar…
+          - button "Alternar tema" [ref=f4e86] [cursor=pointer]
+          - button "Notificações" [ref=f4e87] [cursor=pointer]
+          - generic [ref=f4e88]: JS
+      - generic [ref=f4e90]:
+        - generic [ref=f4e91]:
+          - generic [ref=f4e92]:
+            - generic [ref=f4e93]:
+              - generic [ref=f4e94]: Receita total
+              - generic [ref=f4e95]: R$ 45.231
+            - generic [ref=f4e100]:
+              - generic [ref=f4e101]: +20,1%
+              - generic [ref=f4e102]: vs. mês anterior
+          - generic [ref=f4e103]:
+            - generic [ref=f4e104]:
+              - generic [ref=f4e105]: Assinantes
+              - generic [ref=f4e106]: "2.350"
+            - generic [ref=f4e111]:
+              - generic [ref=f4e112]: +180,1%
+              - generic [ref=f4e113]: vs. mês anterior
+          - generic [ref=f4e114]:
+            - generic [ref=f4e115]:
+              - generic [ref=f4e116]: Vendas
+              - generic [ref=f4e117]: "12.234"
+            - generic [ref=f4e122]:
+              - generic [ref=f4e123]: +19%
+              - generic [ref=f4e124]: vs. mês anterior
+          - generic [ref=f4e125]:
+            - generic [ref=f4e126]:
+              - generic [ref=f4e127]: Ativos agora
+              - generic [ref=f4e128]: "573"
+            - generic [ref=f4e133]:
+              - generic [ref=f4e134]: "-2,4%"
+              - generic [ref=f4e135]: vs. mês anterior
+        - generic [ref=f4e136]:
+          - generic [ref=f4e138]:
+            - generic [ref=f4e139]: Receita x Custo
+            - generic [ref=f4e140]: Últimos 6 meses
+            - generic [ref=f4e141]:
+              - combobox [ref=f4e142]:
+                - generic [ref=f4e143]: 6 meses
+                - img: ▼
+              - textbox [ref=f4e144]: 6m
+          - generic [ref=f4e150]:
+            - generic [ref=f4e151]: Tráfego por canal
+            - generic [ref=f4e152]: Sessões nesta semana
+        - generic [ref=f4e157]:
+          - generic [ref=f4e158]:
+            - tablist [ref=f4e159]:
+              - tab "Transações" [selected] [ref=f4e160]
+              - tab "Atividade" [ref=f4e161]
+              - tab "Configurações" [ref=f4e162]
+            - button "Nova" [ref=f4e163] [cursor=pointer]
+          - tabpanel [ref=f4e164]:
+            - generic [ref=f4e165]:
+              - generic [ref=f4e166]:
+                - generic [ref=f4e167]: Transações recentes
+                - generic [ref=f4e168]: Filtre, ordene e selecione — data table completa
+              - generic [ref=f4e170]:
+                - generic [ref=f4e171]:
+                  - textbox "Filtrar cliente…" [ref=f4e172]
+                  - button "Colunas" [ref=f4e173] [cursor=pointer]
+                - table [ref=f4e176]:
+                  - rowgroup [ref=f4e177]:
+                    - row [ref=f4e178]:
+                      - columnheader [ref=f4e179]:
+                        - checkbox [ref=f4e180] [cursor=pointer]
+                        - checkbox [ref=f4e181]
+                      - columnheader "Pedido" [ref=f4e182]
+                      - columnheader [ref=f4e183]:
+                        - button "Cliente" [ref=f4e184] [cursor=pointer]
+                      - columnheader "Status" [ref=f4e185]
+                      - columnheader [ref=f4e186]:
+                        - button "Valor" [ref=f4e187] [cursor=pointer]
+                      - columnheader [ref=f4e188]
+                  - rowgroup [ref=f4e189]:
+                    - row [ref=f4e190]:
+                      - cell [ref=f4e191]:
+                        - checkbox [ref=f4e192] [cursor=pointer]
+                        - checkbox [ref=f4e193]
+                      - cell "#3210" [ref=f4e194]
+                      - cell "Ana Prado ana1@adila.co" [ref=f4e195]:
+                        - generic [ref=f4e196]:
+                          - generic [ref=f4e197]: Ana Prado
+                          - generic [ref=f4e198]: ana1@adila.co
+                      - cell "Pago" [ref=f4e199]
+                      - cell "R$ 20,00" [ref=f4e201]
+                      - cell [ref=f4e203]:
+                        - button "Ações" [ref=f4e204] [cursor=pointer]
+                    - row [ref=f4e205]:
+                      - cell [ref=f4e206]:
+                        - checkbox [ref=f4e207] [cursor=pointer]
+                        - checkbox [ref=f4e208]
+                      - cell "#3209" [ref=f4e209]
+                      - cell "Bruno Lima bruno2@adila.co" [ref=f4e210]:
+                        - generic [ref=f4e211]:
+                          - generic [ref=f4e212]: Bruno Lima
+                          - generic [ref=f4e213]: bruno2@adila.co
+                      - cell "Pendente" [ref=f4e214]
+                      - cell "R$ 193,50" [ref=f4e216]
+                      - cell [ref=f4e218]:
+                        - button "Ações" [ref=f4e219] [cursor=pointer]
+                    - row [ref=f4e220]:
+                      - cell [ref=f4e221]:
+                        - checkbox [ref=f4e222] [cursor=pointer]
+                        - checkbox [ref=f4e223]
+                      - cell "#3208" [ref=f4e224]
+                      - cell "Carla Reis carla3@adila.co" [ref=f4e225]:
+                        - generic [ref=f4e226]:
+                          - generic [ref=f4e227]: Carla Reis
+                          - generic [ref=f4e228]: carla3@adila.co
+                      - cell "Falhou" [ref=f4e229]
+                      - cell "R$ 367,00" [ref=f4e231]
+                      - cell [ref=f4e233]:
+                        - button "Ações" [ref=f4e234] [cursor=pointer]
+                    - row [ref=f4e235]:
+                      - cell [ref=f4e236]:
+                        - checkbox [ref=f4e237] [cursor=pointer]
+                        - checkbox [ref=f4e238]
+                      - cell "#3207" [ref=f4e239]
+                      - cell "Diego Souza diego4@adila.co" [ref=f4e240]:
+                        - generic [ref=f4e241]:
+                          - generic [ref=f4e242]: Diego Souza
+                          - generic [ref=f4e243]: diego4@adila.co
+                      - cell "Pago" [ref=f4e244]
+                      - cell "R$ 540,50" [ref=f4e246]
+                      - cell [ref=f4e248]:
+                        - button "Ações" [ref=f4e249] [cursor=pointer]
+                    - row [ref=f4e250]:
+                      - cell [ref=f4e251]:
+                        - checkbox [ref=f4e252] [cursor=pointer]
+                        - checkbox [ref=f4e253]
+                      - cell "#3206" [ref=f4e254]
+                      - cell "Elena Costa elena5@adila.co" [ref=f4e255]:
+                        - generic [ref=f4e256]:
+                          - generic [ref=f4e257]: Elena Costa
+                          - generic [ref=f4e258]: elena5@adila.co
+                      - cell "Pendente" [ref=f4e259]
+                      - cell "R$ 712,00" [ref=f4e261]
+                      - cell [ref=f4e263]:
+                        - button "Ações" [ref=f4e264] [cursor=pointer]
+                - generic [ref=f4e265]:
+                  - generic [ref=f4e266]: 0 de 48 linha(s) selecionada(s).
+                  - generic [ref=f4e267]:
+                    - generic [ref=f4e268]:
+                      - generic [ref=f4e269]: Linhas por página
+                      - combobox [ref=f4e270]:
+                        - generic [ref=f4e271]: "5"
+                        - img: ▼
+                      - textbox [ref=f4e272]: "5"
+                    - navigation "pagination" [ref=f4e273]:
+                      - list [ref=f4e274]:
+                        - listitem [ref=f4e275]:
+                          - button "Go to previous page" [disabled]:
+                            - generic: Anterior
+                        - listitem [ref=f4e276]:
+                          - button "1" [ref=f4e277] [cursor=pointer]
+                        - listitem [ref=f4e278]:
+                          - button "2" [ref=f4e279] [cursor=pointer]
+                        - listitem [ref=f4e280]:
+                          - generic [ref=f4e281]: More pages
+                        - listitem [ref=f4e285]:
+                          - button "10" [ref=f4e286] [cursor=pointer]
+                        - listitem [ref=f4e287]:
+                          - button "Go to next page" [ref=f4e288] [cursor=pointer]:
+                            - generic [ref=f4e289]: Próximo

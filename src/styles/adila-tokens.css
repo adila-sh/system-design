@@ -159,8 +159,11 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 
+  /* As fontes vivem no :root (o gen-registry.mjs lê de lá para o registry);
+     aqui só as referenciamos para o Tailwind gerar font-sans/mono/pixel. */
   --font-sans: var(--font-sans);
   --font-mono: var(--font-mono);
+  --font-pixel: var(--font-pixel);
 }
 
 @layer base {

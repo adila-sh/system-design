@@ -1,0 +1,205 @@
+- generic [ref=f1e2]:
+  - generic [ref=f1e5]:
+    - generic [ref=f1e7]:
+      - list [ref=f1e8]:
+        - listitem [ref=f1e9]:
+          - button "Adila Inc. Plano Pro" [ref=f1e10]:
+            - generic [ref=f1e14]:
+              - generic [ref=f1e15]: Adila Inc.
+              - generic [ref=f1e16]: Plano Pro
+      - button "Toggle Sidebar" [ref=f1e17] [cursor=pointer]
+    - separator
+    - generic [ref=f1e19]:
+      - generic [ref=f1e20]:
+        - generic [ref=f1e21]: Plataforma
+        - list [ref=f1e23]:
+          - listitem [ref=f1e24]:
+            - button "Visão geral" [ref=f1e25]
+          - listitem [ref=f1e29]:
+            - button "Analytics" [ref=f1e30]
+            - generic: "3"
+          - listitem [ref=f1e34]:
+            - button "Clientes" [ref=f1e35]
+          - listitem [ref=f1e39]:
+            - button "Produtos" [ref=f1e40]
+            - generic: "12"
+      - generic [ref=f1e44]:
+        - generic [ref=f1e45]: Suporte
+        - list [ref=f1e47]:
+          - listitem [ref=f1e48]:
+            - button "Configurações" [ref=f1e49]
+          - listitem [ref=f1e53]:
+            - button "Ajuda" [ref=f1e54]
+    - list [ref=f1e59]:
+      - listitem [ref=f1e60]:
+        - button "JS João Sousa joao@adila.co" [ref=f1e61]:
+          - generic [ref=f1e62]: JS
+          - generic [ref=f1e64]:
+            - generic [ref=f1e65]: João Sousa
+            - generic [ref=f1e66]: joao@adila.co
+  - main [ref=f1e69]:
+    - generic [ref=f1e70]:
+      - generic [ref=f1e71]:
+        - heading "Visão geral" [level=1] [ref=f1e72]
+        - paragraph [ref=f1e73]: Bem-vindo de volta, João
+      - generic [ref=f1e74]:
+        - textbox "Buscar" [ref=f1e76]:
+          - /placeholder: Buscar…
+        - button "Alternar tema" [ref=f1e77] [cursor=pointer]
+        - button "Notificações" [ref=f1e78] [cursor=pointer]
+        - generic [ref=f1e79]: JS
+    - generic [ref=f1e81]:
+      - generic [ref=f1e82]:
+        - generic [ref=f1e83]:
+          - generic [ref=f1e84]:
+            - generic [ref=f1e85]: Receita total
+            - generic [ref=f1e86]: R$ 45.231
+          - generic [ref=f1e91]:
+            - generic [ref=f1e92]: +20,1%
+            - generic [ref=f1e93]: vs. mês anterior
+        - generic [ref=f1e94]:
+          - generic [ref=f1e95]:
+            - generic [ref=f1e96]: Assinantes
+            - generic [ref=f1e97]: "2.350"
+          - generic [ref=f1e102]:
+            - generic [ref=f1e103]: +180,1%
+            - generic [ref=f1e104]: vs. mês anterior
+        - generic [ref=f1e105]:
+          - generic [ref=f1e106]:
+            - generic [ref=f1e107]: Vendas
+            - generic [ref=f1e108]: "12.234"
+          - generic [ref=f1e113]:
+            - generic [ref=f1e114]: +19%
+            - generic [ref=f1e115]: vs. mês anterior
+        - generic [ref=f1e116]:
+          - generic [ref=f1e117]:
+            - generic [ref=f1e118]: Ativos agora
+            - generic [ref=f1e119]: "573"
+          - generic [ref=f1e124]:
+            - generic [ref=f1e125]: "-2,4%"
+            - generic [ref=f1e126]: vs. mês anterior
+      - generic [ref=f1e127]:
+        - generic [ref=f1e129]:
+          - generic [ref=f1e130]: Receita x Custo
+          - generic [ref=f1e131]: Últimos 6 meses
+          - generic [ref=f1e132]:
+            - combobox [ref=f1e133]:
+              - generic [ref=f1e134]: 6 meses
+              - img: ▼
+            - textbox [ref=f1e135]: 6m
+        - generic [ref=f1e141]:
+          - generic [ref=f1e142]: Tráfego por canal
+          - generic [ref=f1e143]: Sessões nesta semana
+      - generic [ref=f1e148]:
+        - generic [ref=f1e149]:
+          - tablist [ref=f1e150]:
+            - tab "Transações" [selected] [ref=f1e151]
+            - tab "Atividade" [ref=f1e152]
+            - tab "Configurações" [ref=f1e153]
+          - button "Nova" [ref=f1e154] [cursor=pointer]
+        - tabpanel [ref=f1e155]:
+          - generic [ref=f1e156]:
+            - generic [ref=f1e157]:
+              - generic [ref=f1e158]: Transações recentes
+              - generic [ref=f1e159]: Filtre, ordene e selecione — data table completa
+            - generic [ref=f1e161]:
+              - generic [ref=f1e162]:
+                - textbox "Filtrar cliente…" [ref=f1e163]
+                - button "Colunas" [ref=f1e164] [cursor=pointer]
+              - table [ref=f1e167]:
+                - rowgroup [ref=f1e168]:
+                  - row [ref=f1e169]:
+                    - columnheader [ref=f1e170]:
+                      - checkbox [ref=f1e171] [cursor=pointer]
+                      - checkbox [ref=f1e172]
+                    - columnheader "Pedido" [ref=f1e173]
+                    - columnheader [ref=f1e174]:
+                      - button "Cliente" [ref=f1e175] [cursor=pointer]
+                    - columnheader "Status" [ref=f1e176]
+                    - columnheader [ref=f1e177]:
+                      - button "Valor" [ref=f1e178] [cursor=pointer]
+                    - columnheader [ref=f1e179]
+                - rowgroup [ref=f1e180]:
+                  - row [ref=f1e181]:
+                    - cell [ref=f1e182]:
+                      - checkbox [ref=f1e183] [cursor=pointer]
+                      - checkbox [ref=f1e184]
+                    - cell "#3210" [ref=f1e185]
+                    - cell "Ana Prado ana1@adila.co" [ref=f1e186]:
+                      - generic [ref=f1e187]:
+                        - generic [ref=f1e188]: Ana Prado
+                        - generic [ref=f1e189]: ana1@adila.co
+                    - cell "Pago" [ref=f1e190]
+                    - cell "R$ 20,00" [ref=f1e192]
+                    - cell [ref=f1e194]:
+                      - button "Ações" [ref=f1e195] [cursor=pointer]
+                  - row [ref=f1e196]:
+                    - cell [ref=f1e197]:
+                      - checkbox [ref=f1e198] [cursor=pointer]
+                      - checkbox [ref=f1e199]
+                    - cell "#3209" [ref=f1e200]
+                    - cell "Bruno Lima bruno2@adila.co" [ref=f1e201]:
+                      - generic [ref=f1e202]:
+                        - generic [ref=f1e203]: Bruno Lima
+                        - generic [ref=f1e204]: bruno2@adila.co
+                    - cell "Pendente" [ref=f1e205]
+                    - cell "R$ 193,50" [ref=f1e207]
+                    - cell [ref=f1e209]:
+                      - button "Ações" [ref=f1e210] [cursor=pointer]
+                  - row [ref=f1e211]:
+                    - cell [ref=f1e212]:
+                      - checkbox [ref=f1e213] [cursor=pointer]
+                      - checkbox [ref=f1e214]
+                    - cell "#3208" [ref=f1e215]
+                    - cell "Carla Reis carla3@adila.co" [ref=f1e216]:
+                      - generic [ref=f1e217]:
+                        - generic [ref=f1e218]: Carla Reis
+                        - generic [ref=f1e219]: carla3@adila.co
+                    - cell "Falhou" [ref=f1e220]
+                    - cell "R$ 367,00" [ref=f1e222]
+                    - cell [ref=f1e224]:
+                      - button "Ações" [ref=f1e225] [cursor=pointer]
+                  - row [ref=f1e226]:
+                    - cell [ref=f1e227]:
+                      - checkbox [ref=f1e228] [cursor=pointer]
+                      - checkbox [ref=f1e229]
+                    - cell "#3207" [ref=f1e230]
+                    - cell "Diego Souza diego4@adila.co" [ref=f1e231]:
+                      - generic [ref=f1e232]:
+                        - generic [ref=f1e233]: Diego Souza
+                        - generic [ref=f1e234]: diego4@adila.co
+                    - cell "Pago" [ref=f1e235]
+                    - cell "R$ 540,50" [ref=f1e237]
+                    - cell [ref=f1e239]:
+                      - button "Ações" [ref=f1e240] [cursor=pointer]
+                  - row [ref=f1e241]:
+                    - cell [ref=f1e242]:
+                      - checkbox [ref=f1e243] [cursor=pointer]
+                      - checkbox [ref=f1e244]
+                    - cell "#3206" [ref=f1e245]
+                    - cell "Elena Costa elena5@adila.co" [ref=f1e246]:
+                      - generic [ref=f1e247]:
+                        - generic [ref=f1e248]: Elena Costa
+                        - generic [ref=f1e249]: elena5@adila.co
+                    - cell "Pendente" [ref=f1e250]
+                    - cell "R$ 712,00" [ref=f1e252]
+                    - cell [ref=f1e254]:
+                      - button "Ações" [ref=f1e255] [cursor=pointer]
+              - generic [ref=f1e256]:
+                - generic [ref=f1e257]: 0 de 48 linha(s) selecionada(s).
+                - navigation "pagination" [ref=f1e258]:
+                  - list [ref=f1e259]:
+                    - listitem [ref=f1e260]:
+                      - button "Go to previous page" [disabled]:
+                        - generic: Anterior
+                    - listitem [ref=f1e261]:
+                      - button "1" [ref=f1e262] [cursor=pointer]
+                    - listitem [ref=f1e263]:
+                      - button "2" [ref=f1e264] [cursor=pointer]
+                    - listitem [ref=f1e265]:
+                      - generic [ref=f1e266]: More pages
+                    - listitem [ref=f1e270]:
+                      - button "10" [ref=f1e271] [cursor=pointer]
+                    - listitem [ref=f1e272]:
+                      - button "Go to next page" [ref=f1e273] [cursor=pointer]:
+                        - generic [ref=f1e274]: Próximo
