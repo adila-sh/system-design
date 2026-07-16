@@ -10,9 +10,12 @@ export const Route = createFileRoute("/")({
 
 function Home() {
   return (
-    <HomeLayout {...baseOptions()}>
+    <HomeLayout
+      {...baseOptions()}
+      nav={{ ...baseOptions().nav, transparentMode: "top" }}
+    >
       {/* Hero — fundo animado "Pixel Blast", o mesmo motivo da LP do adila.co. */}
-      <section className="relative isolate flex min-h-svh flex-1 items-center justify-center overflow-hidden px-4">
+      <section className="relative isolate -mt-14 flex min-h-svh flex-1 items-center justify-center overflow-hidden px-4">
         <PixelBlast className="absolute inset-0 -z-10" />
         <div className="flex flex-col items-center gap-6 text-center text-white">
           <span className="font-pixel text-sm uppercase tracking-[0.2em] text-white/80">
