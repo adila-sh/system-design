@@ -1,0 +1,56 @@
+---
+title: Pixel Blast
+description: Fundo animado em WebGL — grid de pixels na cor primary, com ruído, brilho no cursor e ondas ao clique.
+---
+
+import { PixelBlast } from '@/components/ui/pixel-blast';
+
+<Preview>
+  <div className="relative h-64 w-full overflow-hidden rounded-lg">
+    <PixelBlast className="absolute inset-0" />
+  </div>
+</Preview>
+
+Clique no preview: cada clique dispara uma onda e, a cada cinco, o formato dos
+pixels avança (quadrado → círculo → losango).
+
+## Instalação
+
+```bash
+npx shadcn@latest add https://ds.adila.co/r/pixel-blast.json
+```
+
+## Uso
+
+Como fundo de uma seção — o container precisa de `position: relative` e o
+`PixelBlast` se posiciona sobre ele:
+
+```tsx
+import { PixelBlast } from '@/components/ui/pixel-blast';
+
+export function Hero() {
+  return (
+    <section className="relative isolate min-h-svh overflow-hidden">
+      <PixelBlast className="absolute inset-0 -z-10" />
+      <h1 className="text-white">Design System</h1>
+    </section>
+  );
+}
+```
+
+Sem `className`, o default é `fixed inset-0 -z-10` — cobre a viewport inteira.
+
+## Props
+
+| Prop | Tipo | Default | Descrição |
+|---|---|---|---|
+| `className` | `string` | `"fixed inset-0 -z-10"` | Classes do container. Substitui o default por completo. |
+
+## Comportamento
+
+- **Cor:** lê o token `--primary` do tema e re-lê quando o tema muda — acompanha light e dark sem configuração.
+- **Sem dependências:** WebGL cru, sem three.js.
+- **Degradação:** sem suporte a WebGL, o canvas é escondido e o fundo `bg-primary` assume.
+- **Movimento reduzido:** respeita `prefers-reduced-motion`, atenuando a animação.
+- **Performance:** o loop pausa quando o canvas sai da viewport e retoma sem salto.
+- **Interação:** os listeners de ponteiro são registrados em `window`, então cliques em qualquer ponto da página disparam ondas — não apenas os cliques sobre o canvas.
