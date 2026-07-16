@@ -4,8 +4,27 @@ import { appName, gitConfig } from "./shared";
 export function baseOptions(): BaseLayoutProps {
   return {
     nav: {
-      // JSX supported
-      title: appName,
+      // Cada logo já embute o próprio fundo, então alternamos por visibilidade
+      // em vez de filtro. Decorativo ao lado do texto → alt vazio.
+      title: (
+        <>
+          <img
+            src="/logo-light.png"
+            alt=""
+            width={20}
+            height={20}
+            className="rounded-[4px] dark:hidden"
+          />
+          <img
+            src="/logo-dark.png"
+            alt=""
+            width={20}
+            height={20}
+            className="hidden rounded-[4px] dark:block"
+          />
+          {appName}
+        </>
+      ),
     },
     links: [
       {
