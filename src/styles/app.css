@@ -48,6 +48,37 @@ html > body[data-scroll-locked] {
   background-color: color-mix(in oklch, var(--border), var(--foreground) 30%);
 }
 
+/* Navbar sobre o hero (Pixel Blast) — só na home.
+   O blast é indigo escuro nos dois temas (--primary não muda entre light/dark),
+   então a navbar não pode seguir o tema aqui como faz em /docs e /showcase:
+   precisa de texto/ícones claros nos dois. Reaproveitamos o mesmo mecanismo que
+   o próprio fumadocs usa para re-temizar por escopo (ver #nd-sidebar em
+   fumadocs-ui/css/shadcn.css): sobrescrever os tokens --color-fd-* dentro de um
+   seletor, em vez de sobrepor cada classe utilitária individualmente.
+   #nd-nav é o id que o fumadocs dá ao <header> (fumadocs-ui/layouts/home/slots/header),
+   acoplamento ao interno da lib — se renomearem o id numa atualização, ajustar aqui.
+   .home-hero-nav é o className passado ao HomeLayout só na home (src/routes/index.tsx),
+   então /docs e /showcase (que não usam essa classe) ficam intocados. */
+.home-hero-nav #nd-nav {
+  --color-fd-foreground: oklch(1 0 0);
+  --color-fd-muted-foreground: oklch(1 0 0);
+  --color-fd-accent-foreground: oklch(1 0 0);
+  --color-fd-primary: oklch(1 0 0);
+  /* O título ("DS | Adila.co") não declara cor própria — só herda de `body`,
+     que já resolveu --color-fd-foreground lá em cima, fora deste escopo.
+     Redeclarar `color` aqui recomputa a herança a partir do token sobrescrito. */
+  color: var(--color-fd-foreground);
+}
+
+/* Mesma origem do defeito acima: a lib aplica blur e borda inferior no header
+   mesmo com transparentMode="top", o que deixa uma emenda visível (faixa lisa
+   e borrada) contra o campo pixelado do blast logo abaixo. Sobre o hero, nem
+   um nem outro fazem sentido. */
+.home-hero-nav #nd-nav > div {
+  backdrop-filter: none;
+  border-bottom-color: transparent;
+}
+
 /* Respeita usuários com movimento reduzido: neutraliza animações/transições
    dos componentes sem exigir media query por componente. */
 @media (prefers-reduced-motion: reduce) {

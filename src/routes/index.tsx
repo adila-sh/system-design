@@ -13,6 +13,8 @@ function Home() {
     <HomeLayout
       {...baseOptions()}
       nav={{ ...baseOptions().nav, transparentMode: "top" }}
+      // Escopo p/ os overrides de cor da navbar sobre o hero — ver app.css.
+      className="home-hero-nav"
     >
       {/* Hero — fundo animado "Pixel Blast", o mesmo motivo da LP do adila.co. */}
       <section className="relative isolate -mt-14 flex min-h-svh flex-1 items-center justify-center overflow-hidden px-4">
