@@ -1,0 +1,99 @@
+---
+title: Typography
+description: Primitives tipográficos semânticos para títulos, textos e conteúdos de apoio.
+---
+
+import {
+  Blockquote,
+  Description,
+  InlineCode,
+  Label,
+  Lead,
+  List,
+  Muted,
+  Small,
+  Text,
+  Title,
+} from "@/components/ui/typography";
+
+<Preview>
+  <div className="w-full max-w-2xl space-y-5">
+    <div className="space-y-2">
+      <Label>Design system</Label>
+      <Title level={1}>Interfaces claras começam pela tipografia.</Title>
+      <Lead>
+        Uma hierarquia consistente ajuda as pessoas a encontrar o que importa.
+      </Lead>
+    </div>
+    <Text>
+      Use os componentes como blocos semânticos. O{" "}
+      <InlineCode>Title</InlineCode>
+      escolhe automaticamente a tag de acordo com a propriedade de nível.
+    </Text>
+    <Description>
+      Os estilos usam os tokens de cor e fonte do tema adila.co.
+    </Description>
+    <Blockquote>Bom design torna a intenção visível.</Blockquote>
+    <List>
+      <li>Hierarquia previsível</li>
+      <li>Ritmo de leitura confortável</li>
+      <li>Semântica HTML preservada</li>
+    </List>
+    <Muted>Atualizado há 5 minutos</Muted>
+    <Small>Termos e condições se aplicam.</Small>
+  </div>
+</Preview>
+
+## Instalação
+
+```bash
+npx shadcn@latest add https://ds.adila.co/r/typography.json
+```
+
+## Uso
+
+```tsx
+import {
+  Description,
+  Label,
+  Lead,
+  Text,
+  Title,
+} from "@/components/ui/typography";
+
+export function ArticleHeader() {
+  return (
+    <header className="space-y-3">
+      <Label>Novidades</Label>
+      <Title level={1}>Uma nova experiência</Title>
+      <Lead>Uma introdução em destaque para contextualizar a página.</Lead>
+      <Text>O conteúdo principal começa aqui.</Text>
+      <Description>Publicado em 18 de julho de 2026.</Description>
+    </header>
+  );
+}
+```
+
+## Títulos
+
+`Title` renderiza `h1` por padrão. Use `level` de `1` a `6` para manter a
+hierarquia semântica e aplicar a escala visual correspondente.
+
+```tsx
+<Title level={1}>Título da página</Title>
+<Title level={2}>Título da seção</Title>
+<Title level={3}>Título do bloco</Title>
+```
+
+## Componentes
+
+- `Title`: títulos semânticos de `h1` a `h6`.
+- `Text`: parágrafo de conteúdo padrão.
+- `Lead`: introdução em destaque.
+- `Label`: rótulo visual curto; para campos de formulário, use o componente `Label` de formulário.
+- `Description`: texto explicativo secundário.
+- `Small`: observações compactas.
+- `Muted`: metadados e informações de menor ênfase.
+- `InlineCode`: termos técnicos e trechos curtos de código.
+- `Blockquote`: citações em bloco.
+- `List`: lista não ordenada com ritmo tipográfico consistente.

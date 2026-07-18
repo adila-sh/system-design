@@ -14,6 +14,7 @@ import {
   SignOutIcon as LogOut,
   MoonStarsIcon as MoonStar,
   PackageIcon as Package,
+  PlusIcon as Plus,
   MagnifyingGlassIcon as Search,
   GearSixIcon as Settings2,
   SparkleIcon as Sparkles,
@@ -45,6 +46,20 @@ import {
   type ChartConfig,
 } from "@/components/ui/chart";
 import { CommandMenu } from "@/components/command-menu";
+import { CopyButton } from "@/components/ui/copy-button";
+import {
+  DataList,
+  DataListItem,
+  DataListTerm,
+  DataListValue,
+} from "@/components/ui/data-list";
+import {
+  FilterBar,
+  FilterBarActions,
+  FilterBarGroup,
+  FilterBarResults,
+} from "@/components/ui/filter-bar";
+import { FileUpload } from "@/components/ui/file-upload";
 import { NewTransactionDrawer } from "@/components/new-transaction-drawer";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Kbd } from "@/components/ui/kbd";
@@ -60,6 +75,14 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import {
+  PageHeader,
+  PageHeaderActions,
+  PageHeaderContent,
+  PageHeaderDescription,
+  PageHeaderEyebrow,
+  PageHeaderTitle,
+} from "@/components/ui/page-header";
 import { Progress } from "@/components/ui/progress";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import {
@@ -70,6 +93,14 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Separator } from "@/components/ui/separator";
+import {
+  SectionHeader,
+  SectionHeaderActions,
+  SectionHeaderContent,
+  SectionHeaderDescription,
+  SectionHeaderTitle,
+} from "@/components/ui/section-header";
+import { SearchInput } from "@/components/ui/search-input";
 import {
   Sidebar,
   SidebarContent,
@@ -88,6 +119,7 @@ import {
   SidebarTrigger,
 } from "@/components/ui/sidebar";
 import { Slider } from "@/components/ui/slider";
+import { Status } from "@/components/ui/status";
 import { Switch } from "@/components/ui/switch";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
@@ -330,6 +362,7 @@ function Showcase() {
   const isDark = theme === "dark";
   const [notify, setNotify] = useState(true);
   const [cmdOpen, setCmdOpen] = useState(false);
+  const [customerSearch, setCustomerSearch] = useState("");
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -408,6 +441,134 @@ function Showcase() {
 
           {/* Conteúdo */}
           <div className="flex flex-1 flex-col gap-4 p-4">
+            <PageHeader>
+              <PageHeaderContent>
+                <PageHeaderEyebrow>Workspace / Clientes</PageHeaderEyebrow>
+                <PageHeaderTitle>Visão geral de clientes</PageHeaderTitle>
+                <PageHeaderDescription>
+                  Acompanhe contas, encontre clientes e gerencie documentos em
+                  um único lugar.
+                </PageHeaderDescription>
+              </PageHeaderContent>
+              <PageHeaderActions>
+                <Button variant="outline">Exportar</Button>
+                <Button>
+                  <Plus />
+                  Novo cliente
+                </Button>
+              </PageHeaderActions>
+            </PageHeader>
+
+            <FilterBar>
+              <FilterBarGroup>
+                <SearchInput
+                  className="w-full sm:w-72"
+                  placeholder="Buscar cliente…"
+                  aria-label="Buscar cliente"
+                  value={customerSearch}
+                  onValueChange={setCustomerSearch}
+                />
+                <Select
+                  defaultValue="todos"
+                  items={{
+                    todos: "Todos",
+                    ativos: "Ativos",
+                    pendentes: "Pendentes",
+                  }}
+                >
+                  <SelectTrigger size="sm" className="w-36">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="todos">Todos</SelectItem>
+                    <SelectItem value="ativos">Ativos</SelectItem>
+                    <SelectItem value="pendentes">Pendentes</SelectItem>
+                  </SelectContent>
+                </Select>
+              </FilterBarGroup>
+              <FilterBarActions>
+                <FilterBarResults>
+                  {customerSearch ? "3 resultados" : "2.350 clientes"}
+                </FilterBarResults>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  disabled={!customerSearch}
+                  onClick={() => setCustomerSearch("")}
+                >
+                  Limpar
+                </Button>
+              </FilterBarActions>
+            </FilterBar>
+
+            <div className="grid gap-4 lg:grid-cols-2">
+              <Card>
+                <CardHeader>
+                  <SectionHeader>
+                    <SectionHeaderContent>
+                      <SectionHeaderTitle>Conta em destaque</SectionHeaderTitle>
+                      <SectionHeaderDescription>
+                        Informações comerciais e operacionais.
+                      </SectionHeaderDescription>
+                    </SectionHeaderContent>
+                    <SectionHeaderActions>
+                      <Status variant="success">Ativa</Status>
+                    </SectionHeaderActions>
+                  </SectionHeader>
+                </CardHeader>
+                <CardContent>
+                  <DataList>
+                    <DataListItem>
+                      <DataListTerm>Empresa</DataListTerm>
+                      <DataListValue>Acme Tecnologia Ltda.</DataListValue>
+                    </DataListItem>
+                    <DataListItem>
+                      <DataListTerm>Responsável</DataListTerm>
+                      <DataListValue>Marina Costa</DataListValue>
+                    </DataListItem>
+                    <DataListItem>
+                      <DataListTerm>Identificador</DataListTerm>
+                      <DataListValue className="flex items-center gap-2 sm:justify-end">
+                        <code className="font-mono text-xs">cli_8H2K91</code>
+                        <CopyButton
+                          value="cli_8H2K91"
+                          size="icon-xs"
+                          aria-label="Copiar identificador"
+                        />
+                      </DataListValue>
+                    </DataListItem>
+                    <DataListItem>
+                      <DataListTerm>Plano</DataListTerm>
+                      <DataListValue>Enterprise · R$ 4.900/mês</DataListValue>
+                    </DataListItem>
+                  </DataList>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <SectionHeader>
+                    <SectionHeaderContent>
+                      <SectionHeaderTitle>Documentos</SectionHeaderTitle>
+                      <SectionHeaderDescription>
+                        Envie contratos e comprovantes da conta.
+                      </SectionHeaderDescription>
+                    </SectionHeaderContent>
+                    <SectionHeaderActions>
+                      <Status variant="warning">2 pendentes</Status>
+                    </SectionHeaderActions>
+                  </SectionHeader>
+                </CardHeader>
+                <CardContent>
+                  <FileUpload
+                    multiple
+                    accept=".pdf,.png,.jpg,.jpeg"
+                    maxSize={5 * 1024 * 1024}
+                  />
+                </CardContent>
+              </Card>
+            </div>
+
             {/* Stat cards */}
             <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
               {stats.map((s) => (

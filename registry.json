@@ -449,6 +449,35 @@
       ]
     },
     {
+      "name": "copy-button",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "src/components/ui/copy-button.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "dependencies": [
+        "@phosphor-icons/react"
+      ]
+    },
+    {
+      "name": "data-list",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "src/components/ui/data-list.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "utils"
+      ]
+    },
+    {
       "name": "dialog",
       "type": "registry:ui",
       "files": [
@@ -544,6 +573,36 @@
       ],
       "dependencies": [
         "class-variance-authority"
+      ]
+    },
+    {
+      "name": "file-upload",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "src/components/ui/file-upload.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "button",
+        "utils"
+      ],
+      "dependencies": [
+        "@phosphor-icons/react"
+      ]
+    },
+    {
+      "name": "filter-bar",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "src/components/ui/filter-bar.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "utils"
       ]
     },
     {
@@ -759,6 +818,19 @@
       ]
     },
     {
+      "name": "page-header",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "src/components/ui/page-header.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "utils"
+      ]
+    },
+    {
       "name": "pagination",
       "type": "registry:ui",
       "files": [
@@ -866,6 +938,36 @@
       ],
       "dependencies": [
         "@base-ui/react"
+      ]
+    },
+    {
+      "name": "search-input",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "src/components/ui/search-input.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "input-group",
+        "utils"
+      ],
+      "dependencies": [
+        "@phosphor-icons/react"
+      ]
+    },
+    {
+      "name": "section-header",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "src/components/ui/section-header.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "utils"
       ]
     },
     {
@@ -1006,6 +1108,48 @@
       ]
     },
     {
+      "name": "stat",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "src/components/ui/stat.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "utils"
+      ]
+    },
+    {
+      "name": "status",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "src/components/ui/status.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "dependencies": [
+        "class-variance-authority"
+      ]
+    },
+    {
+      "name": "stepper",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "src/components/ui/stepper.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "utils"
+      ]
+    },
+    {
       "name": "switch",
       "type": "registry:ui",
       "files": [
@@ -1065,6 +1209,19 @@
       ]
     },
     {
+      "name": "timeline",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "src/components/ui/timeline.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "utils"
+      ]
+    },
+    {
       "name": "toggle-group",
       "type": "registry:ui",
       "files": [
@@ -1113,6 +1270,19 @@
       ],
       "dependencies": [
         "@base-ui/react"
+      ]
+    },
+    {
+      "name": "typography",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "src/components/ui/typography.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "utils"
       ]
     }
   ]
