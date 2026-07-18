@@ -29,6 +29,14 @@ import { DataTable } from "@/components/data-table";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
+import {
   BottomBar,
   BottomBarButton,
   BottomBarDrawer,
@@ -562,8 +570,39 @@ export function Showcase({
         <SidebarInset className="pb-[calc(4rem+env(safe-area-inset-bottom))] md:pb-0">
           {/* Header */}
           <header className="flex h-16 min-w-0 shrink-0 items-center gap-2 border-b px-3 sm:px-4">
-            <div className="flex flex-col">
-              <h1 className="text-sm font-medium">{title}</h1>
+            <div className="flex min-w-0 flex-col gap-0.5">
+              <h1 className="sr-only">{title}</h1>
+              <Breadcrumb>
+                <BreadcrumbList className="flex-nowrap overflow-hidden text-xs sm:text-sm">
+                  <BreadcrumbItem className="hidden sm:inline-flex">
+                    <BreadcrumbLink render={<Link to="/" />}>
+                      Design System
+                    </BreadcrumbLink>
+                  </BreadcrumbItem>
+                  <BreadcrumbSeparator className="hidden sm:list-item" />
+                  <BreadcrumbItem>
+                    {title === "Visão geral" ? (
+                      <BreadcrumbPage className="truncate font-medium">
+                        Showcase
+                      </BreadcrumbPage>
+                    ) : (
+                      <BreadcrumbLink render={<Link to="/showcase" />}>
+                        Showcase
+                      </BreadcrumbLink>
+                    )}
+                  </BreadcrumbItem>
+                  {title !== "Visão geral" ? (
+                    <>
+                      <BreadcrumbSeparator />
+                      <BreadcrumbItem className="min-w-0">
+                        <BreadcrumbPage className="truncate font-medium">
+                          {title}
+                        </BreadcrumbPage>
+                      </BreadcrumbItem>
+                    </>
+                  ) : null}
+                </BreadcrumbList>
+              </Breadcrumb>
               <p className="hidden text-xs text-muted-foreground sm:block">
                 {description}
               </p>
