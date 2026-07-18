@@ -1,5 +1,5 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { createFileRoute, Link, useRouterState } from "@tanstack/react-router";
+import { useEffect, useState, type ReactNode } from "react";
 import { useTheme } from "next-themes";
 import {
   PulseIcon as Activity,
@@ -228,10 +228,15 @@ const activity = [
 ];
 
 const navMain = [
-  { title: "Visão geral", icon: LayoutDashboard, active: true, badge: null },
-  { title: "Analytics", icon: LineChart, active: false, badge: "3" },
-  { title: "Clientes", icon: Users, active: false, badge: null },
-  { title: "Produtos", icon: Package, active: false, badge: "12" },
+  {
+    title: "Visão geral",
+    icon: LayoutDashboard,
+    href: "/showcase",
+    badge: null,
+  },
+  { title: "Analytics", icon: LineChart, href: "/analytics", badge: "3" },
+  { title: "Clientes", icon: Users, href: "/clientes", badge: null },
+  { title: "Produtos", icon: Package, href: "/produtos", badge: "12" },
 ];
 
 /* ------------------------------------------------------------------ */
@@ -239,6 +244,9 @@ const navMain = [
 /* ------------------------------------------------------------------ */
 
 function AppSidebar({ onOpenCommand }: { onOpenCommand: () => void }) {
+  const pathname = useRouterState({
+    select: (state) => state.location.pathname,
+  });
   return (
     <Sidebar collapsible="icon">
       <SidebarHeader>
@@ -291,8 +299,9 @@ function AppSidebar({ onOpenCommand }: { onOpenCommand: () => void }) {
               {navMain.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton
-                    isActive={item.active}
+                    isActive={pathname === item.href}
                     tooltip={item.title}
+                    render={<Link to={item.href} />}
                   >
                     <item.icon />
                     <span>{item.title}</span>
@@ -311,13 +320,21 @@ function AppSidebar({ onOpenCommand }: { onOpenCommand: () => void }) {
           <SidebarGroupContent>
             <SidebarMenu>
               <SidebarMenuItem>
-                <SidebarMenuButton tooltip="Configurações">
+                <SidebarMenuButton
+                  tooltip="Configurações"
+                  isActive={pathname === "/configuracoes"}
+                  render={<Link to="/configuracoes" />}
+                >
                   <Settings2 />
                   <span>Configurações</span>
                 </SidebarMenuButton>
               </SidebarMenuItem>
               <SidebarMenuItem>
-                <SidebarMenuButton tooltip="Ajuda">
+                <SidebarMenuButton
+                  tooltip="Ajuda"
+                  isActive={pathname === "/ajuda"}
+                  render={<Link to="/ajuda" />}
+                >
                   <LifeBuoy />
                   <span>Ajuda</span>
                 </SidebarMenuButton>
@@ -383,7 +400,15 @@ function AppSidebar({ onOpenCommand }: { onOpenCommand: () => void }) {
 /* Página                                                              */
 /* ------------------------------------------------------------------ */
 
-function Showcase() {
+export function Showcase({
+  children,
+  title = "Visão geral",
+  description = "Bem-vindo de volta, João",
+}: {
+  children?: ReactNode;
+  title?: string;
+  description?: string;
+}) {
   const { theme, setTheme } = useTheme();
   const isDark = theme === "dark";
   const [notify, setNotify] = useState(true);
@@ -408,11 +433,13 @@ function Showcase() {
         <AppSidebar onOpenCommand={() => setCmdOpen(true)} />
         <SidebarInset>
           {/* Header */}
-          <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
+          <header className="flex h-16 min-w-0 shrink-0 items-center gap-2 border-b px-3 sm:px-4">
+            <SidebarTrigger className="md:hidden" />
+            <Separator orientation="vertical" className="h-5 md:hidden" />
             <div className="flex flex-col">
-              <h1 className="text-sm font-medium">Visão geral</h1>
-              <p className="text-xs text-muted-foreground">
-                Bem-vindo de volta, João
+              <h1 className="text-sm font-medium">{title}</h1>
+              <p className="hidden text-xs text-muted-foreground sm:block">
+                {description}
               </p>
             </div>
 
@@ -459,7 +486,7 @@ function Showcase() {
                 <TooltipContent>3 notificações</TooltipContent>
               </Tooltip>
 
-              <Avatar className="size-9">
+              <Avatar className="hidden size-9 sm:flex">
                 <AvatarFallback>JS</AvatarFallback>
               </Avatar>
             </div>
@@ -468,273 +495,289 @@ function Showcase() {
           {/* Conteúdo */}
           <CodeThemeProvider
             defaultTheme="tokyo-night"
-            className="flex flex-1 flex-col gap-4 p-4"
+            className="flex min-w-0 flex-1 flex-col gap-4 p-3 sm:p-4"
           >
-            <PageHeader>
-              <PageHeaderContent>
-                <PageHeaderEyebrow>Workspace / Clientes</PageHeaderEyebrow>
-                <PageHeaderTitle>Visão geral de clientes</PageHeaderTitle>
-                <PageHeaderDescription>
-                  Acompanhe contas, encontre clientes e gerencie documentos em
-                  um único lugar.
-                </PageHeaderDescription>
-              </PageHeaderContent>
-              <PageHeaderActions>
-                <Button variant="outline">Exportar</Button>
-                <Button>
-                  <Plus />
-                  Novo cliente
-                </Button>
-              </PageHeaderActions>
-            </PageHeader>
+            {children ?? (
+              <>
+                <PageHeader>
+                  <PageHeaderContent>
+                    <PageHeaderEyebrow>Workspace / Clientes</PageHeaderEyebrow>
+                    <PageHeaderTitle>Visão geral de clientes</PageHeaderTitle>
+                    <PageHeaderDescription>
+                      Acompanhe contas, encontre clientes e gerencie documentos
+                      em um único lugar.
+                    </PageHeaderDescription>
+                  </PageHeaderContent>
+                  <PageHeaderActions>
+                    <Button variant="outline">Exportar</Button>
+                    <Button>
+                      <Plus />
+                      Novo cliente
+                    </Button>
+                  </PageHeaderActions>
+                </PageHeader>
 
-            <FilterBar>
-              <FilterBarGroup>
-                <SearchInput
-                  className="w-full sm:w-72"
-                  placeholder="Buscar cliente…"
-                  aria-label="Buscar cliente"
-                  value={customerSearch}
-                  onValueChange={setCustomerSearch}
-                />
-                <Select
-                  defaultValue="todos"
-                  items={{
-                    todos: "Todos",
-                    ativos: "Ativos",
-                    pendentes: "Pendentes",
-                  }}
-                >
-                  <SelectTrigger size="sm" className="w-36">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="todos">Todos</SelectItem>
-                    <SelectItem value="ativos">Ativos</SelectItem>
-                    <SelectItem value="pendentes">Pendentes</SelectItem>
-                  </SelectContent>
-                </Select>
-              </FilterBarGroup>
-              <FilterBarActions>
-                <FilterBarResults>
-                  {customerSearch ? "3 resultados" : "2.350 clientes"}
-                </FilterBarResults>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  disabled={!customerSearch}
-                  onClick={() => setCustomerSearch("")}
-                >
-                  Limpar
-                </Button>
-              </FilterBarActions>
-            </FilterBar>
+                <FilterBar>
+                  <FilterBarGroup>
+                    <SearchInput
+                      className="w-full sm:w-72"
+                      placeholder="Buscar cliente…"
+                      aria-label="Buscar cliente"
+                      value={customerSearch}
+                      onValueChange={setCustomerSearch}
+                    />
+                    <Select
+                      defaultValue="todos"
+                      items={{
+                        todos: "Todos",
+                        ativos: "Ativos",
+                        pendentes: "Pendentes",
+                      }}
+                    >
+                      <SelectTrigger size="sm" className="w-36">
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="todos">Todos</SelectItem>
+                        <SelectItem value="ativos">Ativos</SelectItem>
+                        <SelectItem value="pendentes">Pendentes</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </FilterBarGroup>
+                  <FilterBarActions>
+                    <FilterBarResults>
+                      {customerSearch ? "3 resultados" : "2.350 clientes"}
+                    </FilterBarResults>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      disabled={!customerSearch}
+                      onClick={() => setCustomerSearch("")}
+                    >
+                      Limpar
+                    </Button>
+                  </FilterBarActions>
+                </FilterBar>
 
-            <div className="grid gap-4 lg:grid-cols-2">
-              <Card>
-                <CardHeader>
-                  <SectionHeader>
-                    <SectionHeaderContent>
-                      <SectionHeaderTitle>Conta em destaque</SectionHeaderTitle>
-                      <SectionHeaderDescription>
-                        Informações comerciais e operacionais.
-                      </SectionHeaderDescription>
-                    </SectionHeaderContent>
-                    <SectionHeaderActions>
-                      <Status variant="success">Ativa</Status>
-                    </SectionHeaderActions>
-                  </SectionHeader>
-                </CardHeader>
-                <CardContent>
-                  <DataList>
-                    <DataListItem>
-                      <DataListTerm>Empresa</DataListTerm>
-                      <DataListValue>Acme Tecnologia Ltda.</DataListValue>
-                    </DataListItem>
-                    <DataListItem>
-                      <DataListTerm>Responsável</DataListTerm>
-                      <DataListValue>Marina Costa</DataListValue>
-                    </DataListItem>
-                    <DataListItem>
-                      <DataListTerm>Identificador</DataListTerm>
-                      <DataListValue className="flex items-center gap-2 sm:justify-end">
-                        <code className="font-mono text-xs">cli_8H2K91</code>
-                        <CopyButton
-                          value="cli_8H2K91"
-                          size="icon-xs"
-                          aria-label="Copiar identificador"
-                        />
-                      </DataListValue>
-                    </DataListItem>
-                    <DataListItem>
-                      <DataListTerm>Plano</DataListTerm>
-                      <DataListValue>Enterprise · R$ 4.900/mês</DataListValue>
-                    </DataListItem>
-                  </DataList>
-                </CardContent>
-              </Card>
+                <div className="grid gap-4 lg:grid-cols-2">
+                  <Card>
+                    <CardHeader>
+                      <SectionHeader>
+                        <SectionHeaderContent>
+                          <SectionHeaderTitle>
+                            Conta em destaque
+                          </SectionHeaderTitle>
+                          <SectionHeaderDescription>
+                            Informações comerciais e operacionais.
+                          </SectionHeaderDescription>
+                        </SectionHeaderContent>
+                        <SectionHeaderActions>
+                          <Status variant="success">Ativa</Status>
+                        </SectionHeaderActions>
+                      </SectionHeader>
+                    </CardHeader>
+                    <CardContent>
+                      <DataList>
+                        <DataListItem>
+                          <DataListTerm>Empresa</DataListTerm>
+                          <DataListValue>Acme Tecnologia Ltda.</DataListValue>
+                        </DataListItem>
+                        <DataListItem>
+                          <DataListTerm>Responsável</DataListTerm>
+                          <DataListValue>Marina Costa</DataListValue>
+                        </DataListItem>
+                        <DataListItem>
+                          <DataListTerm>Identificador</DataListTerm>
+                          <DataListValue className="flex items-center gap-2 sm:justify-end">
+                            <code className="font-mono text-xs">
+                              cli_8H2K91
+                            </code>
+                            <CopyButton
+                              value="cli_8H2K91"
+                              size="icon-xs"
+                              aria-label="Copiar identificador"
+                            />
+                          </DataListValue>
+                        </DataListItem>
+                        <DataListItem>
+                          <DataListTerm>Plano</DataListTerm>
+                          <DataListValue>
+                            Enterprise · R$ 4.900/mês
+                          </DataListValue>
+                        </DataListItem>
+                      </DataList>
+                    </CardContent>
+                  </Card>
 
-              <Card>
-                <CardHeader>
-                  <SectionHeader>
-                    <SectionHeaderContent>
-                      <SectionHeaderTitle>Documentos</SectionHeaderTitle>
-                      <SectionHeaderDescription>
-                        Envie contratos e comprovantes da conta.
-                      </SectionHeaderDescription>
-                    </SectionHeaderContent>
-                    <SectionHeaderActions>
-                      <Status variant="warning">2 pendentes</Status>
-                    </SectionHeaderActions>
-                  </SectionHeader>
-                </CardHeader>
-                <CardContent>
-                  <FileUpload
-                    multiple
-                    accept=".pdf,.png,.jpg,.jpeg"
-                    maxSize={5 * 1024 * 1024}
-                  />
-                </CardContent>
-              </Card>
-            </div>
+                  <Card>
+                    <CardHeader>
+                      <SectionHeader>
+                        <SectionHeaderContent>
+                          <SectionHeaderTitle>Documentos</SectionHeaderTitle>
+                          <SectionHeaderDescription>
+                            Envie contratos e comprovantes da conta.
+                          </SectionHeaderDescription>
+                        </SectionHeaderContent>
+                        <SectionHeaderActions>
+                          <Status variant="warning">2 pendentes</Status>
+                        </SectionHeaderActions>
+                      </SectionHeader>
+                    </CardHeader>
+                    <CardContent>
+                      <FileUpload
+                        multiple
+                        accept=".pdf,.png,.jpg,.jpeg"
+                        maxSize={5 * 1024 * 1024}
+                      />
+                    </CardContent>
+                  </Card>
+                </div>
 
-            <SectionHeader className="pt-2">
-              <SectionHeaderContent>
-                <SectionHeaderTitle>Developer experience</SectionHeaderTitle>
-                <SectionHeaderDescription>
-                  Componentes para documentação, APIs e ferramentas de
-                  desenvolvimento.
-                </SectionHeaderDescription>
-              </SectionHeaderContent>
-              <SectionHeaderActions>
-                <CodeThemeSelect aria-label="Tema dos blocos de código" />
-              </SectionHeaderActions>
-            </SectionHeader>
+                <SectionHeader className="pt-2">
+                  <SectionHeaderContent>
+                    <SectionHeaderTitle>
+                      Developer experience
+                    </SectionHeaderTitle>
+                    <SectionHeaderDescription>
+                      Componentes para documentação, APIs e ferramentas de
+                      desenvolvimento.
+                    </SectionHeaderDescription>
+                  </SectionHeaderContent>
+                  <SectionHeaderActions>
+                    <CodeThemeSelect aria-label="Tema dos blocos de código" />
+                  </SectionHeaderActions>
+                </SectionHeader>
 
-            <div className="grid gap-4 lg:grid-cols-2">
-              <Card>
-                <CardHeader>
-                  <CardTitle>Instalação e terminal</CardTitle>
-                  <CardDescription>
-                    Comandos prontos para copiar e saídas de execução.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <PackageInstall
-                    commands={{
-                      npm: "npm install @adila/ui",
-                      pnpm: "pnpm add @adila/ui",
-                      yarn: "yarn add @adila/ui",
-                      bun: "bun add @adila/ui",
-                    }}
-                  />
-                  <Terminal>
-                    <TerminalHeader>
-                      <TerminalControls />
-                      <TerminalTitle>adila — zsh</TerminalTitle>
-                    </TerminalHeader>
-                    <TerminalBody>
-                      <TerminalLine>
-                        <TerminalPrompt>❯</TerminalPrompt>
-                        <TerminalCommand>bun run build</TerminalCommand>
-                      </TerminalLine>
-                      <TerminalOutput className="text-[var(--code-success,#9ece6a)]">
-                        ✓ registry gerado · 76 componentes
-                      </TerminalOutput>
-                      <TerminalOutput>✓ build concluído em 4.1s</TerminalOutput>
-                    </TerminalBody>
-                  </Terminal>
-                </CardContent>
-              </Card>
+                <div className="grid gap-4 lg:grid-cols-2">
+                  <Card>
+                    <CardHeader>
+                      <CardTitle>Instalação e terminal</CardTitle>
+                      <CardDescription>
+                        Comandos prontos para copiar e saídas de execução.
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                      <PackageInstall
+                        commands={{
+                          npm: "npm install @adila/ui",
+                          pnpm: "pnpm add @adila/ui",
+                          yarn: "yarn add @adila/ui",
+                          bun: "bun add @adila/ui",
+                        }}
+                      />
+                      <Terminal>
+                        <TerminalHeader>
+                          <TerminalControls />
+                          <TerminalTitle>adila — zsh</TerminalTitle>
+                        </TerminalHeader>
+                        <TerminalBody>
+                          <TerminalLine>
+                            <TerminalPrompt>❯</TerminalPrompt>
+                            <TerminalCommand>bun run build</TerminalCommand>
+                          </TerminalLine>
+                          <TerminalOutput className="text-[var(--code-success,#9ece6a)]">
+                            ✓ registry gerado · 76 componentes
+                          </TerminalOutput>
+                          <TerminalOutput>
+                            ✓ build concluído em 4.1s
+                          </TerminalOutput>
+                        </TerminalBody>
+                      </Terminal>
+                    </CardContent>
+                  </Card>
 
-              <Card>
-                <CardHeader>
-                  <CardTitle>API playground</CardTitle>
-                  <CardDescription>
-                    Requisição e resposta com metadados operacionais.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <ApiRequest>
-                    <ApiRequestHeader>
-                      <ApiRequestMethod method="POST" />
-                      <ApiRequestUrl>/v1/deployments</ApiRequestUrl>
-                      <ApiRequestMeta>201 · 184 ms</ApiRequestMeta>
-                    </ApiRequestHeader>
-                    <ApiRequestSection>
-                      <ApiRequestSectionHeader>
-                        <ApiRequestSectionTitle>Payload</ApiRequestSectionTitle>
-                      </ApiRequestSectionHeader>
-                      <ApiRequestCode
-                        value={`{
+                  <Card>
+                    <CardHeader>
+                      <CardTitle>API playground</CardTitle>
+                      <CardDescription>
+                        Requisição e resposta com metadados operacionais.
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <ApiRequest>
+                        <ApiRequestHeader>
+                          <ApiRequestMethod method="POST" />
+                          <ApiRequestUrl>/v1/deployments</ApiRequestUrl>
+                          <ApiRequestMeta>201 · 184 ms</ApiRequestMeta>
+                        </ApiRequestHeader>
+                        <ApiRequestSection>
+                          <ApiRequestSectionHeader>
+                            <ApiRequestSectionTitle>
+                              Payload
+                            </ApiRequestSectionTitle>
+                          </ApiRequestSectionHeader>
+                          <ApiRequestCode
+                            value={`{
   "project": "adila-ui",
   "environment": "production"
 }`}
-                      />
-                    </ApiRequestSection>
-                    <ApiRequestSection>
-                      <ApiRequestSectionHeader>
-                        <ApiRequestSectionTitle>
-                          Resposta
-                        </ApiRequestSectionTitle>
-                        <Status variant="success">Created</Status>
-                      </ApiRequestSectionHeader>
-                      <ApiRequestCode
-                        value={`{
+                          />
+                        </ApiRequestSection>
+                        <ApiRequestSection>
+                          <ApiRequestSectionHeader>
+                            <ApiRequestSectionTitle>
+                              Resposta
+                            </ApiRequestSectionTitle>
+                            <Status variant="success">Created</Status>
+                          </ApiRequestSectionHeader>
+                          <ApiRequestCode
+                            value={`{
   "id": "dep_8H2K91",
   "status": "queued"
 }`}
-                      />
-                    </ApiRequestSection>
-                  </ApiRequest>
-                </CardContent>
-              </Card>
-            </div>
+                          />
+                        </ApiRequestSection>
+                      </ApiRequest>
+                    </CardContent>
+                  </Card>
+                </div>
 
-            <Card>
-              <CardHeader>
-                <CardTitle>Revisão de alterações</CardTitle>
-                <CardDescription>
-                  Diff unificado com syntax highlighting via Pierre.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <DiffViewer
-                  filename="deployment.ts"
-                  language="typescript"
-                  oldCode={`export const deployment = {
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Revisão de alterações</CardTitle>
+                    <CardDescription>
+                      Diff unificado com syntax highlighting via Pierre.
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <DiffViewer
+                      filename="deployment.ts"
+                      language="typescript"
+                      oldCode={`export const deployment = {
   region: "us-east",
   replicas: 1,
   autoscaling: false,
 };`}
-                  newCode={`export const deployment = {
+                      newCode={`export const deployment = {
   region: "sa-east",
   replicas: 3,
   autoscaling: true,
 };`}
-                />
-              </CardContent>
-            </Card>
+                    />
+                  </CardContent>
+                </Card>
 
-            <Card>
-              <CardHeader>
-                <SectionHeader>
-                  <SectionHeaderContent>
-                    <SectionHeaderTitle>Integração rápida</SectionHeaderTitle>
-                    <SectionHeaderDescription>
-                      Exemplo com syntax highlighting, linhas numeradas e ação
-                      de copiar.
-                    </SectionHeaderDescription>
-                  </SectionHeaderContent>
-                </SectionHeader>
-              </CardHeader>
-              <CardContent>
-                <CodeBlock
-                  filename="customer-status.tsx"
-                  language="tsx"
-                  showLineNumbers
-                  highlightLines={[5, 6]}
-                  code={`import { Status } from "@/components/ui/status";
+                <Card>
+                  <CardHeader>
+                    <SectionHeader>
+                      <SectionHeaderContent>
+                        <SectionHeaderTitle>
+                          Integração rápida
+                        </SectionHeaderTitle>
+                        <SectionHeaderDescription>
+                          Exemplo com syntax highlighting, linhas numeradas e
+                          ação de copiar.
+                        </SectionHeaderDescription>
+                      </SectionHeaderContent>
+                    </SectionHeader>
+                  </CardHeader>
+                  <CardContent>
+                    <CodeBlock
+                      filename="customer-status.tsx"
+                      language="tsx"
+                      showLineNumbers
+                      highlightLines={[5, 6]}
+                      code={`import { Status } from "@/components/ui/status";
 
 export function CustomerStatus({ active }: { active: boolean }) {
   return (
@@ -743,373 +786,375 @@ export function CustomerStatus({ active }: { active: boolean }) {
     </Status>
   );
 }`}
-                />
-              </CardContent>
-            </Card>
-
-            {/* Stat cards */}
-            <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-              {stats.map((s) => (
-                <Card key={s.label}>
-                  <CardHeader>
-                    <CardDescription>{s.label}</CardDescription>
-                    <CardTitle className="text-2xl tabular-nums">
-                      {s.value}
-                    </CardTitle>
-                    <CardAction>
-                      <div className="flex size-8 items-center justify-center rounded-lg bg-muted text-muted-foreground">
-                        <s.icon className="size-4" />
-                      </div>
-                    </CardAction>
-                  </CardHeader>
-                  <CardFooter>
-                    <Badge variant={s.up ? "default" : "destructive"}>
-                      {s.up ? (
-                        <TrendingUp className="size-3" />
-                      ) : (
-                        <TrendingDown className="size-3" />
-                      )}
-                      {s.delta}
-                    </Badge>
-                    <span className="ml-2 text-xs text-muted-foreground">
-                      vs. mês anterior
-                    </span>
-                  </CardFooter>
-                </Card>
-              ))}
-            </div>
-
-            {/* Charts */}
-            <div className="grid gap-4 lg:grid-cols-7">
-              <Card className="lg:col-span-4">
-                <CardHeader>
-                  <CardTitle>Receita x Custo</CardTitle>
-                  <CardDescription>Últimos 6 meses</CardDescription>
-                  <CardAction>
-                    <Select
-                      defaultValue="6m"
-                      items={{
-                        "7d": "7 dias",
-                        "30d": "30 dias",
-                        "6m": "6 meses",
-                        "12m": "12 meses",
-                      }}
-                    >
-                      <SelectTrigger size="sm" className="w-32">
-                        <SelectValue />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="7d">7 dias</SelectItem>
-                        <SelectItem value="30d">30 dias</SelectItem>
-                        <SelectItem value="6m">6 meses</SelectItem>
-                        <SelectItem value="12m">12 meses</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </CardAction>
-                </CardHeader>
-                <CardContent>
-                  <ChartContainer
-                    config={revenueConfig}
-                    className="aspect-auto h-[240px] w-full"
-                  >
-                    <AreaChart
-                      data={revenueData}
-                      margin={{ left: 4, right: 4, top: 8 }}
-                    >
-                      <CartesianGrid vertical={false} />
-                      <XAxis
-                        dataKey="month"
-                        tickLine={false}
-                        axisLine={false}
-                        tickMargin={8}
-                      />
-                      <ChartTooltip content={<ChartTooltipContent />} />
-                      <ChartLegend content={<ChartLegendContent />} />
-                      <defs>
-                        <linearGradient
-                          id="fillReceita"
-                          x1="0"
-                          y1="0"
-                          x2="0"
-                          y2="1"
-                        >
-                          <stop
-                            offset="5%"
-                            stopColor="var(--color-receita)"
-                            stopOpacity={0.6}
-                          />
-                          <stop
-                            offset="95%"
-                            stopColor="var(--color-receita)"
-                            stopOpacity={0.05}
-                          />
-                        </linearGradient>
-                        <linearGradient
-                          id="fillCusto"
-                          x1="0"
-                          y1="0"
-                          x2="0"
-                          y2="1"
-                        >
-                          <stop
-                            offset="5%"
-                            stopColor="var(--color-custo)"
-                            stopOpacity={0.6}
-                          />
-                          <stop
-                            offset="95%"
-                            stopColor="var(--color-custo)"
-                            stopOpacity={0.05}
-                          />
-                        </linearGradient>
-                      </defs>
-                      <Area
-                        dataKey="custo"
-                        type="natural"
-                        stroke="var(--color-custo)"
-                        fill="url(#fillCusto)"
-                        stackId="a"
-                      />
-                      <Area
-                        dataKey="receita"
-                        type="natural"
-                        stroke="var(--color-receita)"
-                        fill="url(#fillReceita)"
-                        stackId="b"
-                      />
-                    </AreaChart>
-                  </ChartContainer>
-                </CardContent>
-              </Card>
-
-              <Card className="lg:col-span-3">
-                <CardHeader>
-                  <CardTitle>Tráfego por canal</CardTitle>
-                  <CardDescription>Sessões nesta semana</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <ChartContainer
-                    config={trafficConfig}
-                    className="aspect-auto h-[240px] w-full"
-                  >
-                    <BarChart
-                      data={trafficData}
-                      margin={{ left: 4, right: 4, top: 8 }}
-                    >
-                      <CartesianGrid vertical={false} />
-                      <XAxis
-                        dataKey="canal"
-                        tickLine={false}
-                        axisLine={false}
-                        tickMargin={8}
-                      />
-                      <ChartTooltip
-                        content={<ChartTooltipContent hideLabel />}
-                      />
-                      <Bar
-                        dataKey="visitas"
-                        fill="var(--color-visitas)"
-                        radius={[6, 6, 0, 0]}
-                      />
-                    </BarChart>
-                  </ChartContainer>
-                </CardContent>
-              </Card>
-            </div>
-
-            {/* Tabs: tabela / atividade / config */}
-            <Tabs defaultValue="transacoes">
-              <div className="flex items-center justify-between">
-                <TabsList>
-                  <TabsTrigger value="transacoes">Transações</TabsTrigger>
-                  <TabsTrigger value="atividade">Atividade</TabsTrigger>
-                  <TabsTrigger value="config">Configurações</TabsTrigger>
-                </TabsList>
-                <NewTransactionDrawer />
-              </div>
-
-              {/* Transações */}
-              <TabsContent value="transacoes">
-                <Card>
-                  <CardHeader>
-                    <CardTitle>Transações recentes</CardTitle>
-                    <CardDescription>
-                      Filtre, ordene e selecione — data table completa
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <DataTable />
+                    />
                   </CardContent>
                 </Card>
-              </TabsContent>
 
-              {/* Atividade */}
-              <TabsContent value="atividade">
-                <Card>
-                  <CardHeader>
-                    <CardTitle>Tarefas em execução</CardTitle>
-                    <CardDescription>Pipeline de deploy</CardDescription>
-                  </CardHeader>
-                  <CardContent className="flex flex-col gap-5">
-                    {activity.map((a) => (
-                      <div key={a.nome} className="flex flex-col gap-2">
-                        <div className="flex items-center justify-between text-sm">
-                          <span className="font-medium">{a.nome}</span>
-                          <span className="text-muted-foreground tabular-nums">
-                            {a.progresso}%
-                          </span>
-                        </div>
-                        <Progress value={a.progresso} />
-                      </div>
-                    ))}
-                  </CardContent>
-                  <CardFooter>
-                    <Button variant="outline" size="sm">
-                      Ver histórico
-                      <ArrowUpRight />
-                    </Button>
-                  </CardFooter>
-                </Card>
-              </TabsContent>
+                {/* Stat cards */}
+                <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+                  {stats.map((s) => (
+                    <Card key={s.label}>
+                      <CardHeader>
+                        <CardDescription>{s.label}</CardDescription>
+                        <CardTitle className="text-2xl tabular-nums">
+                          {s.value}
+                        </CardTitle>
+                        <CardAction>
+                          <div className="flex size-8 items-center justify-center rounded-lg bg-muted text-muted-foreground">
+                            <s.icon className="size-4" />
+                          </div>
+                        </CardAction>
+                      </CardHeader>
+                      <CardFooter>
+                        <Badge variant={s.up ? "default" : "destructive"}>
+                          {s.up ? (
+                            <TrendingUp className="size-3" />
+                          ) : (
+                            <TrendingDown className="size-3" />
+                          )}
+                          {s.delta}
+                        </Badge>
+                        <span className="ml-2 text-xs text-muted-foreground">
+                          vs. mês anterior
+                        </span>
+                      </CardFooter>
+                    </Card>
+                  ))}
+                </div>
 
-              {/* Configurações — form controls */}
-              <TabsContent value="config">
-                <Card>
-                  <CardHeader>
-                    <CardTitle>Preferências</CardTitle>
-                    <CardDescription>
-                      Ajuste notificações e conta
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent className="grid gap-6 md:grid-cols-2">
-                    {/* Coluna 1 */}
-                    <div className="flex flex-col gap-5">
-                      <div className="flex items-center justify-between gap-4">
-                        <div className="flex flex-col gap-0.5">
-                          <Label htmlFor="dark">Modo escuro</Label>
-                          <span className="text-xs text-muted-foreground">
-                            Alterna o tema da interface
-                          </span>
-                        </div>
-                        <Switch
-                          id="dark"
-                          checked={isDark}
-                          onCheckedChange={(v) =>
-                            setTheme(v ? "dark" : "light")
-                          }
-                        />
-                      </div>
-                      <Separator />
-                      <div className="flex items-center justify-between gap-4">
-                        <div className="flex flex-col gap-0.5">
-                          <Label htmlFor="notify">
-                            Notificações por e-mail
-                          </Label>
-                          <span className="text-xs text-muted-foreground">
-                            Resumo diário de atividade
-                          </span>
-                        </div>
-                        <Switch
-                          id="notify"
-                          checked={notify}
-                          onCheckedChange={setNotify}
-                        />
-                      </div>
-                      <Separator />
-                      <div className="flex flex-col gap-3">
-                        <Label>Alertas</Label>
-                        <div className="flex items-center gap-2">
-                          <Checkbox id="c1" defaultChecked />
-                          <Label htmlFor="c1" className="font-normal">
-                            Falhas de pagamento
-                          </Label>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <Checkbox id="c2" defaultChecked />
-                          <Label htmlFor="c2" className="font-normal">
-                            Novos assinantes
-                          </Label>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <Checkbox id="c3" />
-                          <Label htmlFor="c3" className="font-normal">
-                            Relatórios semanais
-                          </Label>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Coluna 2 */}
-                    <div className="flex flex-col gap-5">
-                      <div className="flex flex-col gap-3">
-                        <Label>Plano de cobrança</Label>
-                        <RadioGroup defaultValue="pro" className="gap-3">
-                          <div className="flex items-center gap-2">
-                            <RadioGroupItem value="free" id="p-free" />
-                            <Label htmlFor="p-free" className="font-normal">
-                              Free — R$ 0
-                            </Label>
-                          </div>
-                          <div className="flex items-center gap-2">
-                            <RadioGroupItem value="pro" id="p-pro" />
-                            <Label htmlFor="p-pro" className="font-normal">
-                              Pro — R$ 49/mês
-                            </Label>
-                          </div>
-                          <div className="flex items-center gap-2">
-                            <RadioGroupItem value="ent" id="p-ent" />
-                            <Label htmlFor="p-ent" className="font-normal">
-                              Enterprise — sob consulta
-                            </Label>
-                          </div>
-                        </RadioGroup>
-                      </div>
-                      <Separator />
-                      <div className="flex flex-col gap-3">
-                        <div className="flex items-center justify-between">
-                          <Label>Limite de gastos</Label>
-                          <span className="text-xs text-muted-foreground tabular-nums">
-                            R$ 2.500
-                          </span>
-                        </div>
-                        <Slider defaultValue={50} max={100} step={5} />
-                      </div>
-                      <Separator />
-                      <div className="flex flex-col gap-2">
-                        <Label htmlFor="region">Região</Label>
+                {/* Charts */}
+                <div className="grid gap-4 lg:grid-cols-7">
+                  <Card className="lg:col-span-4">
+                    <CardHeader>
+                      <CardTitle>Receita x Custo</CardTitle>
+                      <CardDescription>Últimos 6 meses</CardDescription>
+                      <CardAction>
                         <Select
-                          defaultValue="sa-east"
+                          defaultValue="6m"
                           items={{
-                            "sa-east": "América do Sul (São Paulo)",
-                            "us-east": "EUA Leste (N. Virgínia)",
-                            "eu-west": "Europa (Irlanda)",
+                            "7d": "7 dias",
+                            "30d": "30 dias",
+                            "6m": "6 meses",
+                            "12m": "12 meses",
                           }}
                         >
-                          <SelectTrigger id="region" className="w-full">
+                          <SelectTrigger size="sm" className="w-32">
                             <SelectValue />
                           </SelectTrigger>
                           <SelectContent>
-                            <SelectItem value="sa-east">
-                              América do Sul (São Paulo)
-                            </SelectItem>
-                            <SelectItem value="us-east">
-                              EUA Leste (N. Virgínia)
-                            </SelectItem>
-                            <SelectItem value="eu-west">
-                              Europa (Irlanda)
-                            </SelectItem>
+                            <SelectItem value="7d">7 dias</SelectItem>
+                            <SelectItem value="30d">30 dias</SelectItem>
+                            <SelectItem value="6m">6 meses</SelectItem>
+                            <SelectItem value="12m">12 meses</SelectItem>
                           </SelectContent>
                         </Select>
-                      </div>
-                    </div>
-                  </CardContent>
-                  <CardFooter className="justify-end gap-2">
-                    <Button variant="ghost">Cancelar</Button>
-                    <Button>Salvar alterações</Button>
-                  </CardFooter>
-                </Card>
-              </TabsContent>
-            </Tabs>
+                      </CardAction>
+                    </CardHeader>
+                    <CardContent>
+                      <ChartContainer
+                        config={revenueConfig}
+                        className="aspect-auto h-[240px] w-full"
+                      >
+                        <AreaChart
+                          data={revenueData}
+                          margin={{ left: 4, right: 4, top: 8 }}
+                        >
+                          <CartesianGrid vertical={false} />
+                          <XAxis
+                            dataKey="month"
+                            tickLine={false}
+                            axisLine={false}
+                            tickMargin={8}
+                          />
+                          <ChartTooltip content={<ChartTooltipContent />} />
+                          <ChartLegend content={<ChartLegendContent />} />
+                          <defs>
+                            <linearGradient
+                              id="fillReceita"
+                              x1="0"
+                              y1="0"
+                              x2="0"
+                              y2="1"
+                            >
+                              <stop
+                                offset="5%"
+                                stopColor="var(--color-receita)"
+                                stopOpacity={0.6}
+                              />
+                              <stop
+                                offset="95%"
+                                stopColor="var(--color-receita)"
+                                stopOpacity={0.05}
+                              />
+                            </linearGradient>
+                            <linearGradient
+                              id="fillCusto"
+                              x1="0"
+                              y1="0"
+                              x2="0"
+                              y2="1"
+                            >
+                              <stop
+                                offset="5%"
+                                stopColor="var(--color-custo)"
+                                stopOpacity={0.6}
+                              />
+                              <stop
+                                offset="95%"
+                                stopColor="var(--color-custo)"
+                                stopOpacity={0.05}
+                              />
+                            </linearGradient>
+                          </defs>
+                          <Area
+                            dataKey="custo"
+                            type="natural"
+                            stroke="var(--color-custo)"
+                            fill="url(#fillCusto)"
+                            stackId="a"
+                          />
+                          <Area
+                            dataKey="receita"
+                            type="natural"
+                            stroke="var(--color-receita)"
+                            fill="url(#fillReceita)"
+                            stackId="b"
+                          />
+                        </AreaChart>
+                      </ChartContainer>
+                    </CardContent>
+                  </Card>
+
+                  <Card className="lg:col-span-3">
+                    <CardHeader>
+                      <CardTitle>Tráfego por canal</CardTitle>
+                      <CardDescription>Sessões nesta semana</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <ChartContainer
+                        config={trafficConfig}
+                        className="aspect-auto h-[240px] w-full"
+                      >
+                        <BarChart
+                          data={trafficData}
+                          margin={{ left: 4, right: 4, top: 8 }}
+                        >
+                          <CartesianGrid vertical={false} />
+                          <XAxis
+                            dataKey="canal"
+                            tickLine={false}
+                            axisLine={false}
+                            tickMargin={8}
+                          />
+                          <ChartTooltip
+                            content={<ChartTooltipContent hideLabel />}
+                          />
+                          <Bar
+                            dataKey="visitas"
+                            fill="var(--color-visitas)"
+                            radius={[6, 6, 0, 0]}
+                          />
+                        </BarChart>
+                      </ChartContainer>
+                    </CardContent>
+                  </Card>
+                </div>
+
+                {/* Tabs: tabela / atividade / config */}
+                <Tabs defaultValue="transacoes">
+                  <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+                    <TabsList className="max-w-full overflow-x-auto">
+                      <TabsTrigger value="transacoes">Transações</TabsTrigger>
+                      <TabsTrigger value="atividade">Atividade</TabsTrigger>
+                      <TabsTrigger value="config">Configurações</TabsTrigger>
+                    </TabsList>
+                    <NewTransactionDrawer />
+                  </div>
+
+                  {/* Transações */}
+                  <TabsContent value="transacoes">
+                    <Card>
+                      <CardHeader>
+                        <CardTitle>Transações recentes</CardTitle>
+                        <CardDescription>
+                          Filtre, ordene e selecione — data table completa
+                        </CardDescription>
+                      </CardHeader>
+                      <CardContent>
+                        <DataTable />
+                      </CardContent>
+                    </Card>
+                  </TabsContent>
+
+                  {/* Atividade */}
+                  <TabsContent value="atividade">
+                    <Card>
+                      <CardHeader>
+                        <CardTitle>Tarefas em execução</CardTitle>
+                        <CardDescription>Pipeline de deploy</CardDescription>
+                      </CardHeader>
+                      <CardContent className="flex flex-col gap-5">
+                        {activity.map((a) => (
+                          <div key={a.nome} className="flex flex-col gap-2">
+                            <div className="flex items-center justify-between text-sm">
+                              <span className="font-medium">{a.nome}</span>
+                              <span className="text-muted-foreground tabular-nums">
+                                {a.progresso}%
+                              </span>
+                            </div>
+                            <Progress value={a.progresso} />
+                          </div>
+                        ))}
+                      </CardContent>
+                      <CardFooter>
+                        <Button variant="outline" size="sm">
+                          Ver histórico
+                          <ArrowUpRight />
+                        </Button>
+                      </CardFooter>
+                    </Card>
+                  </TabsContent>
+
+                  {/* Configurações — form controls */}
+                  <TabsContent value="config">
+                    <Card>
+                      <CardHeader>
+                        <CardTitle>Preferências</CardTitle>
+                        <CardDescription>
+                          Ajuste notificações e conta
+                        </CardDescription>
+                      </CardHeader>
+                      <CardContent className="grid gap-6 md:grid-cols-2">
+                        {/* Coluna 1 */}
+                        <div className="flex flex-col gap-5">
+                          <div className="flex items-center justify-between gap-4">
+                            <div className="flex flex-col gap-0.5">
+                              <Label htmlFor="dark">Modo escuro</Label>
+                              <span className="text-xs text-muted-foreground">
+                                Alterna o tema da interface
+                              </span>
+                            </div>
+                            <Switch
+                              id="dark"
+                              checked={isDark}
+                              onCheckedChange={(v) =>
+                                setTheme(v ? "dark" : "light")
+                              }
+                            />
+                          </div>
+                          <Separator />
+                          <div className="flex items-center justify-between gap-4">
+                            <div className="flex flex-col gap-0.5">
+                              <Label htmlFor="notify">
+                                Notificações por e-mail
+                              </Label>
+                              <span className="text-xs text-muted-foreground">
+                                Resumo diário de atividade
+                              </span>
+                            </div>
+                            <Switch
+                              id="notify"
+                              checked={notify}
+                              onCheckedChange={setNotify}
+                            />
+                          </div>
+                          <Separator />
+                          <div className="flex flex-col gap-3">
+                            <Label>Alertas</Label>
+                            <div className="flex items-center gap-2">
+                              <Checkbox id="c1" defaultChecked />
+                              <Label htmlFor="c1" className="font-normal">
+                                Falhas de pagamento
+                              </Label>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <Checkbox id="c2" defaultChecked />
+                              <Label htmlFor="c2" className="font-normal">
+                                Novos assinantes
+                              </Label>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <Checkbox id="c3" />
+                              <Label htmlFor="c3" className="font-normal">
+                                Relatórios semanais
+                              </Label>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Coluna 2 */}
+                        <div className="flex flex-col gap-5">
+                          <div className="flex flex-col gap-3">
+                            <Label>Plano de cobrança</Label>
+                            <RadioGroup defaultValue="pro" className="gap-3">
+                              <div className="flex items-center gap-2">
+                                <RadioGroupItem value="free" id="p-free" />
+                                <Label htmlFor="p-free" className="font-normal">
+                                  Free — R$ 0
+                                </Label>
+                              </div>
+                              <div className="flex items-center gap-2">
+                                <RadioGroupItem value="pro" id="p-pro" />
+                                <Label htmlFor="p-pro" className="font-normal">
+                                  Pro — R$ 49/mês
+                                </Label>
+                              </div>
+                              <div className="flex items-center gap-2">
+                                <RadioGroupItem value="ent" id="p-ent" />
+                                <Label htmlFor="p-ent" className="font-normal">
+                                  Enterprise — sob consulta
+                                </Label>
+                              </div>
+                            </RadioGroup>
+                          </div>
+                          <Separator />
+                          <div className="flex flex-col gap-3">
+                            <div className="flex items-center justify-between">
+                              <Label>Limite de gastos</Label>
+                              <span className="text-xs text-muted-foreground tabular-nums">
+                                R$ 2.500
+                              </span>
+                            </div>
+                            <Slider defaultValue={50} max={100} step={5} />
+                          </div>
+                          <Separator />
+                          <div className="flex flex-col gap-2">
+                            <Label htmlFor="region">Região</Label>
+                            <Select
+                              defaultValue="sa-east"
+                              items={{
+                                "sa-east": "América do Sul (São Paulo)",
+                                "us-east": "EUA Leste (N. Virgínia)",
+                                "eu-west": "Europa (Irlanda)",
+                              }}
+                            >
+                              <SelectTrigger id="region" className="w-full">
+                                <SelectValue />
+                              </SelectTrigger>
+                              <SelectContent>
+                                <SelectItem value="sa-east">
+                                  América do Sul (São Paulo)
+                                </SelectItem>
+                                <SelectItem value="us-east">
+                                  EUA Leste (N. Virgínia)
+                                </SelectItem>
+                                <SelectItem value="eu-west">
+                                  Europa (Irlanda)
+                                </SelectItem>
+                              </SelectContent>
+                            </Select>
+                          </div>
+                        </div>
+                      </CardContent>
+                      <CardFooter className="justify-end gap-2">
+                        <Button variant="ghost">Cancelar</Button>
+                        <Button>Salvar alterações</Button>
+                      </CardFooter>
+                    </Card>
+                  </TabsContent>
+                </Tabs>
+              </>
+            )}
           </CodeThemeProvider>
         </SidebarInset>
       </SidebarProvider>
