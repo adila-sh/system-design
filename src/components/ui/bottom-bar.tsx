@@ -124,7 +124,10 @@ function BottomBarDrawerContent({
   return (
     <DrawerContent
       data-slot="bottom-bar-drawer-content"
-      className={cn("[--drawer-content-max-height:85dvh]", className)}
+      className={cn(
+        "bg-sidebar text-sidebar-foreground [--drawer-bleed-background:var(--color-sidebar)] [--drawer-content-max-height:85dvh]",
+        className,
+      )}
       {...props}
     />
   );
