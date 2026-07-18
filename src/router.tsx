@@ -6,6 +6,7 @@ export function getRouter() {
   return createTanStackRouter({
     routeTree,
     defaultPreload: "intent",
+    defaultViewTransition: true,
     scrollRestoration: true,
     defaultNotFoundComponent: NotFound,
   });

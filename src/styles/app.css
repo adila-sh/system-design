@@ -1,11 +1,11 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 /* shadcn.css mapeia --color-fd-* para os tokens shadcn (--primary, ...),
    unificando o tema Fumadocs com o design system adila.co. */
-@import 'fumadocs-ui/css/shadcn.css';
-@import 'fumadocs-ui/css/preset.css';
-@import 'tw-animate-css';
-@import './fonts.css';
-@import './adila-tokens.css';
+@import "fumadocs-ui/css/shadcn.css";
+@import "fumadocs-ui/css/preset.css";
+@import "tw-animate-css";
+@import "./fonts.css";
+@import "./adila-tokens.css";
 
 /* garante que o Tailwind escaneie os componentes do registry */
 @source '../components';
@@ -80,6 +80,18 @@ html > body[data-scroll-locked] {
 .home-hero-nav #nd-nav > div {
   backdrop-filter: none;
   border-bottom-color: transparent;
+}
+
+/* O indicador ativo da sidebar acompanha a rota sem animar a página inteira. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-group(sidebar-route-indicator) {
+  animation-duration: 420ms;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* Respeita usuários com movimento reduzido: neutraliza animações/transições
