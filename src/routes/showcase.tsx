@@ -46,6 +46,7 @@ import {
   type ChartConfig,
 } from "@/components/ui/chart";
 import { CommandMenu } from "@/components/command-menu";
+import { CodeBlock } from "@/components/ui/code-block";
 import { CopyButton } from "@/components/ui/copy-button";
 import {
   DataList,
@@ -568,6 +569,37 @@ function Showcase() {
                 </CardContent>
               </Card>
             </div>
+
+            <Card>
+              <CardHeader>
+                <SectionHeader>
+                  <SectionHeaderContent>
+                    <SectionHeaderTitle>Integração rápida</SectionHeaderTitle>
+                    <SectionHeaderDescription>
+                      Exemplo com syntax highlighting, linhas numeradas e ação
+                      de copiar.
+                    </SectionHeaderDescription>
+                  </SectionHeaderContent>
+                </SectionHeader>
+              </CardHeader>
+              <CardContent>
+                <CodeBlock
+                  filename="customer-status.tsx"
+                  language="tsx"
+                  showLineNumbers
+                  highlightLines={[5, 6]}
+                  code={`import { Status } from "@/components/ui/status";
+
+export function CustomerStatus({ active }: { active: boolean }) {
+  return (
+    <Status variant={active ? "success" : "neutral"}>
+      {active ? "Ativo" : "Inativo"}
+    </Status>
+  );
+}`}
+                />
+              </CardContent>
+            </Card>
 
             {/* Stat cards */}
             <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">

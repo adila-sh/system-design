@@ -1,0 +1,56 @@
+---
+title: Code Block
+description: Bloco de código com syntax highlighting, linhas numeradas e botão de copiar.
+---
+
+import { CodeBlock } from "@/components/ui/code-block";
+
+<Preview>
+  <CodeBlock
+    filename="button.tsx"
+    language="tsx"
+    showLineNumbers
+    highlightLines={[4, 5]}
+    code={`import { Button } from '@/components/ui/button';
+
+export function SaveButton() {
+  const label = 'Salvar alterações';
+  return <Button>{label}</Button>;
+}`}
+  />
+</Preview>
+
+## Instalação
+
+```bash
+npx shadcn@latest add https://ds.adila.co/r/code-block.json
+```
+
+## Uso
+
+```tsx
+import { CodeBlock } from "@/components/ui/code-block";
+
+export function Example() {
+  return (
+    <CodeBlock
+      code={`const greeting = 'Olá, mundo!';`}
+      language="typescript"
+      filename="example.ts"
+      showLineNumbers
+      highlightLines={[1]}
+    />
+  );
+}
+```
+
+## Linguagens
+
+O highlighter reconhece JavaScript, TypeScript, JSX, TSX, JSON, Bash, Shell,
+CSS, HTML, SVG, XML e MDX. Linguagens não reconhecidas recebem a formatação
+base sem comprometer a legibilidade.
+
+## Linhas em destaque
+
+Passe números de linha em `highlightLines` para chamar atenção para mudanças
+ou trechos importantes.

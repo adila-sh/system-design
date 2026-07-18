@@ -378,6 +378,20 @@
       ]
     },
     {
+      "name": "code-block",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "src/components/ui/code-block.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "copy-button",
+        "utils"
+      ]
+    },
+    {
       "name": "collapsible",
       "type": "registry:ui",
       "files": [
