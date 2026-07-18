@@ -1,0 +1,164 @@
+---
+title: Page State
+description: Estados de página para erros, manutenção, bloqueios e indisponibilidades.
+---
+
+import {
+  PageState,
+  PageStateActions,
+  PageStateBackdrop,
+  PageStateCode,
+  PageStateContent,
+  PageStateDescription,
+  PageStateEyebrow,
+  PageStateFooter,
+  PageStateMedia,
+  PageStateTitle,
+} from "@/components/ui/page-state";
+import { Button } from "@/components/ui/button";
+import {
+  AlertTriangle,
+  LockKeyhole,
+  RefreshCw,
+  WifiOff,
+  Wrench,
+} from "lucide-react";
+
+Use `PageState` para comunicar um estado que substitui o conteúdo principal da
+página. Para listas e áreas menores sem conteúdo, prefira o componente
+[Empty](/docs/components/empty).
+
+## Página não encontrada
+
+<Preview>
+  <PageState className="min-h-[30rem] border">
+    <PageStateBackdrop />
+    <PageStateContent>
+      <PageStateCode>404</PageStateCode>
+      <PageStateEyebrow>Página não encontrada</PageStateEyebrow>
+      <PageStateTitle>Talvez ela tenha mudado de endereço</PageStateTitle>
+      <PageStateDescription>
+        O link pode estar desatualizado ou a página não está mais disponível.
+      </PageStateDescription>
+      <PageStateActions>
+        <Button>Voltar ao início</Button>
+        <Button variant="outline">Ver ajuda</Button>
+      </PageStateActions>
+    </PageStateContent>
+  </PageState>
+</Preview>
+
+## Atualização em andamento
+
+<Preview>
+  <PageState variant="warning" className="min-h-[30rem] border">
+    <PageStateBackdrop />
+    <PageStateContent>
+      <PageStateMedia>
+        <Wrench />
+      </PageStateMedia>
+      <PageStateEyebrow>Manutenção programada</PageStateEyebrow>
+      <PageStateTitle>Estamos preparando novidades</PageStateTitle>
+      <PageStateDescription>
+        O sistema ficará indisponível por alguns minutos. Você pode tentar
+        novamente em instantes.
+      </PageStateDescription>
+      <PageStateActions>
+        <Button>
+          <RefreshCw data-icon="inline-start" /> Tentar novamente
+        </Button>
+      </PageStateActions>
+      <PageStateFooter>Previsão de retorno: 14:30 BRT</PageStateFooter>
+    </PageStateContent>
+  </PageState>
+</Preview>
+
+## Outros estados
+
+O mesmo padrão cobre erro interno, falta de conexão e acesso negado. Altere a
+variante, a mensagem e as ações conforme o que a pessoa pode fazer em seguida.
+
+<Preview>
+  <div className="grid w-full gap-4 lg:grid-cols-2">
+    <PageState variant="destructive" className="min-h-80 border">
+      <PageStateContent>
+        <PageStateMedia>
+          <AlertTriangle />
+        </PageStateMedia>
+        <PageStateEyebrow>Erro 500</PageStateEyebrow>
+        <PageStateTitle>Algo não saiu como esperado</PageStateTitle>
+        <PageStateDescription>
+          Não foi possível concluir a operação. Tente novamente em instantes.
+        </PageStateDescription>
+        <PageStateActions>
+          <Button>Tentar novamente</Button>
+        </PageStateActions>
+      </PageStateContent>
+    </PageState>
+    <PageState variant="muted" className="min-h-80 border">
+      <PageStateContent>
+        <PageStateMedia>
+          <WifiOff />
+        </PageStateMedia>
+        <PageStateEyebrow>Sem conexão</PageStateEyebrow>
+        <PageStateTitle>Você está offline</PageStateTitle>
+        <PageStateDescription>
+          Verifique sua conexão e tente carregar a página novamente.
+        </PageStateDescription>
+        <PageStateActions>
+          <Button variant="outline">Tentar novamente</Button>
+        </PageStateActions>
+      </PageStateContent>
+    </PageState>
+    <PageState variant="destructive" className="min-h-80 border">
+      <PageStateContent>
+        <PageStateMedia>
+          <LockKeyhole />
+        </PageStateMedia>
+        <PageStateEyebrow>Acesso negado</PageStateEyebrow>
+        <PageStateTitle>Você não pode acessar esta página</PageStateTitle>
+        <PageStateDescription>
+          Solicite acesso ao administrador ou entre com outra conta.
+        </PageStateDescription>
+        <PageStateActions>
+          <Button variant="outline">Trocar de conta</Button>
+        </PageStateActions>
+      </PageStateContent>
+    </PageState>
+  </div>
+</Preview>
+
+## Instalação
+
+```bash
+npx shadcn@latest add https://ds.adila.co/r/page-state.json
+```
+
+## Uso
+
+```tsx
+import {
+  PageState,
+  PageStateActions,
+  PageStateContent,
+  PageStateDescription,
+  PageStateTitle,
+} from "@/components/ui/page-state";
+```
+
+### Variantes
+
+- `default`: página não encontrada ou estado informativo.
+- `muted`: indisponibilidade neutra ou falta de conexão.
+- `warning`: atualização ou manutenção programada.
+- `destructive`: falha crítica ou acesso negado.
+
+## Acessibilidade
+
+Mantenha um único `PageStateTitle` (`h1`) por página. Explique o que aconteceu e
+ofereça apenas ações que ajudem a pessoa a continuar. Informações decorativas em
+`PageStateBackdrop` já são ignoradas por leitores de tela.
+
+## Dependências
+
+- `class-variance-authority`
