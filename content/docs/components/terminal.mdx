@@ -1,0 +1,61 @@
+---
+title: Terminal
+description: Componente composto para comandos, saídas e sessões de terminal.
+---
+
+import {
+  Terminal,
+  TerminalBody,
+  TerminalCommand,
+  TerminalControls,
+  TerminalHeader,
+  TerminalLine,
+  TerminalOutput,
+  TerminalPrompt,
+  TerminalTitle,
+} from "@/components/ui/terminal";
+
+<Preview>
+  <Terminal className="w-full">
+    <TerminalHeader>
+      <TerminalControls />
+      <TerminalTitle>adila — zsh</TerminalTitle>
+    </TerminalHeader>
+    <TerminalBody>
+      <TerminalLine>
+        <TerminalPrompt>❯</TerminalPrompt>
+        <TerminalCommand>bun add @adila/ui</TerminalCommand>
+      </TerminalLine>
+      <TerminalOutput>
+        + @adila/ui@1.0.0{`\n`}4 packages installed
+      </TerminalOutput>
+    </TerminalBody>
+  </Terminal>
+</Preview>
+
+## Instalação
+
+```bash
+npx shadcn@latest add https://ds.adila.co/r/terminal.json
+```
+
+## Uso
+
+```tsx
+import {
+  Terminal,
+  TerminalBody,
+  TerminalLine,
+  TerminalPrompt,
+  TerminalCommand,
+} from "@/components/ui/terminal";
+
+<Terminal>
+  <TerminalBody>
+    <TerminalLine>
+      <TerminalPrompt>$</TerminalPrompt>
+      <TerminalCommand>bun run dev</TerminalCommand>
+    </TerminalLine>
+  </TerminalBody>
+</Terminal>;
+```
