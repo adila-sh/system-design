@@ -172,7 +172,7 @@
         }
       ],
       "registryDependencies": [
-        "copy-button",
+        "code-block",
         "utils"
       ],
       "dependencies": [
@@ -395,6 +395,34 @@
       ]
     },
     {
+      "name": "code-block",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "src/components/ui/code-block.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "copy-button",
+        "utils"
+      ]
+    },
+    {
+      "name": "code-theme",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "src/components/ui/code-theme.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "select",
+        "utils"
+      ]
+    },
+    {
       "name": "collapsible",
       "type": "registry:ui",
       "files": [
@@ -522,6 +550,7 @@
         }
       ],
       "registryDependencies": [
+        "code-theme",
         "utils"
       ],
       "dependencies": [

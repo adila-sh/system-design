@@ -7,7 +7,7 @@ function Terminal({ className, ...props }: React.ComponentProps<"div">) {
     <div
       data-slot="terminal"
       className={cn(
-        "overflow-hidden rounded-lg border border-white/10 bg-[#0d1117] font-mono text-[13px] text-[#e6edf3] shadow-sm",
+        "overflow-hidden rounded-lg border border-[var(--code-border,#292e42)] bg-[var(--code-bg,#1a1b26)] font-mono text-[13px] text-[var(--code-fg,#c0caf5)] shadow-sm transition-colors",
         className,
       )}
       {...props}
@@ -20,7 +20,7 @@ function TerminalHeader({ className, ...props }: React.ComponentProps<"div">) {
     <div
       data-slot="terminal-header"
       className={cn(
-        "flex min-h-10 items-center gap-3 border-b border-white/10 px-3 text-xs text-[#8b949e]",
+        "flex min-h-10 items-center gap-3 border-b border-[var(--code-border,#292e42)] px-3 text-xs text-[var(--code-muted,#565f89)]",
         className,
       )}
       {...props}
@@ -91,7 +91,10 @@ function TerminalPrompt({ className, ...props }: React.ComponentProps<"span">) {
     <span
       data-slot="terminal-prompt"
       aria-hidden="true"
-      className={cn("mr-2 shrink-0 text-[#7ee787] select-none", className)}
+      className={cn(
+        "mr-2 shrink-0 text-[var(--code-success,#9ece6a)] select-none",
+        className,
+      )}
       {...props}
     />
   );
@@ -104,7 +107,7 @@ function TerminalCommand({
   return (
     <code
       data-slot="terminal-command"
-      className={cn("whitespace-pre text-[#e6edf3]", className)}
+      className={cn("whitespace-pre text-[var(--code-fg,#c0caf5)]", className)}
       {...props}
     />
   );
@@ -114,7 +117,10 @@ function TerminalOutput({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="terminal-output"
-      className={cn("whitespace-pre-wrap text-[#8b949e]", className)}
+      className={cn(
+        "whitespace-pre-wrap text-[var(--code-muted,#565f89)]",
+        className,
+      )}
       {...props}
     />
   );

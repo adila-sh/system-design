@@ -46,6 +46,8 @@ import {
   type ChartConfig,
 } from "@/components/ui/chart";
 import { CommandMenu } from "@/components/command-menu";
+import { CodeBlock } from "@/components/ui/code-block";
+import { CodeThemeProvider, CodeThemeSelect } from "@/components/ui/code-theme";
 import {
   ApiRequest,
   ApiRequestCode,
@@ -464,7 +466,10 @@ function Showcase() {
           </header>
 
           {/* Conteúdo */}
-          <div className="flex flex-1 flex-col gap-4 p-4">
+          <CodeThemeProvider
+            defaultTheme="tokyo-night"
+            className="flex flex-1 flex-col gap-4 p-4"
+          >
             <PageHeader>
               <PageHeaderContent>
                 <PageHeaderEyebrow>Workspace / Clientes</PageHeaderEyebrow>
@@ -601,6 +606,9 @@ function Showcase() {
                   desenvolvimento.
                 </SectionHeaderDescription>
               </SectionHeaderContent>
+              <SectionHeaderActions>
+                <CodeThemeSelect aria-label="Tema dos blocos de código" />
+              </SectionHeaderActions>
             </SectionHeader>
 
             <div className="grid gap-4 lg:grid-cols-2">
@@ -630,7 +638,7 @@ function Showcase() {
                         <TerminalPrompt>❯</TerminalPrompt>
                         <TerminalCommand>bun run build</TerminalCommand>
                       </TerminalLine>
-                      <TerminalOutput className="text-[#7ee787]">
+                      <TerminalOutput className="text-[var(--code-success,#9ece6a)]">
                         ✓ registry gerado · 76 componentes
                       </TerminalOutput>
                       <TerminalOutput>✓ build concluído em 4.1s</TerminalOutput>
@@ -704,6 +712,37 @@ function Showcase() {
   replicas: 3,
   autoscaling: true,
 };`}
+                />
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <SectionHeader>
+                  <SectionHeaderContent>
+                    <SectionHeaderTitle>Integração rápida</SectionHeaderTitle>
+                    <SectionHeaderDescription>
+                      Exemplo com syntax highlighting, linhas numeradas e ação
+                      de copiar.
+                    </SectionHeaderDescription>
+                  </SectionHeaderContent>
+                </SectionHeader>
+              </CardHeader>
+              <CardContent>
+                <CodeBlock
+                  filename="customer-status.tsx"
+                  language="tsx"
+                  showLineNumbers
+                  highlightLines={[5, 6]}
+                  code={`import { Status } from "@/components/ui/status";
+
+export function CustomerStatus({ active }: { active: boolean }) {
+  return (
+    <Status variant={active ? "success" : "neutral"}>
+      {active ? "Ativo" : "Inativo"}
+    </Status>
+  );
+}`}
                 />
               </CardContent>
             </Card>
@@ -1071,7 +1110,7 @@ function Showcase() {
                 </Card>
               </TabsContent>
             </Tabs>
-          </div>
+          </CodeThemeProvider>
         </SidebarInset>
       </SidebarProvider>
     </TooltipProvider>

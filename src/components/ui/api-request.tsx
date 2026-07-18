@@ -1,7 +1,7 @@
 import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 
-import { CopyButton } from "@/components/ui/copy-button";
+import { CodeBlock } from "@/components/ui/code-block";
 import { cn } from "@/lib/utils";
 
 function ApiRequest({ className, ...props }: React.ComponentProps<"div">) {
@@ -129,29 +129,26 @@ function ApiRequestSectionTitle({
 
 function ApiRequestCode({
   value,
+  language = "json",
   className,
   ...props
-}: Omit<React.ComponentProps<"pre">, "children"> & { value: string }) {
+}: Omit<React.ComponentProps<"figure">, "children"> & {
+  value: string;
+  language?: string;
+}) {
   return (
-    <div className="relative border-t bg-muted/30">
-      <CopyButton
-        value={value}
-        variant="ghost"
-        size="icon-xs"
-        aria-label="Copiar conteúdo"
-        className="absolute top-2 right-2"
-      />
-      <pre
-        data-slot="api-request-code"
-        className={cn(
-          "overflow-x-auto p-3 pr-11 font-mono text-xs leading-5",
-          className,
-        )}
-        {...props}
-      >
-        <code>{value}</code>
-      </pre>
-    </div>
+    <CodeBlock
+      data-slot="api-request-code"
+      code={value}
+      language={language}
+      hideHeader
+      className={cn(
+        "rounded-none border-x-0 border-b-0 shadow-none",
+        className,
+      )}
+      codeClassName="py-3 pr-8 text-xs leading-5"
+      {...props}
+    />
   );
 }
 
