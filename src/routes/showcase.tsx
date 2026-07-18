@@ -46,6 +46,17 @@ import {
   type ChartConfig,
 } from "@/components/ui/chart";
 import { CommandMenu } from "@/components/command-menu";
+import {
+  ApiRequest,
+  ApiRequestCode,
+  ApiRequestHeader,
+  ApiRequestMeta,
+  ApiRequestMethod,
+  ApiRequestSection,
+  ApiRequestSectionHeader,
+  ApiRequestSectionTitle,
+  ApiRequestUrl,
+} from "@/components/ui/api-request";
 import { CopyButton } from "@/components/ui/copy-button";
 import {
   DataList,
@@ -60,6 +71,7 @@ import {
   FilterBarResults,
 } from "@/components/ui/filter-bar";
 import { FileUpload } from "@/components/ui/file-upload";
+import { DiffViewer } from "@/components/ui/diff-viewer";
 import { NewTransactionDrawer } from "@/components/new-transaction-drawer";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Kbd } from "@/components/ui/kbd";
@@ -83,6 +95,7 @@ import {
   PageHeaderEyebrow,
   PageHeaderTitle,
 } from "@/components/ui/page-header";
+import { PackageInstall } from "@/components/ui/package-install";
 import { Progress } from "@/components/ui/progress";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import {
@@ -122,6 +135,17 @@ import { Slider } from "@/components/ui/slider";
 import { Status } from "@/components/ui/status";
 import { Switch } from "@/components/ui/switch";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import {
+  Terminal,
+  TerminalBody,
+  TerminalCommand,
+  TerminalControls,
+  TerminalHeader,
+  TerminalLine,
+  TerminalOutput,
+  TerminalPrompt,
+  TerminalTitle,
+} from "@/components/ui/terminal";
 import {
   Tooltip,
   TooltipContent,
@@ -568,6 +592,121 @@ function Showcase() {
                 </CardContent>
               </Card>
             </div>
+
+            <SectionHeader className="pt-2">
+              <SectionHeaderContent>
+                <SectionHeaderTitle>Developer experience</SectionHeaderTitle>
+                <SectionHeaderDescription>
+                  Componentes para documentação, APIs e ferramentas de
+                  desenvolvimento.
+                </SectionHeaderDescription>
+              </SectionHeaderContent>
+            </SectionHeader>
+
+            <div className="grid gap-4 lg:grid-cols-2">
+              <Card>
+                <CardHeader>
+                  <CardTitle>Instalação e terminal</CardTitle>
+                  <CardDescription>
+                    Comandos prontos para copiar e saídas de execução.
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <PackageInstall
+                    commands={{
+                      npm: "npm install @adila/ui",
+                      pnpm: "pnpm add @adila/ui",
+                      yarn: "yarn add @adila/ui",
+                      bun: "bun add @adila/ui",
+                    }}
+                  />
+                  <Terminal>
+                    <TerminalHeader>
+                      <TerminalControls />
+                      <TerminalTitle>adila — zsh</TerminalTitle>
+                    </TerminalHeader>
+                    <TerminalBody>
+                      <TerminalLine>
+                        <TerminalPrompt>❯</TerminalPrompt>
+                        <TerminalCommand>bun run build</TerminalCommand>
+                      </TerminalLine>
+                      <TerminalOutput className="text-[#7ee787]">
+                        ✓ registry gerado · 76 componentes
+                      </TerminalOutput>
+                      <TerminalOutput>✓ build concluído em 4.1s</TerminalOutput>
+                    </TerminalBody>
+                  </Terminal>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle>API playground</CardTitle>
+                  <CardDescription>
+                    Requisição e resposta com metadados operacionais.
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <ApiRequest>
+                    <ApiRequestHeader>
+                      <ApiRequestMethod method="POST" />
+                      <ApiRequestUrl>/v1/deployments</ApiRequestUrl>
+                      <ApiRequestMeta>201 · 184 ms</ApiRequestMeta>
+                    </ApiRequestHeader>
+                    <ApiRequestSection>
+                      <ApiRequestSectionHeader>
+                        <ApiRequestSectionTitle>Payload</ApiRequestSectionTitle>
+                      </ApiRequestSectionHeader>
+                      <ApiRequestCode
+                        value={`{
+  "project": "adila-ui",
+  "environment": "production"
+}`}
+                      />
+                    </ApiRequestSection>
+                    <ApiRequestSection>
+                      <ApiRequestSectionHeader>
+                        <ApiRequestSectionTitle>
+                          Resposta
+                        </ApiRequestSectionTitle>
+                        <Status variant="success">Created</Status>
+                      </ApiRequestSectionHeader>
+                      <ApiRequestCode
+                        value={`{
+  "id": "dep_8H2K91",
+  "status": "queued"
+}`}
+                      />
+                    </ApiRequestSection>
+                  </ApiRequest>
+                </CardContent>
+              </Card>
+            </div>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>Revisão de alterações</CardTitle>
+                <CardDescription>
+                  Diff unificado com syntax highlighting via Pierre.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <DiffViewer
+                  filename="deployment.ts"
+                  language="typescript"
+                  oldCode={`export const deployment = {
+  region: "us-east",
+  replicas: 1,
+  autoscaling: false,
+};`}
+                  newCode={`export const deployment = {
+  region: "sa-east",
+  replicas: 3,
+  autoscaling: true,
+};`}
+                />
+              </CardContent>
+            </Card>
 
             {/* Stat cards */}
             <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
