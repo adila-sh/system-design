@@ -907,6 +907,22 @@
       ]
     },
     {
+      "name": "page-state",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "src/components/ui/page-state.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "dependencies": [
+        "class-variance-authority"
+      ]
+    },
+    {
       "name": "pagination",
       "type": "registry:ui",
       "files": [

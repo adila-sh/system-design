@@ -44,6 +44,26 @@ function Text({ className, ...props }: React.ComponentProps<"p">) {
   );
 }
 
+function PixelText({ className, ...props }: React.ComponentProps<"p">) {
+  return (
+    <p
+      data-slot="typography-pixel-text"
+      className={cn("font-pixel text-xl leading-8 text-foreground", className)}
+      {...props}
+    />
+  );
+}
+
+function CodeText({ className, ...props }: React.ComponentProps<"p">) {
+  return (
+    <p
+      data-slot="typography-code-text"
+      className={cn("font-mono text-sm leading-6 text-foreground", className)}
+      {...props}
+    />
+  );
+}
+
 function Lead({ className, ...props }: React.ComponentProps<"p">) {
   return (
     <p
@@ -141,12 +161,14 @@ function List({ className, ...props }: React.ComponentProps<"ul">) {
 
 export {
   Blockquote,
+  CodeText,
   Description,
   InlineCode,
   Label,
   Lead,
   List,
   Muted,
+  PixelText,
   Small,
   Text,
   Title,

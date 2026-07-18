@@ -1,16 +1,18 @@
 ---
 title: Typography
-description: Primitives tipográficos semânticos para títulos, textos e conteúdos de apoio.
+description: Primitives tipográficos semânticos com as fontes Adila Std, Adila Pixel e Adila Code.
 ---
 
 import {
   Blockquote,
+  CodeText,
   Description,
   InlineCode,
   Label,
   Lead,
   List,
   Muted,
+  PixelText,
   Small,
   Text,
   Title,
@@ -33,6 +35,10 @@ import {
     <Description>
       Os estilos usam os tokens de cor e fonte do tema adila.co.
     </Description>
+    <div className="grid gap-3 rounded-md border p-4">
+      <PixelText>Adila Pixel · identidade em cada pixel.</PixelText>
+      <CodeText>Adila Code · const design = "legível";</CodeText>
+    </div>
     <Blockquote>Bom design torna a intenção visível.</Blockquote>
     <List>
       <li>Hierarquia previsível</li>
@@ -54,9 +60,11 @@ npx shadcn@latest add https://ds.adila.co/r/typography.json
 
 ```tsx
 import {
+  CodeText,
   Description,
   Label,
   Lead,
+  PixelText,
   Text,
   Title,
 } from "@/components/ui/typography";
@@ -68,6 +76,8 @@ export function ArticleHeader() {
       <Title level={1}>Uma nova experiência</Title>
       <Lead>Uma introdução em destaque para contextualizar a página.</Lead>
       <Text>O conteúdo principal começa aqui.</Text>
+      <PixelText>Um destaque com a fonte Adila Pixel.</PixelText>
+      <CodeText>const font = "Adila Code";</CodeText>
       <Description>Publicado em 18 de julho de 2026.</Description>
     </header>
   );
@@ -89,6 +99,8 @@ hierarquia semântica e aplicar a escala visual correspondente.
 
 - `Title`: títulos semânticos de `h1` a `h6`.
 - `Text`: parágrafo de conteúdo padrão.
+- `PixelText`: texto de destaque com a fonte Adila Pixel.
+- `CodeText`: texto monoespaçado com a fonte Adila Code.
 - `Lead`: introdução em destaque.
 - `Label`: rótulo visual curto; para campos de formulário, use o componente `Label` de formulário.
 - `Description`: texto explicativo secundário.
