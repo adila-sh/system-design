@@ -163,6 +163,23 @@
       ]
     },
     {
+      "name": "api-request",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "src/components/ui/api-request.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "copy-button",
+        "utils"
+      ],
+      "dependencies": [
+        "class-variance-authority"
+      ]
+    },
+    {
       "name": "aspect-ratio",
       "type": "registry:ui",
       "files": [
@@ -496,6 +513,22 @@
       ]
     },
     {
+      "name": "diff-viewer",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "src/components/ui/diff-viewer.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "dependencies": [
+        "@pierre/diffs"
+      ]
+    },
+    {
       "name": "direction",
       "type": "registry:ui",
       "files": [
@@ -815,6 +848,20 @@
         "@base-ui/react",
         "@phosphor-icons/react",
         "class-variance-authority"
+      ]
+    },
+    {
+      "name": "package-install",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "src/components/ui/package-install.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "copy-button",
+        "utils"
       ]
     },
     {
@@ -1193,6 +1240,19 @@
       "dependencies": [
         "@base-ui/react",
         "class-variance-authority"
+      ]
+    },
+    {
+      "name": "terminal",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "src/components/ui/terminal.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "utils"
       ]
     },
     {

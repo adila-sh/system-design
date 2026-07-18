@@ -1,0 +1,42 @@
+---
+title: API Request
+description: Apresentação estruturada de requisições e respostas HTTP.
+---
+
+import {
+  ApiRequest,
+  ApiRequestCode,
+  ApiRequestHeader,
+  ApiRequestMeta,
+  ApiRequestMethod,
+  ApiRequestSection,
+  ApiRequestSectionHeader,
+  ApiRequestSectionTitle,
+  ApiRequestUrl,
+} from "@/components/ui/api-request";
+
+<Preview>
+  <ApiRequest className="w-full">
+    <ApiRequestHeader>
+      <ApiRequestMethod method="POST" />
+      <ApiRequestUrl>https://api.adila.co/v1/deployments</ApiRequestUrl>
+      <ApiRequestMeta>201 · 184 ms</ApiRequestMeta>
+    </ApiRequestHeader>
+    <ApiRequestSection>
+      <ApiRequestSectionHeader>
+        <ApiRequestSectionTitle>Resposta</ApiRequestSectionTitle>
+      </ApiRequestSectionHeader>
+      <ApiRequestCode value={'{\n  "status": "ready"\n}'} />
+    </ApiRequestSection>
+  </ApiRequest>
+</Preview>
+
+## Instalação
+
+```bash
+npx shadcn@latest add https://ds.adila.co/r/api-request.json
+```
+
+## Métodos
+
+`ApiRequestMethod` possui estilos para `GET`, `POST`, `PUT`, `PATCH` e `DELETE`.

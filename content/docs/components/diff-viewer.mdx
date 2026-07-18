@@ -1,0 +1,38 @@
+---
+title: Diff Viewer
+description: Visualizador de diferenças de código com syntax highlighting via Pierre Diffs.
+---
+
+import { DiffViewer } from "@/components/ui/diff-viewer";
+
+<Preview>
+  <DiffViewer
+    className="w-full"
+    filename="config.ts"
+    language="typescript"
+    oldCode={'export const region = "us-east";\nexport const replicas = 1;'}
+    newCode={'export const region = "sa-east";\nexport const replicas = 3;'}
+  />
+</Preview>
+
+## Instalação
+
+```bash
+npx shadcn@latest add https://ds.adila.co/r/diff-viewer.json
+```
+
+## Uso
+
+```tsx
+import { DiffViewer } from "@/components/ui/diff-viewer";
+
+<DiffViewer
+  filename="app.ts"
+  oldCode="const version = 1;"
+  newCode="const version = 2;"
+  layout="split"
+/>;
+```
+
+O componente utiliza [`@pierre/diffs`](https://diffs.com/docs), com Shiki para
+syntax highlighting. Use `layout="unified"` ou `layout="split"`.
