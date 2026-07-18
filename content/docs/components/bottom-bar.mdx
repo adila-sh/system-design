@@ -1,0 +1,139 @@
+---
+title: Bottom Bar
+description: Navegação inferior para mobile com acesso à navegação completa em um drawer.
+---
+
+import {
+  BottomBar,
+  BottomBarButton,
+  BottomBarDrawer,
+  BottomBarDrawerContent,
+  BottomBarDrawerTrigger,
+  BottomBarItem,
+  BottomBarLabel,
+  BottomBarList,
+} from "@/components/ui/bottom-bar";
+import {
+  DrawerDescription,
+  DrawerHeader,
+  DrawerTitle,
+} from "@/components/ui/drawer";
+import {
+  ChartLineIcon,
+  DotsThreeIcon,
+  GearSixIcon,
+  HouseIcon,
+  LifebuoyIcon,
+  PackageIcon,
+  UsersIcon,
+} from "@phosphor-icons/react";
+
+<Preview>
+  <div className="relative h-80 w-full overflow-hidden rounded-lg border bg-muted/20">
+    <div className="p-6">
+      <h3 className="font-medium">Conteúdo do aplicativo</h3>
+      <p className="mt-1 text-sm text-muted-foreground">
+        A bottom bar permanece acessível na parte inferior da tela.
+      </p>
+    </div>
+    <BottomBar className="absolute md:flex">
+      <BottomBarList>
+        <BottomBarItem>
+          <BottomBarButton isActive>
+            <HouseIcon />
+            <BottomBarLabel>Início</BottomBarLabel>
+          </BottomBarButton>
+        </BottomBarItem>
+        <BottomBarItem>
+          <BottomBarButton>
+            <ChartLineIcon />
+            <BottomBarLabel>Analytics</BottomBarLabel>
+          </BottomBarButton>
+        </BottomBarItem>
+        <BottomBarItem>
+          <BottomBarButton>
+            <UsersIcon />
+            <BottomBarLabel>Clientes</BottomBarLabel>
+          </BottomBarButton>
+        </BottomBarItem>
+        <BottomBarItem>
+          <BottomBarDrawer>
+            <BottomBarDrawerTrigger>
+              <DotsThreeIcon />
+              <BottomBarLabel>Menu</BottomBarLabel>
+            </BottomBarDrawerTrigger>
+            <BottomBarDrawerContent>
+              <DrawerHeader>
+                <DrawerTitle>Todos os itens</DrawerTitle>
+                <DrawerDescription>
+                  Navegação completa da sidebar.
+                </DrawerDescription>
+              </DrawerHeader>
+              <nav
+                className="grid gap-1 overflow-y-auto p-4"
+                aria-label="Menu completo"
+              >
+                {[
+                  [HouseIcon, "Início"],
+                  [ChartLineIcon, "Analytics"],
+                  [UsersIcon, "Clientes"],
+                  [PackageIcon, "Produtos"],
+                  [GearSixIcon, "Configurações"],
+                  [LifebuoyIcon, "Ajuda"],
+                ].map(([Icon, label]) => (
+                  <button
+                    className="flex items-center gap-3 rounded-md px-3 py-2.5 text-left text-sm hover:bg-muted"
+                    type="button"
+                    key={label}
+                  >
+                    <Icon className="size-5 text-muted-foreground" />
+                    {label}
+                  </button>
+                ))}
+              </nav>
+            </BottomBarDrawerContent>
+          </BottomBarDrawer>
+        </BottomBarItem>
+      </BottomBarList>
+    </BottomBar>
+  </div>
+</Preview>
+
+## Instalação
+
+```bash
+npx shadcn@latest add https://ds.adila.co/r/bottom-bar.json
+```
+
+## Uso
+
+Use os itens mais importantes diretamente na barra. O último item abre um drawer
+com todos os itens disponíveis na sidebar.
+
+```tsx
+<BottomBar>
+  <BottomBarList>
+    <BottomBarItem>
+      <BottomBarButton render={<a href="/" />} isActive>
+        <HouseIcon />
+        <BottomBarLabel>Início</BottomBarLabel>
+      </BottomBarButton>
+    </BottomBarItem>
+
+    <BottomBarItem>
+      <BottomBarDrawer>
+        <BottomBarDrawerTrigger>
+          <DotsThreeIcon />
+          <BottomBarLabel>Menu</BottomBarLabel>
+        </BottomBarDrawerTrigger>
+        <BottomBarDrawerContent>
+          {/* Renderize aqui todos os itens da sidebar. */}
+        </BottomBarDrawerContent>
+      </BottomBarDrawer>
+    </BottomBarItem>
+  </BottomBarList>
+</BottomBar>
+```
+
+O componente fica oculto a partir do breakpoint `md` e inclui automaticamente o
+espaço seguro de dispositivos com indicador de início.

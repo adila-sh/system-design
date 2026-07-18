@@ -244,6 +244,24 @@
       ]
     },
     {
+      "name": "bottom-bar",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "src/components/ui/bottom-bar.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "drawer",
+        "utils"
+      ],
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority"
+      ]
+    },
+    {
       "name": "breadcrumb",
       "type": "registry:ui",
       "files": [

@@ -8,6 +8,7 @@ import {
   CaretUpDownIcon as ChevronsUpDown,
   CreditCardIcon as CreditCard,
   CurrencyDollarIcon as DollarSign,
+  DotsThreeIcon as MoreHorizontal,
   SquaresFourIcon as LayoutDashboard,
   LifebuoyIcon as LifeBuoy,
   ChartLineIcon as LineChart,
@@ -27,6 +28,16 @@ import { Area, AreaChart, Bar, BarChart, CartesianGrid, XAxis } from "recharts";
 import { DataTable } from "@/components/data-table";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
+import {
+  BottomBar,
+  BottomBarButton,
+  BottomBarDrawer,
+  BottomBarDrawerContent,
+  BottomBarDrawerTrigger,
+  BottomBarItem,
+  BottomBarLabel,
+  BottomBarList,
+} from "@/components/ui/bottom-bar";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -75,6 +86,12 @@ import {
 import { FileUpload } from "@/components/ui/file-upload";
 import { DiffViewer } from "@/components/ui/diff-viewer";
 import { NewTransactionDrawer } from "@/components/new-transaction-drawer";
+import {
+  DrawerClose,
+  DrawerDescription,
+  DrawerHeader,
+  DrawerTitle,
+} from "@/components/ui/drawer";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Kbd } from "@/components/ui/kbd";
 import {
@@ -396,6 +413,117 @@ function AppSidebar({ onOpenCommand }: { onOpenCommand: () => void }) {
   );
 }
 
+function AppBottomBar({ onOpenCommand }: { onOpenCommand: () => void }) {
+  const pathname = useRouterState({
+    select: (state) => state.location.pathname,
+  });
+
+  return (
+    <BottomBar>
+      <BottomBarList>
+        {navMain.slice(0, 3).map((item) => (
+          <BottomBarItem key={item.title}>
+            <BottomBarButton
+              isActive={pathname === item.href}
+              render={<Link to={item.href} />}
+            >
+              <item.icon />
+              <BottomBarLabel>{item.title}</BottomBarLabel>
+            </BottomBarButton>
+          </BottomBarItem>
+        ))}
+
+        <BottomBarItem>
+          <BottomBarDrawer>
+            <BottomBarDrawerTrigger aria-label="Abrir menu completo">
+              <MoreHorizontal />
+              <BottomBarLabel>Menu</BottomBarLabel>
+            </BottomBarDrawerTrigger>
+            <BottomBarDrawerContent>
+              <DrawerHeader>
+                <DrawerTitle>Menu</DrawerTitle>
+                <DrawerDescription>
+                  Todos os itens da navegação.
+                </DrawerDescription>
+              </DrawerHeader>
+
+              <nav
+                aria-label="Menu completo"
+                className="grid gap-1 overflow-y-auto p-4"
+              >
+                <DrawerClose
+                  render={
+                    <button
+                      type="button"
+                      onClick={onOpenCommand}
+                      className="flex items-center gap-3 rounded-md px-3 py-2.5 text-left text-sm hover:bg-muted"
+                    />
+                  }
+                >
+                  <Search className="size-5 text-muted-foreground" />
+                  Buscar
+                </DrawerClose>
+
+                <p className="px-3 pt-4 pb-1 text-xs font-medium text-muted-foreground">
+                  Plataforma
+                </p>
+                {navMain.map((item) => (
+                  <DrawerClose
+                    key={item.title}
+                    render={
+                      <Link
+                        to={item.href}
+                        aria-current={
+                          pathname === item.href ? "page" : undefined
+                        }
+                        className="flex items-center gap-3 rounded-md px-3 py-2.5 text-sm hover:bg-muted aria-[current=page]:bg-muted aria-[current=page]:text-primary"
+                      />
+                    }
+                  >
+                    <item.icon className="size-5 text-muted-foreground" />
+                    <span>{item.title}</span>
+                    {item.badge ? (
+                      <Badge variant="secondary" className="ml-auto">
+                        {item.badge}
+                      </Badge>
+                    ) : null}
+                  </DrawerClose>
+                ))}
+
+                <p className="px-3 pt-4 pb-1 text-xs font-medium text-muted-foreground">
+                  Suporte
+                </p>
+                <DrawerClose
+                  render={
+                    <Link
+                      to="/configuracoes"
+                      className="flex items-center gap-3 rounded-md px-3 py-2.5 text-sm hover:bg-muted"
+                    />
+                  }
+                >
+                  <Settings2 className="size-5 text-muted-foreground" />
+                  Configurações
+                </DrawerClose>
+                <DrawerClose
+                  render={
+                    <Link
+                      to="/ajuda"
+                      className="flex items-center gap-3 rounded-md px-3 py-2.5 text-sm hover:bg-muted"
+                    />
+                  }
+                >
+                  <LifeBuoy className="size-5 text-muted-foreground" />
+                  Ajuda
+                </DrawerClose>
+              </nav>
+            </BottomBarDrawerContent>
+          </BottomBarDrawer>
+        </BottomBarItem>
+      </BottomBarList>
+    </BottomBar>
+  );
+}
+
 /* ------------------------------------------------------------------ */
 /* Página                                                              */
 /* ------------------------------------------------------------------ */
@@ -431,11 +559,9 @@ export function Showcase({
       <CommandMenu open={cmdOpen} onOpenChange={setCmdOpen} />
       <SidebarProvider>
         <AppSidebar onOpenCommand={() => setCmdOpen(true)} />
-        <SidebarInset>
+        <SidebarInset className="pb-[calc(4rem+env(safe-area-inset-bottom))] md:pb-0">
           {/* Header */}
           <header className="flex h-16 min-w-0 shrink-0 items-center gap-2 border-b px-3 sm:px-4">
-            <SidebarTrigger className="md:hidden" />
-            <Separator orientation="vertical" className="h-5 md:hidden" />
             <div className="flex flex-col">
               <h1 className="text-sm font-medium">{title}</h1>
               <p className="hidden text-xs text-muted-foreground sm:block">
@@ -1157,6 +1283,7 @@ export function CustomerStatus({ active }: { active: boolean }) {
             )}
           </CodeThemeProvider>
         </SidebarInset>
+        <AppBottomBar onOpenCommand={() => setCmdOpen(true)} />
       </SidebarProvider>
     </TooltipProvider>
   );
