@@ -111,6 +111,7 @@ type CodeBlockProps = Omit<React.ComponentProps<"figure">, "children"> & {
   showLineNumbers?: boolean;
   highlightLines?: number[];
   codeClassName?: string;
+  hideHeader?: boolean;
 };
 
 function CodeBlock({
@@ -119,6 +120,7 @@ function CodeBlock({
   filename,
   showLineNumbers = false,
   highlightLines = [],
+  hideHeader = false,
   className,
   codeClassName,
   ...props
@@ -130,28 +132,38 @@ function CodeBlock({
     <figure
       data-slot="code-block"
       className={cn(
-        "overflow-hidden rounded-lg border border-white/10 bg-[#0d1117] text-[#e6edf3] shadow-sm",
+        "relative overflow-hidden rounded-lg border border-[var(--code-border,#292e42)] bg-[var(--code-bg,#1a1b26)] text-[var(--code-fg,#c0caf5)] shadow-sm transition-colors",
         className,
       )}
       {...props}
     >
-      <figcaption className="flex min-h-10 items-center gap-3 border-b border-white/10 px-3">
-        <span className="min-w-0 flex-1 truncate font-mono text-xs text-[#8b949e]">
-          {filename ?? language}
-        </span>
-        {filename ? (
-          <span className="font-mono text-[10px] tracking-wide text-[#8b949e] uppercase">
-            {language}
+      {!hideHeader ? (
+        <figcaption className="flex min-h-10 items-center gap-3 border-b border-[var(--code-border,#292e42)] px-3">
+          <span className="min-w-0 flex-1 truncate font-mono text-xs text-[var(--code-muted,#565f89)]">
+            {filename ?? language}
           </span>
-        ) : null}
+          {filename ? (
+            <span className="font-mono text-[10px] tracking-wide text-[var(--code-muted,#565f89)] uppercase">
+              {language}
+            </span>
+          ) : null}
+          <CopyButton
+            value={code}
+            variant="ghost"
+            size="icon-xs"
+            aria-label="Copiar código"
+            className="text-[var(--code-muted,#565f89)] hover:bg-[var(--code-selection,#283457)] hover:text-[var(--code-fg,#c0caf5)]"
+          />
+        </figcaption>
+      ) : (
         <CopyButton
           value={code}
           variant="ghost"
           size="icon-xs"
           aria-label="Copiar código"
-          className="text-[#8b949e] hover:bg-white/10 hover:text-white"
+          className="absolute top-2 right-2 z-10 text-[var(--code-muted,#565f89)] hover:bg-[var(--code-selection,#283457)] hover:text-[var(--code-fg,#c0caf5)]"
         />
-      </figcaption>
+      )}
       <pre
         tabIndex={0}
         className={cn(
@@ -167,12 +179,12 @@ function CodeBlock({
                 key={number}
                 data-slot="code-block-line"
                 data-highlighted={highlighted.has(number) || undefined}
-                className="flex min-w-max px-4 data-[highlighted=true]:bg-[#388bfd]/15 data-[highlighted=true]:shadow-[inset_2px_0_0_#388bfd]"
+                className="flex min-w-max px-4 data-[highlighted=true]:bg-[var(--code-selection,#283457)] data-[highlighted=true]:shadow-[inset_2px_0_0_var(--code-accent,#7aa2f7)]"
               >
                 {showLineNumbers ? (
                   <span
                     aria-hidden="true"
-                    className="mr-4 w-[2ch] shrink-0 text-right text-[#484f58] select-none"
+                    className="mr-4 w-[2ch] shrink-0 text-right text-[var(--code-muted,#565f89)] select-none"
                   >
                     {number}
                   </span>
@@ -183,12 +195,18 @@ function CodeBlock({
                       key={`${number}-${tokenIndex}`}
                       data-token={token.kind}
                       className={cn(
-                        token.kind === "comment" && "text-[#8b949e] italic",
-                        token.kind === "function" && "text-[#d2a8ff]",
-                        token.kind === "keyword" && "text-[#ff7b72]",
-                        token.kind === "number" && "text-[#79c0ff]",
-                        token.kind === "string" && "text-[#a5d6ff]",
-                        token.kind === "tag" && "text-[#7ee787]",
+                        token.kind === "comment" &&
+                          "text-[var(--code-comment,#565f89)] italic",
+                        token.kind === "function" &&
+                          "text-[var(--code-function,#7aa2f7)]",
+                        token.kind === "keyword" &&
+                          "text-[var(--code-keyword,#bb9af7)]",
+                        token.kind === "number" &&
+                          "text-[var(--code-number,#ff9e64)]",
+                        token.kind === "string" &&
+                          "text-[var(--code-string,#9ece6a)]",
+                        token.kind === "tag" &&
+                          "text-[var(--code-success,#9ece6a)]",
                       )}
                     >
                       {token.value}

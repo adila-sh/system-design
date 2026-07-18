@@ -4,20 +4,23 @@ description: Bloco de código com syntax highlighting, linhas numeradas e botão
 ---
 
 import { CodeBlock } from "@/components/ui/code-block";
+import { CodeThemeProvider } from "@/components/ui/code-theme";
 
 <Preview>
-  <CodeBlock
-    filename="button.tsx"
-    language="tsx"
-    showLineNumbers
-    highlightLines={[4, 5]}
-    code={`import { Button } from '@/components/ui/button';
+  <CodeThemeProvider defaultTheme="tokyo-night" className="w-full">
+    <CodeBlock
+      filename="button.tsx"
+      language="tsx"
+      showLineNumbers
+      highlightLines={[4, 5]}
+      code={`import { Button } from '@/components/ui/button';
 
 export function SaveButton() {
   const label = 'Salvar alterações';
   return <Button>{label}</Button>;
 }`}
-  />
+    />
+  </CodeThemeProvider>
 </Preview>
 
 ## Instalação

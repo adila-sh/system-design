@@ -3,6 +3,7 @@
 import * as React from "react";
 import { MultiFileDiff } from "@pierre/diffs/react";
 
+import { useCodeTheme } from "@/components/ui/code-theme";
 import { cn } from "@/lib/utils";
 
 type DiffViewerProps = Omit<React.ComponentProps<"div">, "children"> & {
@@ -26,6 +27,7 @@ function DiffViewer({
   className,
   ...props
 }: DiffViewerProps) {
+  const { definition } = useCodeTheme();
   const oldFile = React.useMemo(
     () => ({
       name: oldFilename ?? filename,
@@ -43,11 +45,11 @@ function DiffViewer({
       diffStyle: layout,
       diffIndicators: "bars" as const,
       expandUnchanged,
-      theme: { light: "pierre-light", dark: "pierre-dark" },
-      themeType: "system" as const,
+      theme: definition.shikiTheme,
+      themeType: definition.mode,
       overflow: "scroll" as const,
     }),
-    [expandUnchanged, layout],
+    [definition.mode, definition.shikiTheme, expandUnchanged, layout],
   );
 
   return (

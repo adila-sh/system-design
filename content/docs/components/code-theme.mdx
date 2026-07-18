@@ -1,0 +1,58 @@
+---
+title: Code Theme
+description: Temas globais para blocos de código, terminal, API e diff.
+---
+
+import { CodeThemeProvider, CodeThemeSelect } from "@/components/ui/code-theme";
+import { CodeBlock } from "@/components/ui/code-block";
+
+<Preview>
+  <CodeThemeProvider defaultTheme="tokyo-night" className="w-full space-y-3">
+    <CodeThemeSelect />
+    <CodeBlock
+      language="typescript"
+      filename="theme.ts"
+      code={`const theme = 'tokyo-night';\nexport { theme };`}
+    />
+  </CodeThemeProvider>
+</Preview>
+
+## Instalação
+
+```bash
+npx shadcn@latest add https://ds.adila.co/r/code-theme.json
+```
+
+## Uso
+
+```tsx
+import { CodeThemeProvider, CodeThemeSelect } from "@/components/ui/code-theme";
+
+export function DeveloperTools({ children }: { children: React.ReactNode }) {
+  return (
+    <CodeThemeProvider defaultTheme="tokyo-night">
+      <CodeThemeSelect />
+      {children}
+    </CodeThemeProvider>
+  );
+}
+```
+
+## Temas disponíveis
+
+Claros:
+
+- `github-light`
+- `min-light`
+- `solarized-light`
+
+Escuros:
+
+- `tokyo-night`
+- `github-dark`
+- `dracula`
+
+O tema selecionado é compartilhado por `CodeBlock`, `Terminal`,
+`PackageInstall`, `ApiRequest` e `DiffViewer`. O Pierre recebe o tema Shiki
+correspondente, enquanto os demais componentes usam a mesma paleta por tokens
+CSS.
