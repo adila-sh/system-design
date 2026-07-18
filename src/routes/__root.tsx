@@ -58,19 +58,38 @@ export const Route = createRootRoute({
         crossOrigin: "anonymous",
       },
       { rel: "stylesheet", href: appCss },
-      { rel: "icon", href: "/favicon.ico", sizes: "48x48" },
+      // Favicon dual: Safari/Firefox trocam com o tema do SO; Chrome ignora
+      // `media` em rel=icon e cai no .ico (fundo azul) — degradação aceitável.
       {
         rel: "icon",
         type: "image/png",
         sizes: "32x32",
-        href: "/favicon-32x32.png",
+        href: "/favicon-32-light.png",
+        media: "(prefers-color-scheme: light)",
       },
       {
         rel: "icon",
         type: "image/png",
         sizes: "16x16",
-        href: "/favicon-16x16.png",
+        href: "/favicon-16-light.png",
+        media: "(prefers-color-scheme: light)",
       },
+      {
+        rel: "icon",
+        type: "image/png",
+        sizes: "32x32",
+        href: "/favicon-32-dark.png",
+        media: "(prefers-color-scheme: dark)",
+      },
+      {
+        rel: "icon",
+        type: "image/png",
+        sizes: "16x16",
+        href: "/favicon-16-dark.png",
+        media: "(prefers-color-scheme: dark)",
+      },
+      // Fallback universal — precisa vir depois dos com `media`.
+      { rel: "icon", href: "/favicon.ico", sizes: "48x48" },
       {
         rel: "apple-touch-icon",
         sizes: "180x180",

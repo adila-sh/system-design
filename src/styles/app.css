@@ -48,6 +48,40 @@ html > body[data-scroll-locked] {
   background-color: color-mix(in oklch, var(--border), var(--foreground) 30%);
 }
 
+/* Navbar sobre o hero (Pixel Blast) — só na home.
+   O blast é indigo escuro nos dois temas (--primary não muda entre light/dark).
+   Só o título ("DS | Adila.co") e os links do menu (ex.: "Showcase") ficam
+   direto sobre o hero, sem superfície própria — esses precisam de texto claro
+   nos dois temas. Busca, toggle de tema e ícone do GitHub têm superfície/fundo
+   próprios vindos do tema da lib e já são legíveis sem ajuste; por isso o
+   escopo aqui NÃO sobrescreve os tokens --color-fd-* (isso vazava para o Kbd
+   "Ctrl K" do botão de busca, que usa --color-fd-muted-foreground no texto mas
+   mantém o fundo claro do tema — branco sobre branco no tema claro).
+   Em vez disso, mira direto no <a> do título (filho direto de <nav>) e nos
+   links dentro do <ul> de navegação (filho direto de <nav>, irmão da <div>
+   que guarda os controles à direita). O seletor carrega #nd-nav, então vence
+   por especificidade sobre as classes utilitárias da lib — inclusive em
+   :hover e [data-active] — sem precisar de regra extra para esses estados.
+   #nd-nav é o id que o fumadocs dá ao <header> (fumadocs-ui/layouts/home/slots/header);
+   essa estrutura interna (título como <a> filho direto de <nav>, links num
+   <ul> filho direto de <nav>, controles numa <div> irmã) é acoplamento ao
+   interno da lib — se mudar numa atualização, ajustar aqui.
+   .home-hero-nav é o className passado ao HomeLayout só na home (src/routes/index.tsx),
+   então /docs e /showcase (que não usam essa classe) ficam intocados. */
+.home-hero-nav #nd-nav nav > a,
+.home-hero-nav #nd-nav nav > ul a {
+  color: oklch(1 0 0);
+}
+
+/* Mesma origem do defeito acima: a lib aplica blur e borda inferior no header
+   mesmo com transparentMode="top", o que deixa uma emenda visível (faixa lisa
+   e borrada) contra o campo pixelado do blast logo abaixo. Sobre o hero, nem
+   um nem outro fazem sentido. */
+.home-hero-nav #nd-nav > div {
+  backdrop-filter: none;
+  border-bottom-color: transparent;
+}
+
 /* Respeita usuários com movimento reduzido: neutraliza animações/transições
    dos componentes sem exigir media query por componente. */
 @media (prefers-reduced-motion: reduce) {

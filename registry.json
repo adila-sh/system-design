@@ -776,6 +776,19 @@
       ]
     },
     {
+      "name": "pixel-blast",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "src/components/ui/pixel-blast.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "utils"
+      ]
+    },
+    {
       "name": "popover",
       "type": "registry:ui",
       "files": [
