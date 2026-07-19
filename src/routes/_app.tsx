@@ -1,5 +1,10 @@
-import { createFileRoute, Link, useRouterState } from "@tanstack/react-router";
-import { useEffect, useState, type ReactNode } from "react";
+import {
+  createFileRoute,
+  Link,
+  Outlet,
+  useRouterState,
+} from "@tanstack/react-router";
+import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 import {
   PulseIcon as Activity,
@@ -180,8 +185,8 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 
-export const Route = createFileRoute("/showcase")({
-  component: Showcase,
+export const Route = createFileRoute("/_app")({
+  component: AppShell,
 });
 
 /* ------------------------------------------------------------------ */
@@ -536,15 +541,30 @@ function AppBottomBar({ onOpenCommand }: { onOpenCommand: () => void }) {
 /* Página                                                              */
 /* ------------------------------------------------------------------ */
 
-export function Showcase({
-  children,
-  title = "Visão geral",
-  description = "Bem-vindo de volta, João",
-}: {
-  children?: ReactNode;
-  title?: string;
-  description?: string;
-}) {
+const pageMetadata: Record<string, { title: string; description: string }> = {
+  "/showcase": {
+    title: "Visão geral",
+    description: "Bem-vindo de volta, João",
+  },
+  "/analytics": { title: "Analytics", description: "Performance e adoção" },
+  "/clientes": { title: "Clientes", description: "Contas e relacionamentos" },
+  "/produtos": {
+    title: "Produtos",
+    description: "Catálogo do ecossistema",
+  },
+  "/configuracoes": {
+    title: "Configurações",
+    description: "Preferências do workspace",
+  },
+  "/ajuda": { title: "Ajuda", description: "Documentação e suporte" },
+};
+
+function AppShell() {
+  const pathname = useRouterState({
+    select: (state) => state.location.pathname,
+  });
+  const { title, description } =
+    pageMetadata[pathname] ?? pageMetadata["/showcase"];
   const { theme, setTheme } = useTheme();
   const isDark = theme === "dark";
   const [notify, setNotify] = useState(true);
@@ -662,7 +682,7 @@ export function Showcase({
             defaultTheme="tokyo-night"
             className="flex min-w-0 flex-1 flex-col gap-4 p-3 sm:p-4"
           >
-            {children ?? (
+            {pathname === "/showcase" ? (
               <>
                 <PageHeader>
                   <PageHeaderContent>
@@ -1319,6 +1339,8 @@ export function CustomerStatus({ active }: { active: boolean }) {
                   </TabsContent>
                 </Tabs>
               </>
+            ) : (
+              <Outlet />
             )}
           </CodeThemeProvider>
         </SidebarInset>

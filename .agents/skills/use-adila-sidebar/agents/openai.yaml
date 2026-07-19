@@ -1,0 +1,4 @@
+interface:
+  display_name: "Adila Sidebar"
+  short_description: "Build persistent app shells with Adila Sidebar"
+  default_prompt: "Use $use-adila-sidebar to implement a persistent responsive app shell with the Adila Sidebar."
