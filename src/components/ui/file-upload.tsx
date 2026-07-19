@@ -25,6 +25,21 @@ function formatBytes(bytes: number) {
   return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
 }
 
+function acceptsFile(file: File, accept?: string) {
+  if (!accept) return true;
+
+  const fileName = file.name.toLowerCase();
+  const fileType = file.type.toLowerCase();
+
+  return accept.split(",").some((specifier) => {
+    const rule = specifier.trim().toLowerCase();
+    if (!rule) return false;
+    if (rule.startsWith(".")) return fileName.endsWith(rule);
+    if (rule.endsWith("/*")) return fileType.startsWith(rule.slice(0, -1));
+    return fileType === rule;
+  });
+}
+
 function FileUpload({
   className,
   accept,
@@ -50,6 +65,11 @@ function FileUpload({
 
   function add(incoming: FileList | File[]) {
     const next = Array.from(incoming);
+    const unsupported = next.find((file) => !acceptsFile(file, accept));
+    if (unsupported) {
+      setError(`${unsupported.name} não corresponde aos formatos aceitos.`);
+      return;
+    }
     const oversized = next.find((file) => file.size > maxSize);
     if (oversized) {
       setError(`${oversized.name} excede o limite de ${formatBytes(maxSize)}.`);

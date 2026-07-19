@@ -144,12 +144,23 @@ Com TanStack Router, use uma rota pathless e um `Outlet`:
 
 ```tsx
 import { createFileRoute, Outlet } from "@tanstack/react-router";
+import { createServerFn } from "@tanstack/react-start";
+import { getCookie } from "@tanstack/react-start/server";
 
-export const Route = createFileRoute("/_app")({ component: AppShell });
+const getSidebarDefaultOpen = createServerFn({ method: "GET" }).handler(
+  () => getCookie("sidebar_state") !== "false",
+);
+
+export const Route = createFileRoute("/_app")({
+  loader: () => getSidebarDefaultOpen(),
+  component: AppShell,
+});
 
 function AppShell() {
+  const sidebarDefaultOpen = Route.useLoaderData();
+
   return (
-    <SidebarProvider>
+    <SidebarProvider defaultOpen={sidebarDefaultOpen}>
       <AppSidebar />
       <SidebarInset>
         <AppHeader />
@@ -163,7 +174,9 @@ function AppShell() {
 Use arquivos filhos como `_app.clientes.tsx` e `_app.configuracoes.tsx`. O
 segmento `_app` não aparece na URL e o shell continua montado durante a
 navegação. Para links internos, renderize o `Link` do roteador através de
-`SidebarMenuButton` e derive `isActive` da rota atual.
+`SidebarMenuButton` e derive `isActive` da rota atual. Em aplicações SSR, leia
+o cookie no loader para que o primeiro HTML já use o estado correto; não faça a
+restauração em `useEffect`.
 
 ## Dependências
 

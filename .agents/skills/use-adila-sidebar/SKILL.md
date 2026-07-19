@@ -55,8 +55,9 @@ Use the provider uncontrolled unless the application genuinely owns the state:
 
 For controlled usage, pass both `open` and `onOpenChange`. Keep the controlled
 state in the persistent layout. The component writes `sidebar_state` as a
-cookie and restores it after hydration; preserve this behavior when editing the
-provider.
+cookie. In SSR applications, read that cookie in the persistent route loader
+and pass the result as `defaultOpen`; do not restore it in a client effect,
+because that renders the wrong initial layout and causes flicker.
 
 ## Verify changes
 

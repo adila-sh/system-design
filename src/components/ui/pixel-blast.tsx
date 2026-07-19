@@ -213,10 +213,12 @@ export function PixelBlast({ className }: { className?: string }) {
     const uShape = gl.getUniformLocation(program, "uShape");
     const uRipples = gl.getUniformLocation(program, "uRipples");
 
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches
-      ? 1
-      : 0;
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    const reduce = reduceMotion ? 1 : 0;
     const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+    let drawStatic: (() => void) | undefined;
 
     function resize() {
       const w = Math.floor(cv.clientWidth * dpr);
@@ -227,6 +229,7 @@ export function PixelBlast({ className }: { className?: string }) {
       }
       glc.viewport(0, 0, cv.width, cv.height);
       glc.uniform2f(uRes, cv.width, cv.height);
+      drawStatic?.();
     }
     resize();
     const ro = new ResizeObserver(resize);
@@ -270,10 +273,12 @@ export function PixelBlast({ className }: { className?: string }) {
       shapeTarget = Math.floor(clicks / 5) % 3;
     };
 
-    window.addEventListener("pointermove", onMove);
-    window.addEventListener("pointerleave", onLeave);
-    window.addEventListener("blur", onLeave);
-    window.addEventListener("pointerdown", onDown);
+    if (!reduceMotion) {
+      window.addEventListener("pointermove", onMove);
+      window.addEventListener("pointerleave", onLeave);
+      window.addEventListener("blur", onLeave);
+      window.addEventListener("pointerdown", onDown);
+    }
 
     let color = readPrimary();
     let lastTheme = themeKey();
@@ -308,36 +313,50 @@ export function PixelBlast({ className }: { className?: string }) {
       glc.uniform1f(uShape, shape);
       glc.uniform3fv(uRipples, ripples);
       glc.drawArrays(glc.TRIANGLES, 0, 6);
+      if (!reduceMotion) raf = requestAnimationFrame(frame);
+    }
+    let themeObserver: MutationObserver | undefined;
+    if (reduceMotion) {
+      drawStatic = frame;
+      frame();
+      themeObserver = new MutationObserver(frame);
+      themeObserver.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ["class", "data-theme"],
+      });
+    } else {
       raf = requestAnimationFrame(frame);
     }
-    raf = requestAnimationFrame(frame);
 
     // Pausa o loop quando o canvas sai da viewport (economia de GPU/CPU) e
     // retoma ao voltar, descontando o tempo pausado para não saltar.
     let visible = true;
     let pausedAt = 0;
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          if (!visible) {
-            visible = true;
-            start += performance.now() - pausedAt;
-            raf = requestAnimationFrame(frame);
-          }
-        } else if (visible) {
-          visible = false;
-          pausedAt = performance.now();
-          cancelAnimationFrame(raf);
-        }
-      },
-      { threshold: 0 },
-    );
-    io.observe(canvas);
+    const io = reduceMotion
+      ? undefined
+      : new IntersectionObserver(
+          ([entry]) => {
+            if (entry.isIntersecting) {
+              if (!visible) {
+                visible = true;
+                start += performance.now() - pausedAt;
+                raf = requestAnimationFrame(frame);
+              }
+            } else if (visible) {
+              visible = false;
+              pausedAt = performance.now();
+              cancelAnimationFrame(raf);
+            }
+          },
+          { threshold: 0 },
+        );
+    io?.observe(canvas);
 
     return () => {
       cancelAnimationFrame(raf);
       ro.disconnect();
-      io.disconnect();
+      io?.disconnect();
+      themeObserver?.disconnect();
       window.removeEventListener("pointermove", onMove);
       window.removeEventListener("pointerleave", onLeave);
       window.removeEventListener("blur", onLeave);
