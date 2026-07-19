@@ -64,3 +64,19 @@ export function Example() {
   );
 }
 ```
+
+## Labels de grupo
+
+`DropdownMenuLabel` é um label semântico do Base UI e deve estar sempre dentro de
+`DropdownMenuGroup` ou `DropdownMenuRadioGroup`. Usá-lo diretamente em
+`DropdownMenuContent` causa o erro #31 ao abrir o menu.
+
+```tsx
+<DropdownMenuContent>
+  <DropdownMenuGroup>
+    <DropdownMenuLabel>Conta</DropdownMenuLabel>
+    <DropdownMenuItem>Perfil</DropdownMenuItem>
+    <DropdownMenuItem>Configurações</DropdownMenuItem>
+  </DropdownMenuGroup>
+</DropdownMenuContent>
+```

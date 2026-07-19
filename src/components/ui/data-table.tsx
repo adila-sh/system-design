@@ -30,6 +30,7 @@ import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
+  DropdownMenuGroup,
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
@@ -111,19 +112,21 @@ function DataTableViewOptions<TData>({
         }
       />
       <DropdownMenuContent align="end">
-        <DropdownMenuLabel>Exibir colunas</DropdownMenuLabel>
-        <DropdownMenuSeparator />
-        {columns.map((column) => (
-          <DropdownMenuCheckboxItem
-            key={column.id}
-            checked={column.getIsVisible()}
-            onCheckedChange={(checked) => column.toggleVisibility(!!checked)}
-          >
-            {typeof column.columnDef.header === "string"
-              ? column.columnDef.header
-              : column.id}
-          </DropdownMenuCheckboxItem>
-        ))}
+        <DropdownMenuGroup>
+          <DropdownMenuLabel>Exibir colunas</DropdownMenuLabel>
+          <DropdownMenuSeparator />
+          {columns.map((column) => (
+            <DropdownMenuCheckboxItem
+              key={column.id}
+              checked={column.getIsVisible()}
+              onCheckedChange={(checked) => column.toggleVisibility(!!checked)}
+            >
+              {typeof column.columnDef.header === "string"
+                ? column.columnDef.header
+                : column.id}
+            </DropdownMenuCheckboxItem>
+          ))}
+        </DropdownMenuGroup>
       </DropdownMenuContent>
     </DropdownMenu>
   );

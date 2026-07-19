@@ -6,10 +6,11 @@
   "scripts": {
     "dev": "vite dev",
     "build": "npm run registry && vite build && node scripts/fix-tslib.mjs",
-    "registry": "node scripts/gen-registry.mjs && node scripts/gen-docs.mjs && shadcn build",
+    "registry": "npm run check:dropdown-menu && node scripts/gen-registry.mjs && node scripts/gen-docs.mjs && shadcn build",
     "start": "node .output/server/index.mjs",
     "smoke": "node scripts/smoke-test.mjs",
-    "typecheck": "fumadocs-mdx && tsc --noEmit",
+    "typecheck": "npm run check:dropdown-menu && fumadocs-mdx && tsc --noEmit",
+    "check:dropdown-menu": "node scripts/check-dropdown-menu-labels.mjs",
     "format": "oxfmt --write .",
     "format:check": "oxfmt --check .",
     "lint": "oxlint",

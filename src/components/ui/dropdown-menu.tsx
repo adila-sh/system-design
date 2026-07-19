@@ -57,6 +57,13 @@ function DropdownMenuGroup({ ...props }: MenuPrimitive.Group.Props) {
   return <MenuPrimitive.Group data-slot="dropdown-menu-group" {...props} />;
 }
 
+/**
+ * Rótulo semântico de um grupo de itens.
+ *
+ * Deve ser renderizado dentro de `DropdownMenuGroup` ou
+ * `DropdownMenuRadioGroup`. O Base UI lança o erro #31 quando o label é usado
+ * diretamente em `DropdownMenuContent`.
+ */
 function DropdownMenuLabel({
   className,
   inset,

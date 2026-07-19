@@ -12,6 +12,7 @@ import {
 import {
   DropdownMenu,
   DropdownMenuContent,
+  DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
@@ -153,11 +154,13 @@ const columns: ColumnDef<Transaction>[] = [
           }
         />
         <DropdownMenuContent align="end">
-          <DropdownMenuLabel>Ações</DropdownMenuLabel>
-          <DropdownMenuItem>Ver detalhes</DropdownMenuItem>
-          <DropdownMenuItem>Copiar ID</DropdownMenuItem>
-          <DropdownMenuSeparator />
-          <DropdownMenuItem variant="destructive">Estornar</DropdownMenuItem>
+          <DropdownMenuGroup>
+            <DropdownMenuLabel>Ações</DropdownMenuLabel>
+            <DropdownMenuItem>Ver detalhes</DropdownMenuItem>
+            <DropdownMenuItem>Copiar ID</DropdownMenuItem>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem variant="destructive">Estornar</DropdownMenuItem>
+          </DropdownMenuGroup>
         </DropdownMenuContent>
       </DropdownMenu>
     ),
