@@ -1,0 +1,30 @@
+---
+title: ASCII Badge
+description: Status compacto em linguagem visual de terminal.
+---
+
+import { AsciiBadge } from "@/components/ui/ascii-badge";
+
+<Preview>
+  <div className="flex flex-wrap gap-3">
+    <AsciiBadge label="Pendente" />
+    <AsciiBadge label="Ativo" variant="success" />
+    <AsciiBadge label="Atenção" variant="warning" />
+    <AsciiBadge label="Falhou" variant="destructive" />
+    <AsciiBadge label="Informação" variant="info" />
+  </div>
+</Preview>
+
+## Instalação
+
+```bash
+npx shadcn@latest add https://ds.adila.co/r/ascii-badge.json
+```
+
+## Uso
+
+```tsx
+import { AsciiBadge } from "@/components/ui/ascii-badge";
+
+<AsciiBadge label="Ativo" variant="success" />;
+```

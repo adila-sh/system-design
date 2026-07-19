@@ -1,0 +1,27 @@
+---
+title: ASCII Sparkline
+description: Série temporal compacta com indicação semântica de tendência.
+---
+
+import { AsciiSparkline } from "@/components/ui/ascii-sparkline";
+
+<Preview>
+  <div className="space-y-5">
+    <AsciiSparkline label="Requisições" values={[2, 4, 3, 6, 8, 7, 11, 14]} />
+    <AsciiSparkline label="Latência" values={[14, 12, 13, 9, 8, 7, 5, 4]} />
+  </div>
+</Preview>
+
+## Instalação
+
+```bash
+npx shadcn@latest add https://ds.adila.co/r/ascii-sparkline.json
+```
+
+## Uso
+
+```tsx
+import { AsciiSparkline } from "@/components/ui/ascii-sparkline";
+
+<AsciiSparkline label="Requisições" values={[2, 4, 3, 8, 11]} />;
+```

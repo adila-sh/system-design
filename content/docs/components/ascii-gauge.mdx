@@ -1,0 +1,28 @@
+---
+title: ASCII Gauge
+description: Medidor percentual animado e emoldurado em caracteres Unicode.
+---
+
+import { AsciiGauge } from "@/components/ui/ascii-gauge";
+
+<Preview>
+  <AsciiGauge label="CPU" value={68} columns={18} />
+</Preview>
+
+## Instalação
+
+```bash
+npx shadcn@latest add https://ds.adila.co/r/ascii-gauge.json
+```
+
+## Uso
+
+```tsx
+import { AsciiGauge } from "@/components/ui/ascii-gauge";
+
+<AsciiGauge label="CPU" value={68} max={100} />;
+```
+
+## Dependências
+
+- `framer-motion`

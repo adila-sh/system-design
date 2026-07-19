@@ -1,0 +1,37 @@
+---
+title: ASCII Heatmap
+description: Matriz compacta de intensidade usando blocos Unicode.
+---
+
+import { AsciiHeatmap } from "@/components/ui/ascii-heatmap";
+
+<Preview>
+  <AsciiHeatmap
+    label="Atividade"
+    values={[
+      [0, 2, 5, 8, 3, 1, 0],
+      [1, 4, 7, 9, 6, 2, 1],
+      [0, 3, 6, 8, 5, 2, 0],
+    ]}
+  />
+</Preview>
+
+## Instalação
+
+```bash
+npx shadcn@latest add https://ds.adila.co/r/ascii-heatmap.json
+```
+
+## Uso
+
+```tsx
+import { AsciiHeatmap } from "@/components/ui/ascii-heatmap";
+
+<AsciiHeatmap
+  label="Atividade"
+  values={[
+    [0, 2, 5],
+    [1, 4, 8],
+  ]}
+/>;
+```

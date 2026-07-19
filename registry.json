@@ -180,6 +180,119 @@
       ]
     },
     {
+      "name": "ascii-badge",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "src/components/ui/ascii-badge.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "utils"
+      ]
+    },
+    {
+      "name": "ascii-divider",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "src/components/ui/ascii-divider.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "utils"
+      ]
+    },
+    {
+      "name": "ascii-gauge",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "src/components/ui/ascii-gauge.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "dependencies": [
+        "framer-motion"
+      ]
+    },
+    {
+      "name": "ascii-heatmap",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "src/components/ui/ascii-heatmap.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "utils"
+      ]
+    },
+    {
+      "name": "ascii-progress",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "src/components/ui/ascii-progress.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "dependencies": [
+        "framer-motion"
+      ]
+    },
+    {
+      "name": "ascii-sparkline",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "src/components/ui/ascii-sparkline.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "utils"
+      ]
+    },
+    {
+      "name": "ascii-spinner",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "src/components/ui/ascii-spinner.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "dependencies": [
+        "framer-motion"
+      ]
+    },
+    {
+      "name": "ascii-tree",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "src/components/ui/ascii-tree.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "utils"
+      ]
+    },
+    {
       "name": "aspect-ratio",
       "type": "registry:ui",
       "files": [

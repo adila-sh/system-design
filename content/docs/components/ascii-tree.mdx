@@ -1,0 +1,36 @@
+---
+title: ASCII Tree
+description: Hierarquia acessível com conectores visuais de terminal.
+---
+
+import { AsciiTree } from "@/components/ui/ascii-tree";
+
+<Preview>
+  <AsciiTree
+    label="Estrutura do projeto"
+    nodes={[
+      {
+        label: "src",
+        children: [
+          { label: "components", meta: "12 arquivos" },
+          { label: "routes", meta: "8 arquivos" },
+        ],
+      },
+      { label: "package.json" },
+    ]}
+  />
+</Preview>
+
+## Instalação
+
+```bash
+npx shadcn@latest add https://ds.adila.co/r/ascii-tree.json
+```
+
+## Uso
+
+```tsx
+import { AsciiTree } from "@/components/ui/ascii-tree";
+
+<AsciiTree nodes={[{ label: "src", children: [{ label: "components" }] }]} />;
+```

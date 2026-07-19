@@ -1,0 +1,31 @@
+---
+title: ASCII Progress
+description: Barra de progresso animada em caracteres Braille.
+---
+
+import { AsciiProgress } from "@/components/ui/ascii-progress";
+
+<Preview>
+  <div className="w-full max-w-sm space-y-5">
+    <AsciiProgress label="Upload" value={68} />
+    <AsciiProgress label="Processamento" value={37} columns={28} />
+  </div>
+</Preview>
+
+## Instalação
+
+```bash
+npx shadcn@latest add https://ds.adila.co/r/ascii-progress.json
+```
+
+## Uso
+
+```tsx
+import { AsciiProgress } from "@/components/ui/ascii-progress";
+
+<AsciiProgress label="Upload" value={68} max={100} />;
+```
+
+## Dependências
+
+- `framer-motion`
