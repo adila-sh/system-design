@@ -14,14 +14,16 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarProvider,
-} from '@/components/ui/sidebar';
-import { Calendar, Home, Inbox, Search, Settings } from 'lucide-react';
+} from "@/components/ui/sidebar";
+import { Calendar, Home, Inbox, Search, Settings } from "lucide-react";
 
 <Preview>
   <div className="h-72 w-full max-w-md overflow-hidden rounded-lg border">
     <SidebarProvider className="!min-h-0 h-full" style={{ minHeight: 0 }}>
       <Sidebar collapsible="none">
-        <SidebarHeader className="p-3 text-sm font-medium">Aplicativo</SidebarHeader>
+        <SidebarHeader className="p-3 text-sm font-medium">
+          Aplicativo
+        </SidebarHeader>
         <SidebarContent>
           <SidebarGroup>
             <SidebarGroupLabel>Menu</SidebarGroupLabel>
@@ -91,15 +93,15 @@ import {
   SidebarMenuItem,
   SidebarProvider,
   SidebarTrigger,
-} from '@/components/ui/sidebar';
-import { Calendar, Home, Inbox, Search, Settings } from 'lucide-react';
+} from "@/components/ui/sidebar";
+import { Calendar, Home, Inbox, Search, Settings } from "lucide-react";
 
 const items = [
-  { title: 'Início', url: '#', icon: Home },
-  { title: 'Caixa de entrada', url: '#', icon: Inbox },
-  { title: 'Calendário', url: '#', icon: Calendar },
-  { title: 'Buscar', url: '#', icon: Search },
-  { title: 'Configurações', url: '#', icon: Settings },
+  { title: "Início", url: "#", icon: Home },
+  { title: "Caixa de entrada", url: "#", icon: Inbox },
+  { title: "Calendário", url: "#", icon: Calendar },
+  { title: "Buscar", url: "#", icon: Search },
+  { title: "Configurações", url: "#", icon: Settings },
 ];
 
 export function Example() {
@@ -131,6 +133,37 @@ export function Example() {
   );
 }
 ```
+
+## App shell persistente
+
+Monte o `SidebarProvider` uma única vez no layout persistente do roteador. As
+páginas devem trocar dentro do `SidebarInset`; não recrie o provider em cada
+rota, pois isso remonta a navegação e reinicia estados do shell.
+
+Com TanStack Router, use uma rota pathless e um `Outlet`:
+
+```tsx
+import { createFileRoute, Outlet } from "@tanstack/react-router";
+
+export const Route = createFileRoute("/_app")({ component: AppShell });
+
+function AppShell() {
+  return (
+    <SidebarProvider>
+      <AppSidebar />
+      <SidebarInset>
+        <AppHeader />
+        <Outlet />
+      </SidebarInset>
+    </SidebarProvider>
+  );
+}
+```
+
+Use arquivos filhos como `_app.clientes.tsx` e `_app.configuracoes.tsx`. O
+segmento `_app` não aparece na URL e o shell continua montado durante a
+navegação. Para links internos, renderize o `Link` do roteador através de
+`SidebarMenuButton` e derive `isActive` da rota atual.
 
 ## Dependências
 
