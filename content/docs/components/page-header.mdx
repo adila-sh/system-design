@@ -3,6 +3,35 @@ title: Page Header
 description: Componente page-header do design system adila.co, sobre Base UI.
 ---
 
+import {
+  PageHeader,
+  PageHeaderActions,
+  PageHeaderContent,
+  PageHeaderDescription,
+  PageHeaderEyebrow,
+  PageHeaderTitle,
+} from "@/components/ui/page-header";
+import { Button } from "@/components/ui/button";
+import { PlusIcon } from "@phosphor-icons/react";
+
+<Preview>
+  <PageHeader className="w-full">
+    <PageHeaderContent>
+      <PageHeaderEyebrow>Workspace</PageHeaderEyebrow>
+      <PageHeaderTitle>Clientes</PageHeaderTitle>
+      <PageHeaderDescription>
+        Gerencie contatos, permissões e informações de cobrança.
+      </PageHeaderDescription>
+    </PageHeaderContent>
+    <PageHeaderActions>
+      <Button variant="outline">Exportar</Button>
+      <Button>
+        <PlusIcon /> Novo cliente
+      </Button>
+    </PageHeaderActions>
+  </PageHeader>
+</Preview>
+
 ## Instalação
 
 ```bash
@@ -12,5 +41,17 @@ npx shadcn@latest add https://ds.adila.co/r/page-header.json
 ## Uso
 
 ```tsx
-import { PageHeader, PageHeaderActions, PageHeaderContent, PageHeaderDescription, PageHeaderEyebrow, PageHeaderTitle } from '@/components/ui/page-header';
+<PageHeader>
+  <PageHeaderContent>
+    <PageHeaderEyebrow>Workspace</PageHeaderEyebrow>
+    <PageHeaderTitle>Clientes</PageHeaderTitle>
+    <PageHeaderDescription>
+      Gerencie contatos, permissões e informações de cobrança.
+    </PageHeaderDescription>
+  </PageHeaderContent>
+  <PageHeaderActions>
+    <Button variant="outline">Exportar</Button>
+    <Button>Novo cliente</Button>
+  </PageHeaderActions>
+</PageHeader>
 ```

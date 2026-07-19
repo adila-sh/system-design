@@ -3,6 +3,17 @@ title: File Upload
 description: Componente file-upload do design system adila.co, sobre Base UI.
 ---
 
+import { FileUpload } from "@/components/ui/file-upload";
+
+<Preview>
+  <FileUpload
+    className="w-full max-w-xl"
+    accept="image/png,image/jpeg,application/pdf"
+    maxSize={5 * 1024 * 1024}
+    multiple
+  />
+</Preview>
+
 ## Instalação
 
 ```bash
@@ -12,8 +23,18 @@ npx shadcn@latest add https://ds.adila.co/r/file-upload.json
 ## Uso
 
 ```tsx
-import { FileUpload } from '@/components/ui/file-upload';
+import { FileUpload } from "@/components/ui/file-upload";
+
+<FileUpload
+  accept="image/png,image/jpeg,application/pdf"
+  maxSize={5 * 1024 * 1024}
+  multiple
+  onFilesChange={(files) => console.log(files)}
+/>;
 ```
+
+Use `value` e `onFilesChange` para controlar a lista externamente. Arquivos
+maiores que `maxSize` são rejeitados com uma mensagem de erro.
 
 ## Dependências
 

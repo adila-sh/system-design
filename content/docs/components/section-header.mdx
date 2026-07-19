@@ -3,6 +3,31 @@ title: Section Header
 description: Componente section-header do design system adila.co, sobre Base UI.
 ---
 
+import {
+  SectionHeader,
+  SectionHeaderActions,
+  SectionHeaderContent,
+  SectionHeaderDescription,
+  SectionHeaderTitle,
+} from "@/components/ui/section-header";
+import { Button } from "@/components/ui/button";
+
+<Preview>
+  <SectionHeader className="w-full">
+    <SectionHeaderContent>
+      <SectionHeaderTitle>Últimas transações</SectionHeaderTitle>
+      <SectionHeaderDescription>
+        Movimentações registradas nos últimos 30 dias.
+      </SectionHeaderDescription>
+    </SectionHeaderContent>
+    <SectionHeaderActions>
+      <Button variant="outline" size="sm">
+        Ver todas
+      </Button>
+    </SectionHeaderActions>
+  </SectionHeader>
+</Preview>
+
 ## Instalação
 
 ```bash
@@ -12,5 +37,15 @@ npx shadcn@latest add https://ds.adila.co/r/section-header.json
 ## Uso
 
 ```tsx
-import { SectionHeader, SectionHeaderActions, SectionHeaderContent, SectionHeaderDescription, SectionHeaderTitle } from '@/components/ui/section-header';
+<SectionHeader>
+  <SectionHeaderContent>
+    <SectionHeaderTitle>Últimas transações</SectionHeaderTitle>
+    <SectionHeaderDescription>
+      Movimentações registradas nos últimos 30 dias.
+    </SectionHeaderDescription>
+  </SectionHeaderContent>
+  <SectionHeaderActions>
+    <Button variant="outline">Ver todas</Button>
+  </SectionHeaderActions>
+</SectionHeader>
 ```

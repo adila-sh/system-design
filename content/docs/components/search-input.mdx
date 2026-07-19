@@ -3,6 +3,16 @@ title: Search Input
 description: Componente search-input do design system adila.co, sobre Base UI.
 ---
 
+import { SearchInput } from "@/components/ui/search-input";
+
+<Preview>
+  <div className="grid w-full max-w-md gap-4">
+    <SearchInput placeholder="Buscar componentes..." />
+    <SearchInput defaultValue="button" placeholder="Buscar..." />
+    <SearchInput loading defaultValue="dialog" aria-label="Buscando" />
+  </div>
+</Preview>
+
 ## Instalação
 
 ```bash
@@ -12,8 +22,17 @@ npx shadcn@latest add https://ds.adila.co/r/search-input.json
 ## Uso
 
 ```tsx
-import { SearchInput } from '@/components/ui/search-input';
+import { SearchInput } from "@/components/ui/search-input";
+
+<SearchInput
+  placeholder="Buscar componentes..."
+  debounce={400}
+  onSearch={(term) => fetchResults(term)}
+/>;
 ```
+
+Defina `loading` durante a busca. O botão de limpar aparece automaticamente
+quando o campo possui conteúdo.
 
 ## Dependências
 

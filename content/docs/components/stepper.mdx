@@ -3,6 +3,47 @@ title: Stepper
 description: Componente stepper do design system adila.co, sobre Base UI.
 ---
 
+import {
+  Stepper,
+  StepperContent,
+  StepperDescription,
+  StepperIndicator,
+  StepperItem,
+  StepperSeparator,
+  StepperTitle,
+} from "@/components/ui/stepper";
+import { CheckIcon } from "@phosphor-icons/react";
+
+<Preview>
+  <Stepper>
+    <StepperItem status="complete">
+      <StepperIndicator>
+        <CheckIcon />
+      </StepperIndicator>
+      <StepperSeparator />
+      <StepperContent>
+        <StepperTitle>Conta</StepperTitle>
+        <StepperDescription>Dados de acesso</StepperDescription>
+      </StepperContent>
+    </StepperItem>
+    <StepperItem status="current">
+      <StepperIndicator>2</StepperIndicator>
+      <StepperSeparator />
+      <StepperContent>
+        <StepperTitle>Empresa</StepperTitle>
+        <StepperDescription>Informações fiscais</StepperDescription>
+      </StepperContent>
+    </StepperItem>
+    <StepperItem>
+      <StepperIndicator>3</StepperIndicator>
+      <StepperContent>
+        <StepperTitle>Confirmação</StepperTitle>
+        <StepperDescription>Revise e conclua</StepperDescription>
+      </StepperContent>
+    </StepperItem>
+  </Stepper>
+</Preview>
+
 ## Instalação
 
 ```bash
@@ -12,5 +53,31 @@ npx shadcn@latest add https://ds.adila.co/r/stepper.json
 ## Uso
 
 ```tsx
-import { Stepper, StepperContent, StepperDescription, StepperIndicator, StepperItem, StepperSeparator, StepperTitle } from '@/components/ui/stepper';
+<Stepper>
+  <StepperItem status="complete">
+    <StepperIndicator>
+      <CheckIcon />
+    </StepperIndicator>
+    <StepperSeparator />
+    <StepperContent>
+      <StepperTitle>Conta</StepperTitle>
+    </StepperContent>
+  </StepperItem>
+  <StepperItem status="current">
+    <StepperIndicator>2</StepperIndicator>
+    <StepperSeparator />
+    <StepperContent>
+      <StepperTitle>Empresa</StepperTitle>
+    </StepperContent>
+  </StepperItem>
+  <StepperItem status="upcoming">
+    <StepperIndicator>3</StepperIndicator>
+    <StepperContent>
+      <StepperTitle>Confirmação</StepperTitle>
+    </StepperContent>
+  </StepperItem>
+</Stepper>
 ```
+
+Marque a etapa ativa com `status="current"`; o componente aplica
+`aria-current="step"` automaticamente.

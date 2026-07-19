@@ -3,6 +3,65 @@ title: Timeline
 description: Componente timeline do design system adila.co, sobre Base UI.
 ---
 
+import {
+  Timeline,
+  TimelineConnector,
+  TimelineContent,
+  TimelineDescription,
+  TimelineHeader,
+  TimelineIndicator,
+  TimelineItem,
+  TimelineTime,
+  TimelineTitle,
+} from "@/components/ui/timeline";
+import { CheckIcon } from "@phosphor-icons/react";
+
+<Preview>
+  <Timeline className="w-full max-w-xl">
+    <TimelineItem>
+      <TimelineIndicator status="complete">
+        <CheckIcon />
+      </TimelineIndicator>
+      <TimelineConnector />
+      <TimelineContent>
+        <TimelineHeader>
+          <TimelineTitle>Pagamento aprovado</TimelineTitle>
+          <TimelineTime dateTime="2026-07-18T10:32:00-03:00">
+            10:32
+          </TimelineTime>
+        </TimelineHeader>
+        <TimelineDescription>
+          A cobrança de R$ 249,00 foi confirmada.
+        </TimelineDescription>
+      </TimelineContent>
+    </TimelineItem>
+    <TimelineItem>
+      <TimelineIndicator status="current" />
+      <TimelineConnector />
+      <TimelineContent>
+        <TimelineHeader>
+          <TimelineTitle>Preparando envio</TimelineTitle>
+          <TimelineTime dateTime="2026-07-18T11:05:00-03:00">
+            11:05
+          </TimelineTime>
+        </TimelineHeader>
+        <TimelineDescription>
+          O pedido está sendo separado no centro de distribuição.
+        </TimelineDescription>
+      </TimelineContent>
+    </TimelineItem>
+    <TimelineItem>
+      <TimelineIndicator />
+      <TimelineContent>
+        <TimelineHeader>
+          <TimelineTitle>Enviado</TimelineTitle>
+        </TimelineHeader>
+        <TimelineDescription>Aguardando atualização.</TimelineDescription>
+      </TimelineContent>
+    </TimelineItem>
+  </Timeline>
+</Preview>
+
 ## Instalação
 
 ```bash
@@ -12,5 +71,22 @@ npx shadcn@latest add https://ds.adila.co/r/timeline.json
 ## Uso
 
 ```tsx
-import { Timeline, TimelineConnector, TimelineContent, TimelineDescription, TimelineHeader, TimelineIndicator, TimelineItem, TimelineTime, TimelineTitle } from '@/components/ui/timeline';
+<Timeline>
+  <TimelineItem>
+    <TimelineIndicator status="complete">
+      <CheckIcon />
+    </TimelineIndicator>
+    <TimelineConnector />
+    <TimelineContent>
+      <TimelineHeader>
+        <TimelineTitle>Pagamento aprovado</TimelineTitle>
+        <TimelineTime dateTime="2026-07-18T10:32:00-03:00">10:32</TimelineTime>
+      </TimelineHeader>
+      <TimelineDescription>Cobrança confirmada.</TimelineDescription>
+    </TimelineContent>
+  </TimelineItem>
+</Timeline>
 ```
+
+Adicione `TimelineConnector` a todos os itens, exceto ao último. Use o atributo
+`dateTime` em `TimelineTime` para manter o horário legível por máquinas.

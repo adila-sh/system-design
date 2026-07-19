@@ -3,6 +3,36 @@ title: Filter Bar
 description: Componente filter-bar do design system adila.co, sobre Base UI.
 ---
 
+import {
+  FilterBar,
+  FilterBarActions,
+  FilterBarGroup,
+  FilterBarResults,
+} from "@/components/ui/filter-bar";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { NativeSelect } from "@/components/ui/native-select";
+
+<Preview>
+  <FilterBar className="w-full">
+    <FilterBarGroup>
+      <Input className="min-w-48 flex-1" placeholder="Buscar clientes..." />
+      <NativeSelect defaultValue="active" aria-label="Status">
+        <option value="all">Todos</option>
+        <option value="active">Ativos</option>
+        <option value="inactive">Inativos</option>
+      </NativeSelect>
+      <FilterBarResults>24 resultados</FilterBarResults>
+    </FilterBarGroup>
+    <FilterBarActions>
+      <Button variant="ghost" size="sm">
+        Limpar
+      </Button>
+      <Button size="sm">Aplicar filtros</Button>
+    </FilterBarActions>
+  </FilterBar>
+</Preview>
+
 ## Instalação
 
 ```bash
@@ -12,5 +42,15 @@ npx shadcn@latest add https://ds.adila.co/r/filter-bar.json
 ## Uso
 
 ```tsx
-import { FilterBar, FilterBarActions, FilterBarGroup, FilterBarResults } from '@/components/ui/filter-bar';
+<FilterBar>
+  <FilterBarGroup>
+    <Input placeholder="Buscar clientes..." />
+    <NativeSelect aria-label="Status">{/* opções */}</NativeSelect>
+    <FilterBarResults>24 resultados</FilterBarResults>
+  </FilterBarGroup>
+  <FilterBarActions>
+    <Button variant="ghost">Limpar</Button>
+    <Button>Aplicar filtros</Button>
+  </FilterBarActions>
+</FilterBar>
 ```

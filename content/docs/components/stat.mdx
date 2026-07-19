@@ -3,6 +3,59 @@ title: Stat
 description: Componente stat do design system adila.co, sobre Base UI.
 ---
 
+import {
+  Stat,
+  StatDescription,
+  StatFooter,
+  StatGroup,
+  StatHeader,
+  StatIcon,
+  StatLabel,
+  StatTrend,
+  StatValue,
+} from "@/components/ui/stat";
+import {
+  ArrowDownIcon,
+  ArrowUpIcon,
+  CurrencyDollarIcon,
+  UsersIcon,
+} from "@phosphor-icons/react";
+
+<Preview>
+  <StatGroup className="w-full lg:grid-cols-2">
+    <Stat>
+      <StatHeader>
+        <StatLabel>Receita mensal</StatLabel>
+        <StatIcon>
+          <CurrencyDollarIcon />
+        </StatIcon>
+      </StatHeader>
+      <StatValue>R$ 48.290</StatValue>
+      <StatFooter>
+        <StatTrend trend="up">
+          <ArrowUpIcon /> 12,5%
+        </StatTrend>
+        <StatDescription>desde o mês passado</StatDescription>
+      </StatFooter>
+    </Stat>
+    <Stat>
+      <StatHeader>
+        <StatLabel>Clientes ativos</StatLabel>
+        <StatIcon>
+          <UsersIcon />
+        </StatIcon>
+      </StatHeader>
+      <StatValue>1.429</StatValue>
+      <StatFooter>
+        <StatTrend trend="down">
+          <ArrowDownIcon /> 2,1%
+        </StatTrend>
+        <StatDescription>desde o mês passado</StatDescription>
+      </StatFooter>
+    </Stat>
+  </StatGroup>
+</Preview>
+
 ## Instalação
 
 ```bash
@@ -12,5 +65,19 @@ npx shadcn@latest add https://ds.adila.co/r/stat.json
 ## Uso
 
 ```tsx
-import { Stat, StatDescription, StatFooter, StatGroup, StatHeader, StatIcon, StatLabel, StatTrend, StatValue } from '@/components/ui/stat';
+<StatGroup>
+  <Stat>
+    <StatHeader>
+      <StatLabel>Receita mensal</StatLabel>
+      <StatIcon>
+        <CurrencyDollarIcon />
+      </StatIcon>
+    </StatHeader>
+    <StatValue>R$ 48.290</StatValue>
+    <StatFooter>
+      <StatTrend trend="up">12,5%</StatTrend>
+      <StatDescription>desde o mês passado</StatDescription>
+    </StatFooter>
+  </Stat>
+</StatGroup>
 ```

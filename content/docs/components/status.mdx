@@ -3,6 +3,18 @@ title: Status
 description: Componente status do design system adila.co, sobre Base UI.
 ---
 
+import { Status } from "@/components/ui/status";
+
+<Preview>
+  <div className="flex flex-wrap items-center justify-center gap-3">
+    <Status>Rascunho</Status>
+    <Status variant="info">Em análise</Status>
+    <Status variant="success">Ativo</Status>
+    <Status variant="warning">Atenção</Status>
+    <Status variant="destructive">Bloqueado</Status>
+  </div>
+</Preview>
+
 ## Instalação
 
 ```bash
@@ -12,8 +24,18 @@ npx shadcn@latest add https://ds.adila.co/r/status.json
 ## Uso
 
 ```tsx
-import { Status } from '@/components/ui/status';
+import { Status } from "@/components/ui/status";
+
+<Status>Rascunho</Status>
+<Status variant="info">Em análise</Status>
+<Status variant="success">Ativo</Status>
+<Status variant="warning">Atenção</Status>
+<Status variant="destructive">Bloqueado</Status>
 ```
+
+As variantes disponíveis são `neutral`, `info`, `success`, `warning` e
+`destructive`. Use `size="sm"`, `size="default"` ou `size="lg"` para ajustar a
+densidade.
 
 ## Dependências
 

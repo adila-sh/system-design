@@ -3,6 +3,30 @@ title: Data List
 description: Componente data-list do design system adila.co, sobre Base UI.
 ---
 
+import {
+  DataList,
+  DataListItem,
+  DataListTerm,
+  DataListValue,
+} from "@/components/ui/data-list";
+
+<Preview>
+  <DataList className="w-full max-w-lg">
+    <DataListItem>
+      <DataListTerm>Plano</DataListTerm>
+      <DataListValue>Profissional</DataListValue>
+    </DataListItem>
+    <DataListItem>
+      <DataListTerm>Renovação</DataListTerm>
+      <DataListValue>18 de agosto de 2026</DataListValue>
+    </DataListItem>
+    <DataListItem>
+      <DataListTerm>Valor mensal</DataListTerm>
+      <DataListValue>R$ 149,00</DataListValue>
+    </DataListItem>
+  </DataList>
+</Preview>
+
 ## Instalação
 
 ```bash
@@ -12,5 +36,14 @@ npx shadcn@latest add https://ds.adila.co/r/data-list.json
 ## Uso
 
 ```tsx
-import { DataList, DataListItem, DataListTerm, DataListValue } from '@/components/ui/data-list';
+<DataList>
+  <DataListItem>
+    <DataListTerm>Plano</DataListTerm>
+    <DataListValue>Profissional</DataListValue>
+  </DataListItem>
+  <DataListItem>
+    <DataListTerm>Valor mensal</DataListTerm>
+    <DataListValue>R$ 149,00</DataListValue>
+  </DataListItem>
+</DataList>
 ```

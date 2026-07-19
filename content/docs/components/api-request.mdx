@@ -37,6 +37,24 @@ import {
 npx shadcn@latest add https://ds.adila.co/r/api-request.json
 ```
 
+## Uso
+
+```tsx
+<ApiRequest>
+  <ApiRequestHeader>
+    <ApiRequestMethod method="POST" />
+    <ApiRequestUrl>https://api.adila.co/v1/deployments</ApiRequestUrl>
+    <ApiRequestMeta>201 · 184 ms</ApiRequestMeta>
+  </ApiRequestHeader>
+  <ApiRequestSection>
+    <ApiRequestSectionHeader>
+      <ApiRequestSectionTitle>Resposta</ApiRequestSectionTitle>
+    </ApiRequestSectionHeader>
+    <ApiRequestCode value={'{\n  "status": "ready"\n}'} />
+  </ApiRequestSection>
+</ApiRequest>
+```
+
 ## Métodos
 
 `ApiRequestMethod` possui estilos para `GET`, `POST`, `PUT`, `PATCH` e `DELETE`.
