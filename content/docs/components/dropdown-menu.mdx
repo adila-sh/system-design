@@ -80,3 +80,15 @@ export function Example() {
   </DropdownMenuGroup>
 </DropdownMenuContent>
 ```
+
+## Eventos dos itens
+
+Use `onClick` para executar uma ação ao selecionar um `DropdownMenuItem`. A prop
+DOM `onSelect` representa seleção de texto e não é disparada pela ativação do item;
+por isso, ela foi removida da tipagem do componente.
+
+```tsx
+<DropdownMenuItem onClick={() => abrirProjeto(project.id)}>
+  Abrir projeto
+</DropdownMenuItem>
+```
