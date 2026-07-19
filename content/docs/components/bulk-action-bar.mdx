@@ -1,0 +1,44 @@
+---
+title: Bulk Action Bar
+description: Barra contextual para ações sobre múltiplos itens selecionados.
+---
+
+import { BulkActionBar } from "@/components/ui/bulk-action-bar";
+import { Button } from "@/components/ui/button";
+import { ArchiveIcon, TrashIcon } from "@phosphor-icons/react";
+
+<Preview>
+  <BulkActionBar selectedCount={4} className="max-w-2xl">
+    <Button variant="ghost" size="sm">
+      <ArchiveIcon /> Arquivar
+    </Button>
+    <Button variant="ghost" size="sm" className="text-destructive">
+      <TrashIcon /> Excluir
+    </Button>
+  </BulkActionBar>
+</Preview>
+
+## Instalação
+
+```bash
+npx shadcn@latest add https://ds.adila.co/r/bulk-action-bar.json
+```
+
+## Uso
+
+```tsx
+<BulkActionBar
+  selectedCount={selectedRows.length}
+  onClear={() => table.resetRowSelection()}
+>
+  <Button variant="ghost" size="sm">
+    Arquivar
+  </Button>
+  <Button variant="ghost" size="sm">
+    Excluir
+  </Button>
+</BulkActionBar>
+```
+
+O componente não renderiza nada quando `selectedCount` é zero e possui
+`role="toolbar"` para comunicar o agrupamento das ações.

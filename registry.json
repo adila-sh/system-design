@@ -211,6 +211,23 @@
       ]
     },
     {
+      "name": "autocomplete",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "src/components/ui/autocomplete.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "dependencies": [
+        "@base-ui/react",
+        "@phosphor-icons/react"
+      ]
+    },
+    {
       "name": "avatar",
       "type": "registry:ui",
       "files": [
@@ -293,6 +310,23 @@
       "dependencies": [
         "@base-ui/react",
         "class-variance-authority"
+      ]
+    },
+    {
+      "name": "bulk-action-bar",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "src/components/ui/bulk-action-bar.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "button",
+        "utils"
+      ],
+      "dependencies": [
+        "@phosphor-icons/react"
       ]
     },
     {
@@ -495,6 +529,23 @@
       ]
     },
     {
+      "name": "confirm-dialog",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "src/components/ui/confirm-dialog.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "alert-dialog",
+        "spinner"
+      ],
+      "dependencies": [
+        "@phosphor-icons/react"
+      ]
+    },
+    {
       "name": "context-menu",
       "type": "registry:ui",
       "files": [
@@ -528,6 +579,20 @@
       ]
     },
     {
+      "name": "currency-input",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "src/components/ui/currency-input.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "number-field",
+        "utils"
+      ]
+    },
+    {
       "name": "data-list",
       "type": "registry:ui",
       "files": [
@@ -538,6 +603,87 @@
       ],
       "registryDependencies": [
         "utils"
+      ]
+    },
+    {
+      "name": "data-table",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "src/components/ui/data-table.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "button",
+        "dropdown-menu",
+        "input",
+        "select",
+        "skeleton",
+        "table",
+        "utils"
+      ],
+      "dependencies": [
+        "@phosphor-icons/react",
+        "@tanstack/react-table"
+      ]
+    },
+    {
+      "name": "date-picker",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "src/components/ui/date-picker.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "button",
+        "calendar",
+        "popover",
+        "utils"
+      ],
+      "dependencies": [
+        "@phosphor-icons/react",
+        "date-fns"
+      ]
+    },
+    {
+      "name": "date-range-picker",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "src/components/ui/date-range-picker.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "button",
+        "calendar",
+        "popover",
+        "utils"
+      ],
+      "dependencies": [
+        "@phosphor-icons/react",
+        "date-fns",
+        "react-day-picker"
+      ]
+    },
+    {
+      "name": "deployment-status",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "src/components/ui/deployment-status.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "spinner",
+        "utils"
+      ],
+      "dependencies": [
+        "class-variance-authority"
       ]
     },
     {
@@ -683,6 +829,22 @@
       ],
       "registryDependencies": [
         "utils"
+      ]
+    },
+    {
+      "name": "form",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "src/components/ui/form.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "dependencies": [
+        "@base-ui/react"
       ]
     },
     {
@@ -864,6 +1026,20 @@
       ]
     },
     {
+      "name": "multi-select",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "src/components/ui/multi-select.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "combobox",
+        "utils"
+      ]
+    },
+    {
       "name": "native-select",
       "type": "registry:ui",
       "files": [
@@ -895,6 +1071,23 @@
         "@base-ui/react",
         "@phosphor-icons/react",
         "class-variance-authority"
+      ]
+    },
+    {
+      "name": "number-field",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "src/components/ui/number-field.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "dependencies": [
+        "@base-ui/react",
+        "@phosphor-icons/react"
       ]
     },
     {
@@ -951,6 +1144,23 @@
       ],
       "registryDependencies": [
         "button",
+        "utils"
+      ],
+      "dependencies": [
+        "@phosphor-icons/react"
+      ]
+    },
+    {
+      "name": "password-input",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "src/components/ui/password-input.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "input-group",
         "utils"
       ],
       "dependencies": [
@@ -1032,6 +1242,19 @@
       ],
       "dependencies": [
         "react-resizable-panels"
+      ]
+    },
+    {
+      "name": "resource-card",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "src/components/ui/resource-card.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "utils"
       ]
     },
     {
@@ -1154,8 +1377,7 @@
       "dependencies": [
         "@base-ui/react",
         "@phosphor-icons/react",
-        "class-variance-authority",
-        "framer-motion"
+        "class-variance-authority"
       ]
     },
     {
@@ -1406,6 +1628,20 @@
         }
       ],
       "registryDependencies": [
+        "utils"
+      ]
+    },
+    {
+      "name": "usage-card",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "src/components/ui/usage-card.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": [
+        "progress",
         "utils"
       ]
     }

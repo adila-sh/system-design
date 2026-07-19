@@ -1,0 +1,51 @@
+---
+title: Autocomplete
+description: Campo de texto livre com sugestões locais ou assíncronas.
+---
+
+import { Autocomplete } from "@/components/ui/autocomplete";
+
+export const cities = [
+  { value: "sao-paulo", label: "São Paulo" },
+  { value: "rio", label: "Rio de Janeiro" },
+  { value: "curitiba", label: "Curitiba" },
+  { value: "recife", label: "Recife" },
+  { value: "porto-alegre", label: "Porto Alegre" },
+];
+
+<Preview>
+  <div className="grid w-full max-w-sm gap-4">
+    <Autocomplete options={cities} placeholder="Digite uma cidade..." />
+    <Autocomplete options={cities} defaultValue="Curitiba" loading />
+  </div>
+</Preview>
+
+## Instalação
+
+```bash
+npx shadcn@latest add https://ds.adila.co/r/autocomplete.json
+```
+
+## Uso
+
+```tsx
+const cities = [
+  { value: "sao-paulo", label: "São Paulo" },
+  { value: "recife", label: "Recife" },
+];
+
+<Autocomplete
+  options={cities}
+  placeholder="Digite uma cidade..."
+  onValueChange={(value) => searchCities(value)}
+  loading={isLoading}
+/>;
+```
+
+O valor pode permanecer como texto livre. Para restringir a escolha aos itens
+da lista, use [Combobox](/docs/components/combobox).
+
+## Dependências
+
+- `@base-ui/react`
+- `@phosphor-icons/react`

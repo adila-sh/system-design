@@ -1,0 +1,38 @@
+---
+title: Date Range Picker
+description: Seleção de períodos para filtros, relatórios e analytics.
+---
+
+import { DateRangePicker } from "@/components/ui/date-range-picker";
+
+<Preview>
+  <div className="w-full max-w-md">
+    <DateRangePicker
+      defaultValue={{
+        from: new Date(2026, 6, 1),
+        to: new Date(2026, 6, 18),
+      }}
+      clearable
+    />
+  </div>
+</Preview>
+
+## Instalação
+
+```bash
+npx shadcn@latest add https://ds.adila.co/r/date-range-picker.json
+```
+
+## Uso
+
+```tsx
+<DateRangePicker
+  value={period}
+  onValueChange={setPeriod}
+  numberOfMonths={2}
+  clearable
+/>
+```
+
+O tipo `DateRange` também é exportado pelo componente para estados controlados.
+Em telas estreitas, use `numberOfMonths={1}`.

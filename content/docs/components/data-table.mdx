@@ -1,0 +1,89 @@
+---
+title: Data Table
+description: Tabela genérica com ordenação, filtros, paginação, seleção e visibilidade de colunas.
+---
+
+import { DataTable, DataTableColumnHeader } from "@/components/ui/data-table";
+import { Status } from "@/components/ui/status";
+
+export const customers = [
+  {
+    id: "CL-1042",
+    name: "Acme Tecnologia",
+    plan: "Enterprise",
+    status: "Ativa",
+  },
+  { id: "CL-1041", name: "Norte Labs", plan: "Pro", status: "Ativa" },
+  { id: "CL-1040", name: "Orbit Systems", plan: "Pro", status: "Pendente" },
+  { id: "CL-1039", name: "Vértice Cloud", plan: "Starter", status: "Inativa" },
+];
+
+export const customerColumns = [
+  { accessorKey: "id", header: "ID" },
+  {
+    accessorKey: "name",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Cliente" />
+    ),
+  },
+  { accessorKey: "plan", header: "Plano" },
+  {
+    accessorKey: "status",
+    header: "Status",
+    cell: ({ row }) => (
+      <Status variant={row.original.status === "Ativa" ? "success" : "neutral"}>
+        {row.original.status}
+      </Status>
+    ),
+  },
+];
+
+<Preview>
+  <div className="w-full">
+    <DataTable
+      columns={customerColumns}
+      data={customers}
+      searchKey="name"
+      searchPlaceholder="Buscar cliente..."
+      pageSize={5}
+    />
+  </div>
+</Preview>
+
+## Instalação
+
+```bash
+npx shadcn@latest add https://ds.adila.co/r/data-table.json
+```
+
+## Uso
+
+```tsx
+import type { ColumnDef } from "@tanstack/react-table";
+
+const columns: ColumnDef<Customer>[] = [
+  { accessorKey: "id", header: "ID" },
+  {
+    accessorKey: "name",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Cliente" />
+    ),
+  },
+];
+
+<DataTable
+  columns={columns}
+  data={customers}
+  searchKey="name"
+  searchPlaceholder="Buscar cliente..."
+/>;
+```
+
+Use a prop `toolbar` para inserir filtros ou ações adicionais. Ela também aceita
+uma função que recebe a instância da tabela. `loading` renderiza linhas de
+skeleton e `empty` permite personalizar o estado vazio.
+
+## Dependências
+
+- `@tanstack/react-table`
+- `@phosphor-icons/react`

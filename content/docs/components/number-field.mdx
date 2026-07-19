@@ -1,0 +1,59 @@
+---
+title: Number Field
+description: Entrada numérica acessível com incremento, decremento e limites.
+---
+
+import {
+  NumberField,
+  NumberFieldDecrement,
+  NumberFieldGroup,
+  NumberFieldIncrement,
+  NumberFieldInput,
+  NumberFieldScrubArea,
+} from "@/components/ui/number-field";
+
+<Preview>
+  <div className="grid w-full max-w-xs gap-5">
+    <NumberField defaultValue={3} min={1} max={10}>
+      <NumberFieldGroup>
+        <NumberFieldDecrement />
+        <NumberFieldInput aria-label="Quantidade" />
+        <NumberFieldIncrement />
+      </NumberFieldGroup>
+    </NumberField>
+    <NumberField defaultValue={50} min={0} max={100} step={5}>
+      <NumberFieldScrubArea className="text-sm font-medium">
+        Opacidade — arraste para ajustar
+      </NumberFieldScrubArea>
+      <NumberFieldGroup>
+        <NumberFieldInput aria-label="Opacidade" />
+      </NumberFieldGroup>
+    </NumberField>
+  </div>
+</Preview>
+
+## Instalação
+
+```bash
+npx shadcn@latest add https://ds.adila.co/r/number-field.json
+```
+
+## Uso
+
+```tsx
+<NumberField
+  value={quantity}
+  onValueChange={(value) => setQuantity(value)}
+  min={1}
+  max={10}
+>
+  <NumberFieldGroup>
+    <NumberFieldDecrement />
+    <NumberFieldInput aria-label="Quantidade" />
+    <NumberFieldIncrement />
+  </NumberFieldGroup>
+</NumberField>
+```
+
+Use `step`, `smallStep` e `largeStep` para controlar teclado e botões. O campo
+deve receber um nome acessível por `FieldLabel` ou `aria-label`.

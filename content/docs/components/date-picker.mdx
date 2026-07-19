@@ -1,0 +1,34 @@
+---
+title: Date Picker
+description: Seleção de uma data com calendário, formatação e localização pt-BR.
+---
+
+import { DatePicker } from "@/components/ui/date-picker";
+
+<Preview>
+  <div className="grid w-full max-w-sm gap-4">
+    <DatePicker defaultValue={new Date(2026, 6, 18)} clearable />
+    <DatePicker placeholder="Data de vencimento" />
+    <DatePicker defaultValue={new Date(2026, 6, 18)} disabled />
+  </div>
+</Preview>
+
+## Instalação
+
+```bash
+npx shadcn@latest add https://ds.adila.co/r/date-picker.json
+```
+
+## Uso
+
+```tsx
+<DatePicker
+  value={dueDate}
+  onValueChange={setDueDate}
+  fromDate={new Date()}
+  clearable
+/>
+```
+
+Use `fromDate` e `toDate` para limitar o período permitido. O texto do botão
+pode ser alterado com `formatPattern`, seguindo os padrões do `date-fns`.

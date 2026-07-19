@@ -1,0 +1,89 @@
+---
+title: Resource Card
+description: Cartão para serviços, projetos, buckets, integrações e outros recursos.
+---
+
+import {
+  ResourceCard,
+  ResourceCardActions,
+  ResourceCardContent,
+  ResourceCardDescription,
+  ResourceCardHeader,
+  ResourceCardIcon,
+  ResourceCardMeta,
+  ResourceCardTitle,
+} from "@/components/ui/resource-card";
+import { Button } from "@/components/ui/button";
+import { DeploymentStatus } from "@/components/ui/deployment-status";
+import { CubeIcon, DotsThreeIcon, MapPinIcon } from "@phosphor-icons/react";
+
+<Preview>
+  <div className="grid w-full gap-4 sm:grid-cols-2">
+    <ResourceCard>
+      <ResourceCardHeader>
+        <ResourceCardIcon>
+          <CubeIcon />
+        </ResourceCardIcon>
+        <ResourceCardContent>
+          <ResourceCardTitle>api-production</ResourceCardTitle>
+          <ResourceCardDescription>
+            API principal do workspace.
+          </ResourceCardDescription>
+        </ResourceCardContent>
+        <ResourceCardActions>
+          <Button variant="ghost" size="icon-sm" aria-label="Ações">
+            <DotsThreeIcon />
+          </Button>
+        </ResourceCardActions>
+      </ResourceCardHeader>
+      <ResourceCardMeta>
+        <DeploymentStatus status="ready" />
+        <span className="flex items-center gap-1">
+          <MapPinIcon /> São Paulo
+        </span>
+      </ResourceCardMeta>
+    </ResourceCard>
+    <ResourceCard>
+      <ResourceCardHeader>
+        <ResourceCardIcon>
+          <CubeIcon />
+        </ResourceCardIcon>
+        <ResourceCardContent>
+          <ResourceCardTitle>worker-events</ResourceCardTitle>
+          <ResourceCardDescription>
+            Processamento assíncrono.
+          </ResourceCardDescription>
+        </ResourceCardContent>
+      </ResourceCardHeader>
+      <ResourceCardMeta>
+        <DeploymentStatus status="building" />
+      </ResourceCardMeta>
+    </ResourceCard>
+  </div>
+</Preview>
+
+## Instalação
+
+```bash
+npx shadcn@latest add https://ds.adila.co/r/resource-card.json
+```
+
+## Uso
+
+```tsx
+<ResourceCard>
+  <ResourceCardHeader>
+    <ResourceCardIcon>
+      <CubeIcon />
+    </ResourceCardIcon>
+    <ResourceCardContent>
+      <ResourceCardTitle>api-production</ResourceCardTitle>
+      <ResourceCardDescription>API principal.</ResourceCardDescription>
+    </ResourceCardContent>
+    <ResourceCardActions>{/* menu */}</ResourceCardActions>
+  </ResourceCardHeader>
+  <ResourceCardMeta>
+    <DeploymentStatus status="ready" />
+  </ResourceCardMeta>
+</ResourceCard>
+```

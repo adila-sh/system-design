@@ -1,0 +1,51 @@
+---
+title: Confirm Dialog
+description: Confirmação assíncrona para ações importantes ou destrutivas.
+---
+
+import { ConfirmDialog } from "@/components/ui/confirm-dialog";
+import { Button } from "@/components/ui/button";
+
+<Preview>
+  <div className="flex flex-wrap gap-3">
+    <ConfirmDialog
+      trigger={<Button variant="outline">Publicar alterações</Button>}
+      title="Publicar alterações?"
+      description="As novas configurações ficarão disponíveis imediatamente."
+      confirmLabel="Publicar"
+      onConfirm={() => Promise.resolve()}
+    />
+    <ConfirmDialog
+      trigger={<Button variant="destructive">Excluir projeto</Button>}
+      title="Excluir este projeto?"
+      description="Essa ação é permanente e não poderá ser desfeita."
+      confirmLabel="Excluir projeto"
+      variant="destructive"
+      onConfirm={() => Promise.resolve()}
+    />
+  </div>
+</Preview>
+
+## Instalação
+
+```bash
+npx shadcn@latest add https://ds.adila.co/r/confirm-dialog.json
+```
+
+## Uso
+
+```tsx
+<ConfirmDialog
+  trigger={<Button variant="destructive">Excluir</Button>}
+  title="Excluir este projeto?"
+  description="Essa ação não poderá ser desfeita."
+  confirmLabel="Excluir projeto"
+  pendingLabel="Excluindo..."
+  variant="destructive"
+  onConfirm={() => deleteProject(project.id)}
+/>
+```
+
+Enquanto a Promise retornada por `onConfirm` estiver pendente, o diálogo
+bloqueia novas interações. Em caso de erro, ele permanece aberto e exibe uma
+mensagem.

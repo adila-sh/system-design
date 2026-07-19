@@ -1,0 +1,48 @@
+---
+title: Multi Select
+description: Seleção múltipla pesquisável com chips removíveis.
+---
+
+import { MultiSelect } from "@/components/ui/multi-select";
+
+export const permissions = [
+  { value: "deploy", label: "Deploy" },
+  { value: "billing", label: "Cobrança" },
+  { value: "logs", label: "Logs" },
+  { value: "members", label: "Membros" },
+];
+
+<Preview>
+  <div className="w-full max-w-md">
+    <MultiSelect
+      options={permissions}
+      defaultValue={[permissions[0], permissions[2]]}
+      placeholder="Selecionar permissões..."
+    />
+  </div>
+</Preview>
+
+## Instalação
+
+```bash
+npx shadcn@latest add https://ds.adila.co/r/multi-select.json
+```
+
+## Uso
+
+```tsx
+const options = [
+  { value: "deploy", label: "Deploy" },
+  { value: "billing", label: "Cobrança" },
+];
+
+<MultiSelect
+  options={options}
+  value={permissions}
+  onValueChange={setPermissions}
+  placeholder="Selecionar permissões..."
+/>;
+```
+
+Cada opção pode receber `disabled`. Para um único valor, prefira
+[Combobox](/docs/components/combobox).

@@ -1,0 +1,79 @@
+---
+title: Form
+description: Estrutura de formulário com validação nativa e erros retornados pelo servidor.
+---
+
+import { Form, FormActions, FormMessage } from "@/components/ui/form";
+import { Button } from "@/components/ui/button";
+import {
+  Field,
+  FieldDescription,
+  FieldGroup,
+  FieldLabel,
+} from "@/components/ui/field";
+import { Input } from "@/components/ui/input";
+
+<Preview>
+  <Form
+    className="w-full max-w-md"
+    onSubmit={(event) => event.preventDefault()}
+  >
+    <FieldGroup>
+      <Field>
+        <FieldLabel htmlFor="form-name">Nome</FieldLabel>
+        <Input
+          id="form-name"
+          name="name"
+          required
+          placeholder="Nome do projeto"
+        />
+        <FieldDescription>
+          Nome exibido para os membros do workspace.
+        </FieldDescription>
+      </Field>
+      <Field>
+        <FieldLabel htmlFor="form-slug">Slug</FieldLabel>
+        <Input
+          id="form-slug"
+          name="slug"
+          pattern="[a-z0-9-]+"
+          placeholder="meu-projeto"
+        />
+        <FieldDescription>
+          Use letras minúsculas, números e hífens.
+        </FieldDescription>
+      </Field>
+    </FieldGroup>
+    <FormActions>
+      <Button variant="outline" type="button">
+        Cancelar
+      </Button>
+      <Button type="submit">Criar projeto</Button>
+    </FormActions>
+  </Form>
+</Preview>
+
+## Instalação
+
+```bash
+npx shadcn@latest add https://ds.adila.co/r/form.json
+```
+
+## Uso
+
+```tsx
+<Form
+  validationMode="onBlur"
+  errors={serverErrors}
+  onFormSubmit={(values) => createProject(values)}
+>
+  <Field>{/* label, controle e erros */}</Field>
+  <FormActions>
+    <Button type="submit">Salvar</Button>
+  </FormActions>
+</Form>
+```
+
+Passe erros retornados pela API em `errors`, usando o nome de cada campo como
+chave. `FormMessage` serve para falhas globais que não pertencem a um único
+controle.

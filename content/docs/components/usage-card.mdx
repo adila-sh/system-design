@@ -1,0 +1,60 @@
+---
+title: Usage Card
+description: Visualização de consumo, limites e níveis de atenção de um recurso.
+---
+
+import { UsageCard } from "@/components/ui/usage-card";
+import {
+  DatabaseIcon,
+  HardDrivesIcon,
+  LightningIcon,
+} from "@phosphor-icons/react";
+
+<Preview>
+  <div className="grid w-full gap-4 lg:grid-cols-3">
+    <UsageCard
+      label="Build minutes"
+      description="Ciclo atual"
+      value={420}
+      max={1000}
+      icon={<LightningIcon />}
+      formatValue={(value, max) => `${value} / ${max} min`}
+    />
+    <UsageCard
+      label="Armazenamento"
+      value={82}
+      max={100}
+      icon={<HardDrivesIcon />}
+      formatValue={(value, max) => `${value} / ${max} GB`}
+    />
+    <UsageCard
+      label="Banco de dados"
+      value={47}
+      max={50}
+      icon={<DatabaseIcon />}
+      formatValue={(value, max) => `${value} / ${max} GB`}
+    />
+  </div>
+</Preview>
+
+## Instalação
+
+```bash
+npx shadcn@latest add https://ds.adila.co/r/usage-card.json
+```
+
+## Uso
+
+```tsx
+<UsageCard
+  label="Armazenamento"
+  description="Ciclo atual"
+  value={82}
+  max={100}
+  warningAt={70}
+  criticalAt={90}
+  formatValue={(value, max) => `${value} / ${max} GB`}
+/>
+```
+
+A barra muda para atenção e crítico ao atingir `warningAt` e `criticalAt`.

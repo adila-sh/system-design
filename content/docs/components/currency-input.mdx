@@ -1,0 +1,43 @@
+---
+title: Currency Input
+description: Entrada numérica com formatação monetária e valor bruto controlável.
+---
+
+import { CurrencyInput } from "@/components/ui/currency-input";
+
+<Preview>
+  <div className="grid w-full max-w-sm gap-4">
+    <CurrencyInput
+      defaultValue={149.9}
+      inputProps={{ "aria-label": "Valor em reais" }}
+    />
+    <CurrencyInput
+      defaultValue={25}
+      currency="USD"
+      locale="en-US"
+      showControls
+      inputProps={{ "aria-label": "Valor em dólares" }}
+    />
+  </div>
+</Preview>
+
+## Instalação
+
+```bash
+npx shadcn@latest add https://ds.adila.co/r/currency-input.json
+```
+
+## Uso
+
+```tsx
+<CurrencyInput
+  name="amount"
+  value={amount}
+  onValueChange={(value) => setAmount(value)}
+  min={0}
+  inputProps={{ "aria-label": "Valor da cobrança" }}
+/>
+```
+
+O valor recebido em `onValueChange` é numérico e não contém a máscara. O padrão
+é `BRL` com locale `pt-BR`.

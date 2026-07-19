@@ -1,0 +1,31 @@
+---
+title: Deployment Status
+description: Estados padronizados para o ciclo de vida de deployments.
+---
+
+import { DeploymentStatus } from "@/components/ui/deployment-status";
+
+<Preview>
+  <div className="flex flex-wrap justify-center gap-3">
+    <DeploymentStatus status="queued" />
+    <DeploymentStatus status="building" />
+    <DeploymentStatus status="ready" />
+    <DeploymentStatus status="failed" />
+    <DeploymentStatus status="canceled" />
+  </div>
+</Preview>
+
+## Instalação
+
+```bash
+npx shadcn@latest add https://ds.adila.co/r/deployment-status.json
+```
+
+## Uso
+
+```tsx
+<DeploymentStatus status={deployment.status} />
+```
+
+Os estados suportados são `queued`, `building`, `ready`, `failed` e `canceled`.
+O estado `building` inclui um spinner e todos os estados possuem `role="status"`.
