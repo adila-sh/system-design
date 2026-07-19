@@ -2,6 +2,7 @@ import * as React from "react";
 import { mergeProps } from "@base-ui/react/merge-props";
 import { useRender } from "@base-ui/react/use-render";
 import { cva, type VariantProps } from "class-variance-authority";
+import { LayoutGroup, motion, useReducedMotion } from "framer-motion";
 
 import { useIsMobile } from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils";
@@ -37,7 +38,6 @@ type SidebarContextProps = {
   openMobile: boolean;
   setOpenMobile: (open: boolean) => void;
   isMobile: boolean;
-  activeIndicatorName: string;
   toggleSidebar: () => void;
 };
 
@@ -68,6 +68,7 @@ function SidebarProvider({
   onOpenChange?: (open: boolean) => void;
 }) {
   const isMobile = useIsMobile();
+  const indicatorGroupId = `${activeIndicatorName}-${React.useId().replace(/:/g, "")}`;
   const [openMobile, setOpenMobile] = React.useState(false);
 
   // This is the internal state of the sidebar.
@@ -121,42 +122,34 @@ function SidebarProvider({
       open,
       setOpen,
       isMobile,
-      activeIndicatorName,
       openMobile,
       setOpenMobile,
       toggleSidebar,
     }),
-    [
-      state,
-      open,
-      setOpen,
-      isMobile,
-      activeIndicatorName,
-      openMobile,
-      setOpenMobile,
-      toggleSidebar,
-    ],
+    [state, open, setOpen, isMobile, openMobile, setOpenMobile, toggleSidebar],
   );
 
   return (
     <SidebarContext.Provider value={contextValue}>
-      <div
-        data-slot="sidebar-wrapper"
-        style={
-          {
-            "--sidebar-width": SIDEBAR_WIDTH,
-            "--sidebar-width-icon": SIDEBAR_WIDTH_ICON,
-            ...style,
-          } as React.CSSProperties
-        }
-        className={cn(
-          "group/sidebar-wrapper flex min-h-svh w-full has-data-[variant=inset]:bg-sidebar",
-          className,
-        )}
-        {...props}
-      >
-        {children}
-      </div>
+      <LayoutGroup id={indicatorGroupId}>
+        <div
+          data-slot="sidebar-wrapper"
+          style={
+            {
+              "--sidebar-width": SIDEBAR_WIDTH,
+              "--sidebar-width-icon": SIDEBAR_WIDTH_ICON,
+              ...style,
+            } as React.CSSProperties
+          }
+          className={cn(
+            "group/sidebar-wrapper flex min-h-svh w-full has-data-[variant=inset]:bg-sidebar",
+            className,
+          )}
+          {...props}
+        >
+          {children}
+        </div>
+      </LayoutGroup>
     </SidebarContext.Provider>
   );
 }
@@ -522,7 +515,8 @@ function SidebarMenuButton({
     isActive?: boolean;
     tooltip?: string | React.ComponentProps<typeof TooltipContent>;
   } & VariantProps<typeof sidebarMenuButtonVariants>) {
-  const { activeIndicatorName, isMobile, state } = useSidebar();
+  const { isMobile, state } = useSidebar();
+  const shouldReduceMotion = useReducedMotion();
   const comp = useRender({
     defaultTagName: "button",
     props: mergeProps<"button">(
@@ -531,11 +525,22 @@ function SidebarMenuButton({
         children: (
           <>
             {isActive ? (
-              <span
+              <motion.span
                 aria-hidden="true"
                 data-slot="sidebar-active-indicator"
-                className="absolute inset-y-2 left-0 w-px rounded-r-full bg-sidebar-foreground/40"
-                style={{ viewTransitionName: activeIndicatorName }}
+                layoutId="sidebar-active-indicator"
+                initial={false}
+                transition={
+                  shouldReduceMotion
+                    ? { duration: 0 }
+                    : {
+                        type: "spring",
+                        stiffness: 500,
+                        damping: 38,
+                        mass: 0.7,
+                      }
+                }
+                className="absolute top-1/2 left-0 -mt-2.5 h-5 w-1 rounded-full bg-sidebar-foreground/45"
               />
             ) : null}
             {children}

@@ -1490,7 +1490,8 @@
       "dependencies": [
         "@base-ui/react",
         "@phosphor-icons/react",
-        "class-variance-authority"
+        "class-variance-authority",
+        "framer-motion"
       ]
     },
     {
