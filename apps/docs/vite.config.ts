@@ -1,10 +1,10 @@
-import path from 'node:path';
-import react from '@vitejs/plugin-react';
-import { tanstackStart } from '@tanstack/react-start/plugin/vite';
-import { defineConfig } from 'vite';
-import tailwindcss from '@tailwindcss/vite';
-import mdx from 'fumadocs-mdx/vite';
-import { nitro } from 'nitro/vite';
+import path from "node:path";
+import react from "@vitejs/plugin-react";
+import { tanstackStart } from "@tanstack/react-start/plugin/vite";
+import { defineConfig } from "vite";
+import tailwindcss from "@tailwindcss/vite";
+import mdx from "fumadocs-mdx/vite";
+import { nitro } from "nitro/vite";
 
 export default defineConfig({
   server: {
@@ -25,13 +25,13 @@ export default defineConfig({
     react(),
     // Railway: servidor Node standalone (respeita process.env.PORT).
     nitro({
-      preset: 'node-server',
+      preset: "node-server",
       routeRules: {
         // CORS para consumidores em browser (a CLI do shadcn não precisa).
-        '/r/**': {
+        "/r/**": {
           headers: {
-            'access-control-allow-origin': '*',
-            'cache-control': 'public, max-age=300',
+            "access-control-allow-origin": "*",
+            "cache-control": "public, max-age=300",
           },
         },
       },
@@ -40,10 +40,10 @@ export default defineConfig({
   resolve: {
     tsconfigPaths: true,
     alias: {
-      tslib: 'tslib/tslib.es6.js',
+      tslib: "tslib/tslib.es6.js",
       // alias explícito: o tsconfigPaths não resolve `@/` nos módulos MDX
       // virtuais de content/, usados nos previews ao vivo dos docs.
-      '@': path.resolve(import.meta.dirname, 'src'),
+      "@": path.resolve(import.meta.dirname, "src"),
     },
   },
 });

@@ -74,19 +74,32 @@ rm -f registry.json adila-fonts.css
   },
   "dependencies": {
     "@adila-sh/ui": "workspace:*",
+    "@base-ui/react": "^1.6.0",
     "@phosphor-icons/react": "2.1.10",
+    "@pierre/diffs": "^1.2.12",
+    "@shadcn/react": "^0.2.1",
     "@tailwindcss/vite": "^4.3.2",
     "@tanstack/react-router": "^1.170.17",
     "@tanstack/react-start": "^1.168.27",
     "@tanstack/react-table": "^8.21.3",
+    "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "cmdk": "^1.1.1",
     "cnfast": "^0.0.8",
+    "date-fns": "^4.4.0",
+    "embla-carousel-react": "^8.6.0",
+    "framer-motion": "^12.42.2",
     "fumadocs-core": "^16.11.3",
     "fumadocs-ui": "^16.11.3",
+    "input-otp": "^1.4.2",
+    "lucide-react": "^1.24.0",
     "next-themes": "^0.4.6",
     "react": "^19.2.7",
+    "react-day-picker": "^10.0.1",
     "react-dom": "^19.2.7",
+    "react-resizable-panels": "^4.12.1",
     "recharts": "^3.9.2",
+    "sonner": "^2.0.7",
     "tailwind-merge": "^3.6.0",
     "tailwindcss": "^4.3.2",
     "tw-animate-css": "^1.4.0"
@@ -101,13 +114,27 @@ rm -f registry.json adila-fonts.css
     "@vitejs/plugin-react": "^6.0.3",
     "fumadocs-mdx": "^15.1.0",
     "nitro": "^3.0.260610-beta",
+    "shadcn": "^4.13.0",
     "typescript": "~7.0.2",
     "vite": "^8.1.4"
   }
 }
 ```
 
-> `check-dropdown-menu-labels.mjs` e o script `registry` somem daqui — o primeiro migra para `packages/ui` na Task 2 (é lá que os primitives `dropdown-menu.tsx`/`menubar.tsx` vão morar); o segundo será removido de vez na Task 7.
+> **Correção pós-revisão (2026-08-07):** esta lista de dependências é
+> **deliberadamente igual à do `package.json` original**, incluindo pacotes
+> que só são usados pelos primitives em `src/components/ui/*` (`@base-ui/react`,
+> `cmdk`, `sonner`, `date-fns`, `embla-carousel-react`, `input-otp`,
+> `react-day-picker`, `react-resizable-panels`, `@pierre/diffs`,
+> `@shadcn/react`, `class-variance-authority`) e o `shadcn` (CLI) usado por
+> `components.json`. Nesta task esses arquivos **ainda não saíram** de
+> `apps/docs/src/components/ui` (isso só acontece na Task 2) — remover essas
+> dependências agora quebraria o `typecheck`/build num clone limpo. A Task 2
+> é quem remove as agora-mortas dessa lista, no momento exato em que move os
+> arquivos que as usavam. `check-dropdown-menu-labels.mjs` e o script
+> `registry` somem daqui — o primeiro migra para `packages/ui` na Task 2 (é lá
+> que os primitives `dropdown-menu.tsx`/`menubar.tsx` vão morar); o segundo
+> (junto com `shadcn` CLI) será removido de vez na Task 7.
 
 - [ ] **Step 4: Ajustar `apps/docs/tsconfig.json`** (mesmo conteúdo de antes, path continua relativo ao novo `apps/docs`, nada muda de fato):
 
@@ -214,9 +241,23 @@ apps/docs/.vercel
 apps/docs/.cache
 apps/docs/src/routeTree.gen.ts
 
+# defensivo: nunca versionar um .source gerado na raiz por engano (ex: rodar
+# um comando fumadocs-mdx/typecheck sem --cwd apps/docs)
+/.source
+
 # build do pacote (packages/ui)
 packages/ui/dist
 ```
+
+- [ ] **Step 6.1: Confirmar que não sobrou nenhum `.source` gerado na raiz do repo**
+
+```bash
+git ls-files .source
+```
+
+Expected: nenhuma saída (vazio). Se listar arquivos, é um artefato gerado por
+engano (algum comando fumadocs-mdx rodado sem `--cwd apps/docs`) — remova com
+`git rm -r .source` antes de continuar.
 
 - [ ] **Step 7: Atualizar `.oxlintrc.json`** (raiz) para os novos caminhos:
 
@@ -391,15 +432,50 @@ const PRIMITIVE_FILES = new Set([
 git rm apps/docs/components.json
 ```
 
-- [ ] **Step 7: Verificação — o typecheck do pacote ainda vai falhar aqui** (faltam `package.json`/deps/tsup, que entram na Task 3), então a verificação desta task é só estrutural:
+- [ ] **Step 7: Remover de `apps/docs/package.json` as dependências que só existiam por causa dos arquivos movidos no Step 1** (a Task 1 propositalmente manteve a lista de dependências original intacta — ver nota "Correção pós-revisão" na Task 1 — porque até agora esses arquivos ainda estavam fisicamente em `apps/docs`; agora que saíram, remova do objeto `dependencies` de `apps/docs/package.json`:)
+
+```
+@base-ui/react
+@pierre/diffs
+@shadcn/react
+class-variance-authority
+cmdk
+date-fns
+embla-carousel-react
+input-otp
+react-day-picker
+react-resizable-panels
+sonner
+```
+
+> Mantenha `clsx`, `cnfast`, `tailwind-merge` em `apps/docs/package.json` —
+> `apps/docs/src/lib/cn.ts` (não movido, é código morto fora de escopo deste
+> plano) ainda importa `cnfast`, e o `tsc --noEmit` resolve esse import
+> mesmo sem nenhum outro arquivo chamar `cn.ts`. `shadcn` (CLI, em
+> `devDependencies`) e o restante das dependências de `apps/docs` continuam
+> como estão — só saem na Task 7.
+
+- [ ] **Step 8: Verificação estrutural de `packages/ui`** (o `typecheck` do pacote ainda vai falhar aqui — faltam `package.json`/deps/tsup, que entram na Task 3):
 
 ```bash
 test -f packages/ui/src/components/button.tsx && echo "OK: button.tsx presente em packages/ui"
 test -f packages/ui/src/lib/utils.ts && echo "OK: utils.ts presente em packages/ui"
 grep -c '@/components/ui/' packages/ui/src -r || echo "OK: 0 ocorrências de /ui/ nos imports internos"
+bun install
 ```
 
-- [ ] **Step 8: Commit**
+> **`apps/docs` typecheck fica quebrado a partir deste commit, de propósito,
+> até a Task 6.** `src/routes/*.tsx` (3 arquivos), `content/docs/components/*.mdx`
+> (103 arquivos) e `src/components/*.tsx` fora de `ui/` (5 arquivos) continuam
+> fazendo `from "@/components/ui/<nome>"`, e esses arquivos só deixaram de
+> existir em `apps/docs/src/components/ui` neste Step 1 — `tsc --noEmit` vai
+> reportar "Cannot find module" para essas ~111 referências. Isso é esperado
+> e intencional: a Task 6 é quem migra esses imports para `@adila-sh/ui`.
+> Não rode `bun run --cwd apps/docs typecheck` esperando verde nesta task —
+> só `bun run --cwd packages/ui typecheck` (Task 3 em diante) e as checagens
+> estruturais acima precisam passar aqui.
+
+- [ ] **Step 9: Commit**
 
 ```bash
 git add -A
