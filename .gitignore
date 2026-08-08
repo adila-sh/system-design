@@ -23,16 +23,21 @@ dist-ssr
 *.sln
 *.sw?
 
-# registry build output (regenerado por npm run build)
-public/r/
-# artefato de fonte pro R2 (gerado de src/styles/fonts.css por gen-registry)
-adila-fonts.css
+# TanStack Start / Fumadocs / Nitro (apps/docs)
+apps/docs/.source
+apps/docs/.output
+apps/docs/.nitro
+apps/docs/.tanstack
+apps/docs/.vercel
+apps/docs/.cache
+apps/docs/src/routeTree.gen.ts
 
-# TanStack Start / Fumadocs / Nitro
-.source
-.output
-.nitro
-.tanstack
-.vercel
-.cache
-src/routeTree.gen.ts
+# defensivo: nunca versionar um .source gerado na raiz por engano (ex: rodar
+# um comando fumadocs-mdx/typecheck sem --cwd apps/docs)
+/.source
+
+# worktrees e estado do Claude Code (são cópias do repo — nunca versionar)
+.claude/
+
+# build do pacote (packages/ui)
+packages/ui/dist
