@@ -41,3 +41,5 @@ apps/docs/src/routeTree.gen.ts
 
 # build do pacote (packages/ui)
 packages/ui/dist
+# barrel gerado por gen-barrel.mjs (fonte única: src/components)
+packages/ui/src/index.ts
