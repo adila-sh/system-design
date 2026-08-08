@@ -15,11 +15,11 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+} from "@adila-sh/ui";
+import { Alert, AlertDescription, AlertTitle } from "@adila-sh/ui";
+import { Avatar, AvatarFallback } from "@adila-sh/ui";
+import { Badge } from "@adila-sh/ui";
+import { Button } from "@adila-sh/ui";
 import {
   Card,
   CardContent,
@@ -27,15 +27,15 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { CodeBlock } from "@/components/ui/code-block";
-import { CodeThemeSelect } from "@/components/ui/code-theme";
+} from "@adila-sh/ui";
+import { CodeBlock } from "@adila-sh/ui";
+import { CodeThemeSelect } from "@adila-sh/ui";
 import {
   DataList,
   DataListItem,
   DataListTerm,
   DataListValue,
-} from "@/components/ui/data-list";
+} from "@adila-sh/ui";
 import {
   Empty,
   EmptyContent,
@@ -43,15 +43,10 @@ import {
   EmptyHeader,
   EmptyMedia,
   EmptyTitle,
-} from "@/components/ui/empty";
-import {
-  Field,
-  FieldDescription,
-  FieldGroup,
-  FieldLabel,
-} from "@/components/ui/field";
-import { Input } from "@/components/ui/input";
-import { Kbd } from "@/components/ui/kbd";
+} from "@adila-sh/ui";
+import { Field, FieldDescription, FieldGroup, FieldLabel } from "@adila-sh/ui";
+import { Input } from "@adila-sh/ui";
+import { Kbd } from "@adila-sh/ui";
 import {
   PageHeader,
   PageHeaderActions,
@@ -59,20 +54,16 @@ import {
   PageHeaderDescription,
   PageHeaderEyebrow,
   PageHeaderTitle,
-} from "@/components/ui/page-header";
-import {
-  Progress,
-  ProgressLabel,
-  ProgressValue,
-} from "@/components/ui/progress";
-import { SearchInput } from "@/components/ui/search-input";
+} from "@adila-sh/ui";
+import { Progress, ProgressLabel, ProgressValue } from "@adila-sh/ui";
+import { SearchInput } from "@adila-sh/ui";
 import {
   SectionHeader,
   SectionHeaderActions,
   SectionHeaderContent,
   SectionHeaderDescription,
   SectionHeaderTitle,
-} from "@/components/ui/section-header";
+} from "@adila-sh/ui";
 import {
   Stat,
   StatDescription,
@@ -83,9 +74,9 @@ import {
   StatLabel,
   StatTrend,
   StatValue,
-} from "@/components/ui/stat";
-import { Status } from "@/components/ui/status";
-import { Switch } from "@/components/ui/switch";
+} from "@adila-sh/ui";
+import { Status } from "@adila-sh/ui";
+import { Switch } from "@adila-sh/ui";
 import {
   Table,
   TableBody,
@@ -93,7 +84,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table";
+} from "@adila-sh/ui";
 import {
   Timeline,
   TimelineConnector,
@@ -104,7 +95,7 @@ import {
   TimelineItem,
   TimelineTime,
   TimelineTitle,
-} from "@/components/ui/timeline";
+} from "@adila-sh/ui";
 
 const customers = [
   ["Acme Tecnologia", "Marina Costa", "Enterprise", "Ativa"],

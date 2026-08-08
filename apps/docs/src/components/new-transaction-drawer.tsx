@@ -2,7 +2,7 @@
 
 import { PlusIcon } from "@phosphor-icons/react";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@adila-sh/ui";
 import {
   Drawer,
   DrawerClose,
@@ -12,16 +12,16 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-} from "@/components/ui/drawer";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+} from "@adila-sh/ui";
+import { Input } from "@adila-sh/ui";
+import { Label } from "@adila-sh/ui";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
+} from "@adila-sh/ui";
 
 export function NewTransactionDrawer() {
   return (

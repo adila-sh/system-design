@@ -25,8 +25,8 @@ import {
   UsersIcon as Users,
 } from "@phosphor-icons/react";
 
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { Badge } from "@/components/ui/badge";
+import { Avatar, AvatarFallback } from "@adila-sh/ui";
+import { Badge } from "@adila-sh/ui";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -34,7 +34,7 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
+} from "@adila-sh/ui";
 import {
   BottomBar,
   BottomBarButton,
@@ -44,15 +44,15 @@ import {
   BottomBarItem,
   BottomBarLabel,
   BottomBarList,
-} from "@/components/ui/bottom-bar";
-import { Button } from "@/components/ui/button";
+} from "@adila-sh/ui";
+import { Button } from "@adila-sh/ui";
 import { CommandMenu } from "@/components/command-menu";
 import {
   DrawerClose,
   DrawerDescription,
   DrawerHeader,
   DrawerTitle,
-} from "@/components/ui/drawer";
+} from "@adila-sh/ui";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -62,9 +62,9 @@ import {
   DropdownMenuSeparator,
   DropdownMenuShortcut,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Input } from "@/components/ui/input";
-import { Kbd } from "@/components/ui/kbd";
+} from "@adila-sh/ui";
+import { Input } from "@adila-sh/ui";
+import { Kbd } from "@adila-sh/ui";
 import {
   Sidebar,
   SidebarContent,
@@ -81,14 +81,14 @@ import {
   SidebarProvider,
   SidebarSeparator,
   SidebarTrigger,
-} from "@/components/ui/sidebar";
+} from "@adila-sh/ui";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@/components/ui/tooltip";
-import { CodeThemeProvider } from "@/components/ui/code-theme";
+} from "@adila-sh/ui";
+import { CodeThemeProvider } from "@adila-sh/ui";
 
 const getSidebarDefaultOpen = createServerFn({ method: "GET" }).handler(
   () => getCookie("sidebar_state") !== "false",

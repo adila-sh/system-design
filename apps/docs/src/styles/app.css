@@ -4,11 +4,7 @@
 @import "fumadocs-ui/css/shadcn.css";
 @import "fumadocs-ui/css/preset.css";
 @import "tw-animate-css";
-@import "./fonts.css";
-@import "./adila-tokens.css";
-
-/* garante que o Tailwind escaneie os componentes do registry */
-@source '../components';
+@import "@adila-sh/ui/style.css";
 
 html {
   scrollbar-gutter: stable;

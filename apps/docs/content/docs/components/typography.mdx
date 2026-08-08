@@ -3,82 +3,63 @@ title: Typography
 description: Primitives tipográficos semânticos com as fontes Adila Std, Adila Pixel e Adila Code.
 ---
 
-import {
-  Blockquote,
-  CodeText,
-  Description,
-  InlineCode,
-  Label,
-  Lead,
-  List,
-  Muted,
-  PixelText,
-  Small,
-  Text,
-  Title,
-} from "@/components/ui/typography";
+import { Typography } from "@adila-sh/ui";
 
 <Preview>
   <div className="w-full max-w-2xl space-y-5">
     <div className="space-y-2">
-      <Label>Design system</Label>
-      <Title level={1}>Interfaces claras começam pela tipografia.</Title>
-      <Lead>
+      <Typography.Label>Design system</Typography.Label>
+      <Typography.Title level={1}>
+        Interfaces claras começam pela tipografia.
+      </Typography.Title>
+      <Typography.Lead>
         Uma hierarquia consistente ajuda as pessoas a encontrar o que importa.
-      </Lead>
+      </Typography.Lead>
     </div>
-    <Text>
+    <Typography.Text>
       Use os componentes como blocos semânticos. O{" "}
-      <InlineCode>Title</InlineCode>
+      <Typography.InlineCode>Title</Typography.InlineCode>
       escolhe automaticamente a tag de acordo com a propriedade de nível.
-    </Text>
-    <Description>
+    </Typography.Text>
+    <Typography.Description>
       Os estilos usam os tokens de cor e fonte do tema adila.co.
-    </Description>
+    </Typography.Description>
     <div className="grid gap-3 rounded-md border p-4">
-      <PixelText>Adila Pixel · identidade em cada pixel.</PixelText>
-      <CodeText>Adila Code · const design = "legível";</CodeText>
+      <Typography.PixelText>Adila Pixel · identidade em cada pixel.</Typography.PixelText>
+      <Typography.CodeText>Adila Code · const design = "legível";</Typography.CodeText>
     </div>
-    <Blockquote>Bom design torna a intenção visível.</Blockquote>
-    <List>
+    <Typography.Blockquote>Bom design torna a intenção visível.</Typography.Blockquote>
+    <Typography.List>
       <li>Hierarquia previsível</li>
       <li>Ritmo de leitura confortável</li>
       <li>Semântica HTML preservada</li>
-    </List>
-    <Muted>Atualizado há 5 minutos</Muted>
-    <Small>Termos e condições se aplicam.</Small>
+    </Typography.List>
+    <Typography.Muted>Atualizado há 5 minutos</Typography.Muted>
+    <Typography.Small>Termos e condições se aplicam.</Typography.Small>
   </div>
 </Preview>
 
 ## Instalação
 
 ```bash
-npx shadcn@latest add https://ds.adila.co/r/typography.json
+bun add @adila-sh/ui
 ```
 
 ## Uso
 
 ```tsx
-import {
-  CodeText,
-  Description,
-  Label,
-  Lead,
-  PixelText,
-  Text,
-  Title,
-} from "@/components/ui/typography";
+import { Typography } from "@adila-sh/ui";
 
 export function ArticleHeader() {
   return (
     <header className="space-y-3">
-      <Label>Novidades</Label>
-      <Title level={1}>Uma nova experiência</Title>
-      <Lead>Uma introdução em destaque para contextualizar a página.</Lead>
-      <Text>O conteúdo principal começa aqui.</Text>
-      <PixelText>Um destaque com a fonte Adila Pixel.</PixelText>
-      <CodeText>const font = "Adila Code";</CodeText>
-      <Description>Publicado em 18 de julho de 2026.</Description>
+      <Typography.Label>Novidades</Typography.Label>
+      <Typography.Title level={1}>Uma nova experiência</Typography.Title>
+      <Typography.Lead>Uma introdução em destaque para contextualizar a página.</Typography.Lead>
+      <Typography.Text>O conteúdo principal começa aqui.</Typography.Text>
+      <Typography.PixelText>Um destaque com a fonte Adila Pixel.</Typography.PixelText>
+      <Typography.CodeText>const font = "Adila Code";</Typography.CodeText>
+      <Typography.Description>Publicado em 18 de julho de 2026.</Typography.Description>
     </header>
   );
 }
@@ -86,26 +67,26 @@ export function ArticleHeader() {
 
 ## Títulos
 
-`Title` renderiza `h1` por padrão. Use `level` de `1` a `6` para manter a
-hierarquia semântica e aplicar a escala visual correspondente.
+`Typography.Title` renderiza `h1` por padrão. Use `level` de `1` a `6` para
+manter a hierarquia semântica e aplicar a escala visual correspondente.
 
 ```tsx
-<Title level={1}>Título da página</Title>
-<Title level={2}>Título da seção</Title>
-<Title level={3}>Título do bloco</Title>
+<Typography.Title level={1}>Título da página</Typography.Title>
+<Typography.Title level={2}>Título da seção</Typography.Title>
+<Typography.Title level={3}>Título do bloco</Typography.Title>
 ```
 
 ## Componentes
 
-- `Title`: títulos semânticos de `h1` a `h6`.
-- `Text`: parágrafo de conteúdo padrão.
-- `PixelText`: texto de destaque com a fonte Adila Pixel.
-- `CodeText`: texto monoespaçado com a fonte Adila Code.
-- `Lead`: introdução em destaque.
-- `Label`: rótulo visual curto; para campos de formulário, use o componente `Label` de formulário.
-- `Description`: texto explicativo secundário.
-- `Small`: observações compactas.
-- `Muted`: metadados e informações de menor ênfase.
-- `InlineCode`: termos técnicos e trechos curtos de código.
-- `Blockquote`: citações em bloco.
-- `List`: lista não ordenada com ritmo tipográfico consistente.
+- `Typography.Title`: títulos semânticos de `h1` a `h6`.
+- `Typography.Text`: parágrafo de conteúdo padrão.
+- `Typography.PixelText`: texto de destaque com a fonte Adila Pixel.
+- `Typography.CodeText`: texto monoespaçado com a fonte Adila Code.
+- `Typography.Lead`: introdução em destaque.
+- `Typography.Label`: rótulo visual curto; para campos de formulário, use o componente `Label` de formulário (exportado no topo do pacote).
+- `Typography.Description`: texto explicativo secundário.
+- `Typography.Small`: observações compactas.
+- `Typography.Muted`: metadados e informações de menor ênfase.
+- `Typography.InlineCode`: termos técnicos e trechos curtos de código.
+- `Typography.Blockquote`: citações em bloco.
+- `Typography.List`: lista não ordenada com ritmo tipográfico consistente.

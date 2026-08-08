@@ -3,12 +3,12 @@
 import type { ColumnDef } from "@tanstack/react-table";
 import { DotsThreeIcon } from "@phosphor-icons/react";
 
-import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
+import { Button } from "@adila-sh/ui";
+import { Checkbox } from "@adila-sh/ui";
 import {
   DataTable as DataTablePrimitive,
   DataTableColumnHeader,
-} from "@/components/ui/data-table";
+} from "@adila-sh/ui";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -17,8 +17,8 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Status } from "@/components/ui/status";
+} from "@adila-sh/ui";
+import { Status } from "@adila-sh/ui";
 
 type TransactionStatus = "Pago" | "Pendente" | "Falhou";
 

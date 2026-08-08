@@ -3,8 +3,8 @@ title: Code Block
 description: Bloco de código com syntax highlighting, linhas numeradas e botão de copiar.
 ---
 
-import { CodeBlock } from "@/components/ui/code-block";
-import { CodeThemeProvider } from "@/components/ui/code-theme";
+import { CodeBlock } from "@adila-sh/ui";
+import { CodeThemeProvider } from "@adila-sh/ui";
 
 <Preview>
   <CodeThemeProvider defaultTheme="tokyo-night" className="w-full">
@@ -13,7 +13,7 @@ import { CodeThemeProvider } from "@/components/ui/code-theme";
       language="tsx"
       showLineNumbers
       highlightLines={[4, 5]}
-      code={`import { Button } from '@/components/ui/button';
+      code={`import { Button } from '@adila-sh/ui';
 
 export function SaveButton() {
   const label = 'Salvar alterações';
@@ -32,7 +32,7 @@ npx shadcn@latest add https://ds.adila.co/r/code-block.json
 ## Uso
 
 ```tsx
-import { CodeBlock } from "@/components/ui/code-block";
+import { CodeBlock } from "@adila-sh/ui";
 
 export function Example() {
   return (

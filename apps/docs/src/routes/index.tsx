@@ -1,8 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { HomeLayout } from "fumadocs-ui/layouts/home";
 import { baseOptions } from "@/lib/layout.shared";
-import { Button } from "@/components/ui/button";
-import { PixelBlast } from "@/components/ui/pixel-blast";
+import { Button } from "@adila-sh/ui";
+import { PixelBlast } from "@adila-sh/ui";
 
 export const Route = createFileRoute("/")({
   component: Home,

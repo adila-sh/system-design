@@ -3,8 +3,8 @@ title: Code Theme
 description: Temas globais para blocos de código, terminal, API e diff.
 ---
 
-import { CodeThemeProvider, CodeThemeSelect } from "@/components/ui/code-theme";
-import { CodeBlock } from "@/components/ui/code-block";
+import { CodeThemeProvider, CodeThemeSelect } from "@adila-sh/ui";
+import { CodeBlock } from "@adila-sh/ui";
 
 <Preview>
   <CodeThemeProvider defaultTheme="tokyo-night" className="w-full space-y-3">
@@ -26,7 +26,7 @@ npx shadcn@latest add https://ds.adila.co/r/code-theme.json
 ## Uso
 
 ```tsx
-import { CodeThemeProvider, CodeThemeSelect } from "@/components/ui/code-theme";
+import { CodeThemeProvider, CodeThemeSelect } from "@adila-sh/ui";
 
 export function DeveloperTools({ children }: { children: React.ReactNode }) {
   return (

@@ -3,7 +3,7 @@ title: Package Install
 description: Seletor de comandos de instalação para npm, pnpm, yarn e bun.
 ---
 
-import { PackageInstall } from "@/components/ui/package-install";
+import { PackageInstall } from "@adila-sh/ui";
 
 <Preview>
   <PackageInstall
@@ -26,7 +26,7 @@ npx shadcn@latest add https://ds.adila.co/r/package-install.json
 ## Uso
 
 ```tsx
-import { PackageInstall } from "@/components/ui/package-install";
+import { PackageInstall } from "@adila-sh/ui";
 
 <PackageInstall commands={{ npm: "npm install zod", bun: "bun add zod" }} />;
 ```

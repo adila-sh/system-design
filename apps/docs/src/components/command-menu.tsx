@@ -21,7 +21,7 @@ import {
   CommandList,
   CommandSeparator,
   CommandShortcut,
-} from "@/components/ui/command";
+} from "@adila-sh/ui";
 
 export function CommandMenu({
   open,

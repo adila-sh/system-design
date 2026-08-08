@@ -14,8 +14,8 @@ import {
 import { Area, AreaChart, Bar, BarChart, CartesianGrid, XAxis } from "recharts";
 
 import { DataTable } from "@/components/data-table";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { Badge } from "@adila-sh/ui";
+import { Button } from "@adila-sh/ui";
 import {
   Card,
   CardAction,
@@ -24,7 +24,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
+} from "@adila-sh/ui";
 import {
   ChartContainer,
   ChartLegend,
@@ -32,9 +32,9 @@ import {
   ChartTooltip,
   ChartTooltipContent,
   type ChartConfig,
-} from "@/components/ui/chart";
-import { CodeBlock } from "@/components/ui/code-block";
-import { CodeThemeSelect } from "@/components/ui/code-theme";
+} from "@adila-sh/ui";
+import { CodeBlock } from "@adila-sh/ui";
+import { CodeThemeSelect } from "@adila-sh/ui";
 import {
   ApiRequest,
   ApiRequestCode,
@@ -45,25 +45,25 @@ import {
   ApiRequestSectionHeader,
   ApiRequestSectionTitle,
   ApiRequestUrl,
-} from "@/components/ui/api-request";
-import { CopyButton } from "@/components/ui/copy-button";
+} from "@adila-sh/ui";
+import { CopyButton } from "@adila-sh/ui";
 import {
   DataList,
   DataListItem,
   DataListTerm,
   DataListValue,
-} from "@/components/ui/data-list";
+} from "@adila-sh/ui";
 import {
   FilterBar,
   FilterBarActions,
   FilterBarGroup,
   FilterBarResults,
-} from "@/components/ui/filter-bar";
-import { FileUpload } from "@/components/ui/file-upload";
-import { DiffViewer } from "@/components/ui/diff-viewer";
+} from "@adila-sh/ui";
+import { FileUpload } from "@adila-sh/ui";
+import { DiffViewer } from "@adila-sh/ui";
 import { NewTransactionDrawer } from "@/components/new-transaction-drawer";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Label } from "@/components/ui/label";
+import { Checkbox } from "@adila-sh/ui";
+import { Label } from "@adila-sh/ui";
 import {
   PageHeader,
   PageHeaderActions,
@@ -71,30 +71,30 @@ import {
   PageHeaderDescription,
   PageHeaderEyebrow,
   PageHeaderTitle,
-} from "@/components/ui/page-header";
-import { PackageInstall } from "@/components/ui/package-install";
-import { Progress } from "@/components/ui/progress";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+} from "@adila-sh/ui";
+import { PackageInstall } from "@adila-sh/ui";
+import { Progress } from "@adila-sh/ui";
+import { RadioGroup, RadioGroupItem } from "@adila-sh/ui";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
-import { Separator } from "@/components/ui/separator";
+} from "@adila-sh/ui";
+import { Separator } from "@adila-sh/ui";
 import {
   SectionHeader,
   SectionHeaderActions,
   SectionHeaderContent,
   SectionHeaderDescription,
   SectionHeaderTitle,
-} from "@/components/ui/section-header";
-import { SearchInput } from "@/components/ui/search-input";
-import { Slider } from "@/components/ui/slider";
-import { Status } from "@/components/ui/status";
-import { Switch } from "@/components/ui/switch";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+} from "@adila-sh/ui";
+import { SearchInput } from "@adila-sh/ui";
+import { Slider } from "@adila-sh/ui";
+import { Status } from "@adila-sh/ui";
+import { Switch } from "@adila-sh/ui";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@adila-sh/ui";
 import {
   Terminal,
   TerminalBody,
@@ -105,7 +105,7 @@ import {
   TerminalOutput,
   TerminalPrompt,
   TerminalTitle,
-} from "@/components/ui/terminal";
+} from "@adila-sh/ui";
 
 export const Route = createFileRoute("/_app/showcase")({
   component: ShowcaseDashboard,
@@ -445,7 +445,7 @@ function ShowcaseDashboard() {
             language="tsx"
             showLineNumbers
             highlightLines={[5, 6]}
-            code={`import { Status } from "@/components/ui/status";
+            code={`import { Status } from "@adila-sh/ui";
 
 export function CustomerStatus({ active }: { active: boolean }) {
   return (

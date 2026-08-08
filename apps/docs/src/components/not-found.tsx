@@ -1,5 +1,5 @@
 import { baseOptions } from "@/lib/layout.shared";
-import { Button } from "@/components/ui/button";
+import { Button } from "@adila-sh/ui";
 import {
   PageState,
   PageStateActions,
@@ -9,7 +9,7 @@ import {
   PageStateDescription,
   PageStateEyebrow,
   PageStateTitle,
-} from "@/components/ui/page-state";
+} from "@adila-sh/ui";
 import { Link } from "@tanstack/react-router";
 import { HomeLayout } from "fumadocs-ui/layouts/home";
 

@@ -3,7 +3,7 @@ title: Direction
 description: Componente direction do design system adila.co, sobre Base UI.
 ---
 
-import { DirectionProvider } from '@/components/ui/direction';
+import { DirectionProvider } from '@adila-sh/ui';
 
 `DirectionProvider` não tem visual próprio: é um provedor de contexto que informa aos
 componentes Base UI a direção do texto (`ltr` ou `rtl`). Envolva a árvore da aplicação
@@ -28,7 +28,7 @@ npx shadcn@latest add https://ds.adila.co/r/direction.json
 ## Uso
 
 ```tsx
-import { DirectionProvider } from '@/components/ui/direction';
+import { DirectionProvider } from '@adila-sh/ui';
 
 export function Example() {
   return (
