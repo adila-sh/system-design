@@ -1,6 +1,6 @@
 ---
-title: Collapsible
-description: Componente collapsible do design system adila.co.
+title: ASCII Collapsible
+description: Lista expansível com conectores ASCII e estado acessível.
 ---
 
 import { AsciiCollapsible } from '@adila-sh/ui';
@@ -37,27 +37,17 @@ bun add @adila-sh/ui
 ```tsx
 import { AsciiCollapsible } from '@adila-sh/ui';
 
-export function Example() {
-  return (
-    <AsciiCollapsible
-      items={[
-        {
-          label: 'Núcleo comportamental',
-          content: 'Interações, foco e estados acessíveis.',
-          defaultOpen: true,
-        },
-        {
-          label: 'Tokens do tema',
-          content: 'Cores, tipografia e espaçamento do produto.',
-        },
-        {
-          label: 'Estados de interface',
-          content: 'Loading, vazio, erro e confirmação.',
-        },
-      ]}
-    />
-  );
-}
+<AsciiCollapsible
+  items={[
+    {
+      label: 'Núcleo comportamental',
+      content: 'Interações, foco e estados acessíveis.',
+      defaultOpen: true,
+    },
+    {
+      label: 'Tokens do tema',
+      content: 'Cores, tipografia e espaçamento do produto.',
+    },
+  ]}
+/>;
 ```
-
-## Dependências

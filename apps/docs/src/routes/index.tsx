@@ -21,15 +21,15 @@ function Home() {
         <PixelBlast className="absolute inset-0 -z-10" />
         <div className="flex flex-col items-center gap-6 text-center text-white">
           <span className="font-pixel text-sm uppercase tracking-[0.2em] text-white/80">
-            shadcn · Base UI · Tailwind v4
+            React · componentes acessíveis · GitHub Packages
           </span>
           <h1 className="max-w-2xl text-balance text-4xl font-light tracking-tight sm:text-5xl">
             Design System <span className="font-pixel">adila.co</span>
           </h1>
           <p className="max-w-xl text-balance text-white/80">
-            Registry de componentes consumível por qualquer projeto via CLI do
-            shadcn. Tema indigo adila.co, light &amp; dark, 60+ primitives Base
-            UI.
+            Biblioteca de componentes da adila.co, distribuída como pacote no
+            GitHub Packages. Tema indigo, light &amp; dark e uma base
+            consistente para produtos React.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-3">
             <Button
@@ -60,7 +60,7 @@ function Home() {
             />
           </div>
           <code className="mt-2 rounded-lg border border-white/20 bg-white/10 px-4 py-2 font-mono text-sm text-white backdrop-blur-sm">
-            npx shadcn@latest add https://ds.adila.co/r/adila-theme.json
+            bun add @adila-sh/ui
           </code>
         </div>
       </section>

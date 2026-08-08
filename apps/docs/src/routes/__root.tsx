@@ -11,7 +11,7 @@ import { ptBR } from "@/lib/translations";
 const siteUrl = "https://ds.adila.co";
 const siteTitle = "DS | Adila.co";
 const siteDescription =
-  "Design system adila.co: registry shadcn sobre Base UI, acento indigo, light & dark.";
+  "Design system adila.co para React, distribuído via GitHub Packages com tema indigo e modos light e dark.";
 const ogImage = `${siteUrl}/icon-512.png`;
 
 export const Route = createRootRoute({

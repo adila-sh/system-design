@@ -1,13 +1,12 @@
 "use client";
 
-import type { ColumnDef } from "@tanstack/react-table";
 import { DotsThreeIcon } from "@phosphor-icons/react";
 
 import { Button } from "@adila-sh/ui";
-import { Checkbox } from "@adila-sh/ui";
 import {
   DataTable as DataTablePrimitive,
   DataTableColumnHeader,
+  type DataTableColumnDef,
 } from "@adila-sh/ui";
 import {
   DropdownMenu,
@@ -71,31 +70,7 @@ const statusVariants = {
   Falhou: "destructive",
 } as const;
 
-const columns: ColumnDef<Transaction>[] = [
-  {
-    id: "select",
-    header: ({ table }) => (
-      <Checkbox
-        aria-label="Selecionar todas as linhas"
-        checked={table.getIsAllPageRowsSelected()}
-        indeterminate={
-          table.getIsSomePageRowsSelected() && !table.getIsAllPageRowsSelected()
-        }
-        onCheckedChange={(checked) =>
-          table.toggleAllPageRowsSelected(!!checked)
-        }
-      />
-    ),
-    cell: ({ row }) => (
-      <Checkbox
-        aria-label={`Selecionar ${row.original.id}`}
-        checked={row.getIsSelected()}
-        onCheckedChange={(checked) => row.toggleSelected(!!checked)}
-      />
-    ),
-    enableSorting: false,
-    enableHiding: false,
-  },
+const columns: DataTableColumnDef<Transaction>[] = [
   {
     accessorKey: "id",
     header: "Pedido",
@@ -143,7 +118,6 @@ const columns: ColumnDef<Transaction>[] = [
   },
   {
     id: "actions",
-    enableHiding: false,
     cell: () => (
       <DropdownMenu>
         <DropdownMenuTrigger
@@ -172,10 +146,6 @@ export function DataTable() {
     <DataTablePrimitive
       columns={columns}
       data={transactions}
-      searchKey="cliente"
-      searchPlaceholder="Filtrar cliente..."
-      pageSize={5}
-      pageSizes={[5, 10, 20, 50]}
       getRowId={(transaction) => transaction.id}
     />
   );

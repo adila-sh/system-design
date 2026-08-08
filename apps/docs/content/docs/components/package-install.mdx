@@ -1,6 +1,6 @@
 ---
 title: Package Install
-description: Seletor de comandos de instalação para npm, pnpm, yarn e bun.
+description: Comando de instalação do pacote adila.co com Bun.
 ---
 
 import { PackageInstall } from "@adila-sh/ui";
@@ -9,10 +9,7 @@ import { PackageInstall } from "@adila-sh/ui";
   <PackageInstall
     className="w-full"
     commands={{
-      npm: "npm install @adila/ui",
-      pnpm: "pnpm add @adila/ui",
-      yarn: "yarn add @adila/ui",
-      bun: "bun add @adila/ui",
+      bun: "bun add @adila-sh/ui",
     }}
   />
 </Preview>
@@ -20,7 +17,7 @@ import { PackageInstall } from "@adila-sh/ui";
 ## Instalação
 
 ```bash
-npx shadcn@latest add https://ds.adila.co/r/package-install.json
+bun add @adila-sh/ui
 ```
 
 ## Uso
@@ -28,7 +25,7 @@ npx shadcn@latest add https://ds.adila.co/r/package-install.json
 ```tsx
 import { PackageInstall } from "@adila-sh/ui";
 
-<PackageInstall commands={{ npm: "npm install zod", bun: "bun add zod" }} />;
+<PackageInstall commands={{ bun: "bun add zod" }} />;
 ```
 
 O componente pode ser controlado com `manager` e `onManagerChange`.

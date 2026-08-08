@@ -1,13 +1,13 @@
 ---
 title: Copy Button
-description: Componente copy-button do design system adila.co, sobre Base UI.
+description: Componente copy-button do design system adila.co.
 ---
 
 import { CopyButton } from "@adila-sh/ui";
 
 <Preview>
   <div className="flex flex-wrap items-center gap-3">
-    <CopyButton value="npm install @adila/ui" />
+    <CopyButton value="bun add @adila-sh/ui" />
     <CopyButton
       value="https://ds.adila.co"
       label="Copiar link"
@@ -20,7 +20,7 @@ import { CopyButton } from "@adila-sh/ui";
 ## Instalação
 
 ```bash
-npx shadcn@latest add https://ds.adila.co/r/copy-button.json
+bun add @adila-sh/ui
 ```
 
 ## Uso
@@ -29,7 +29,7 @@ npx shadcn@latest add https://ds.adila.co/r/copy-button.json
 import { CopyButton } from "@adila-sh/ui";
 
 <CopyButton
-  value="npm install @adila/ui"
+  value="bun add @adila-sh/ui"
   label="Copiar comando"
   copiedLabel="Comando copiado"
 />;

@@ -52,7 +52,7 @@ for (const file of files) {
 
   const body = `---
 title: ${titleOf(name)}
-description: Componente ${name} do design system adila.co, sobre Base UI.
+description: Componente ${name} do design system adila.co.
 ---
 
 ## Instalação

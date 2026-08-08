@@ -1,6 +1,6 @@
 ---
 title: Data Table
-description: Tabela genérica com ordenação, filtros, paginação, seleção e visibilidade de colunas.
+description: Tabela genérica com seleção e estados vazios prontos para uso.
 ---
 
 import { DataTable, DataTableColumnHeader } from "@adila-sh/ui";
@@ -43,9 +43,6 @@ export const customerColumns = [
     <DataTable
       columns={customerColumns}
       data={customers}
-      searchKey="name"
-      searchPlaceholder="Buscar cliente..."
-      pageSize={5}
     />
   </div>
 </Preview>
@@ -53,15 +50,15 @@ export const customerColumns = [
 ## Instalação
 
 ```bash
-npx shadcn@latest add https://ds.adila.co/r/data-table.json
+bun add @adila-sh/ui
 ```
 
 ## Uso
 
 ```tsx
-import type { ColumnDef } from "@tanstack/react-table";
+import type { DataTableColumnDef } from "@adila-sh/ui";
 
-const columns: ColumnDef<Customer>[] = [
+const columns: DataTableColumnDef<Customer>[] = [
   { accessorKey: "id", header: "ID" },
   {
     accessorKey: "name",
@@ -74,8 +71,6 @@ const columns: ColumnDef<Customer>[] = [
 <DataTable
   columns={columns}
   data={customers}
-  searchKey="name"
-  searchPlaceholder="Buscar cliente..."
 />;
 ```
 

@@ -4,30 +4,28 @@ description: Os princípios por trás do design system adila.co — por que ele 
 icon: Compass
 ---
 
-O **adila.co UI** não é mais uma biblioteca de componentes. É um design system
-publicado como **registry shadcn** — o código entra no seu projeto e passa a ser
-seu. Estas são as decisões que guiam cada componente.
+O **adila.co UI** é um design system distribuído como pacote React. Ele oferece
+componentes acessíveis, tokens consistentes e uma base visual pronta para os seus
+produtos. Estas são as decisões que guiam cada componente.
 
 ## Você é dono do código
 
-Nada de `node_modules` opaco. Ao rodar `shadcn add`, o componente é copiado para
-o seu repositório, com o mesmo Tailwind e os mesmos tokens que você já controla.
-Sem caixa-preta, sem lock-in de versão, sem esperar um maintainer para ajustar um
-padding. Se precisar mudar, você edita — é o seu código.
+O pacote mantém os componentes versionados e prontos para consumo, sem exigir
+configuração adicional de Tailwind. A aplicação importa os componentes e estilos
+diretamente de `@adila-sh/ui`, com versões controladas pelo projeto consumidor.
 
 ## Acessibilidade primeiro, estilo por cima
 
-Todo componente é construído sobre **Base UI** (não Radix): foco, navegação por
-teclado, ARIA e gestão de estado vêm resolvidos pelo primitive headless. Nós
-adicionamos aparência e movimento por cima — nunca reescrevendo o comportamento.
-O resultado é acessível por padrão, não por esforço posterior.
+Todo componente é construído com foco em acessibilidade: foco, navegação por
+teclado, ARIA e gestão de estado já vêm resolvidos. Nós adicionamos aparência e
+movimento por cima — sem comprometer o comportamento. O resultado é acessível por
+padrão, não por esforço posterior.
 
 ## Uma única fonte de verdade
 
-Os arquivos que você instala são **exatamente** os que renderizam o preview ao
-vivo nesta documentação. Não existe uma versão "de exemplo" e outra "de produção":
-`src/components/ui/` é a fonte, os docs importam esses mesmos arquivos, e o
-`gen-registry` os publica. O que você vê é o que você recebe.
+Os componentes publicados são **exatamente** os que renderizam o preview ao vivo
+nesta documentação. Não existe uma versão "de exemplo" e outra "de produção":
+o pacote e os docs compartilham a mesma fonte de componentes.
 
 ## Tokens em OKLCH, light e dark obrigatórios
 
@@ -37,8 +35,8 @@ sem tinta), e há **um** acento: o indigo adila.co. Todo token existe em light e
 dark; nenhum modo é uma reflexão tardia do outro.
 
 <Callout title="Rebrandizar é editar um arquivo">
-  Toda a paleta vive em `src/styles/adila-tokens.css`. Mude ali, rode
-  `npm run registry`, e o tema inteiro — componentes e docs — acompanha.
+  Toda a paleta vive nos tokens do pacote. Atualize a fonte, rode
+  `bun run --cwd packages/ui build`, e o pacote inteiro acompanha.
 </Callout>
 
 ## Movimento com propósito

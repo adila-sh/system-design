@@ -524,8 +524,8 @@ export function HelpShowcase() {
                   Os componentes são acessíveis?
                 </AccordionTrigger>
                 <AccordionContent>
-                  Os primitives interativos usam Base UI e incluem navegação por
-                  teclado.
+                  Os primitives interativos incluem navegação por teclado, foco
+                  visível e estados acessíveis.
                 </AccordionContent>
               </AccordionItem>
             </Accordion>

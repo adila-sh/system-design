@@ -42,7 +42,7 @@ bun run --cwd apps/docs dev       # site de docs em localhost:3000
 
 ```bash
 cd packages/ui
-npx shadcn@latest add <componente>   # entra em src/components
+bun add @adila-sh/ui
 cd ../..
 bun run --cwd apps/docs gen:docs     # cria a doc-base + atualiza meta.json
 ```

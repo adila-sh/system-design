@@ -1,12 +1,12 @@
 ---
 title: Direction
-description: Componente direction do design system adila.co, sobre Base UI.
+description: Componente direction do design system adila.co.
 ---
 
 import { DirectionProvider } from '@adila-sh/ui';
 
 `DirectionProvider` não tem visual próprio: é um provedor de contexto que informa aos
-componentes Base UI a direção do texto (`ltr` ou `rtl`). Envolva a árvore da aplicação
+componentes a direção do texto (`ltr` ou `rtl`). Envolva a árvore da aplicação
 com ele para habilitar layouts da direita para a esquerda. O exemplo abaixo demonstra
 uma seção em `rtl`.
 
@@ -22,7 +22,7 @@ uma seção em `rtl`.
 ## Instalação
 
 ```bash
-npx shadcn@latest add https://ds.adila.co/r/direction.json
+bun add @adila-sh/ui
 ```
 
 ## Uso
@@ -33,12 +33,10 @@ import { DirectionProvider } from '@adila-sh/ui';
 export function Example() {
   return (
     <DirectionProvider direction="rtl">
-      <div dir="rtl">{/* componentes Base UI herdam a direção rtl */}</div>
+      <div dir="rtl">{/* componentes herdam a direção rtl */}</div>
     </DirectionProvider>
   );
 }
 ```
 
 ## Dependências
-
-- `@base-ui/react`

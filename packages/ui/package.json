@@ -1,6 +1,6 @@
 {
   "name": "@adila-sh/ui",
-  "version": "0.1.0",
+  "version": "0.2.1",
   "type": "module",
   "license": "UNLICENSED",
   "sideEffects": false,
@@ -37,7 +37,8 @@
     "@phosphor-icons/react": "2.1.10",
     "@pierre/diffs": "^1.2.12",
     "@shadcn/react": "^0.2.1",
-    "@tanstack/react-table": "^8.21.3",
+    "@tanstack/react-table": "^9.1.0",
+    "@tanstack/table-core": "^9.1.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cmdk": "^1.1.1",

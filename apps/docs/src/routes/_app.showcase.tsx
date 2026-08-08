@@ -175,6 +175,109 @@ const activity = [
   { nome: "Backfill de eventos", progresso: 18 },
 ];
 
+function AnimationShowcase() {
+  return (
+    <div className="grid gap-4 lg:grid-cols-2">
+      <Card className="overflow-hidden border-0 bg-[#10111a] text-white shadow-none">
+        <CardHeader className="relative z-10">
+          <CardDescription className="text-white/50">
+            01 / DITHER
+          </CardDescription>
+          <CardTitle className="text-white">Sinal em movimento</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="adila-dither relative flex min-h-52 flex-col justify-end overflow-hidden rounded-xl border border-white/10 p-5">
+            <div className="relative z-10 flex items-end justify-between gap-4">
+              <div>
+                <p className="font-pixel text-xs uppercase tracking-[0.18em] text-[#9da7ff]">
+                  transmissão ativa
+                </p>
+                <p className="mt-2 text-2xl font-medium tracking-tight">
+                  84.6% de nitidez
+                </p>
+              </div>
+              <span className="adila-live-dot size-2.5 rounded-full bg-[#b9ff71]" />
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      <Card className="overflow-hidden">
+        <CardHeader className="relative z-10">
+          <CardDescription>02 / SHIMMER</CardDescription>
+          <CardTitle>Estado de carregamento</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="adila-shimmer-surface relative flex min-h-52 flex-col justify-end overflow-hidden rounded-xl border p-5">
+            <div className="relative z-10 space-y-3">
+              <div className="flex items-center justify-between text-xs text-muted-foreground">
+                <span>Sincronizando dados</span>
+                <span>72%</span>
+              </div>
+              <div className="h-1.5 overflow-hidden rounded-full bg-foreground/10">
+                <div className="adila-shimmer-bar h-full w-3/4 rounded-full bg-primary" />
+              </div>
+              <p className="adila-shimmer-text pt-2 text-3xl font-medium tracking-tight">
+                Quase lá.
+              </p>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardDescription>03 / AURORA BORDER</CardDescription>
+          <CardTitle>Foco sem ruído</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="adila-aurora-border rounded-xl p-px">
+            <div className="flex min-h-40 flex-col justify-between rounded-[11px] bg-card p-5">
+              <div className="flex items-center justify-between">
+                <span className="text-sm font-medium">Pipeline de deploy</span>
+                <ArrowUpRight className="size-4 text-muted-foreground" />
+              </div>
+              <div>
+                <p className="text-3xl font-medium tracking-tight">Produção</p>
+                <p className="mt-1 text-sm text-muted-foreground">
+                  Todas as etapas concluídas
+                </p>
+              </div>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardDescription>04 / PULSE + SCANLINE</CardDescription>
+          <CardTitle>Atividade em tempo real</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="adila-scanline relative flex min-h-40 items-center justify-between overflow-hidden rounded-xl border bg-muted/30 p-5">
+            <div className="relative z-10 flex items-center gap-3">
+              <span className="adila-live-dot size-3 rounded-full bg-primary" />
+              <div>
+                <p className="font-medium">Webhook recebido</p>
+                <p className="text-sm text-muted-foreground">há 2 segundos</p>
+              </div>
+            </div>
+            <div className="relative z-10 flex items-end gap-1">
+              {[18, 30, 22, 42, 26, 36, 20].map((height, index) => (
+                <span
+                  key={index}
+                  className="adila-audio-bar w-1.5 rounded-full bg-primary/70"
+                  style={{ height }}
+                />
+              ))}
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+    </div>
+  );
+}
+
 function ShowcaseDashboard() {
   const { resolvedTheme, setTheme } = useTheme();
   const isDark = resolvedTheme === "dark";
@@ -335,10 +438,7 @@ function ShowcaseDashboard() {
           <CardContent className="space-y-4">
             <PackageInstall
               commands={{
-                npm: "npm install @adila/ui",
-                pnpm: "pnpm add @adila/ui",
-                yarn: "yarn add @adila/ui",
-                bun: "bun add @adila/ui",
+                bun: "bun add @adila-sh/ui",
               }}
             />
             <Terminal>
@@ -352,7 +452,7 @@ function ShowcaseDashboard() {
                   <TerminalCommand>bun run build</TerminalCommand>
                 </TerminalLine>
                 <TerminalOutput className="text-[var(--code-success,#9ece6a)]">
-                  ✓ registry gerado · 76 componentes
+                  ✓ pacote pronto · 76 componentes
                 </TerminalOutput>
                 <TerminalOutput>✓ build concluído em 4.1s</TerminalOutput>
               </TerminalBody>
@@ -612,13 +712,14 @@ export function CustomerStatus({ active }: { active: boolean }) {
         </Card>
       </div>
 
-      {/* Tabs: tabela / atividade / config */}
+      {/* Tabs: tabela / atividade / config / animações */}
       <Tabs defaultValue="transacoes">
         <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
           <TabsList className="max-w-full overflow-x-auto">
             <TabsTrigger value="transacoes">Transações</TabsTrigger>
             <TabsTrigger value="atividade">Atividade</TabsTrigger>
             <TabsTrigger value="config">Configurações</TabsTrigger>
+            <TabsTrigger value="animacoes">Animações</TabsTrigger>
           </TabsList>
           <NewTransactionDrawer />
         </div>
@@ -794,6 +895,21 @@ export function CustomerStatus({ active }: { active: boolean }) {
               <Button variant="ghost">Cancelar</Button>
               <Button>Salvar alterações</Button>
             </CardFooter>
+          </Card>
+        </TabsContent>
+
+        {/* Animações */}
+        <TabsContent value="animacoes">
+          <Card>
+            <CardHeader>
+              <CardTitle>Laboratório de animações</CardTitle>
+              <CardDescription>
+                Efeitos de estado e textura para interfaces vivas, sem excesso.
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <AnimationShowcase />
+            </CardContent>
           </Card>
         </TabsContent>
       </Tabs>

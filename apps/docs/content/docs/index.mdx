@@ -1,29 +1,23 @@
 ---
 title: Introdução
-description: Design system adila.co distribuído como registry shadcn sobre Base UI.
+description: Design system adila.co para React, distribuído via GitHub Packages.
 icon: Rocket
 ---
 
-O **adila.co UI Registry** é o design system adila.co publicado como um **registry shadcn
-HTTP**. Qualquer projeto consome os componentes com a CLI do shadcn, já com o
-tema adila.co (indigo adila.co, neutros estilo ChatGPT, Adila Std / Adila Code / Adila Pixel), em light e
-dark.
+O **adila.co UI** é o design system da adila.co publicado como pacote React no
+GitHub Packages. Instale a biblioteca em qualquer projeto Bun e use o tema
+adila.co (indigo, neutros estilo ChatGPT, Adila Std / Adila Code / Adila Pixel),
+em light e dark.
 
 ## O que tem aqui
 
-- **60+ primitives** shadcn sobre **Base UI** (não Radix), cada um como item
-  `registry:ui`.
-- Um item de tema **`adila-theme`** (`registry:style`) com os tokens adila.co em OKLCH.
+- **60+ componentes** acessíveis para React, com os tokens adila.co em OKLCH.
 - Documentação com **preview ao vivo** — os mesmos arquivos que são publicados.
 
 ## Instalação rápida
 
 ```bash
-# tema (tokens adila.co)
-npx shadcn@latest add https://ds.adila.co/r/adila-theme.json
-
-# componentes
-npx shadcn@latest add https://ds.adila.co/r/button.json
+bun add @adila-sh/ui
 ```
 
 <Cards>
