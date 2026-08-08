@@ -2,10 +2,14 @@
 // chunks _libs de @radix-ui (via Fumadocs/cmdk) o importam por esse caminho.
 // Copiamos o pacote tslib completo para o .output do servidor.
 import { cpSync, existsSync } from "node:fs";
-import { join } from "node:path";
+import { dirname, join } from "node:path";
+import { createRequire } from "node:module";
 
 const ROOT = process.cwd();
-const src = join(ROOT, "node_modules/tslib");
+const require = createRequire(import.meta.url);
+// resolve a localização real do tslib (no monorepo bun ele fica hoisted na
+// raiz do workspace, não dentro de apps/docs/node_modules)
+const src = dirname(require.resolve("tslib/package.json"));
 const dest = join(ROOT, ".output/server/node_modules/tslib");
 
 if (!existsSync(join(ROOT, ".output/server"))) {

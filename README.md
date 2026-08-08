@@ -1,112 +1,76 @@
-# adila.co UI Registry
+# adila.co Design System
 
-Design system adila.co em um **app único**: documentação **Fumadocs** + **registry
-shadcn HTTP** sobre **Base UI**. Stack: **TanStack Start** (Vite) + React +
-TypeScript + Tailwind v4.
+Design system adila.co publicado como pacote npm (`@adila-sh/ui`) no GitHub
+Packages, com um app de documentação (`apps/docs`, Fumadocs + TanStack Start)
+mantido no mesmo monorepo.
 
-Outros projetos consomem os componentes com a CLI do shadcn:
-
-```bash
-# tema (tokens adila.co: indigo adila.co, neutros ChatGPT, Adila Std / Adila Code / Adila Pixel)
-npx shadcn@latest add https://ds.adila.co/r/adila-theme.json
-
-# componentes individuais
-npx shadcn@latest add https://ds.adila.co/r/button.json
-npx shadcn@latest add https://ds.adila.co/r/dialog.json
-```
-
-## Arquitetura
-
-Um único app TanStack Start serve **as três coisas**:
-
-- **Docs Fumadocs** (`/docs`) — MDX por componente, busca, preview ao vivo.
-- **Registry** (`/r/*.json`) — arquivos estáticos servidos com CORS.
-- **Landing** (`/`) — home do design system.
-
-O tema é unificado: `fumadocs-ui/css/shadcn.css` mapeia `--color-fd-*` para os
-tokens shadcn, então **o Fumadocs e os componentes usam a mesma paleta adila.co**.
-
-## Como funciona o registry
-
-- `src/styles/adila-tokens.css` — **fonte canônica** dos tokens (light/dark, OKLCH).
-- `src/components/ui/` — os primitives Base UI publicados (fonte única; os docs
-  importam exatamente estes arquivos para o preview ao vivo).
-- `scripts/gen-registry.mjs` — gera `registry.json` varrendo os componentes
-  (deps npm + registryDependencies) e extraindo os tokens de `adila-tokens.css`.
-- `shadcn build` — transforma `registry.json` em `public/r/*.json`.
-- TanStack Start serve `public/` (com CORS em `/r/**` via `routeRules`).
-
-```
-adila-tokens.css ─┐
-                ├─gen-registry─► registry.json ─shadcn build─► public/r/*.json ─(TanStack)─► HTTP
-components/ui/ ─┘
-```
-
-## Scripts
-
-| Comando | Ação |
-|---------|------|
-| `npm run dev` | App em desenvolvimento (docs + registry). |
-| `npm run registry` | Regenera `registry.json` e builda `public/r/*.json`. |
-| `npm run build` | `registry` + `vite build` (+ fix-tslib) → `.output/`. |
-| `npm run start` | Sobe o node server de produção (`.output/server`). |
-| `npm run typecheck` | `fumadocs-mdx` + `tsc --noEmit`. |
-| `npm run smoke` | Valida os JSON do registry + testa HTTP/CORS. |
-
-## Adicionar um componente ao registry
+## Instalar o pacote
 
 ```bash
-npx shadcn@latest add <componente>   # entra em src/components/ui/
-npm run registry                     # regenera registry + doc-base + meta.json
+# .npmrc do projeto consumidor
+echo '@adila-sh:registry=https://npm.pkg.github.com' >> .npmrc
+echo '//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}' >> .npmrc
+
+bun add @adila-sh/ui
 ```
 
-`scripts/gen-docs.mjs` cria uma página-base em `content/docs/components/<nome>.mdx`
-(instalação + uso + dependências) para todo componente que ainda não tem doc, e
-regenera o `meta.json` da sidebar. Para um **preview ao vivo**, edite o MDX
-importando o componente e usando `<Preview>`:
-
-```mdx
-import { Button } from '@/components/ui/button';
-
-<Preview>
-  <Button>Primary</Button>
-</Preview>
+```tsx
+import '@adila-sh/ui/style.css';
+import { Button } from '@adila-sh/ui';
 ```
 
-Docs escritas à mão são preservadas (o gerador só cria as que faltam).
+Nenhuma configuração de Tailwind é necessária — o CSS já vem pré-compilado
+(tokens adila.co: indigo, neutros ChatGPT, Adila Std / Adila Code / Adila
+Pixel, light + dark).
 
-## Deploy (Railway)
+## Estrutura do monorepo
 
-`railway.json` usa Nixpacks: `npm run build` no build, `npm run start` no
-runtime. O nitro gera um node server (`.output/server`) que respeita `PORT`. Um
-`Dockerfile` multi-stage também está incluído como alternativa.
+```
+apps/docs/    # site de documentação (Fumadocs) + landing — privado, não publicado
+packages/ui/  # @adila-sh/ui — pacote publicado no GitHub Packages
+```
 
-> **Nota técnica:** o prerender fica desligado e há um passo `fix-tslib` no
-> build. O plugin do TanStack pré-bundla `@radix-ui` (via Fumadocs/cmdk)
-> importando `tslib` de um jeito que o trace do nitro copia incompleto;
-> `scripts/fix-tslib.mjs` copia o `tslib` completo para o `.output`.
+## Desenvolvimento
 
-## Tokens
+```bash
+bun install
+bun run --cwd packages/ui dev &   # tsup --watch, pra HMR ao editar um componente
+bun run --cwd apps/docs dev       # site de docs em localhost:3000
+```
 
-Convertidos do **adila.co UI Design Standard** para OKLCH. Acento primário
-`#3A4BE5` (indigo adila.co); paleta neutra estilo ChatGPT; light + dark obrigatórios.
-Para rebrandizar, edite `src/styles/adila-tokens.css` e rode `npm run registry`.
+## Adicionar um componente ao DS
 
-## Fontes (Adila Std / Code / Pixel)
+```bash
+cd packages/ui
+npx shadcn@latest add <componente>   # entra em src/components
+cd ../..
+bun run --cwd apps/docs gen:docs     # cria a doc-base + atualiza meta.json
+```
 
-As famílias de marca são servidas via `@font-face` self-hosted no R2
-(`https://assets.adila.co/fonts/woff2/Adila{Std,Code,Pixel}-*.woff2`):
+## Build e publish
 
-- `--font-sans` → **Adila Std** (UI/texto)
-- `--font-mono` → **Adila Code** (código)
-- `--font-pixel` → **Adila Pixel** (display/decorativo)
+- `bun run --cwd packages/ui build` — builda JS (tsup) + CSS pré-compilado
+  (`@tailwindcss/cli`) em `packages/ui/dist`.
+- Versionamento via Changesets: `bunx changeset add` descreve a mudança;
+  merge na `main` dispara o workflow `.github/workflows/release.yml`, que
+  abre um PR de versão e, quando esse PR é merged, publica automaticamente
+  `@adila-sh/ui` no GitHub Packages.
 
-- **App:** importa `src/styles/fonts.css` (bundled); preload das críticas
-  (Book/Medium) em `src/routes/__root.tsx`.
-- **Consumidores do registry:** o item `adila-theme` injeta
-  `@import "https://assets.adila.co/adila-fonts.css"` no CSS global via o campo
-  `css` — a fonte carrega sozinha ao rodar `shadcn add adila-theme`.
+## Deploy (Railway) do app de docs
 
-`gen-registry` copia `src/styles/fonts.css` → `adila-fonts.css` (raiz, gerado).
-**Subir esse arquivo na raiz do bucket R2** para que fique disponível em
-`https://assets.adila.co/adila-fonts.css`.
+`railway.json` usa Nixpacks/Dockerfile a partir da raiz do monorepo:
+`bun install` (raiz) → `bun run --cwd packages/ui build && bun run --cwd
+apps/docs build` → `node apps/docs/.output/server/index.mjs`.
+
+> **Nota técnica:** o prerender do `apps/docs` fica desligado e há um passo
+> `fix-tslib` no build. O plugin do TanStack pré-bundla `@radix-ui` (via
+> Fumadocs/cmdk) importando `tslib` de um jeito que o trace do nitro copia
+> incompleto; `apps/docs/scripts/fix-tslib.mjs` copia o `tslib` completo para
+> o `.output`.
+
+## Tokens e fontes
+
+Fonte canônica dos tokens: `packages/ui/src/styles/adila-tokens.css`. Fontes
+Adila Std/Code/Pixel self-hosted no R2
+(`https://assets.adila.co/adila-fonts.css`), importadas automaticamente no
+topo de `packages/ui/dist/style.css`.

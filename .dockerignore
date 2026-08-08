@@ -6,9 +6,12 @@ node_modules
 .git
 .vercel
 dist
-public/r
-src/routeTree.gen.ts
-.source
+apps/docs/.output
+apps/docs/.source
+apps/docs/src/routeTree.gen.ts
+packages/ui/dist
+packages/ui/src/index.ts
 **/*.log
 .DS_Store
 .playwright-mcp
+.claude
