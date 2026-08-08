@@ -9,7 +9,6 @@
     "build": "bun run --cwd packages/ui build && bun run --cwd apps/docs build",
     "start": "bun run --cwd apps/docs start",
     "typecheck": "bun run --cwd packages/ui typecheck && bun run --cwd apps/docs typecheck",
-    "smoke": "bun run --cwd apps/docs smoke",
     "format": "oxfmt --write .",
     "format:check": "oxfmt --check .",
     "lint": "oxlint",

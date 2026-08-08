@@ -26,15 +26,6 @@ export default defineConfig({
     // Railway: servidor Node standalone (respeita process.env.PORT).
     nitro({
       preset: "node-server",
-      routeRules: {
-        // CORS para consumidores em browser (a CLI do shadcn não precisa).
-        "/r/**": {
-          headers: {
-            "access-control-allow-origin": "*",
-            "cache-control": "public, max-age=300",
-          },
-        },
-      },
     }),
   ],
   resolve: {
