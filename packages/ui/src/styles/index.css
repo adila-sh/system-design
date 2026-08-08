@@ -1,0 +1,6 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "./adila-tokens.css";
+
+/* garante que o Tailwind resolva as classes usadas dentro dos componentes */
+@source "../components";
