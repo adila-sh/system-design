@@ -14,15 +14,18 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarProvider,
+  SidebarRail,
+  SidebarTrigger,
 } from "@adila-sh/ui";
 import { Calendar, Home, Inbox, Search, Settings } from "lucide-react";
 
 <Preview>
   <div className="h-72 w-full max-w-md overflow-hidden rounded-lg border">
     <SidebarProvider className="!min-h-0 h-full" style={{ minHeight: 0 }}>
-      <Sidebar collapsible="none">
-        <SidebarHeader className="p-3 text-sm font-medium">
-          Aplicativo
+      <Sidebar collapsible="icon">
+        <SidebarHeader className="flex-row items-center justify-between p-3 text-sm font-medium">
+          <span className="group-data-[collapsible=icon]:hidden">Aplicativo</span>
+          <SidebarTrigger />
         </SidebarHeader>
         <SidebarContent>
           <SidebarGroup>
@@ -30,31 +33,31 @@ import { Calendar, Home, Inbox, Search, Settings } from "lucide-react";
             <SidebarGroupContent>
               <SidebarMenu>
                 <SidebarMenuItem>
-                  <SidebarMenuButton>
+                  <SidebarMenuButton tooltip="Início">
                     <Home />
                     <span>Início</span>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
                 <SidebarMenuItem>
-                  <SidebarMenuButton>
+                  <SidebarMenuButton tooltip="Caixa de entrada">
                     <Inbox />
                     <span>Caixa de entrada</span>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
                 <SidebarMenuItem>
-                  <SidebarMenuButton>
+                  <SidebarMenuButton tooltip="Calendário">
                     <Calendar />
                     <span>Calendário</span>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
                 <SidebarMenuItem>
-                  <SidebarMenuButton>
+                  <SidebarMenuButton tooltip="Buscar">
                     <Search />
                     <span>Buscar</span>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
                 <SidebarMenuItem>
-                  <SidebarMenuButton>
+                  <SidebarMenuButton tooltip="Configurações">
                     <Settings />
                     <span>Configurações</span>
                   </SidebarMenuButton>
@@ -63,6 +66,7 @@ import { Calendar, Home, Inbox, Search, Settings } from "lucide-react";
             </SidebarGroupContent>
           </SidebarGroup>
         </SidebarContent>
+        <SidebarRail />
       </Sidebar>
     </SidebarProvider>
   </div>
@@ -77,8 +81,9 @@ bun add @adila-sh/ui
 ## Uso
 
 Envolva a aplicação com `SidebarProvider`, coloque a navegação dentro de
-`Sidebar` e use `SidebarInset` para o conteúdo principal. O `SidebarTrigger`
-abre e recolhe a barra (também via `Ctrl/Cmd + B`).
+`Sidebar` com `collapsible="icon"` e use `SidebarInset` para o conteúdo
+principal. O `SidebarTrigger` e o `SidebarRail` abrem e recolhem a barra
+entre a navegação completa e o trilho de ícones (também via `Ctrl/Cmd + B`).
 
 ```tsx
 import {
@@ -107,7 +112,7 @@ const items = [
 export function Example() {
   return (
     <SidebarProvider>
-      <Sidebar>
+      <Sidebar collapsible="icon">
         <SidebarContent>
           <SidebarGroup>
             <SidebarGroupLabel>Aplicativo</SidebarGroupLabel>
@@ -115,7 +120,10 @@ export function Example() {
               <SidebarMenu>
                 {items.map((item) => (
                   <SidebarMenuItem key={item.title}>
-                    <SidebarMenuButton render={<a href={item.url} />}>
+                    <SidebarMenuButton
+                      render={<a href={item.url} />}
+                      tooltip={item.title}
+                    >
                       <item.icon />
                       <span>{item.title}</span>
                     </SidebarMenuButton>
@@ -129,6 +137,7 @@ export function Example() {
       <SidebarInset>
         <SidebarTrigger />
       </SidebarInset>
+      <SidebarRail />
     </SidebarProvider>
   );
 }

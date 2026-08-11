@@ -4,3 +4,16 @@
 
 /* garante que o Tailwind resolva as classes usadas dentro dos componentes */
 @source "../components";
+
+@layer base {
+  html,
+  body,
+  #app {
+    min-height: 100%;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    margin: 0;
+  }
+}
