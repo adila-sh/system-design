@@ -45,28 +45,61 @@ html > body[data-scroll-locked] {
 }
 
 /* Navbar sobre o hero (Pixel Blast) — só na home.
-   O blast é indigo escuro nos dois temas (--primary não muda entre light/dark).
-   Só o título ("DS | Adila.co") e os links do menu (ex.: "Showcase") ficam
-   direto sobre o hero, sem superfície própria — esses precisam de texto claro
-   nos dois temas. Busca, toggle de tema e ícone do GitHub têm superfície/fundo
-   próprios vindos do tema da lib e já são legíveis sem ajuste; por isso o
-   escopo aqui NÃO sobrescreve os tokens --color-fd-* (isso vazava para o Kbd
-   "Ctrl K" do botão de busca, que usa --color-fd-muted-foreground no texto mas
-   mantém o fundo claro do tema — branco sobre branco no tema claro).
-   Em vez disso, mira direto no <a> do título (filho direto de <nav>) e nos
-   links dentro do <ul> de navegação (filho direto de <nav>, irmão da <div>
-   que guarda os controles à direita). O seletor carrega #nd-nav, então vence
-   por especificidade sobre as classes utilitárias da lib — inclusive em
-   :hover e [data-active] — sem precisar de regra extra para esses estados.
-   #nd-nav é o id que o fumadocs dá ao <header> (fumadocs-ui/layouts/home/slots/header);
-   essa estrutura interna (título como <a> filho direto de <nav>, links num
-   <ul> filho direto de <nav>, controles numa <div> irmã) é acoplamento ao
-   interno da lib — se mudar numa atualização, ajustar aqui.
-   .home-hero-nav é o className passado ao HomeLayout só na home (src/routes/index.tsx),
-   então /docs e /showcase (que não usam essa classe) ficam intocados. */
+   O blast pinta --primary (indigo) nos DOIS temas, então a navbar fica sobre
+   fundo escuro mesmo no tema claro, onde o foreground da lib é quase preto.
+
+   O critério aqui é a SUPERFÍCIE, não o elemento. Corrigir controle a controle
+   já regrediu duas vezes neste mesmo bloco (primeiro o Kbd "Ctrl K", depois o
+   ícone do GitHub, que ficou de fora quando o seletor foi estreitado):
+     - sem superfície própria -> claro nos dois temas, herdando a regra abaixo;
+     - com superfície própria -> mantém as cores do tema, como exceção explícita.
+
+   O escopo é o <nav> (a barra em si), não o #nd-nav inteiro, porque o painel do
+   menu mobile abre num <div> irmão do <nav> e tem superfície clara própria —
+   herdar branco lá deixaria o texto invisível.
+   #nd-nav é o id que o fumadocs dá ao <header>
+   (fumadocs-ui/layouts/home/slots/header); essa estrutura interna é acoplamento
+   ao interno da lib — se mudar numa atualização, ajustar aqui.
+   .home-hero-nav é o className passado ao HomeLayout só na home
+   (src/routes/index.tsx), então /docs e /showcase ficam intocados. */
+.home-hero-nav #nd-nav nav {
+  color: oklch(1 0 0);
+}
+
+/* Os controles que trazem cor própria da lib não herdam a regra acima e
+   precisam do alvo explícito: o "Showcase" usa text-fd-muted-foreground e o
+   título é um <a> filho direto de <nav>. O seletor carrega #nd-nav, então vence
+   por especificidade sobre as utilitárias — inclusive em :hover e [data-active],
+   sem precisar de regra extra pra esses estados. */
 .home-hero-nav #nd-nav nav > a,
 .home-hero-nav #nd-nav nav > ul a {
   color: oklch(1 0 0);
+}
+
+/* O toggle de tema é um pill com borda e sem preenchimento: a borda vem do
+   --border do tema e some contra o indigo junto com os ícones. O ícone ATIVO
+   traz text-fd-accent-foreground sobre bg-fd-accent (superfície própria), então
+   não herda o branco e segue legível na pílula. O ícone INATIVO traz
+   text-fd-muted-foreground, que também vence a herança, mas não tem superfície
+   nenhuma — precisa do alvo explícito. Fica em 75% pra continuar lendo como
+   estado inativo sem cair abaixo do mínimo. */
+.home-hero-nav #nd-nav nav [data-theme-toggle] {
+  border-color: oklch(1 0 0 / 0.7);
+}
+
+.home-hero-nav #nd-nav nav [data-theme-toggle] > svg:not([class*="bg-fd-"]) {
+  color: oklch(1 0 0 / 0.75);
+}
+
+/* A busca tem superfície própria, mas semitransparente (bg-fd-secondary/50):
+   sobre o indigo vira um lavanda claro onde o texto cinza da lib mede 1.99:1.
+   Uma superfície opaca devolve o controle ao contexto do tema, que é o que a
+   regra por superfície pressupõe. Usa --background e não --secondary porque
+   muted-foreground sobre secondary fica em 4.49:1 — 0,01 abaixo do mínimo de
+   texto; sobre background dá 4.81:1, o mesmo par que o Kbd "Ctrl K" ao lado já
+   usa. */
+.home-hero-nav #nd-nav nav [data-search-full] {
+  background-color: var(--color-fd-background);
 }
 
 /* Mesma origem do defeito acima: a lib aplica blur e borda inferior no header
