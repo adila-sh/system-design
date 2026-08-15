@@ -50,6 +50,9 @@ apps/docs/src/routeTree.gen.ts
 **/__screenshots__
 **/.vitest-attachments
 
+# snapshots/saídas que o Playwright MCP grava no diretório de trabalho
+.playwright-mcp
+
 # build do pacote (packages/ui)
 packages/ui/dist
 # barrel gerado por gen-barrel.mjs (fonte única: src/components)
