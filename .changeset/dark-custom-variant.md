@@ -1,5 +1,5 @@
 ---
-"@adila-sh/ui": minor
+"@adila-sh/ui": patch
 ---
 
 Alinha a variante `dark:` com a troca de tema por classe.
@@ -11,6 +11,7 @@ em modo claro, ativar o tema escuro trocava as cores dos tokens e deixava as
 `dark:` inativas; num sistema em modo escuro, as `dark:` se aplicavam mesmo com
 o tema claro.
 
-É `minor` e não `patch` porque as utilitárias `dark:` passam a valer de fato — a
-aparência muda em todo componente que as usa (27 dos 104). Quem consome o pacote
-e já compensava o defeito com CSS próprio deve revisar o tema escuro.
+Tratado como correção: nenhuma API muda e nada precisa ser reescrito por quem
+consome o pacote. Ainda assim, a aparência do tema escuro muda em 27 dos 104
+componentes, porque as utilitárias `dark:` passam a valer de fato — quem já
+compensava o defeito com CSS próprio deve revisar.
