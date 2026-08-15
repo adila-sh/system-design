@@ -9,10 +9,10 @@ const statusVariants = cva(
     variants: {
       variant: {
         neutral: "bg-muted text-muted-foreground",
-        info: "bg-primary/10 text-primary",
-        success: "bg-success/10 text-success",
-        warning: "bg-warning/15 text-warning-foreground dark:text-warning",
-        destructive: "bg-destructive/10 text-destructive",
+        info: "bg-primary-tint text-primary-tint-foreground",
+        success: "bg-success-tint text-success-tint-foreground",
+        warning: "bg-warning-tint text-warning-tint-foreground",
+        destructive: "bg-destructive-tint text-destructive-tint-foreground",
       },
       size: {
         sm: "h-5 px-2 text-xs",

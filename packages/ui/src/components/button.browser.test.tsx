@@ -21,9 +21,15 @@ const VARIANTES = [
  * sólido.
  *
  * No tema escuro essa faixa é VAZIA — as duas restrições puxam em sentidos
- * opostos, porque a tinta é a cor sobre um fundo escuro. Sair daqui exige
- * decisão de design, não ajuste de luminosidade: ou o foreground sólido deixa
- * de ser branco no escuro, ou a tinta ganha um token próprio.
+ * opostos, porque a tinta é a cor sobre um fundo escuro. A saída foi dar à
+ * tinta tokens próprios (--x-tint / --x-tint-foreground), e Status,
+ * DeploymentStatus e ApiRequestMethod já migraram.
+ *
+ * Button, Badge e Alert continuam aqui porque usam OUTRAS superfícies:
+ * bg-destructive/20 (não /10), texto sobre --card, e o link, que é texto
+ * colorido direto sobre o fundo da página, sem tinta nenhuma. Cada um precisa da
+ * própria decisão — o /20 pede um segundo nível de tinta, e o link pede uma cor
+ * de acento própria para texto.
  */
 const ABAIXO_DO_MINIMO = new Map([
   ["dark/destructive", 3.65],

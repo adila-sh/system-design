@@ -1,15 +1,11 @@
 import { DeploymentStatus } from "./deployment-status";
 import { descreverContrasteDeTexto } from "../../test/variantes";
 
-// Mesmo arranjo do Status (`bg-x/10 text-x`), replicado em outro componente:
-// texto colorido sobre a própria cor a 10% de alpha.
+// Repetia o arranjo frágil do Status (`bg-x/10 text-x`); migrado para os tokens
+// de tinta junto com ele.
 const STATUS = ["queued", "building", "ready", "failed", "canceled"] as const;
 
-const ABAIXO_DO_MINIMO = new Map([
-  ["dark/building", 3.55],
-  ["dark/ready", 4.02],
-  ["dark/failed", 4.06],
-]);
+const ABAIXO_DO_MINIMO = new Map<string, number>();
 
 descreverContrasteDeTexto({
   nome: "DeploymentStatus",
