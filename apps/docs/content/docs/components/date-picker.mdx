@@ -8,7 +8,7 @@ import { DatePicker } from "@adila-sh/ui";
 <Preview>
   <div className="grid w-full max-w-sm gap-4">
     <DatePicker defaultValue={new Date(2026, 6, 18)} clearable />
-    <DatePicker placeholder="Data de vencimento" />
+    <DatePicker placeholder="Data de vencimento" showToday />
     <DatePicker defaultValue={new Date(2026, 6, 18)} disabled />
   </div>
 </Preview>
@@ -23,12 +23,21 @@ bun add @adila-sh/ui
 
 ```tsx
 <DatePicker
+  id="due-date"
   value={dueDate}
   onValueChange={setDueDate}
   fromDate={new Date()}
   clearable
+  showToday
 />
 ```
 
 Use `fromDate` e `toDate` para limitar o período permitido. O texto do botão
 pode ser alterado com `formatPattern`, seguindo os padrões do `date-fns`.
+
+`showToday` acrescenta um atalho para a data de hoje no rodapé do calendário.
+Ele respeita `fromDate`/`toDate`: se hoje estiver fora da janela permitida, o
+atalho aparece desabilitado.
+
+`id` é repassado ao botão do gatilho, então um `<Label htmlFor>` rotula o campo
+sem precisar de `aria-labelledby` num wrapper.
