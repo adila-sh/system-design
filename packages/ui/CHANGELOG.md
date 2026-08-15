@@ -1,5 +1,11 @@
 # @adila-sh/ui
 
+## 0.2.3
+
+### Patch Changes
+
+- 1e5171c: Atualiza os botões para o formato totalmente pill, incluindo os tamanhos compactos e os botões de ícone.
+
 ## 0.2.2
 
 ### Patch Changes
