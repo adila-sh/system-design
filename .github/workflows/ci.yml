@@ -25,6 +25,11 @@ jobs:
       - name: Install dependencies
         run: bun install --frozen-lockfile
 
+      # O browser project do vitest roda num Chromium de verdade — sem este
+      # passo ele não sobe no runner.
+      - name: Install Chromium (Playwright)
+        run: bunx playwright install --with-deps chromium
+
       - name: Format
         run: bun run format:check
 
@@ -38,3 +43,6 @@ jobs:
 
       - name: Typecheck
         run: bun run typecheck
+
+      - name: Test
+        run: bun run test
