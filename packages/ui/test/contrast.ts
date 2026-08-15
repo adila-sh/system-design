@@ -1,0 +1,102 @@
+/**
+ * Medição de contraste WCAG sobre o que o navegador realmente pintou.
+ *
+ * Só funciona em browser mode: depende de getComputedStyle resolvendo os tokens
+ * oklch pela cascata e do canvas para converter qualquer notação de cor em RGB.
+ * Em jsdom, ambos falham silenciosamente.
+ */
+
+export type RGB = [number, number, number];
+type RGBA = [number, number, number, number];
+
+const AA_TEXTO = 4.5;
+const AA_NAO_TEXTO = 3;
+
+export const MINIMO = { texto: AA_TEXTO, naoTexto: AA_NAO_TEXTO } as const;
+
+let ctx: CanvasRenderingContext2D | null = null;
+
+function contexto(): CanvasRenderingContext2D {
+  if (!ctx) {
+    const canvas = document.createElement("canvas");
+    canvas.width = canvas.height = 1;
+    const c = canvas.getContext("2d", { willReadFrequently: true });
+    if (!c) throw new Error("canvas 2d indisponível — browser mode ativo?");
+    ctx = c;
+  }
+  return ctx;
+}
+
+/** Converte qualquer cor CSS válida (oklch, color-mix, rgba…) em RGBA 0-255. */
+export function toRGBA(css: string): RGBA {
+  const c = contexto();
+  c.clearRect(0, 0, 1, 1);
+  // fillStyle inválido é ignorado e mantém o valor anterior; o preto garante
+  // um estado conhecido antes de tentar a cor de verdade.
+  c.fillStyle = "#000";
+  c.fillStyle = css;
+  c.fillRect(0, 0, 1, 1);
+  const [r, g, b, a] = c.getImageData(0, 0, 1, 1).data;
+  return [r, g, b, a / 255];
+}
+
+/** Compõe uma cor com alpha sobre um fundo opaco (source-over). */
+export function sobre(frente: RGBA, fundo: RGB): RGB {
+  if (frente[3] >= 1) return [frente[0], frente[1], frente[2]];
+  return [0, 1, 2].map(
+    (i) => frente[i] * frente[3] + fundo[i] * (1 - frente[3]),
+  ) as RGB;
+}
+
+function luminancia([r, g, b]: RGB): number {
+  const canal = (v: number) => {
+    const s = v / 255;
+    return s <= 0.03928 ? s / 12.92 : ((s + 0.055) / 1.055) ** 2.4;
+  };
+  return 0.2126 * canal(r) + 0.7152 * canal(g) + 0.0722 * canal(b);
+}
+
+export function razao(a: RGB, b: RGB): number {
+  const [maior, menor] = [luminancia(a), luminancia(b)].sort((x, y) => y - x);
+  return (maior + 0.05) / (menor + 0.05);
+}
+
+/**
+ * Fundo efetivo de um elemento: sobe a árvore acumulando as camadas
+ * semitransparentes até encontrar a primeira opaca, depois compõe de volta.
+ * É esse passo que revela defeitos como uma superfície `bg-x/50` que parece
+ * clara no tema mas escurece sobre um fundo colorido.
+ */
+export function fundoEfetivo(el: Element): RGB {
+  const camadas: RGBA[] = [];
+  // Sem nenhuma superfície opaca no caminho, o que sobra é o branco do canvas
+  // do navegador.
+  let base: RGB = [255, 255, 255];
+  let node: Element | null = el;
+
+  while (node) {
+    const bg = toRGBA(getComputedStyle(node).backgroundColor);
+    if (bg[3] >= 1) {
+      base = [bg[0], bg[1], bg[2]];
+      break;
+    }
+    if (bg[3] > 0) camadas.push(bg);
+    node = node.parentElement;
+  }
+
+  return camadas.reduceRight((acc, camada) => sobre(camada, acc), base);
+}
+
+/** Contraste entre o texto/ícone de um elemento e o que está pintado atrás. */
+export function contrasteDe(el: Element): number {
+  const fundo = fundoEfetivo(el);
+  const frente = sobre(toRGBA(getComputedStyle(el).color), fundo);
+  return razao(frente, fundo);
+}
+
+/** Contraste da borda de um elemento contra o fundo — WCAG 1.4.11. */
+export function contrasteDaBorda(el: Element): number {
+  const fundo = fundoEfetivo(el.parentElement ?? el);
+  const borda = sobre(toRGBA(getComputedStyle(el).borderTopColor), fundo);
+  return razao(borda, fundo);
+}

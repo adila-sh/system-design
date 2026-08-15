@@ -46,6 +46,10 @@ apps/docs/src/routeTree.gen.ts
 # worktrees e estado do Claude Code (são cópias do repo — nunca versionar)
 .claude/
 
+# artefatos que o vitest browser mode grava quando um teste falha
+**/__screenshots__
+**/.vitest-attachments
+
 # build do pacote (packages/ui)
 packages/ui/dist
 # barrel gerado por gen-barrel.mjs (fonte única: src/components)

@@ -13,8 +13,11 @@ const OUT_FILE = join(ROOT, "src/index.ts");
 // Typography.*)
 const NAMESPACED = new Set(["typography"]);
 
+// Testes moram ao lado do componente (*.browser.test.tsx) e NÃO podem entrar no
+// barrel — o tsup empacota a partir dele, então um teste no index viraria código
+// publicado, arrastando vitest pro bundle.
 const names = readdirSync(COMPONENTS_DIR)
-  .filter((f) => f.endsWith(".tsx"))
+  .filter((f) => f.endsWith(".tsx") && !f.includes(".test."))
   .map((f) => f.replace(/\.tsx$/, ""))
   .sort();
 
