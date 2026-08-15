@@ -12,6 +12,13 @@ dist
 dist-ssr
 *.local
 
+# o gerenciador de pacotes do monorepo é o bun (bun.lock). Dockerfile, CI e
+# release usam `bun install --frozen-lockfile`; um lockfile de npm ou yarn aqui
+# só diverge em silêncio.
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
