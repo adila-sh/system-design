@@ -13,12 +13,13 @@ function montar(variant: (typeof VARIANTES)[number]) {
 }
 
 // O título no tema claro passava raspando (4.55) antes de baixarmos a
-// luminosidade do --destructive; agora está em 6.78, com folga real.
-const TITULO_ABAIXO_DO_MINIMO = new Map([["dark/destructive", 3.79]]);
+// luminosidade do --destructive; hoje está em 6.78, com folga real.
+const TITULO_ABAIXO_DO_MINIMO = new Map<string, number>();
 
-// A descrição é medida à parte porque tem alpha próprio (text-destructive/90) e
-// fica sempre abaixo do título — no claro, 6.15 contra 6.78.
-const DESCRICAO_ABAIXO_DO_MINIMO = new Map([["dark/destructive", 3.3]]);
+// A descrição segue medida à parte: ela tinha alpha próprio (text-destructive/90)
+// e ficava sempre abaixo do título. O alpha saiu — a 90% ela media 4.05:1 no
+// tema escuro — e agora as duas acompanham o mesmo token.
+const DESCRICAO_ABAIXO_DO_MINIMO = new Map<string, number>();
 
 descreverContrasteDeTexto({
   nome: "AlertTitle",

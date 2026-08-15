@@ -62,6 +62,15 @@
     var(--destructive) 10%,
     var(--background)
   );
+  /* Nível mais forte, para o preenchimento suave do Button e do Badge, que
+     sempre usaram 20% em vez de 10%. Opaco pelo mesmo motivo da tinta normal:
+     `bg-destructive/20` compõe com o que estiver atrás, então o mesmo botão
+     mudava de contraste conforme a superfície em que fosse colocado. */
+  --destructive-tint-strong: color-mix(
+    in oklab,
+    var(--destructive) 20%,
+    var(--background)
+  );
   --destructive-tint-foreground: var(--destructive);
 
   --success-tint: color-mix(in oklab, var(--success) 10%, var(--background));
@@ -140,6 +149,11 @@
     var(--destructive) 10%,
     var(--background)
   );
+  --destructive-tint-strong: color-mix(
+    in oklab,
+    var(--destructive) 20%,
+    var(--background)
+  );
   --destructive-tint-foreground: oklch(from var(--destructive) 0.64 c h);
 
   --success-tint: color-mix(in oklab, var(--success) 10%, var(--background));
@@ -201,6 +215,7 @@
   --color-primary-tint: var(--primary-tint);
   --color-primary-tint-foreground: var(--primary-tint-foreground);
   --color-destructive-tint: var(--destructive-tint);
+  --color-destructive-tint-strong: var(--destructive-tint-strong);
   --color-destructive-tint-foreground: var(--destructive-tint-foreground);
   --color-warning-tint: var(--warning-tint);
   --color-warning-tint-foreground: var(--warning-tint-foreground);
