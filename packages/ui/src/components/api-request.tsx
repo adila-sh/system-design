@@ -35,11 +35,11 @@ const apiMethodVariants = cva(
   {
     variants: {
       method: {
-        GET: "bg-primary/10 text-primary",
-        POST: "bg-success/10 text-success",
-        PUT: "bg-warning/15 text-warning-foreground dark:text-warning",
-        PATCH: "bg-warning/15 text-warning-foreground dark:text-warning",
-        DELETE: "bg-destructive/10 text-destructive",
+        GET: "bg-primary-tint text-primary-tint-foreground",
+        POST: "bg-success-tint text-success-tint-foreground",
+        PUT: "bg-warning-tint text-warning-tint-foreground",
+        PATCH: "bg-warning-tint text-warning-tint-foreground",
+        DELETE: "bg-destructive-tint text-destructive-tint-foreground",
       },
     },
     defaultVariants: { method: "GET" },

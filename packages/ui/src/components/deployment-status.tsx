@@ -10,9 +10,9 @@ const deploymentStatusVariants = cva(
     variants: {
       status: {
         queued: "bg-muted text-muted-foreground",
-        building: "bg-primary/10 text-primary",
-        ready: "bg-success/10 text-success",
-        failed: "bg-destructive/10 text-destructive",
+        building: "bg-primary-tint text-primary-tint-foreground",
+        ready: "bg-success-tint text-success-tint-foreground",
+        failed: "bg-destructive-tint text-destructive-tint-foreground",
         canceled: "bg-muted text-muted-foreground line-through",
       },
     },

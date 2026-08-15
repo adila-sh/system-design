@@ -13,8 +13,25 @@ const VARIANTES = [
   "link",
 ] as const;
 
+/**
+ * Só restam combinações do tema ESCURO. As do tema claro saíram ao baixar a
+ * luminosidade de --destructive e --success, o que bastou porque no tema claro
+ * existe uma faixa de L que satisfaz as duas restrições ao mesmo tempo: texto
+ * colorido sobre a própria tinta E foreground branco sobre o preenchimento
+ * sólido.
+ *
+ * No tema escuro essa faixa é VAZIA — as duas restrições puxam em sentidos
+ * opostos, porque a tinta é a cor sobre um fundo escuro. A saída foi dar à
+ * tinta tokens próprios (--x-tint / --x-tint-foreground), e Status,
+ * DeploymentStatus e ApiRequestMethod já migraram.
+ *
+ * Button, Badge e Alert continuam aqui porque usam OUTRAS superfícies:
+ * bg-destructive/20 (não /10), texto sobre --card, e o link, que é texto
+ * colorido direto sobre o fundo da página, sem tinta nenhuma. Cada um precisa da
+ * própria decisão — o /20 pede um segundo nível de tinta, e o link pede uma cor
+ * de acento própria para texto.
+ */
 const ABAIXO_DO_MINIMO = new Map([
-  ["light/destructive", 3.37],
   ["dark/destructive", 3.65],
   ["dark/link", 3.79],
 ]);

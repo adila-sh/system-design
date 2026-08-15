@@ -26,19 +26,51 @@
   --secondary-foreground: oklch(0.2101 0 0);
 
   --muted: oklch(0.9764 0 0);
-  --muted-foreground: oklch(0.551 0 0);
+  /* 0.551 dava 4.49:1 sobre --muted, 0.01 abaixo do mínimo de texto. */
+  --muted-foreground: oklch(0.545 0 0);
 
   --accent: oklch(0.9764 0 0);
   --accent-foreground: oklch(0.2101 0 0);
 
-  --destructive: oklch(0.5915 0.2078 25.33);
+  /* Matiz e croma preservados; só a luminosidade desce, o mínimo necessário
+     para que o texto colorido atinja 4.5:1 sobre a própria tinta
+     (bg-destructive/10 e /20), sem quebrar o branco sobre o preenchimento
+     sólido — que continua passando porque a cor ficou mais escura. */
+  --destructive: oklch(0.49 0.2078 25.33);
   --destructive-foreground: oklch(1 0 0);
 
   --warning: oklch(0.7686 0.1647 70.08);
   --warning-foreground: oklch(0.2101 0 0);
 
-  --success: oklch(0.5385 0.1491 162.48);
+  --success: oklch(0.5 0.1491 162.48);
   --success-foreground: oklch(1 0 0);
+
+  /* Tintas — superfície suave + texto sobre ela.
+     Existem porque um par único (`bg-x/10 text-x`) é insolúvel no tema escuro:
+     ali a tinta é a cor sobre fundo escuro, então o texto pede cor CLARA
+     enquanto o branco sobre o preenchimento sólido pede cor ESCURA. Separando
+     "cor de preenchimento" de "cor de texto sobre tinta", cada uma atende à
+     própria restrição.
+     A superfície usa color-mix com os mesmos 10% que o utilitário aplicava, e
+     por isso é pixel a pixel o que já era exibido — o que muda é só o texto.
+     No tema claro o texto já passava, então aponta para o próprio token. */
+  --primary-tint: color-mix(in oklab, var(--primary) 10%, var(--background));
+  --primary-tint-foreground: var(--primary);
+
+  --destructive-tint: color-mix(
+    in oklab,
+    var(--destructive) 10%,
+    var(--background)
+  );
+  --destructive-tint-foreground: var(--destructive);
+
+  --success-tint: color-mix(in oklab, var(--success) 10%, var(--background));
+  --success-tint-foreground: var(--success);
+
+  /* O amarelo é claro demais para servir de texto sobre a própria tinta no tema
+     claro; aqui o par continua sendo o mesmo do preenchimento sólido. */
+  --warning-tint: color-mix(in oklab, var(--warning) 15%, var(--background));
+  --warning-tint-foreground: var(--warning-foreground);
 
   --border: oklch(0.9276 0 0);
   --input: oklch(0.9276 0 0);
@@ -95,6 +127,28 @@
   --success: oklch(0.536 0.1535 163.22);
   --success-foreground: oklch(1 0 0);
 
+  /* Aqui está o motivo destes tokens existirem: a superfície é a mesma de antes
+     (color-mix a 10%, idêntica ao utilitário), mas o texto precisa ser MAIS
+     CLARO que a cor de preenchimento, e não pode ser a própria cor — que serve
+     de fundo para o branco no estado sólido. Matiz e croma preservados; só a
+     luminosidade sobe, o mínimo para passar de 5:1 sobre a tinta. */
+  --primary-tint: color-mix(in oklab, var(--primary) 10%, var(--background));
+  --primary-tint-foreground: oklch(from var(--primary) 0.65 c h);
+
+  --destructive-tint: color-mix(
+    in oklab,
+    var(--destructive) 10%,
+    var(--background)
+  );
+  --destructive-tint-foreground: oklch(from var(--destructive) 0.64 c h);
+
+  --success-tint: color-mix(in oklab, var(--success) 10%, var(--background));
+  --success-tint-foreground: oklch(from var(--success) 0.6 c h);
+
+  /* No escuro o amarelo já funciona como texto sobre a própria tinta. */
+  --warning-tint: color-mix(in oklab, var(--warning) 15%, var(--background));
+  --warning-tint-foreground: var(--warning);
+
   --border: oklch(0.28 0 0);
   --input: oklch(0.32 0 0);
   /* ring mais claro no dark: anel de foco legível sobre bg e cards (WCAG 1.4.11) */
@@ -142,6 +196,16 @@
   --color-warning-foreground: var(--warning-foreground);
   --color-success: var(--success);
   --color-success-foreground: var(--success-foreground);
+
+  /* Tintas: superfície suave e o texto que vai sobre ela. */
+  --color-primary-tint: var(--primary-tint);
+  --color-primary-tint-foreground: var(--primary-tint-foreground);
+  --color-destructive-tint: var(--destructive-tint);
+  --color-destructive-tint-foreground: var(--destructive-tint-foreground);
+  --color-warning-tint: var(--warning-tint);
+  --color-warning-tint-foreground: var(--warning-tint-foreground);
+  --color-success-tint: var(--success-tint);
+  --color-success-tint-foreground: var(--success-tint-foreground);
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
