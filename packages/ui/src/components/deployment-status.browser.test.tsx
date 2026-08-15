@@ -6,10 +6,6 @@ import { descreverContrasteDeTexto } from "../../test/variantes";
 const STATUS = ["queued", "building", "ready", "failed", "canceled"] as const;
 
 const ABAIXO_DO_MINIMO = new Map([
-  ["light/queued", 4.49],
-  ["light/canceled", 4.49],
-  ["light/ready", 4.0],
-  ["light/failed", 3.92],
   ["dark/building", 3.55],
   ["dark/ready", 4.02],
   ["dark/failed", 4.06],

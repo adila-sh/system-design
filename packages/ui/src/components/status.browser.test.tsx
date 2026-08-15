@@ -12,13 +12,12 @@ const VARIANTES = [
   "destructive",
 ] as const;
 
-// 6 das 10 combinações falham. dark/warning saiu desta lista ao declararmos o
-// @custom-variant dark: a utilitária dark:text-warning passou a valer sob a
-// classe .dark e o contraste foi de 1.16 para 9.13.
+// De 7 combinações falhando restaram 3, todas do tema escuro. As do tema claro
+// saíram ao baixar a luminosidade de --destructive, --success e
+// --muted-foreground; dark/warning saiu antes, com o @custom-variant dark
+// (1.16 -> 9.13). O que resta depende de decisão de design — ver a nota em
+// button.browser.test.tsx.
 const ABAIXO_DO_MINIMO = new Map([
-  ["light/neutral", 4.49],
-  ["light/success", 4.0],
-  ["light/destructive", 3.92],
   ["dark/info", 3.55],
   ["dark/success", 4.02],
   ["dark/destructive", 4.06],

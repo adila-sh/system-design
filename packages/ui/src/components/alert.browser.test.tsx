@@ -12,17 +12,13 @@ function montar(variant: (typeof VARIANTES)[number]) {
   );
 }
 
-// No tema claro o título passa raspando (4.55) — é justamente por isso que ele
-// tem teste: qualquer escurecimento do --card ou clareamento do --destructive
-// derruba abaixo de 4.5 sem ninguém perceber.
+// O título no tema claro passava raspando (4.55) antes de baixarmos a
+// luminosidade do --destructive; agora está em 6.78, com folga real.
 const TITULO_ABAIXO_DO_MINIMO = new Map([["dark/destructive", 3.79]]);
 
-// A descrição é medida à parte porque tem alpha próprio
-// (text-destructive/90), e de fato fica pior que o título nos dois temas.
-const DESCRICAO_ABAIXO_DO_MINIMO = new Map([
-  ["light/destructive", 4.04],
-  ["dark/destructive", 3.3],
-]);
+// A descrição é medida à parte porque tem alpha próprio (text-destructive/90) e
+// fica sempre abaixo do título — no claro, 6.15 contra 6.78.
+const DESCRICAO_ABAIXO_DO_MINIMO = new Map([["dark/destructive", 3.3]]);
 
 descreverContrasteDeTexto({
   nome: "AlertTitle",
