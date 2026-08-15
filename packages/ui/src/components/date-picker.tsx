@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { CalendarBlankIcon, XIcon } from "@phosphor-icons/react";
-import { format } from "date-fns";
+import { format, isAfter, isBefore, startOfDay } from "date-fns";
 import { ptBR } from "date-fns/locale";
 
 import { Button } from "@/components/button";
@@ -11,6 +11,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/popover";
 import { cn } from "@/lib/utils";
 
 type DatePickerProps = {
+  id?: string;
   value?: Date;
   defaultValue?: Date;
   onValueChange?: (date: Date | undefined) => void;
@@ -18,12 +19,14 @@ type DatePickerProps = {
   formatPattern?: string;
   disabled?: boolean;
   clearable?: boolean;
+  showToday?: boolean;
   fromDate?: Date;
   toDate?: Date;
   className?: string;
 };
 
 function DatePicker({
+  id,
   value,
   defaultValue,
   onValueChange,
@@ -31,6 +34,7 @@ function DatePicker({
   formatPattern = "dd 'de' MMMM 'de' yyyy",
   disabled = false,
   clearable = false,
+  showToday = false,
   fromDate,
   toDate,
   className,
@@ -45,10 +49,18 @@ function DatePicker({
     if (nextValue) setOpen(false);
   }
 
+  // Hoje pode cair fora da janela permitida — nesse caso o atalho não deve
+  // oferecer uma data que o calendário recusaria.
+  const today = startOfDay(new Date());
+  const todayIsAllowed =
+    !(fromDate && isBefore(today, startOfDay(fromDate))) &&
+    !(toDate && isAfter(today, startOfDay(toDate)));
+
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <div className={cn("relative w-full min-w-56", className)}>
         <PopoverTrigger
+          id={id}
           disabled={disabled}
           render={
             <Button
@@ -96,6 +108,20 @@ function DatePicker({
           defaultMonth={currentValue}
           autoFocus
         />
+        {showToday ? (
+          <div className="border-t p-2">
+            <Button
+              type="button"
+              variant="ghost"
+              size="sm"
+              className="w-full"
+              disabled={!todayIsAllowed}
+              onClick={() => update(today)}
+            >
+              Hoje
+            </Button>
+          </div>
+        ) : null}
       </PopoverContent>
     </Popover>
   );
