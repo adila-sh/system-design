@@ -2,6 +2,15 @@
 @import "tw-animate-css";
 @import "./adila-tokens.css";
 
+/* Alinha a variante `dark:` com a forma como o tema realmente troca.
+   Os tokens vivem em `.dark` (adila-tokens.css) e quem alterna é uma classe no
+   <html> (next-themes, no app de docs). Sem esta declaração, o Tailwind v4
+   compila toda utilitária `dark:` dentro de @media (prefers-color-scheme: dark)
+   — e aí os dois mecanismos discordam: num SO em modo claro o tema escuro troca
+   os tokens mas deixa as `dark:` inativas, e num SO em modo escuro as `dark:`
+   se aplicam mesmo com o site em tema claro. */
+@custom-variant dark (&:where(.dark, .dark *));
+
 /* garante que o Tailwind resolva as classes usadas dentro dos componentes */
 @source "../components";
 

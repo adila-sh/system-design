@@ -15,21 +15,13 @@ const VARIANTES = [
 ] as const;
 
 /**
- * dark/tinted em 1.08 NÃO é token mal calibrado como os demais registros desta
- * suíte — é sintoma de um defeito de configuração, diagnosticado ao investigar
- * este número.
- *
- * O pacote não declara `@custom-variant dark`, então o Tailwind v4 compila toda
- * utilitária `dark:` dentro de `@media (prefers-color-scheme: dark)`. Os tokens,
- * porém, trocam pela classe `.dark` (adila-tokens.css). Num sistema operacional
- * em modo claro, ativar o tema escuro troca as cores dos tokens mas deixa toda
- * `dark:` inativa. No tinted isso resulta em fundo claro (0.93) com texto quase
- * branco do tema escuro.
- *
- * Quando o `@custom-variant` for declarado, este valor sobe e o teste vai pedir
- * a remoção da entrada — que é o comportamento desejado.
+ * Vazio de propósito, e vale registrar por quê: foi o dark/tinted, medindo
+ * 1.08, que expôs a ausência do `@custom-variant dark`. O fundo claro (0.93)
+ * ficava com o texto quase branco do tema escuro, porque a utilitária
+ * `dark:bg-[...]` estava presa a `@media (prefers-color-scheme: dark)` enquanto
+ * o tema trocava por classe. Declarada a variante, o valor foi para 11.80.
  */
-const ABAIXO_DO_MINIMO = new Map([["dark/tinted", 1.08]]);
+const ABAIXO_DO_MINIMO = new Map<string, number>();
 
 descreverContrasteDeTexto({
   nome: "Bubble",

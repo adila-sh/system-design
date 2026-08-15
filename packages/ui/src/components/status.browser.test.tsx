@@ -12,16 +12,15 @@ const VARIANTES = [
   "destructive",
 ] as const;
 
-// 7 das 10 combinações falham — o pior resultado do pacote, coerente com o
-// arranjo acima. dark/warning em 1.17 é o caso extremo: --warning é amarelo, e
-// amarelo sobre amarelo a 15% num fundo escuro fica praticamente ilegível.
+// 6 das 10 combinações falham. dark/warning saiu desta lista ao declararmos o
+// @custom-variant dark: a utilitária dark:text-warning passou a valer sob a
+// classe .dark e o contraste foi de 1.16 para 9.13.
 const ABAIXO_DO_MINIMO = new Map([
   ["light/neutral", 4.49],
   ["light/success", 4.0],
   ["light/destructive", 3.92],
   ["dark/info", 3.55],
   ["dark/success", 4.02],
-  ["dark/warning", 1.16],
   ["dark/destructive", 4.06],
 ]);
 
