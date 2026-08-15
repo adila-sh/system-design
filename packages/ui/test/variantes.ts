@@ -20,6 +20,8 @@ type Opcoes<V extends string> = {
   montar: (variante: V) => ReactElement;
   /** Onde está, dentro do render, o elemento cujo texto será medido. */
   seletor: string;
+  /** Nome da prop que recebe a variante — nem todo componente usa "variant". */
+  prop?: string;
   abaixoDoMinimo?: AbaixoDoMinimo;
 };
 
@@ -32,6 +34,7 @@ export function descreverContrasteDeTexto<V extends string>({
   variantes,
   montar,
   seletor,
+  prop = "variant",
   abaixoDoMinimo,
 }: Opcoes<V>) {
   afterEach(() => {
@@ -40,7 +43,7 @@ export function descreverContrasteDeTexto<V extends string>({
 
   describe.each(TEMAS)(`${nome} no tema %s`, (tema) => {
     test.each(variantes)(
-      "variant=%s atinge o mínimo de contraste para texto",
+      `${prop}=%s atinge o mínimo de contraste para texto`,
       async (variante) => {
         document.documentElement.classList.toggle("dark", tema === "dark");
 
