@@ -9,11 +9,28 @@ type Opcoes = {
   nome: string;
   montar: () => ReactElement;
   /**
+   * Seletor da raiz a medir, procurado no `document`. Necessário para menus,
+   * selects e diálogos: o conteúdo aberto vai para um portal FORA do container
+   * do render, então medir o container encontraria só o gatilho.
+   * Omitido, mede o próprio container.
+   */
+  raiz?: string;
+  /**
    * Chaves `tema/rótulo` já abaixo do mínimo, com o valor medido como piso.
    * O rótulo é o que o teste imprime na falha — normalmente o próprio texto.
    */
   abaixoDoMinimo?: AbaixoDoMinimo;
 };
+
+/** Espera o portal montar — a abertura tem animação e não é síncrona. */
+async function esperarRaiz(seletor: string): Promise<Element> {
+  for (let tentativa = 0; tentativa < 40; tentativa++) {
+    const el = document.querySelector(seletor);
+    if (el) return el;
+    await new Promise((r) => setTimeout(r, 25));
+  }
+  throw new Error(`raiz "${seletor}" não apareceu — o portal abriu?`);
+}
 
 type Alvo = { el: Element; rotulo: string };
 
@@ -60,6 +77,7 @@ function alvosDeTexto(raiz: Element): Alvo[] {
 export function descreverContrasteDosTextos({
   nome,
   montar,
+  raiz,
   abaixoDoMinimo,
 }: Opcoes) {
   afterEach(() => {
@@ -71,7 +89,8 @@ export function descreverContrasteDosTextos({
       document.documentElement.classList.toggle("dark", tema === "dark");
 
       const tela = await render(montar());
-      const alvos = alvosDeTexto(tela.container);
+      const onde = raiz ? await esperarRaiz(raiz) : tela.container;
+      const alvos = alvosDeTexto(onde);
       expect(
         alvos.length,
         "nenhum texto encontrado para medir",
