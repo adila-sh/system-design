@@ -57,3 +57,6 @@ apps/docs/src/routeTree.gen.ts
 packages/ui/dist
 # barrel gerado por gen-barrel.mjs (fonte única: src/components)
 packages/ui/src/index.ts
+
+# relatório JSON do vitest — insumo de gen-test-status, não é fonte
+packages/ui/test-results.json

@@ -12,6 +12,7 @@
     "build": "bun run --cwd packages/ui build && bun run --cwd apps/docs build",
     "start": "bun run --cwd apps/docs start",
     "test": "bun run --cwd packages/ui test",
+    "test:status": "bun run --cwd packages/ui test:json && bun run --cwd apps/docs gen:test-status",
     "typecheck": "bun run --cwd packages/ui typecheck && bun run --cwd apps/docs typecheck",
     "format": "oxfmt --write .",
     "format:check": "oxfmt --check .",

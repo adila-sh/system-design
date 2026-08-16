@@ -1,0 +1,532 @@
+{
+  "geradoEm": "2026-08-16T22:08:35.580Z",
+  "origem": "vitest",
+  "resumo": {
+    "componentes": 105,
+    "comTestes": 33,
+    "semTestes": 72,
+    "testes": 186,
+    "falhando": 0
+  },
+  "componentes": {
+    "accordion": {
+      "status": "sem-testes",
+      "total": 0
+    },
+    "alert": {
+      "status": "passando",
+      "total": 8,
+      "passando": 8,
+      "falhando": 0,
+      "arquivos": ["src/components/alert.browser.test.tsx"]
+    },
+    "alert-dialog": {
+      "status": "sem-testes",
+      "total": 0
+    },
+    "api-request": {
+      "status": "passando",
+      "total": 10,
+      "passando": 10,
+      "falhando": 0,
+      "arquivos": ["src/components/api-request.browser.test.tsx"]
+    },
+    "ascii-badge": {
+      "status": "passando",
+      "total": 13,
+      "passando": 13,
+      "falhando": 0,
+      "arquivos": ["src/components/ascii-badge.browser.test.tsx"]
+    },
+    "ascii-collapsible": {
+      "status": "sem-testes",
+      "total": 0
+    },
+    "ascii-divider": {
+      "status": "sem-testes",
+      "total": 0
+    },
+    "ascii-gauge": {
+      "status": "sem-testes",
+      "total": 0
+    },
+    "ascii-heatmap": {
+      "status": "sem-testes",
+      "total": 0
+    },
+    "ascii-progress": {
+      "status": "sem-testes",
+      "total": 0
+    },
+    "ascii-sparkline": {
+      "status": "passando",
+      "total": 12,
+      "passando": 12,
+      "falhando": 0,
+      "arquivos": ["src/components/ascii-sparkline.browser.test.tsx"]
+    },
+    "ascii-spinner": {
+      "status": "sem-testes",
+      "total": 0
+    },
+    "ascii-tree": {
+      "status": "sem-testes",
+      "total": 0
+    },
+    "aspect-ratio": {
+      "status": "sem-testes",
+      "total": 0
+    },
+    "attachment": {
+      "status": "passando",
+      "total": 2,
+      "passando": 2,
+      "falhando": 0,
+      "arquivos": ["src/components/attachment.browser.test.tsx"]
+    },
+    "autocomplete": {
+      "status": "sem-testes",
+      "total": 0
+    },
+    "avatar": {
+      "status": "sem-testes",
+      "total": 0
+    },
+    "badge": {
+      "status": "passando",
+      "total": 12,
+      "passando": 12,
+      "falhando": 0,
+      "arquivos": ["src/components/badge.browser.test.tsx"]
+    },
+    "bottom-bar": {
+      "status": "sem-testes",
+      "total": 0
+    },
+    "breadcrumb": {
+      "status": "sem-testes",
+      "total": 0
+    },
+    "bubble": {
+      "status": "passando",
+      "total": 12,
+      "passando": 12,
+      "falhando": 0,
+      "arquivos": ["src/components/bubble.browser.test.tsx"]
+    },
+    "bulk-action-bar": {
+      "status": "sem-testes",
+      "total": 0
+    },
+    "button": {
+      "status": "passando",
+      "total": 14,
+      "passando": 14,
+      "falhando": 0,
+      "arquivos": ["src/components/button.browser.test.tsx"]
+    },
+    "button-group": {
+      "status": "sem-testes",
+      "total": 0
+    },
+    "calendar": {
+      "status": "passando",
+      "total": 6,
+      "passando": 6,
+      "falhando": 0,
+      "arquivos": ["src/components/calendar.browser.test.tsx"]
+    },
+    "card": {
+      "status": "sem-testes",
+      "total": 0
+    },
+    "carousel": {
+      "status": "sem-testes",
+      "total": 0
+    },
+    "chart": {
+      "status": "passando",
+      "total": 8,
+      "passando": 8,
+      "falhando": 0,
+      "arquivos": ["src/components/chart.browser.test.tsx"]
+    },
+    "checkbox": {
+      "status": "passando",
+      "total": 8,
+      "passando": 8,
+      "falhando": 0,
+      "arquivos": ["src/components/checkbox.browser.test.tsx"]
+    },
+    "code-block": {
+      "status": "sem-testes",
+      "total": 0
+    },
+    "code-theme": {
+      "status": "sem-testes",
+      "total": 0
+    },
+    "collapsible": {
+      "status": "sem-testes",
+      "total": 0
+    },
+    "combobox": {
+      "status": "sem-testes",
+      "total": 0
+    },
+    "command": {
+      "status": "passando",
+      "total": 4,
+      "passando": 4,
+      "falhando": 0,
+      "arquivos": ["src/components/command.browser.test.tsx"]
+    },
+    "confirm-dialog": {
+      "status": "sem-testes",
+      "total": 0
+    },
+    "context-menu": {
+      "status": "sem-testes",
+      "total": 0
+    },
+    "copy-button": {
+      "status": "sem-testes",
+      "total": 0
+    },
+    "currency-input": {
+      "status": "sem-testes",
+      "total": 0
+    },
+    "data-list": {
+      "status": "sem-testes",
+      "total": 0
+    },
+    "data-table": {
+      "status": "sem-testes",
+      "total": 0
+    },
+    "date-picker": {
+      "status": "passando",
+      "total": 5,
+      "passando": 5,
+      "falhando": 0,
+      "arquivos": ["src/components/date-picker.browser.test.tsx"]
+    },
+    "date-range-picker": {
+      "status": "sem-testes",
+      "total": 0
+    },
+    "deployment-status": {
+      "status": "passando",
+      "total": 10,
+      "passando": 10,
+      "falhando": 0,
+      "arquivos": ["src/components/deployment-status.browser.test.tsx"]
+    },
+    "dialog": {
+      "status": "passando",
+      "total": 2,
+      "passando": 2,
+      "falhando": 0,
+      "arquivos": ["src/components/dialog.browser.test.tsx"]
+    },
+    "diff-viewer": {
+      "status": "sem-testes",
+      "total": 0
+    },
+    "direction": {
+      "status": "sem-testes",
+      "total": 0
+    },
+    "drawer": {
+      "status": "sem-testes",
+      "total": 0
+    },
+    "dropdown-menu": {
+      "status": "passando",
+      "total": 2,
+      "passando": 2,
+      "falhando": 0,
+      "arquivos": ["src/components/dropdown-menu.browser.test.tsx"]
+    },
+    "empty": {
+      "status": "passando",
+      "total": 2,
+      "passando": 2,
+      "falhando": 0,
+      "arquivos": ["src/components/empty.browser.test.tsx"]
+    },
+    "field": {
+      "status": "passando",
+      "total": 2,
+      "passando": 2,
+      "falhando": 0,
+      "arquivos": ["src/components/field.browser.test.tsx"]
+    },
+    "file-upload": {
+      "status": "sem-testes",
+      "total": 0
+    },
+    "filter-bar": {
+      "status": "sem-testes",
+      "total": 0
+    },
+    "form": {
+      "status": "sem-testes",
+      "total": 0
+    },
+    "hover-card": {
+      "status": "sem-testes",
+      "total": 0
+    },
+    "input": {
+      "status": "passando",
+      "total": 8,
+      "passando": 8,
+      "falhando": 0,
+      "arquivos": ["src/components/input.browser.test.tsx"]
+    },
+    "input-group": {
+      "status": "sem-testes",
+      "total": 0
+    },
+    "input-otp": {
+      "status": "sem-testes",
+      "total": 0
+    },
+    "item": {
+      "status": "passando",
+      "total": 2,
+      "passando": 2,
+      "falhando": 0,
+      "arquivos": ["src/components/item.browser.test.tsx"]
+    },
+    "kbd": {
+      "status": "sem-testes",
+      "total": 0
+    },
+    "label": {
+      "status": "sem-testes",
+      "total": 0
+    },
+    "marker": {
+      "status": "sem-testes",
+      "total": 0
+    },
+    "menubar": {
+      "status": "sem-testes",
+      "total": 0
+    },
+    "message": {
+      "status": "sem-testes",
+      "total": 0
+    },
+    "message-scroller": {
+      "status": "sem-testes",
+      "total": 0
+    },
+    "multi-select": {
+      "status": "sem-testes",
+      "total": 0
+    },
+    "native-select": {
+      "status": "sem-testes",
+      "total": 0
+    },
+    "nav-tree": {
+      "status": "sem-testes",
+      "total": 0
+    },
+    "navigation-menu": {
+      "status": "sem-testes",
+      "total": 0
+    },
+    "number-field": {
+      "status": "sem-testes",
+      "total": 0
+    },
+    "package-install": {
+      "status": "sem-testes",
+      "total": 0
+    },
+    "page-header": {
+      "status": "sem-testes",
+      "total": 0
+    },
+    "page-state": {
+      "status": "sem-testes",
+      "total": 0
+    },
+    "pagination": {
+      "status": "sem-testes",
+      "total": 0
+    },
+    "password-input": {
+      "status": "sem-testes",
+      "total": 0
+    },
+    "pixel-blast": {
+      "status": "sem-testes",
+      "total": 0
+    },
+    "popover": {
+      "status": "passando",
+      "total": 2,
+      "passando": 2,
+      "falhando": 0,
+      "arquivos": ["src/components/popover.browser.test.tsx"]
+    },
+    "progress": {
+      "status": "sem-testes",
+      "total": 0
+    },
+    "radio-group": {
+      "status": "sem-testes",
+      "total": 0
+    },
+    "resizable": {
+      "status": "sem-testes",
+      "total": 0
+    },
+    "resource-card": {
+      "status": "passando",
+      "total": 2,
+      "passando": 2,
+      "falhando": 0,
+      "arquivos": ["src/components/resource-card.browser.test.tsx"]
+    },
+    "scroll-area": {
+      "status": "sem-testes",
+      "total": 0
+    },
+    "search-input": {
+      "status": "passando",
+      "total": 6,
+      "passando": 6,
+      "falhando": 0,
+      "arquivos": ["src/components/search-input.browser.test.tsx"]
+    },
+    "section-header": {
+      "status": "sem-testes",
+      "total": 0
+    },
+    "select": {
+      "status": "passando",
+      "total": 2,
+      "passando": 2,
+      "falhando": 0,
+      "arquivos": ["src/components/select.browser.test.tsx"]
+    },
+    "separator": {
+      "status": "sem-testes",
+      "total": 0
+    },
+    "sheet": {
+      "status": "passando",
+      "total": 2,
+      "passando": 2,
+      "falhando": 0,
+      "arquivos": ["src/components/sheet.browser.test.tsx"]
+    },
+    "sidebar": {
+      "status": "sem-testes",
+      "total": 0
+    },
+    "skeleton": {
+      "status": "sem-testes",
+      "total": 0
+    },
+    "slider": {
+      "status": "sem-testes",
+      "total": 0
+    },
+    "sonner": {
+      "status": "sem-testes",
+      "total": 0
+    },
+    "spinner": {
+      "status": "sem-testes",
+      "total": 0
+    },
+    "stat": {
+      "status": "passando",
+      "total": 2,
+      "passando": 2,
+      "falhando": 0,
+      "arquivos": ["src/components/stat.browser.test.tsx"]
+    },
+    "status": {
+      "status": "passando",
+      "total": 10,
+      "passando": 10,
+      "falhando": 0,
+      "arquivos": ["src/components/status.browser.test.tsx"]
+    },
+    "stepper": {
+      "status": "passando",
+      "total": 2,
+      "passando": 2,
+      "falhando": 0,
+      "arquivos": ["src/components/stepper.browser.test.tsx"]
+    },
+    "switch": {
+      "status": "sem-testes",
+      "total": 0
+    },
+    "table": {
+      "status": "passando",
+      "total": 2,
+      "passando": 2,
+      "falhando": 0,
+      "arquivos": ["src/components/table.browser.test.tsx"]
+    },
+    "tabs": {
+      "status": "sem-testes",
+      "total": 0
+    },
+    "terminal": {
+      "status": "sem-testes",
+      "total": 0
+    },
+    "textarea": {
+      "status": "sem-testes",
+      "total": 0
+    },
+    "timeline": {
+      "status": "passando",
+      "total": 2,
+      "passando": 2,
+      "falhando": 0,
+      "arquivos": ["src/components/timeline.browser.test.tsx"]
+    },
+    "toggle": {
+      "status": "passando",
+      "total": 8,
+      "passando": 8,
+      "falhando": 0,
+      "arquivos": ["src/components/toggle.browser.test.tsx"]
+    },
+    "toggle-group": {
+      "status": "sem-testes",
+      "total": 0
+    },
+    "tooltip": {
+      "status": "passando",
+      "total": 2,
+      "passando": 2,
+      "falhando": 0,
+      "arquivos": ["src/components/tooltip.browser.test.tsx"]
+    },
+    "typography": {
+      "status": "sem-testes",
+      "total": 0
+    },
+    "usage-card": {
+      "status": "passando",
+      "total": 2,
+      "passando": 2,
+      "falhando": 0,
+      "arquivos": ["src/components/usage-card.browser.test.tsx"]
+    }
+  }
+}

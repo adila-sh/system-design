@@ -16,6 +16,7 @@ import { gitConfig } from "@/lib/shared";
 import { useFumadocsLoader } from "fumadocs-core/source/client";
 import { Suspense } from "react";
 import { useMDXComponents } from "@/components/mdx";
+import { TestStatusBadge } from "@/components/test-status-badge";
 
 export const Route = createFileRoute("/docs/$")({
   component: Page,
@@ -58,12 +59,13 @@ const clientLoader = browserCollections.docs.createClientLoader({
       <DocsPage toc={toc}>
         <DocsTitle>{frontmatter.title}</DocsTitle>
         <DocsDescription>{frontmatter.description}</DocsDescription>
-        <div className="flex flex-row gap-2 items-center border-b -mt-4 pb-6">
+        <div className="flex flex-row flex-wrap gap-2 items-center border-b -mt-4 pb-6">
           <MarkdownCopyButton markdownUrl={markdownUrl} />
           <ViewOptionsPopover
             markdownUrl={markdownUrl}
             githubUrl={`https://github.com/${gitConfig.user}/${gitConfig.repo}/blob/${gitConfig.branch}/content/docs/${path}`}
           />
+          <TestStatusBadge path={path} />
         </div>
         <DocsBody>
           <MDX components={useMDXComponents()} />

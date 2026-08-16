@@ -28,6 +28,7 @@
     "dev": "bun run gen:barrel && tsup --watch",
     "test": "vitest run",
     "test:watch": "vitest",
+    "test:json": "vitest run --reporter=json --outputFile=test-results.json",
     "typecheck": "bun run check:dropdown-menu && tsc --noEmit"
   },
   "peerDependencies": {

@@ -47,6 +47,21 @@ cd ../..
 bun run --cwd apps/docs gen:docs     # cria a doc-base + atualiza meta.json
 ```
 
+## Status de testes nas docs
+
+Cada página de componente mostra um selo com o resultado da suíte daquele
+componente (`14 testes passando`, `3 de 14 testes falhando` ou `Sem testes
+automatizados`). Os dados vêm de `apps/docs/src/lib/test-status.json`, que é
+versionado e regerado com:
+
+```bash
+bun run test:status   # roda o Vitest com reporter JSON e regenera o manifesto
+```
+
+A contagem sai do relatório do Vitest, não de uma varredura do fonte, porque
+boa parte dos testes é declarada dentro de laços. Rode o comando depois de
+adicionar ou remover testes, senão o selo fica desatualizado.
+
 ## Build e publish
 
 - `bun run --cwd packages/ui build` — builda JS (tsup) + CSS pré-compilado
