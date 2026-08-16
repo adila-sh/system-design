@@ -32,8 +32,36 @@ jobs:
       - name: Install dependencies
         run: bun install --frozen-lockfile
 
-      - name: Build @adila-sh/ui
-        run: bun run --cwd packages/ui build
+      # ── Mesma validação do ci.yml, repetida aqui de propósito ──────────────
+      #
+      # O PR de versão do Changesets NÃO passa pelo CI: a branch
+      # `changeset-release/main` é criada pela própria action usando o
+      # GITHUB_TOKEN, e o GitHub não dispara workflows em pushes feitos com esse
+      # token — é a proteção contra recursão. Na prática, `gh pr checks` naquele
+      # PR responde "no checks reported".
+      #
+      # Sem estes passos, publicar é o único caminho do repositório que sai sem
+      # nenhuma verificação. Como o job já roda no push da main, validar aqui
+      # cobre tanto o merge normal quanto o merge do PR de versão.
+      - name: Install Chromium (Playwright)
+        run: bunx playwright install --with-deps chromium
+
+      - name: Format
+        run: bun run format:check
+
+      - name: Lint
+        run: bun run lint
+
+      # Antes do typecheck: o apps/docs resolve @adila-sh/ui pelos tipos em
+      # packages/ui/dist. Também deixa o dist pronto para o publish.
+      - name: Build
+        run: bun run build
+
+      - name: Typecheck
+        run: bun run typecheck
+
+      - name: Test
+        run: bun run test
 
       - name: Create Release PR or publish
         uses: changesets/action@v1
