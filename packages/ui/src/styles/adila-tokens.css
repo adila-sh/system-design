@@ -57,6 +57,12 @@
   --primary-tint: color-mix(in oklab, var(--primary) 10%, var(--background));
   --primary-tint-foreground: var(--primary);
 
+  /* O indigo passa como texto sobre o fundo da página (6.33:1), mas o vermelho e
+     o verde não: nos valores de preenchimento ficam em 4.36 e 4.33. Como estes
+     tokens são "a cor legível como texto", eles descem um pouco em vez de
+     arrastar --destructive e --success junto — o preenchimento sólido segue
+     igual. */
+
   --destructive-tint: color-mix(
     in oklab,
     var(--destructive) 10%,
@@ -71,10 +77,10 @@
     var(--destructive) 20%,
     var(--background)
   );
-  --destructive-tint-foreground: var(--destructive);
+  --destructive-tint-foreground: oklch(from var(--destructive) 0.47 c h);
 
   --success-tint: color-mix(in oklab, var(--success) 10%, var(--background));
-  --success-tint-foreground: var(--success);
+  --success-tint-foreground: oklch(from var(--success) 0.48 c h);
 
   /* O amarelo é claro demais para servir de texto sobre a própria tinta no tema
      claro; aqui o par continua sendo o mesmo do preenchimento sólido. */

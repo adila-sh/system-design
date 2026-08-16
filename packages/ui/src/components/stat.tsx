@@ -93,7 +93,7 @@ function StatTrend({
       data-slot="stat-trend"
       data-trend={trend}
       className={cn(
-        "inline-flex items-center gap-1 font-medium tabular-nums data-[trend=down]:text-destructive data-[trend=neutral]:text-muted-foreground data-[trend=up]:text-success [&_svg:not([class*='size-'])]:size-3.5",
+        "inline-flex items-center gap-1 font-medium tabular-nums data-[trend=down]:text-destructive-tint-foreground data-[trend=neutral]:text-muted-foreground data-[trend=up]:text-success-tint-foreground [&_svg:not([class*='size-'])]:size-3.5",
         className,
       )}
       {...props}
