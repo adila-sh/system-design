@@ -118,3 +118,32 @@ export function contrasteDaBorda(el: Element): number {
   const borda = sobre(toRGBA(getComputedStyle(el).borderTopColor), fundo);
   return razao(borda, fundo);
 }
+
+/**
+ * Contraste entre o preenchimento do próprio elemento e o que está atrás dele.
+ *
+ * É o que vale para controle sem texto — o polegar de um switch, o quadrado
+ * marcado de um checkbox: medir a cor do texto ali não diz nada, porque não há
+ * texto. O que precisa ser percebido é a forma contra o fundo.
+ */
+export function contrasteDoPreenchimento(el: Element): number {
+  const atras = el.parentElement
+    ? fundoEfetivo(el.parentElement)
+    : ([255, 255, 255] as RGB);
+  const proprio = sobre(toRGBA(getComputedStyle(el).backgroundColor), atras);
+  return razao(proprio, atras);
+}
+
+/**
+ * Contraste do placeholder de um campo.
+ *
+ * Precisa de função própria porque `::placeholder` é pseudo-elemento: não existe
+ * nó de texto, então a varredura de textos passa direto por ele. É onde o
+ * contraste costuma escapar, já que a cor apagada é justamente o efeito
+ * pretendido.
+ */
+export function contrasteDoPlaceholder(el: Element): number {
+  const fundo = fundoEfetivo(el);
+  const cor = getComputedStyle(el, "::placeholder").color;
+  return razao(sobre(toRGBA(cor), fundo), fundo);
+}
