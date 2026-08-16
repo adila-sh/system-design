@@ -14,27 +14,24 @@ const VARIANTES = [
 ] as const;
 
 /**
- * Só restam combinações do tema ESCURO. As do tema claro saíram ao baixar a
- * luminosidade de --destructive e --success, o que bastou porque no tema claro
- * existe uma faixa de L que satisfaz as duas restrições ao mesmo tempo: texto
- * colorido sobre a própria tinta E foreground branco sobre o preenchimento
- * sólido.
+ * Lista vazia — e o caminho até aqui explica por que os tokens de tinta existem.
  *
- * No tema escuro essa faixa é VAZIA — as duas restrições puxam em sentidos
- * opostos, porque a tinta é a cor sobre um fundo escuro. A saída foi dar à
- * tinta tokens próprios (--x-tint / --x-tint-foreground), e Status,
- * DeploymentStatus e ApiRequestMethod já migraram.
+ * No tema claro bastou baixar a luminosidade de --destructive e --success,
+ * porque lá existe uma faixa de L que satisfaz as duas restrições ao mesmo
+ * tempo: texto colorido sobre a própria tinta E foreground branco sobre o
+ * preenchimento sólido.
  *
- * Button, Badge e Alert continuam aqui porque usam OUTRAS superfícies:
- * bg-destructive/20 (não /10), texto sobre --card, e o link, que é texto
- * colorido direto sobre o fundo da página, sem tinta nenhuma. Cada um precisa da
- * própria decisão — o /20 pede um segundo nível de tinta, e o link pede uma cor
- * de acento própria para texto.
+ * No escuro essa faixa é VAZIA: a tinta é a cor sobre um fundo escuro, então as
+ * duas restrições puxam em sentidos opostos. A saída foi separar os papéis em
+ * --x-tint (superfície) e --x-tint-foreground (texto sobre ela), cada um livre
+ * para atender à própria restrição.
+ *
+ * O `destructive` daqui usa --destructive-tint-strong, o nível de 20% que este
+ * componente sempre teve, e o `link` usa --primary-tint-foreground mesmo sem
+ * tinta nenhuma atrás: sobre o fundo da página, o que importa é ser a cor de
+ * acento legível como texto, que é exatamente o que esse token guarda.
  */
-const ABAIXO_DO_MINIMO = new Map([
-  ["dark/destructive", 3.65],
-  ["dark/link", 3.79],
-]);
+const ABAIXO_DO_MINIMO = new Map<string, number>();
 
 descreverContrasteDeTexto({
   nome: "Button",

@@ -9,8 +9,12 @@ const alertVariants = cva(
     variants: {
       variant: {
         default: "bg-card text-card-foreground",
+        // A descrição segue com alvo próprio (senão volta ao muted-foreground e
+        // perde o vermelho), mas sem o alpha de 90%, que a derrubava para
+        // 4.05:1 no tema escuro. A hierarquia com o título continua, sustentada
+        // pelo text-sm da descrição e pelo font-medium do título.
         destructive:
-          "bg-card text-destructive *:data-[slot=alert-description]:text-destructive/90 *:[svg]:text-current",
+          "bg-card text-destructive-tint-foreground *:data-[slot=alert-description]:text-destructive-tint-foreground *:[svg]:text-current",
       },
     },
     defaultVariants: {
