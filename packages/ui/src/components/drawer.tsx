@@ -3,6 +3,7 @@
 import * as React from "react";
 import { Drawer as DrawerPrimitive } from "@base-ui/react/drawer";
 
+import { resolveNativeButton } from "@/lib/native-button";
 import { cn } from "@/lib/utils";
 
 type DrawerContextProps = {
@@ -52,16 +53,38 @@ function Drawer({
   );
 }
 
-function DrawerTrigger({ ...props }: DrawerPrimitive.Trigger.Props) {
-  return <DrawerPrimitive.Trigger data-slot="drawer-trigger" {...props} />;
+function DrawerTrigger({
+  render,
+  nativeButton,
+  ...props
+}: DrawerPrimitive.Trigger.Props) {
+  return (
+    <DrawerPrimitive.Trigger
+      data-slot="drawer-trigger"
+      render={render}
+      nativeButton={resolveNativeButton(render, nativeButton)}
+      {...props}
+    />
+  );
 }
 
 function DrawerPortal({ ...props }: DrawerPrimitive.Portal.Props) {
   return <DrawerPrimitive.Portal data-slot="drawer-portal" {...props} />;
 }
 
-function DrawerClose({ ...props }: DrawerPrimitive.Close.Props) {
-  return <DrawerPrimitive.Close data-slot="drawer-close" {...props} />;
+function DrawerClose({
+  render,
+  nativeButton,
+  ...props
+}: DrawerPrimitive.Close.Props) {
+  return (
+    <DrawerPrimitive.Close
+      data-slot="drawer-close"
+      render={render}
+      nativeButton={resolveNativeButton(render, nativeButton)}
+      {...props}
+    />
+  );
 }
 
 function DrawerOverlay({

@@ -3,6 +3,7 @@
 import { Toggle as TogglePrimitive } from "@base-ui/react/toggle";
 import { cva, type VariantProps } from "class-variance-authority";
 
+import { resolveNativeButton } from "@/lib/native-button";
 import { cn } from "@/lib/utils";
 
 const toggleVariants = cva(
@@ -31,12 +32,16 @@ function Toggle({
   className,
   variant = "default",
   size = "default",
+  render,
+  nativeButton,
   ...props
 }: TogglePrimitive.Props & VariantProps<typeof toggleVariants>) {
   return (
     <TogglePrimitive
       data-slot="toggle"
       className={cn(toggleVariants({ variant, size, className }))}
+      render={render}
+      nativeButton={resolveNativeButton(render, nativeButton)}
       {...props}
     />
   );

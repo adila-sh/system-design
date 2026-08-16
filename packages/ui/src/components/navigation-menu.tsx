@@ -1,6 +1,7 @@
 import { NavigationMenu as NavigationMenuPrimitive } from "@base-ui/react/navigation-menu";
 import { cva } from "class-variance-authority";
 
+import { resolveNativeButton } from "@/lib/native-button";
 import { cn } from "@/lib/utils";
 import { CaretDownIcon as ChevronDownIcon } from "@phosphor-icons/react";
 
@@ -62,12 +63,16 @@ const navigationMenuTriggerStyle = cva(
 function NavigationMenuTrigger({
   className,
   children,
+  render,
+  nativeButton,
   ...props
 }: NavigationMenuPrimitive.Trigger.Props) {
   return (
     <NavigationMenuPrimitive.Trigger
       data-slot="navigation-menu-trigger"
       className={cn(navigationMenuTriggerStyle(), "group", className)}
+      render={render}
+      nativeButton={resolveNativeButton(render, nativeButton)}
       {...props}
     >
       {children}{" "}

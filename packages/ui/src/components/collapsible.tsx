@@ -1,14 +1,24 @@
 import { Collapsible as CollapsiblePrimitive } from "@base-ui/react/collapsible";
 
+import { resolveNativeButton } from "@/lib/native-button";
 import { cn } from "@/lib/utils";
 
 function Collapsible({ ...props }: CollapsiblePrimitive.Root.Props) {
   return <CollapsiblePrimitive.Root data-slot="collapsible" {...props} />;
 }
 
-function CollapsibleTrigger({ ...props }: CollapsiblePrimitive.Trigger.Props) {
+function CollapsibleTrigger({
+  render,
+  nativeButton,
+  ...props
+}: CollapsiblePrimitive.Trigger.Props) {
   return (
-    <CollapsiblePrimitive.Trigger data-slot="collapsible-trigger" {...props} />
+    <CollapsiblePrimitive.Trigger
+      data-slot="collapsible-trigger"
+      render={render}
+      nativeButton={resolveNativeButton(render, nativeButton)}
+      {...props}
+    />
   );
 }
 
