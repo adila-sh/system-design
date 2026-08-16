@@ -11,6 +11,11 @@ export default defineConfig({
   plugins: [tailwindcss()],
   resolve: {
     alias: { "@": path.resolve(import.meta.dirname, "src") },
+    // O pacote resolve react pelo node_modules da raiz do monorepo, mas alguns
+    // caminhos de import chegavam a uma segunda cópia — o sintoma era falha
+    // intermitente com "Cannot read properties of null (reading 'useRef')",
+    // que é o dispatcher de hooks de uma instância vendo a árvore da outra.
+    dedupe: ["react", "react-dom"],
   },
   test: {
     projects: [
