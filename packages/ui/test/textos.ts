@@ -1,7 +1,12 @@
 import type { ReactElement } from "react";
 import { afterEach, describe, expect, test } from "vitest";
 import { render } from "vitest-browser-react";
-import { MINIMO, contrasteDe, minimoDoTexto } from "./contrast";
+import {
+  MINIMO,
+  contrasteDe,
+  estaDesabilitado,
+  minimoDoTexto,
+} from "./contrast";
 import { TEMAS, type AbaixoDoMinimo } from "./variantes";
 
 type Opcoes = {
@@ -36,6 +41,14 @@ type Opcoes = {
    * O rótulo é o que o teste imprime na falha — normalmente o próprio texto.
    */
   abaixoDoMinimo?: AbaixoDoMinimo;
+  /**
+   * Piso único para TODOS os alvos desabilitados do bloco, por tema.
+   *
+   * Existe porque um componente pode ter dezenas de alvos inativos com o mesmo
+   * valor — os dias bloqueados de um calendário, por exemplo. Listar cada um em
+   * `abaixoDoMinimo` seria quarenta entradas dizendo a mesma coisa.
+   */
+  pisoDesabilitado?: Partial<Record<(typeof TEMAS)[number], number>>;
 };
 
 /**
@@ -53,14 +66,40 @@ export const soDecoracaoAscii = (rotulo: string) =>
  */
 export const soGlifos = (rotulo: string) => !/[\p{L}\p{N}]/u.test(rotulo);
 
-/** Espera o portal montar — a abertura tem animação e não é síncrona. */
+/**
+ * Espera o portal montar E a animação de entrada terminar.
+ *
+ * Só esperar o elemento existir não basta desde que a medição passou a
+ * considerar `opacity`: menus, popovers e tooltips entram com fade, e medir no
+ * meio dele produz números baixos que parecem defeito de cor mas são só o
+ * quadro errado. O critério de pronto é a opacidade acumulada chegar a 1.
+ */
 async function esperarRaiz(seletor: string): Promise<Element> {
+  let el: Element | null = null;
+
   for (let tentativa = 0; tentativa < 40; tentativa++) {
-    const el = document.querySelector(seletor);
-    if (el) return el;
+    el = document.querySelector(seletor);
+    if (el) break;
     await new Promise((r) => setTimeout(r, 25));
   }
-  throw new Error(`raiz "${seletor}" não apareceu — o portal abriu?`);
+  if (!el) throw new Error(`raiz "${seletor}" não apareceu — o portal abriu?`);
+
+  const opacidadeAte = (node: Element | null) => {
+    let total = 1;
+    while (node) {
+      total *= Number.parseFloat(getComputedStyle(node).opacity) || 1;
+      node = node.parentElement;
+    }
+    return total;
+  };
+
+  for (let tentativa = 0; tentativa < 60; tentativa++) {
+    if (opacidadeAte(el) >= 0.999) return el;
+    await new Promise((r) => setTimeout(r, 25));
+  }
+  throw new Error(
+    `raiz "${seletor}" não chegou a opacidade 1 — animação de entrada travou?`,
+  );
 }
 
 type Alvo = { el: Element; rotulo: string };
@@ -112,6 +151,7 @@ export function descreverContrasteDosTextos({
   comoGrafico,
   ignorar,
   abaixoDoMinimo,
+  pisoDesabilitado,
 }: Opcoes) {
   afterEach(() => {
     document.documentElement.classList.remove("dark");
@@ -134,10 +174,16 @@ export function descreverContrasteDosTextos({
         if (ignorar?.(rotulo)) continue;
 
         const contraste = contrasteDe(el);
-        const minimo = comoGrafico?.(rotulo)
-          ? MINIMO.naoTexto
-          : minimoDoTexto(el);
-        const piso = abaixoDoMinimo?.get(`${tema}/${rotulo}`);
+        const inativo = estaDesabilitado(el);
+        const minimo = inativo
+          ? MINIMO.desabilitado
+          : comoGrafico?.(rotulo)
+            ? MINIMO.naoTexto
+            : minimoDoTexto(el);
+
+        // O piso por bloco vale só para inativos, e só quando declarado.
+        const pisoInativo = inativo ? pisoDesabilitado?.[tema] : undefined;
+        const piso = abaixoDoMinimo?.get(`${tema}/${rotulo}`) ?? pisoInativo;
 
         if (piso !== undefined) {
           expect(

@@ -17,7 +17,24 @@ export const MINIMO = {
   texto: AA_TEXTO,
   textoGrande: AA_TEXTO_GRANDE,
   naoTexto: AA_NAO_TEXTO,
+  /**
+   * A WCAG 1.4.3 isenta explicitamente componente inativo ("Incidental: texto
+   * que faz parte de um componente de interface inativo não tem requisito de
+   * contraste"). Ainda assim medimos, com o piso de não-texto: isento não é
+   * licença para o estado desaparecer da tela.
+   */
+  desabilitado: AA_NAO_TEXTO,
 } as const;
+
+/**
+ * Estado inativo, em qualquer das formas que o pacote usa: o atributo nativo,
+ * o ARIA e o data-attribute do Base UI.
+ */
+export function estaDesabilitado(el: Element): boolean {
+  return !!el.closest(
+    "[disabled],[aria-disabled='true'],[data-disabled],[data-disabled='true']",
+  );
+}
 
 /**
  * WCAG 1.4.3 admite 3:1 para "texto grande": 18pt (24px) em peso normal, ou
@@ -85,31 +102,72 @@ export function razao(a: RGB, b: RGB): number {
  * É esse passo que revela defeitos como uma superfície `bg-x/50` que parece
  * clara no tema mas escurece sobre um fundo colorido.
  */
-export function fundoEfetivo(el: Element): RGB {
+/**
+ * Sobe a árvore compondo as camadas de fundo até a primeira REALMENTE opaca.
+ *
+ * "Realmente" opaca exige as duas coisas: cor sem alpha E `opacity: 1`. Um
+ * elemento com `opacity: 0.5` e fundo sólido não encerra a busca — ele desbota
+ * junto com tudo que está dentro, e o que aparece por baixo continua contando.
+ * É o caso do botão desabilitado: fundo sólido, mas metade transparente.
+ */
+function fundoEfetivoCom(el: Element): { cor: RGB; ate: Element | null } {
   const camadas: RGBA[] = [];
   // Sem nenhuma superfície opaca no caminho, o que sobra é o branco do canvas
   // do navegador.
   let base: RGB = [255, 255, 255];
+  let ate: Element | null = null;
   let node: Element | null = el;
 
   while (node) {
-    const bg = toRGBA(getComputedStyle(node).backgroundColor);
-    if (bg[3] >= 1) {
+    const cs = getComputedStyle(node);
+    const opacidade = Number.parseFloat(cs.opacity) || 1;
+    const bg = toRGBA(cs.backgroundColor);
+    const alpha = bg[3] * opacidade;
+
+    if (alpha >= 1) {
       base = [bg[0], bg[1], bg[2]];
+      ate = node;
       break;
     }
-    if (bg[3] > 0) camadas.push(bg);
+    if (alpha > 0) camadas.push([bg[0], bg[1], bg[2], alpha]);
     node = node.parentElement;
   }
 
-  return camadas.reduceRight((acc, camada) => sobre(camada, acc), base);
+  return {
+    cor: camadas.reduceRight((acc, camada) => sobre(camada, acc), base),
+    ate,
+  };
+}
+
+export function fundoEfetivo(el: Element): RGB {
+  return fundoEfetivoCom(el).cor;
+}
+
+/**
+ * Opacidade acumulada de um elemento até o ancestral opaco, inclusive.
+ *
+ * `opacity` compõe o elemento inteiro sobre o que está atrás e NÃO aparece na
+ * cor computada: um texto com `disabled:opacity-50` devolve a mesma `color` de
+ * quando está ativo. Sem multiplicar por isto, todo estado desabilitado do
+ * pacote seria medido como se estivesse em plena força.
+ */
+function opacidadeAcumulada(el: Element, ate: Element | null): number {
+  let total = 1;
+  let node: Element | null = el;
+  while (node) {
+    total *= Number.parseFloat(getComputedStyle(node).opacity) || 1;
+    if (node === ate) break;
+    node = node.parentElement;
+  }
+  return total;
 }
 
 /** Contraste entre o texto/ícone de um elemento e o que está pintado atrás. */
 export function contrasteDe(el: Element): number {
-  const fundo = fundoEfetivo(el);
-  const frente = sobre(toRGBA(getComputedStyle(el).color), fundo);
-  return razao(frente, fundo);
+  const { cor: fundo, ate } = fundoEfetivoCom(el);
+  const cor = toRGBA(getComputedStyle(el).color);
+  const alpha = cor[3] * opacidadeAcumulada(el, ate);
+  return razao(sobre([cor[0], cor[1], cor[2], alpha], fundo), fundo);
 }
 
 /** Contraste da borda de um elemento contra o fundo — WCAG 1.4.11. */
