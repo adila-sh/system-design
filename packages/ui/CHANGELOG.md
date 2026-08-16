@@ -1,5 +1,66 @@
 # @adila-sh/ui
 
+## 0.4.0
+
+### Minor Changes
+
+- c5e6ef2: Adiciona `--destructive-tint-strong` e conclui a migração para os tokens de
+  tinta em `Button`, `Badge` e `Alert`.
+
+  Esses três ficaram de fora da primeira leva porque usam superfícies diferentes
+  das dos badges de status: preenchimento a 20% em vez de 10%, texto sobre
+  `--card`, e o `link`, que é texto colorido direto sobre o fundo da página, sem
+  tinta nenhuma. As medições mostraram que o `--x-tint-foreground` já criado
+  atende às três situações, então só o nível de 20% precisou de token novo.
+
+  No tema escuro, `Button` e `Badge` destructive vão de 3.65 para 4.64, os dois
+  `link` de 3.79 para 5.46, e o `Alert` de 3.79 (título) e 3.30 (descrição) para
+  4.72. A descrição perde o alpha de 90% que a derrubava; a hierarquia com o
+  título continua sustentada pelo `text-sm` e pelo `font-medium`.
+
+  No tema claro nada muda visualmente — verificado pixel a pixel.
+
+  Com isso, **todas** as combinações medidas pela suíte atingem o mínimo AA de
+  texto nos dois temas.
+
+- 091cc3b: Adiciona tokens de tinta: `--{primary,destructive,success,warning}-tint` e os
+  respectivos `-tint-foreground`, expostos ao Tailwind como `bg-*-tint` e
+  `text-*-tint-foreground`.
+
+  Existem porque o par `bg-x/10 text-x` é insolúvel no tema escuro: ali a tinta é a
+  própria cor sobre um fundo escuro, então o texto precisa ser mais claro que a
+  cor, enquanto o branco sobre o preenchimento sólido precisa que ela seja escura.
+  Uma luminosidade só não atende às duas restrições. Separando "cor de
+  preenchimento" de "cor de texto sobre tinta", cada uma atende à sua.
+
+  `Status`, `DeploymentStatus` e `ApiRequestMethod` passam a usar os novos tokens.
+  No tema claro nada muda visualmente — a superfície é o mesmo `color-mix` a 10%
+  que o utilitário já aplicava, e o texto continua sendo a cor base. No tema
+  escuro o texto fica mais claro, saindo de 3.5–4.1:1 para 5.1–5.2:1.
+
+  É `minor` porque adiciona tokens ao contrato público do CSS. Nada existente foi
+  removido nem renomeado.
+
+### Patch Changes
+
+- 5f76cae: Ajusta `--destructive`, `--success` e `--muted-foreground` no tema claro para
+  atingir o mínimo AA de texto (4.5:1).
+
+  Só a luminosidade muda; matiz e croma seguem idênticos, então a identidade da
+  paleta é preservada — o vermelho e o verde ficam mais profundos, não diferentes.
+
+  - `--destructive`: L 0.5915 → 0.49
+  - `--success`: L 0.5385 → 0.50
+  - `--muted-foreground`: L 0.551 → 0.545
+
+  Corrige 12 combinações que estavam abaixo do mínimo em Button, Badge, Alert,
+  Status, DeploymentStatus e ApiRequestMethod. O foreground branco sobre o
+  preenchimento sólido continua passando, porque as cores ficaram mais escuras.
+
+  O tema escuro **não** muda: lá não existe luminosidade que satisfaça ao mesmo
+  tempo o texto colorido sobre a própria tinta e o branco sobre o preenchimento
+  sólido. Resolver aquele lado exige decisão de design, não ajuste de token.
+
 ## 0.3.0
 
 ### Minor Changes
