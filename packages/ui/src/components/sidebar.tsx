@@ -8,6 +8,7 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/button";
 import { Input } from "@/components/input";
+import { NavActiveGlow, navTreeItem, navTreeRail } from "@/components/nav-tree";
 import { Separator } from "@/components/separator";
 import {
   Sheet,
@@ -503,12 +504,19 @@ function SidebarMenuButton({
   isActive = false,
   variant = "default",
   size = "default",
+  activeIndicator = "bar",
   tooltip,
   className,
   ...props
 }: useRender.ComponentProps<"button"> &
   React.ComponentProps<"button"> & {
     isActive?: boolean;
+    /**
+     * Como o item ativo se anuncia. `bar` é a barra que desliza entre os itens;
+     * `gradient` troca por um realce que preenche o botão inteiro; `none`
+     * deixa só a mudança de cor e peso do texto.
+     */
+    activeIndicator?: "bar" | "gradient" | "none";
     tooltip?: string | React.ComponentProps<typeof TooltipContent>;
   } & VariantProps<typeof sidebarMenuButtonVariants>) {
   const { isMobile, state } = useSidebar();
@@ -517,10 +525,18 @@ function SidebarMenuButton({
     defaultTagName: "button",
     props: mergeProps<"button">(
       {
-        className: cn(sidebarMenuButtonVariants({ variant, size }), className),
+        className: cn(
+          sidebarMenuButtonVariants({ variant, size }),
+          // O realce é filho absoluto em -z-10: sem o contexto de empilhamento
+          // ele passaria por cima do conteúdo, já que elemento posicionado
+          // pinta acima de irmão estático.
+          activeIndicator === "gradient" && "isolate",
+          className,
+        ),
         children: (
           <>
-            {isActive ? (
+            {activeIndicator === "gradient" ? <NavActiveGlow /> : null}
+            {isActive && activeIndicator === "bar" ? (
               <motion.span
                 aria-hidden="true"
                 data-slot="sidebar-active-indicator"
@@ -662,17 +678,41 @@ function SidebarMenuSkeleton({
   );
 }
 
-function SidebarMenuSub({ className, ...props }: React.ComponentProps<"ul">) {
+/**
+ * A variante do submenu, propagada por contexto porque quem desenha o conector
+ * é o item, e não a lista. Passar por prop obrigaria a repetir a variante em
+ * cada `SidebarMenuSubItem`, que é justamente o tipo de repetição que este
+ * componente existe para evitar.
+ */
+const SidebarMenuSubContext = React.createContext<"line" | "tree">("line");
+
+function SidebarMenuSub({
+  className,
+  variant = "line",
+  ...props
+}: React.ComponentProps<"ul"> & {
+  /**
+   * `line` desenha uma régua contínua à esquerda. `tree` troca a régua por um
+   * trilho com pontas recuadas e dá a cada item um conector horizontal, que
+   * acende junto com o item ativo e mostra o caminho percorrido.
+   */
+  variant?: "line" | "tree";
+}) {
   return (
-    <ul
-      data-slot="sidebar-menu-sub"
-      data-sidebar="menu-sub"
-      className={cn(
-        "mx-3.5 flex min-w-0 translate-x-px flex-col gap-1 border-l border-sidebar-border px-2.5 py-0.5 group-data-[collapsible=icon]:hidden",
-        className,
-      )}
-      {...props}
-    />
+    <SidebarMenuSubContext.Provider value={variant}>
+      <ul
+        data-slot="sidebar-menu-sub"
+        data-sidebar="menu-sub"
+        data-variant={variant}
+        className={cn(
+          "mx-3.5 flex min-w-0 translate-x-px flex-col gap-1 py-0.5 group-data-[collapsible=icon]:hidden",
+          variant === "line" && "border-l border-sidebar-border px-2.5",
+          variant === "tree" && navTreeRail,
+          className,
+        )}
+        {...props}
+      />
+    </SidebarMenuSubContext.Provider>
   );
 }
 
@@ -680,11 +720,17 @@ function SidebarMenuSubItem({
   className,
   ...props
 }: React.ComponentProps<"li">) {
+  const variant = React.useContext(SidebarMenuSubContext);
+
   return (
     <li
       data-slot="sidebar-menu-sub-item"
       data-sidebar="menu-sub-item"
-      className={cn("group/menu-sub-item relative", className)}
+      className={cn(
+        "group/menu-sub-item relative",
+        variant === "tree" && navTreeItem,
+        className,
+      )}
       {...props}
     />
   );
@@ -692,22 +738,36 @@ function SidebarMenuSubItem({
 
 function SidebarMenuSubButton({
   render,
+  children,
   size = "md",
   isActive = false,
+  activeIndicator = "none",
   className,
   ...props
 }: useRender.ComponentProps<"a"> &
   React.ComponentProps<"a"> & {
     size?: "sm" | "md";
     isActive?: boolean;
+    /**
+     * `gradient` traz o mesmo realce do `SidebarMenuButton`. O padrão é `none`
+     * porque o submenu já se distingue pelo recuo e pela régua.
+     */
+    activeIndicator?: "gradient" | "none";
   }) {
   return useRender({
     defaultTagName: "a",
     props: mergeProps<"a">(
       {
         className: cn(
-          "flex min-w-0 -translate-x-px items-center gap-2 overflow-hidden rounded-md px-2 text-sidebar-foreground/65 ring-sidebar-ring outline-hidden transition-colors group-data-[collapsible=icon]:hidden hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-[size=md]:h-9 data-[size=md]:text-sm data-[size=sm]:h-8 data-[size=sm]:text-xs data-active:bg-sidebar-accent data-active:font-medium data-active:text-sidebar-accent-foreground data-active:hover:text-sidebar-accent-foreground [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0",
+          "group/menu-sub-button flex min-w-0 -translate-x-px items-center gap-2 overflow-hidden rounded-md px-2 text-sidebar-foreground/65 ring-sidebar-ring outline-hidden transition-colors group-data-[collapsible=icon]:hidden hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-[size=md]:h-9 data-[size=md]:text-sm data-[size=sm]:h-8 data-[size=sm]:text-xs data-active:bg-sidebar-accent data-active:font-medium data-active:text-sidebar-accent-foreground data-active:hover:text-sidebar-accent-foreground [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0",
+          activeIndicator === "gradient" && "isolate",
           className,
+        ),
+        children: (
+          <>
+            {activeIndicator === "gradient" ? <NavActiveGlow /> : null}
+            {children}
+          </>
         ),
       },
       props,
