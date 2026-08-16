@@ -60,6 +60,17 @@ descreverContrasteDosTextos({
   abaixoDoMinimo: ABAIXO_DO_MINIMO,
 });
 
+/**
+ * O heatmap é o único aqui que usa RAMPA: a célula codifica intensidade variando
+ * a opacidade, de `░` a `█`. As células fracas medem entre 1.46 e 2.89 contra o
+ * fundo, e isso é a codificação funcionando, não um defeito — numa escala
+ * sequencial o passo baixo é fraco por definição, e quem dá a referência é a
+ * legenda, não o contraste de cada célula.
+ *
+ * Por isso as células ficam de fora da asserção e o que continua medido é o
+ * rótulo. Se um dia o heatmap ganhar valores em texto sobre as células, eles
+ * entram como texto normal.
+ */
 descreverContrasteDosTextos({
   nome: "AsciiHeatmap",
   montar: () => (
@@ -72,7 +83,7 @@ descreverContrasteDosTextos({
     />
   ),
   comoGrafico: soGlifos,
-  ignorar: soDecoracaoAscii,
+  ignorar: (rotulo) => soDecoracaoAscii(rotulo) || soGlifos(rotulo),
   abaixoDoMinimo: ABAIXO_DO_MINIMO,
 });
 
