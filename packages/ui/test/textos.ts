@@ -1,7 +1,7 @@
 import type { ReactElement } from "react";
 import { afterEach, describe, expect, test } from "vitest";
 import { render } from "vitest-browser-react";
-import { contrasteDe, minimoDoTexto } from "./contrast";
+import { MINIMO, contrasteDe, minimoDoTexto } from "./contrast";
 import { TEMAS, type AbaixoDoMinimo } from "./variantes";
 
 type Opcoes = {
@@ -16,11 +16,42 @@ type Opcoes = {
    */
   raiz?: string;
   /**
+   * Decide, por alvo, se ele vale como GRÁFICO — mínimo de 3:1 da WCAG 1.4.11 —
+   * em vez de texto, que pede 4.5:1.
+   *
+   * É por alvo, e não por componente, porque nos ASCII os dois convivem no mesmo
+   * bloco: `▇`, `⣿` e `░▒▓` desenham uma série e valem como gráfico, enquanto o
+   * rótulo e os números ao lado são texto de verdade e seguem em 4.5. Uma chave
+   * única para o componente inteiro afrouxaria também o texto.
+   */
+  comoGrafico?: (rotulo: string) => boolean;
+  /**
+   * Rótulos a ignorar. Serve para o que é decoração ou fundo: a moldura de um
+   * medidor e a parte vazia de uma barra não carregam informação — quem informa
+   * é a extensão do preenchimento, que é medida.
+   */
+  ignorar?: (rotulo: string) => boolean;
+  /**
    * Chaves `tema/rótulo` já abaixo do mínimo, com o valor medido como piso.
    * O rótulo é o que o teste imprime na falha — normalmente o próprio texto.
    */
   abaixoDoMinimo?: AbaixoDoMinimo;
 };
+
+/**
+ * Moldura de caixa e braille em branco: são o contorno e o trilho vazio dos
+ * componentes ASCII. Não comunicam estado — o preenchimento é que comunica.
+ */
+const DECORACAO_ASCII = /^[─-╿⠀\s]+$/;
+
+export const soDecoracaoAscii = (rotulo: string) =>
+  DECORACAO_ASCII.test(rotulo);
+
+/**
+ * Rótulo sem nenhuma letra ou dígito: só glifos. É o critério para tratar o
+ * alvo como gráfico — "▁▂▄▇" e "↑" desenham, "Receita" e "72%" leem.
+ */
+export const soGlifos = (rotulo: string) => !/[\p{L}\p{N}]/u.test(rotulo);
 
 /** Espera o portal montar — a abertura tem animação e não é síncrona. */
 async function esperarRaiz(seletor: string): Promise<Element> {
@@ -78,6 +109,8 @@ export function descreverContrasteDosTextos({
   nome,
   montar,
   raiz,
+  comoGrafico,
+  ignorar,
   abaixoDoMinimo,
 }: Opcoes) {
   afterEach(() => {
@@ -98,8 +131,12 @@ export function descreverContrasteDosTextos({
 
       const falhas: string[] = [];
       for (const { el, rotulo } of alvos) {
+        if (ignorar?.(rotulo)) continue;
+
         const contraste = contrasteDe(el);
-        const minimo = minimoDoTexto(el);
+        const minimo = comoGrafico?.(rotulo)
+          ? MINIMO.naoTexto
+          : minimoDoTexto(el);
         const piso = abaixoDoMinimo?.get(`${tema}/${rotulo}`);
 
         if (piso !== undefined) {
