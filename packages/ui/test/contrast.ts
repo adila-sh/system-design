@@ -11,8 +11,26 @@ type RGBA = [number, number, number, number];
 
 const AA_TEXTO = 4.5;
 const AA_NAO_TEXTO = 3;
+const AA_TEXTO_GRANDE = 3;
 
-export const MINIMO = { texto: AA_TEXTO, naoTexto: AA_NAO_TEXTO } as const;
+export const MINIMO = {
+  texto: AA_TEXTO,
+  textoGrande: AA_TEXTO_GRANDE,
+  naoTexto: AA_NAO_TEXTO,
+} as const;
+
+/**
+ * WCAG 1.4.3 admite 3:1 para "texto grande": 18pt (24px) em peso normal, ou
+ * 14pt (18.66px) em negrito. Aplicar 4.5 a um título grande reprovaria um
+ * contraste que a norma aceita, então o limite acompanha o que foi renderizado.
+ */
+export function minimoDoTexto(el: Element): number {
+  const cs = getComputedStyle(el);
+  const px = Number.parseFloat(cs.fontSize);
+  const peso = Number.parseInt(cs.fontWeight, 10) || 400;
+  const grande = px >= 24 || (px >= 18.66 && peso >= 700);
+  return grande ? AA_TEXTO_GRANDE : AA_TEXTO;
+}
 
 let ctx: CanvasRenderingContext2D | null = null;
 
