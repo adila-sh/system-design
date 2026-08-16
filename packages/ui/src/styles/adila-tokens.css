@@ -82,10 +82,12 @@
   --success-tint: color-mix(in oklab, var(--success) 10%, var(--background));
   --success-tint-foreground: oklch(from var(--success) 0.48 c h);
 
-  /* O amarelo é claro demais para servir de texto sobre a própria tinta no tema
-     claro; aqui o par continua sendo o mesmo do preenchimento sólido. */
+  /* O amarelo do preenchimento é claro demais para virar texto — mede 2.15:1
+     sobre o fundo da página. Em vez de cair no preto do --warning-foreground,
+     que apagaria a semântica de aviso, desce na mesma matiz até um âmbar
+     escuro: 6.18:1 sobre a página e 5.57:1 sobre a própria tinta. */
   --warning-tint: color-mix(in oklab, var(--warning) 15%, var(--background));
-  --warning-tint-foreground: var(--warning-foreground);
+  --warning-tint-foreground: oklch(from var(--warning) 0.5 c h);
 
   --border: oklch(0.9276 0 0);
   --input: oklch(0.9276 0 0);

@@ -21,11 +21,11 @@ const SYMBOLS: Record<AsciiBadgeVariant, string> = {
 
 const VARIANT_CLASSES: Record<AsciiBadgeVariant, string> = {
   default: "text-muted-foreground",
-  success: "text-success",
-  warning: "text-warning",
-  destructive: "text-destructive",
-  error: "text-destructive",
-  info: "text-info",
+  success: "text-success-tint-foreground",
+  warning: "text-warning-tint-foreground",
+  destructive: "text-destructive-tint-foreground",
+  error: "text-destructive-tint-foreground",
+  info: "text-primary-tint-foreground",
 };
 
 type AsciiBadgeProps = React.ComponentProps<"span"> & {
