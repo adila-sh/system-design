@@ -1,5 +1,85 @@
 # @adila-sh/ui
 
+## 0.4.1
+
+### Patch Changes
+
+- 119acf9: Corrige três defeitos de cor encontrados ao cobrir os componentes ASCII.
+
+  A variante `info` do `AsciiBadge` apontava para `text-info`, um token que nunca
+  existiu no design system. A classe não gerava regra nenhuma e a cor era
+  simplesmente herdada, então a variante não comunicava estado algum — e passava
+  despercebida justamente porque herdar o foreground dá contraste ótimo. Passa a
+  usar `--primary-tint-foreground`, o mesmo acento que o `Status` usa para `info`.
+
+  As demais variantes apontavam para as cores de preenchimento (`text-success`,
+  `text-warning`, `text-destructive`) como texto solto sobre o fundo da página;
+  `warning` media 2.15:1. Todas passam a usar os tokens de tinta.
+
+  `--warning-tint-foreground` no tema claro deixa de ser o preto do
+  `--warning-foreground` e passa a ser um âmbar escuro na mesma matiz do
+  `--warning`: 6.18:1 sobre a página e 5.57:1 sobre a própria tinta. Isso torna o
+  texto dos chips de aviso âmbar em vez de preto, alinhando com o verde do
+  `success` e o vermelho do `destructive`.
+
+- 1c74466: Nada muda em runtime: este changeset existe só para registrar que a suíte de
+  contraste passou a cobrir os campos de formulário, incluindo o placeholder — que
+  é pseudo-elemento e escapava da varredura de textos.
+
+  Ficou registrado, sem correção, que a borda de `--input` mede 1.23:1 no tema
+  claro e 1.56:1 no escuro contra o mínimo de 3:1 da WCAG 1.4.11. Corrigir passa
+  por escurecer o token, o que muda a borda de todo campo do sistema.
+
+- 6934796: Corrige o contraste do item `destructive` do `DropdownMenu` no tema escuro.
+
+  O item usava `text-destructive` sobre a superfície do popover, que é mais clara
+  que o fundo da página, e media 3.99:1. Passa a usar
+  `--destructive-tint-foreground`, o mesmo token já adotado nos demais
+  componentes, e o estado de foco passa a usar as tintas opacas em vez de
+  `bg-destructive/10` e `/20`.
+
+- ff8e0e2: Deduz `nativeButton` quando um gatilho é renderizado como link.
+
+  Os gatilhos do Base UI assumem `nativeButton: true`: mesmo trocando o elemento
+  pelo `render`, seguem contando com as semânticas nativas do `<button>`. Com
+  `render={<Link />}` a premissa quebra — o resultado era uma âncora com
+  `type="button"`, atributo que não existe em `<a>`, sem o tratamento de teclado
+  que o Base UI reserva ao modo não-nativo, e um `console.error` em dev a cada
+  ocorrência.
+
+  A saída documentada é passar `nativeButton={false}`, mas isso é fácil de
+  esquecer e cada produto que consome o design system esquecia de novo. A dedução
+  passa a morar em `resolveNativeButton`, e `Button`, `AccordionTrigger`,
+  `CollapsibleTrigger`, `DialogTrigger`, `DialogClose`, `DrawerTrigger`,
+  `DrawerClose`, `SheetTrigger`, `SheetClose`, `DropdownMenuTrigger`,
+  `PopoverTrigger`, `TabsTrigger`, `Toggle` e `NavigationMenuTrigger` a herdam.
+
+  A dedução é deliberadamente estreita: só reconhece o que comprovadamente
+  navega — a tag `a`, ou um componente que recebe `href` ou `to`. O teste ingênuo
+  de "o `render` não é `<button>`, logo não é botão" erraria em
+  `render={<Button variant="outline" />}`, que o próprio design system usa no
+  rodapé do `Dialog`. Fora esse caso a função devolve `undefined` e o default do
+  Base UI continua valendo, então nada muda no que já funcionava.
+
+  **Contrapartida:** no modo não-nativo o Base UI aplica `role="button"` ao
+  elemento, de modo que um link com aparência de botão passa a ser anunciado como
+  botão — e ganha o acionamento por Espaço que ele não tinha. É o contrato
+  pretendido pela biblioteca, coerente com a aparência do controle. Quem preferir
+  semântica de link num caso específico passa `role="link"`, que vence por vir das
+  props externas.
+
+- 94dc6bb: Corrige o contraste de `--destructive` e `--success` usados como texto direto
+  sobre o fundo da página, sem tinta atrás.
+
+  Nos valores de preenchimento eles ficavam em 4.36 e 4.33 no tema claro, logo
+  abaixo do mínimo AA. Em vez de escurecer os tokens base outra vez — o que
+  arrastaria também o preenchimento sólido —, quem desce é o
+  `--{destructive,success}-tint-foreground`, que existe justamente para guardar "a
+  cor legível como texto".
+
+  `StatTrend` e `FieldError` passam a apontar para esses tokens. A mudança visual é
+  imperceptível: a maior diferença medida foi de 16 em 765 num único pixel.
+
 ## 0.4.0
 
 ### Minor Changes
