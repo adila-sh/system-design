@@ -43,6 +43,7 @@
   --gray-200: oklch(0.2 0 0);
   --gray-175: oklch(0.175 0 0);
   --gray-145: oklch(0.145 0 0);
+  --gray-0: oklch(0 0 0);
 
   /* Indigo adila.co (#3A4BE5) — o acento da marca. */
   --indigo-708: oklch(0.708 0.2298 270.42);
@@ -156,6 +157,27 @@
   --border: var(--gray-928);
   --input: var(--gray-928);
   --ring: var(--indigo-506);
+
+  /* Scrim do Dialog, AlertDialog, Sheet e Drawer, que repetiam `bg-black/10`.
+     Fica no :root e NÃO é reapontado no `.dark`, e isso é medido, não intuído:
+     o trabalho do scrim é suprimir o conteúdo de trás, e 10% de preto derruba o
+     contraste do texto da página em 8,1% no claro contra 8,9% no escuro. Os
+     dois temas se comportam igual porque o scrim multiplica as duas
+     luminosidades, a do texto e a do fundo, na mesma proporção.
+     Vale registrar que 8% é um scrim FRACO em termos absolutos — quem separa o
+     diálogo aqui é a borda, a sombra e o backdrop-blur, não o escurecimento.
+     Subir isso muda a aparência nos dois temas, então é decisão de design e não
+     entrou junto da tokenização.
+
+     Usa `oklch(from ...)` e não `color-mix` de propósito. Para color-mix o
+     Tailwind gera um fallback automático com o valor SEM a mistura — aqui
+     seria `var(--gray-0)`, preto opaco, e um navegador sem suporte cobriria a
+     página inteira em vez de escurecê-la em 10%. Com relative color syntax não
+     há fallback gerado: se o navegador não entender, a utilitária fica
+     inválida e o scrim simplesmente não aparece, que é o modo de falhar certo
+     para um overlay. Declarar um fallback à mão não resolve — o Tailwind
+     colapsa declarações repetidas da mesma custom property. */
+  --overlay: oklch(from var(--gray-0) l c h / 10%);
 
   --chart-1: var(--indigo-506);
   --chart-2: var(--red-637);
@@ -296,6 +318,7 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
+  --color-overlay: var(--overlay);
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);
