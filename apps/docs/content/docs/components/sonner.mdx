@@ -3,9 +3,7 @@ title: Sonner
 description: Componente sonner do design system adila.co.
 ---
 
-import { Toaster } from '@adila-sh/ui';
-import { Button } from '@adila-sh/ui';
-import { toast } from 'sonner';
+import { Button, Toaster, toast } from '@adila-sh/ui';
 
 <Preview>
   <Toaster />
@@ -30,12 +28,10 @@ bun add @adila-sh/ui
 ## Uso
 
 Renderize o `<Toaster />` uma única vez na raiz da aplicação e dispare
-notificações de qualquer lugar com a função `toast` importada de `sonner`.
+notificações de qualquer lugar com a função `toast` do próprio design system.
 
 ```tsx
-import { Toaster } from '@adila-sh/ui';
-import { Button } from '@adila-sh/ui';
-import { toast } from 'sonner';
+import { Button, Toaster, toast } from '@adila-sh/ui';
 
 export function Example() {
   return (
@@ -56,8 +52,5 @@ export function Example() {
 }
 ```
 
-## Dependências
-
-- `lucide-react`
-- `next-themes`
-- `sonner`
+`sonner` é uma dependência interna do pacote e não precisa ser instalado nem
+importado diretamente pela aplicação.

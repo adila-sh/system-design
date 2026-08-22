@@ -1,7 +1,6 @@
 import { afterEach, describe, expect, test } from "vitest";
 import { render } from "vitest-browser-react";
-import { toast } from "sonner";
-import { Toaster } from "./sonner";
+import { Toaster, toast } from "./sonner";
 
 describe("Toaster", () => {
   afterEach(() => {

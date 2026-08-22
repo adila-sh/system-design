@@ -16,7 +16,8 @@
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
     },
-    "./style.css": "./dist/style.css"
+    "./style.css": "./dist/style.css",
+    "./theme.css": "./dist/theme.css"
   },
   "scripts": {
     "gen:barrel": "node scripts/gen-barrel.mjs",
@@ -25,7 +26,7 @@
     "check:focus": "node scripts/check-focus-fallback.mjs",
     "check:tints": "node scripts/check-tint-fallback.mjs",
     "build:js": "bun run gen:barrel && tsup",
-    "build:css": "tailwindcss -i src/styles/index.css -o dist/style.css --minify && node scripts/append-font-import.mjs",
+    "build:css": "tailwindcss -i src/styles/index.css -o dist/style.css --minify && node scripts/append-font-import.mjs && node scripts/copy-theme-css.mjs",
     "build": "bun run check:dropdown-menu && bun run check:tokens && bun run build:js && bun run build:css && bun run check:focus && bun run check:tints",
     "prepublishOnly": "bun run build",
     "dev": "bun run gen:barrel && tsup --watch",

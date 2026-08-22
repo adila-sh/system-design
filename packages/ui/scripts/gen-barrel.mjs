@@ -1,5 +1,5 @@
-// Gera src/index.ts re-exportando todo componente em src/components.
-// Fonte única de verdade: os próprios arquivos do pacote.
+// Gera src/index.ts re-exportando todo componente em src/components e os
+// utilitários que fazem parte da API pública.
 import { readdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 
@@ -26,6 +26,7 @@ const lines = names.map((name) =>
     ? `export * as ${name[0].toUpperCase()}${name.slice(1)} from "./components/${name}";`
     : `export * from "./components/${name}";`,
 );
+lines.push('export { cn } from "./lib/utils";');
 writeFileSync(OUT_FILE, `${lines.join("\n")}\n`);
 
 console.log(`gen-barrel: src/index.ts gerado com ${names.length} módulos.`);
