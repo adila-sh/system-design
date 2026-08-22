@@ -51,18 +51,21 @@ function AsciiGauge({
   const target = percentage(value, max);
   const prefersReducedMotion = useReducedMotion();
   const spring = useSpring(target, { stiffness: 80, damping: 20, mass: 1 });
-  const [displayed, setDisplayed] = React.useState(target);
+  const [animado, setAnimado] = React.useState(target);
 
   React.useEffect(() => {
-    if (prefersReducedMotion) {
-      spring.jump(target);
-      setDisplayed(target);
-    } else {
-      spring.set(target);
-    }
+    if (prefersReducedMotion) spring.jump(target);
+    else spring.set(target);
   }, [prefersReducedMotion, spring, target]);
 
-  React.useEffect(() => spring.on("change", setDisplayed), [spring]);
+  React.useEffect(() => spring.on("change", setAnimado), [spring]);
+
+  /* Com movimento reduzido o valor exibido É o alvo, então dá para derivar
+     durante o render em vez de chamar setState dentro do efeito — que era o
+     que o oxlint apontava, e que custava um render a mais a cada mudança de
+     valor. A mola continua sendo atualizada para não ficar defasada se a
+     preferência mudar no meio do caminho. */
+  const displayed = prefersReducedMotion ? target : animado;
 
   const safeColumns = Math.max(1, Math.floor(resolvedColumns));
   const bar = buildGaugeFill(displayed, safeColumns);

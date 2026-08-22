@@ -132,7 +132,7 @@ function CodeBlock({
     <figure
       data-slot="code-block"
       className={cn(
-        "relative overflow-hidden rounded-lg border border-[var(--code-border)] bg-[var(--code-bg)] text-[var(--code-fg)] shadow-sm transition-colors",
+        "relative overflow-hidden rounded-md border border-[var(--code-border)] bg-[var(--code-bg)] text-[var(--code-fg)] shadow-sm transition-colors",
         className,
       )}
       {...props}
@@ -167,7 +167,7 @@ function CodeBlock({
       <pre
         tabIndex={0}
         className={cn(
-          "overflow-x-auto py-4 text-[13px] leading-6 outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring",
+          "overflow-x-auto py-4 text-[13px] leading-6 outline-none focus-ring-inset",
           codeClassName,
         )}
       >

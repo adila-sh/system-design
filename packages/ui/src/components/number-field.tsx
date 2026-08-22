@@ -24,7 +24,7 @@ function NumberFieldGroup({
     <NumberFieldPrimitive.Group
       data-slot="number-field-group"
       className={cn(
-        "flex h-10 w-full min-w-0 items-center rounded-md border border-input bg-transparent transition-[color,box-shadow,border-color] has-focus-visible:border-ring has-focus-visible:ring-3 has-focus-visible:ring-ring/50 has-aria-invalid:border-destructive has-aria-invalid:ring-3 has-aria-invalid:ring-destructive/20 has-data-disabled:pointer-events-none has-data-disabled:bg-input/50 has-data-disabled:opacity-50 dark:has-data-disabled:bg-input/80",
+        "flex h-10 w-full min-w-0 items-center rounded-md border border-input focus-ring-has-fallback bg-transparent transition-[color,box-shadow,border-color] has-focus-visible:border-ring has-focus-visible:ring-3 has-focus-visible:ring-ring/50 has-aria-invalid:border-destructive has-aria-invalid:ring-3 has-aria-invalid:ring-destructive/20 has-data-disabled:pointer-events-none has-data-disabled:bg-input/50 has-data-disabled:opacity-50 dark:has-data-disabled:bg-input/80",
         className,
       )}
       {...props}
@@ -58,7 +58,7 @@ function NumberFieldIncrement({
       data-slot="number-field-increment"
       aria-label="Incrementar"
       className={cn(
-        "flex size-8 shrink-0 items-center justify-center rounded-sm text-muted-foreground outline-none hover:bg-muted hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg:not([class*='size-'])]:size-4",
+        "flex size-8 shrink-0 items-center justify-center rounded-sm text-muted-foreground outline-none hover:bg-muted hover:text-foreground focus-ring disabled:pointer-events-none disabled:opacity-50 [&_svg:not([class*='size-'])]:size-4",
         className,
       )}
       {...props}
@@ -78,7 +78,7 @@ function NumberFieldDecrement({
       data-slot="number-field-decrement"
       aria-label="Diminuir"
       className={cn(
-        "flex size-8 shrink-0 items-center justify-center rounded-sm text-muted-foreground outline-none hover:bg-muted hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg:not([class*='size-'])]:size-4",
+        "flex size-8 shrink-0 items-center justify-center rounded-sm text-muted-foreground outline-none hover:bg-muted hover:text-foreground focus-ring disabled:pointer-events-none disabled:opacity-50 [&_svg:not([class*='size-'])]:size-4",
         className,
       )}
       {...props}

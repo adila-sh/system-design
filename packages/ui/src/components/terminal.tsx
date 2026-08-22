@@ -7,7 +7,7 @@ function Terminal({ className, ...props }: React.ComponentProps<"div">) {
     <div
       data-slot="terminal"
       className={cn(
-        "overflow-hidden rounded-lg border border-[var(--code-border)] bg-[var(--code-bg)] font-mono text-[13px] text-[var(--code-fg)] shadow-sm transition-colors",
+        "overflow-hidden rounded-md border border-[var(--code-border)] bg-[var(--code-bg)] font-mono text-[13px] text-[var(--code-fg)] shadow-sm transition-colors",
         className,
       )}
       {...props}
