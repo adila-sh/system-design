@@ -1,13 +1,13 @@
 {
-  "geradoEm": "2026-08-22T17:57:18.747Z",
+  "geradoEm": "2026-08-22T19:11:26.818Z",
   "origem": "vitest",
   "resumo": {
     "componentes": 108,
     "comTestes": 108,
     "semTestes": 0,
-    "testes": 516,
+    "testes": 524,
     "falhando": 0,
-    "testesNaSuite": 560
+    "testesNaSuite": 568
   },
   "componentes": {
     "accordion": {
@@ -586,8 +586,8 @@
     },
     "search-input": {
       "status": "passando",
-      "total": 6,
-      "passando": 6,
+      "total": 14,
+      "passando": 14,
       "falhando": 0,
       "arquivos": ["src/components/search-input.browser.test.tsx"]
     },

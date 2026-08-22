@@ -22,6 +22,10 @@ type SearchInputProps = Omit<
   defaultValue?: string;
   value?: string;
   onValueChange?: (value: string) => void;
+  /**
+   * Recebe o valor após o debounce. Não é chamada na montagem inicial, mesmo
+   * quando `defaultValue` ou `value` já contém uma busca.
+   */
   onSearch?: (value: string) => void;
   debounce?: number;
   loading?: boolean;
@@ -43,16 +47,24 @@ function SearchInput({
   const [internalValue, setInternalValue] = React.useState(defaultValue);
   const currentValue = value ?? internalValue;
   const firstSearch = React.useRef(true);
+  const onSearchRef = React.useRef(onSearch);
 
   React.useEffect(() => {
-    if (!onSearch) return;
+    onSearchRef.current = onSearch;
+  }, [onSearch]);
+
+  React.useEffect(() => {
     if (firstSearch.current) {
       firstSearch.current = false;
       return;
     }
-    const timer = window.setTimeout(() => onSearch(currentValue), debounce);
+    if (!onSearchRef.current) return;
+    const timer = window.setTimeout(
+      () => onSearchRef.current?.(currentValue),
+      debounce,
+    );
     return () => window.clearTimeout(timer);
-  }, [currentValue, debounce, onSearch]);
+  }, [currentValue, debounce]);
 
   function update(nextValue: string) {
     if (value === undefined) setInternalValue(nextValue);
