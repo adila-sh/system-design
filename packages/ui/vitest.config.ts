@@ -80,6 +80,12 @@ export default defineConfig({
         branches: 65,
         functions: 81,
         lines: 74,
+        "src/components/pixel-blast.tsx": {
+          statements: 98,
+          branches: 90,
+          functions: 100,
+          lines: 100,
+        },
       },
     },
     projects: [
