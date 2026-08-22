@@ -17,6 +17,8 @@
     "**/.output",
     "**/.nitro",
     "node_modules",
-    "apps/docs/src/routeTree.gen.ts"
+    "apps/docs/src/routeTree.gen.ts",
+    ".agents/skills/*",
+    "!.agents/skills/use-adila-sidebar/"
   ]
 }
