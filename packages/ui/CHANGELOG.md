@@ -1,5 +1,14 @@
 # @adila-sh/ui
 
+## 0.7.1
+
+### Patch Changes
+
+- 103b279: Corrige as variantes de orientação do Base UI para que Separator, Slider,
+  ScrollArea, ToggleGroup e ButtonGroup apliquem as regras horizontais e verticais
+  ao atributo `data-orientation` realmente renderizado. O rótulo acessível fornecido
+  ao Slider também passa a nomear seu controle interno.
+
 ## 0.7.0
 
 ### Minor Changes
