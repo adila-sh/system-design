@@ -1,13 +1,13 @@
 {
-  "geradoEm": "2026-08-22T18:33:52.290Z",
+  "geradoEm": "2026-08-22T19:37:43.842Z",
   "origem": "vitest",
   "resumo": {
     "componentes": 108,
     "comTestes": 108,
     "semTestes": 0,
-    "testes": 526,
+    "testes": 535,
     "falhando": 0,
-    "testesNaSuite": 570
+    "testesNaSuite": 579
   },
   "componentes": {
     "accordion": {
@@ -537,8 +537,8 @@
     },
     "pixel-blast": {
       "status": "passando",
-      "total": 3,
-      "passando": 3,
+      "total": 12,
+      "passando": 12,
       "falhando": 0,
       "arquivos": ["src/components/pixel-blast.browser.test.tsx"]
     },

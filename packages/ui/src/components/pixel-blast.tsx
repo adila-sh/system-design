@@ -134,6 +134,20 @@ function compile(gl: WebGLRenderingContext, type: number, src: string) {
   return shader;
 }
 
+type WebGLResources = {
+  vertex?: WebGLShader | null;
+  fragment?: WebGLShader | null;
+  program?: WebGLProgram | null;
+  buffer?: WebGLBuffer | null;
+};
+
+function dispose(gl: WebGLRenderingContext, resources: WebGLResources) {
+  if (resources.buffer) gl.deleteBuffer(resources.buffer);
+  if (resources.program) gl.deleteProgram(resources.program);
+  if (resources.vertex) gl.deleteShader(resources.vertex);
+  if (resources.fragment) gl.deleteShader(resources.fragment);
+}
+
 /**
  * Lê a cor `--primary` do tema e devolve RGB em 0..1. O token é `oklch(...)` e o
  * `getComputedStyle` não o converte para rgb — então usamos um canvas 2D, que
@@ -174,17 +188,29 @@ export function PixelBlast({ className }: { className?: string }) {
       return;
     }
 
-    const vs = compile(gl, gl.VERTEX_SHADER, VERT);
-    const fs = compile(gl, gl.FRAGMENT_SHADER, FRAG);
-    const program = gl.createProgram();
-    if (!vs || !fs || !program) {
+    const resources: WebGLResources = {
+      vertex: compile(gl, gl.VERTEX_SHADER, VERT),
+      fragment: compile(gl, gl.FRAGMENT_SHADER, FRAG),
+    };
+    if (!resources.vertex || !resources.fragment) {
+      dispose(gl, resources);
       canvas.style.display = "none";
       return;
     }
-    gl.attachShader(program, vs);
-    gl.attachShader(program, fs);
+
+    resources.program = gl.createProgram();
+    if (!resources.program) {
+      dispose(gl, resources);
+      canvas.style.display = "none";
+      return;
+    }
+
+    const { program } = resources;
+    gl.attachShader(program, resources.vertex);
+    gl.attachShader(program, resources.fragment);
     gl.linkProgram(program);
     if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+      dispose(gl, resources);
       canvas.style.display = "none";
       return;
     }
@@ -193,8 +219,13 @@ export function PixelBlast({ className }: { className?: string }) {
     const cv = canvas;
     const glc = gl;
 
-    const buffer = gl.createBuffer();
-    gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+    resources.buffer = gl.createBuffer();
+    if (!resources.buffer) {
+      dispose(gl, resources);
+      canvas.style.display = "none";
+      return;
+    }
+    gl.bindBuffer(gl.ARRAY_BUFFER, resources.buffer);
     gl.bufferData(
       gl.ARRAY_BUFFER,
       new Float32Array([-1, -1, 1, -1, -1, 1, -1, 1, 1, -1, 1, 1]),
@@ -274,10 +305,10 @@ export function PixelBlast({ className }: { className?: string }) {
     };
 
     if (!reduceMotion) {
-      window.addEventListener("pointermove", onMove);
-      window.addEventListener("pointerleave", onLeave);
+      canvas.addEventListener("pointermove", onMove);
+      canvas.addEventListener("pointerleave", onLeave);
+      canvas.addEventListener("pointerdown", onDown);
       window.addEventListener("blur", onLeave);
-      window.addEventListener("pointerdown", onDown);
     }
 
     let color = readPrimary();
@@ -357,14 +388,11 @@ export function PixelBlast({ className }: { className?: string }) {
       ro.disconnect();
       io?.disconnect();
       themeObserver?.disconnect();
-      window.removeEventListener("pointermove", onMove);
-      window.removeEventListener("pointerleave", onLeave);
+      canvas.removeEventListener("pointermove", onMove);
+      canvas.removeEventListener("pointerleave", onLeave);
+      canvas.removeEventListener("pointerdown", onDown);
       window.removeEventListener("blur", onLeave);
-      window.removeEventListener("pointerdown", onDown);
-      gl.deleteProgram(program);
-      gl.deleteShader(vs);
-      gl.deleteShader(fs);
-      gl.deleteBuffer(buffer);
+      dispose(gl, resources);
     };
   }, []);
 
