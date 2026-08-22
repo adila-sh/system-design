@@ -117,7 +117,7 @@ export function DataTable<TData extends RowData>({
             {table.getRowModel().rows.map((row) => (
               <tr
                 key={row.id}
-                className="hover:bg-muted/20 data-[selected=true]:bg-muted/30"
+                className="hover:bg-muted-hover data-[selected=true]:bg-muted/30"
                 data-selected={row.getIsSelected()}
               >
                 {row.getAllCells().map((cell) => (

@@ -158,6 +158,25 @@
   --input: var(--gray-928);
   --ring: var(--indigo-506);
 
+  /* Hover — uma regra só: a superfície anda 5% na direção do texto.
+     Serve para os dois temas sem `dark:`, porque `--foreground` já é escuro no
+     claro e claro no escuro: hover sempre significa MAIS ênfase, nunca menos.
+     Antes havia duas direções em uso. O Button e o Bubble escreviam este mesmo
+     color-mix à mão, dentro do className; o Badge, a Table e o Attachment
+     usavam `bg-x/N`, que sobre uma página branca CLAREIA — hover que apaga o
+     elemento em vez de destacá-lo. Esses três mudam de aparência, de propósito.
+     Opacos pelo mesmo motivo das tintas: `bg-muted/50` compõe com o que estiver
+     atrás, então a mesma linha de tabela mudava de cor conforme a superfície. */
+  --primary-hover: color-mix(in oklab, var(--primary), var(--foreground) 5%);
+  --secondary-hover: color-mix(in oklab, var(--secondary), var(--foreground) 5%);
+  --muted-hover: color-mix(in oklab, var(--muted), var(--foreground) 5%);
+  --input-hover: color-mix(in oklab, var(--input), var(--foreground) 5%);
+  --sidebar-accent-hover: color-mix(
+    in oklab,
+    var(--sidebar-accent),
+    var(--foreground) 5%
+  );
+
   /* Scrim do Dialog, AlertDialog, Sheet e Drawer, que repetiam `bg-black/10`.
      Fica no :root e NÃO é reapontado no `.dark`, e isso é medido, não intuído:
      o trabalho do scrim é suprimir o conteúdo de trás, e 10% de preto derruba o
@@ -319,6 +338,13 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
   --color-overlay: var(--overlay);
+
+  /* Hover — uma regra só, ver o bloco semântico. */
+  --color-primary-hover: var(--primary-hover);
+  --color-secondary-hover: var(--secondary-hover);
+  --color-muted-hover: var(--muted-hover);
+  --color-input-hover: var(--input-hover);
+  --color-sidebar-accent-hover: var(--sidebar-accent-hover);
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);
