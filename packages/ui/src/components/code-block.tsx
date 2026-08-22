@@ -167,7 +167,7 @@ function CodeBlock({
       <pre
         tabIndex={0}
         className={cn(
-          "overflow-x-auto py-4 text-[13px] leading-6 outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring",
+          "overflow-x-auto py-4 text-[13px] leading-6 outline-none focus-ring-inset",
           codeClassName,
         )}
       >

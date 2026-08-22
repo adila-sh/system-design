@@ -434,6 +434,62 @@
   transition-duration: var(--duration-slower);
 }
 
+/* ------------------------------------------------------------------ */
+/* Foco.                                                                 */
+/*                                                                       */
+/* Havia seis espessuras de anel em uso (ring-0, 1, 2, 3, outline-1 e    */
+/* nenhuma), e metade dos anéis sem o alpha — `ring-ring` cheio em vez   */
+/* de `ring-ring/50`. A espessura do foco mudava conforme o componente   */
+/* que o usuário tabulava, num sistema em que o foco é o contrato de     */
+/* acessibilidade mais visível que existe. WCAG 2.2 SC 2.4.13.          */
+/*                                                                       */
+/* O @media forced-colors não estava em lugar nenhum e é o motivo de     */
+/* esta utilitária existir em vez de só padronizarmos as classes: o anel */
+/* é box-shadow, e o modo de alto contraste do Windows DESCARTA          */
+/* box-shadow. Sem um outline, quem usa alto contraste fica sem foco     */
+/* visível. Alguns componentes tinham um `outline-1` solto que parecia   */
+/* essa intenção pela metade — sem media query, sem cor, e desenhando um */
+/* segundo anel por cima do primeiro no modo normal.                     */
+/* ------------------------------------------------------------------ */
+@utility focus-ring {
+  &:focus-visible {
+    @apply border-ring ring-3 ring-ring/50 outline-none;
+
+    @media (forced-colors: active) {
+      /* Sem cor de propósito: no alto contraste quem manda é a paleta do
+         sistema, e fixar a nossa aqui seria ignorá-la. */
+      outline: 2px solid;
+      outline-offset: 2px;
+    }
+  }
+}
+
+/* Para quem encosta na borda do contêiner (a barra inferior, o botão de
+   copiar dentro do bloco de código): mesmo anel, desenhado para dentro. */
+@utility focus-ring-inset {
+  &:focus-visible {
+    @apply border-ring ring-3 ring-ring/50 ring-inset outline-none;
+
+    @media (forced-colors: active) {
+      outline: 2px solid;
+      outline-offset: -2px;
+    }
+  }
+}
+
+/* Contêineres que mostram o foco de um filho — InputGroup, Combobox,
+   Attachment. Mesmo desenho, gatilho diferente. */
+@utility focus-ring-within {
+  &:focus-within {
+    @apply border-ring ring-3 ring-ring/50 outline-none;
+
+    @media (forced-colors: active) {
+      outline: 2px solid;
+      outline-offset: 2px;
+    }
+  }
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

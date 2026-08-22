@@ -46,7 +46,7 @@ function BottomBarItem({ className, ...props }: React.ComponentProps<"li">) {
 }
 
 const bottomBarButtonVariants = cva(
-  "relative flex min-w-0 flex-1 cursor-pointer flex-col items-center justify-center gap-1 px-1 text-[0.6875rem] font-medium text-muted-foreground transition-colors outline-none select-none hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring/50 focus-visible:ring-inset disabled:pointer-events-none disabled:opacity-50 [&_svg]:size-5 [&_svg]:shrink-0",
+  "relative flex min-w-0 flex-1 cursor-pointer flex-col items-center justify-center gap-1 px-1 text-[0.6875rem] font-medium text-muted-foreground transition-colors outline-none select-none hover:text-foreground focus-ring-inset disabled:pointer-events-none disabled:opacity-50 [&_svg]:size-5 [&_svg]:shrink-0",
   {
     variants: {
       isActive: {
