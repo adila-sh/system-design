@@ -86,6 +86,15 @@ export default defineConfig({
           functions: 100,
           lines: 100,
         },
+        // O chart concentra resolução de payload, formatadores e variantes de
+        // tooltip. O piso dedicado impede que a média global esconda de novo
+        // um módulo público inteiro sem execução.
+        "src/components/chart.tsx": {
+          statements: 90,
+          branches: 80,
+          functions: 100,
+          lines: 90,
+        },
       },
     },
     projects: [
