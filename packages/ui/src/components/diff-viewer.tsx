@@ -55,7 +55,7 @@ function DiffViewer({
   return (
     <div
       data-slot="diff-viewer"
-      className={cn("overflow-hidden rounded-lg border bg-card", className)}
+      className={cn("overflow-hidden rounded-md border bg-card", className)}
       {...props}
     >
       <MultiFileDiff

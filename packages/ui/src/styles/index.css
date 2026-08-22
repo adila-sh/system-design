@@ -12,6 +12,13 @@
    se aplicam mesmo com o site em tema claro. */
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* O Base UI descreve orientação como `data-orientation`, enquanto o atalho
+   nativo `data-horizontal:` do Tailwind procura um atributo booleano
+   `data-horizontal`. Estes aliases mantêm a sintaxe curta usada pelos
+   componentes e fazem as regras casarem com o DOM realmente renderizado. */
+@custom-variant data-horizontal (&[data-orientation="horizontal"]);
+@custom-variant data-vertical (&[data-orientation="vertical"]);
+
 /* garante que o Tailwind resolva as classes usadas dentro dos componentes */
 @source "../components";
 

@@ -40,7 +40,7 @@ function UsageCard({
     <div
       data-slot="usage-card"
       data-state={state}
-      className={cn("space-y-4 rounded-lg border bg-card p-4", className)}
+      className={cn("space-y-4 rounded-md border bg-card p-4", className)}
       {...props}
     >
       <div className="flex items-start gap-3">

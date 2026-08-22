@@ -85,7 +85,7 @@ function Autocomplete({
         >
           <AutocompletePrimitive.Popup
             data-slot="autocomplete-content"
-            className="max-h-(--available-height) w-(--anchor-width) min-w-56 origin-(--transform-origin) overflow-hidden rounded-lg bg-popover text-popover-foreground ring-1 ring-foreground/10 duration-fast data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95"
+            className="max-h-(--available-height) w-(--anchor-width) min-w-56 origin-(--transform-origin) overflow-hidden rounded-md bg-popover text-popover-foreground ring-1 ring-foreground/10 duration-fast data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95"
           >
             <AutocompletePrimitive.Status className="px-2 py-2 text-sm text-muted-foreground empty:hidden">
               {loading ? "Buscando..." : null}

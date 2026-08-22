@@ -359,9 +359,18 @@
 }
 
 @theme inline {
+  /* Escala de raio: 2 / 6 / 10 e o pill.
+     Eram quatro degraus, 2/4/6/10, mas `md` (4px) e `lg` (6px) estavam a 2px um
+     do outro e juntos carregavam 107 dos 192 usos — a escolha entre os dois era
+     arbitrária para quem escrevia componente, e a diferença não comunicava
+     nada. Foram fundidos no degrau padrão, que é o próprio --radius.
+     `--radius-lg` continua declarado de propósito, apontando para o mesmo
+     valor: sem ele, um `rounded-lg` esquecido cairia no default do Tailwind
+     (0.5rem, 8px) e reintroduziria em silêncio o degrau que acabou de sair.
+     O nome em uso é `rounded-md`. */
   --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
+  --radius-md: var(--radius);
+  --radius-lg: var(--radius-md);
   --radius-xl: calc(var(--radius) + 4px);
 
   --color-background: var(--background);
