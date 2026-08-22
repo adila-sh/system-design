@@ -15,972 +15,756 @@
       "total": 2,
       "passando": 2,
       "falhando": 0,
-      "arquivos": [
-        "src/components/accordion.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/accordion.browser.test.tsx"]
     },
     "alert": {
       "status": "passando",
       "total": 8,
       "passando": 8,
       "falhando": 0,
-      "arquivos": [
-        "src/components/alert.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/alert.browser.test.tsx"]
     },
     "alert-dialog": {
       "status": "passando",
       "total": 7,
       "passando": 7,
       "falhando": 0,
-      "arquivos": [
-        "src/components/alert-dialog.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/alert-dialog.browser.test.tsx"]
     },
     "api-request": {
       "status": "passando",
       "total": 10,
       "passando": 10,
       "falhando": 0,
-      "arquivos": [
-        "src/components/api-request.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/api-request.browser.test.tsx"]
     },
     "ascii-badge": {
       "status": "passando",
       "total": 14,
       "passando": 14,
       "falhando": 0,
-      "arquivos": [
-        "src/components/ascii-badge.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/ascii-badge.browser.test.tsx"]
     },
     "ascii-collapsible": {
       "status": "passando",
       "total": 3,
       "passando": 3,
       "falhando": 0,
-      "arquivos": [
-        "src/components/ascii-collapsible.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/ascii-collapsible.browser.test.tsx"]
     },
     "ascii-divider": {
       "status": "passando",
       "total": 3,
       "passando": 3,
       "falhando": 0,
-      "arquivos": [
-        "src/components/ascii-divider.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/ascii-divider.browser.test.tsx"]
     },
     "ascii-gauge": {
       "status": "passando",
       "total": 3,
       "passando": 3,
       "falhando": 0,
-      "arquivos": [
-        "src/components/ascii-gauge.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/ascii-gauge.browser.test.tsx"]
     },
     "ascii-heatmap": {
       "status": "passando",
       "total": 3,
       "passando": 3,
       "falhando": 0,
-      "arquivos": [
-        "src/components/ascii-heatmap.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/ascii-heatmap.browser.test.tsx"]
     },
     "ascii-progress": {
       "status": "passando",
       "total": 3,
       "passando": 3,
       "falhando": 0,
-      "arquivos": [
-        "src/components/ascii-progress.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/ascii-progress.browser.test.tsx"]
     },
     "ascii-sparkline": {
       "status": "passando",
       "total": 12,
       "passando": 12,
       "falhando": 0,
-      "arquivos": [
-        "src/components/ascii-sparkline.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/ascii-sparkline.browser.test.tsx"]
     },
     "ascii-spinner": {
       "status": "passando",
       "total": 3,
       "passando": 3,
       "falhando": 0,
-      "arquivos": [
-        "src/components/ascii-spinner.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/ascii-spinner.browser.test.tsx"]
     },
     "ascii-tree": {
       "status": "passando",
       "total": 3,
       "passando": 3,
       "falhando": 0,
-      "arquivos": [
-        "src/components/ascii-tree.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/ascii-tree.browser.test.tsx"]
     },
     "aspect-ratio": {
       "status": "passando",
       "total": 5,
       "passando": 5,
       "falhando": 0,
-      "arquivos": [
-        "src/components/aspect-ratio.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/aspect-ratio.browser.test.tsx"]
     },
     "attachment": {
       "status": "passando",
       "total": 2,
       "passando": 2,
       "falhando": 0,
-      "arquivos": [
-        "src/components/attachment.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/attachment.browser.test.tsx"]
     },
     "autocomplete": {
       "status": "passando",
       "total": 6,
       "passando": 6,
       "falhando": 0,
-      "arquivos": [
-        "src/components/autocomplete.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/autocomplete.browser.test.tsx"]
     },
     "avatar": {
       "status": "passando",
       "total": 2,
       "passando": 2,
       "falhando": 0,
-      "arquivos": [
-        "src/components/avatar.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/avatar.browser.test.tsx"]
     },
     "badge": {
       "status": "passando",
       "total": 12,
       "passando": 12,
       "falhando": 0,
-      "arquivos": [
-        "src/components/badge.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/badge.browser.test.tsx"]
     },
     "bottom-bar": {
       "status": "passando",
       "total": 4,
       "passando": 4,
       "falhando": 0,
-      "arquivos": [
-        "src/components/bottom-bar.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/bottom-bar.browser.test.tsx"]
     },
     "brand-icons": {
       "status": "passando",
       "total": 2,
       "passando": 2,
       "falhando": 0,
-      "arquivos": [
-        "src/components/brand-icons.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/brand-icons.browser.test.tsx"]
     },
     "breadcrumb": {
       "status": "passando",
       "total": 2,
       "passando": 2,
       "falhando": 0,
-      "arquivos": [
-        "src/components/breadcrumb.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/breadcrumb.browser.test.tsx"]
     },
     "bubble": {
       "status": "passando",
       "total": 14,
       "passando": 14,
       "falhando": 0,
-      "arquivos": [
-        "src/components/bubble.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/bubble.browser.test.tsx"]
     },
     "bulk-action-bar": {
       "status": "passando",
       "total": 6,
       "passando": 6,
       "falhando": 0,
-      "arquivos": [
-        "src/components/bulk-action-bar.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/bulk-action-bar.browser.test.tsx"]
     },
     "button": {
       "status": "passando",
       "total": 18,
       "passando": 18,
       "falhando": 0,
-      "arquivos": [
-        "src/components/button.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/button.browser.test.tsx"]
     },
     "button-group": {
       "status": "passando",
       "total": 4,
       "passando": 4,
       "falhando": 0,
-      "arquivos": [
-        "src/components/button-group.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/button-group.browser.test.tsx"]
     },
     "calendar": {
       "status": "passando",
       "total": 6,
       "passando": 6,
       "falhando": 0,
-      "arquivos": [
-        "src/components/calendar.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/calendar.browser.test.tsx"]
     },
     "card": {
       "status": "passando",
       "total": 2,
       "passando": 2,
       "falhando": 0,
-      "arquivos": [
-        "src/components/card.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/card.browser.test.tsx"]
     },
     "carousel": {
       "status": "passando",
       "total": 6,
       "passando": 6,
       "falhando": 0,
-      "arquivos": [
-        "src/components/carousel.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/carousel.browser.test.tsx"]
     },
     "chart": {
       "status": "passando",
       "total": 18,
       "passando": 18,
       "falhando": 0,
-      "arquivos": [
-        "src/components/chart.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/chart.browser.test.tsx"]
     },
     "checkbox": {
       "status": "passando",
       "total": 8,
       "passando": 8,
       "falhando": 0,
-      "arquivos": [
-        "src/components/checkbox.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/checkbox.browser.test.tsx"]
     },
     "code-block": {
       "status": "passando",
       "total": 8,
       "passando": 8,
       "falhando": 0,
-      "arquivos": [
-        "src/components/code-block.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/code-block.browser.test.tsx"]
     },
     "code-theme": {
       "status": "passando",
       "total": 4,
       "passando": 4,
       "falhando": 0,
-      "arquivos": [
-        "src/components/code-theme.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/code-theme.browser.test.tsx"]
     },
     "collapsible": {
       "status": "passando",
       "total": 3,
       "passando": 3,
       "falhando": 0,
-      "arquivos": [
-        "src/components/collapsible.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/collapsible.browser.test.tsx"]
     },
     "combobox": {
       "status": "passando",
       "total": 6,
       "passando": 6,
       "falhando": 0,
-      "arquivos": [
-        "src/components/combobox.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/combobox.browser.test.tsx"]
     },
     "command": {
       "status": "passando",
       "total": 4,
       "passando": 4,
       "falhando": 0,
-      "arquivos": [
-        "src/components/command.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/command.browser.test.tsx"]
     },
     "confirm-dialog": {
       "status": "passando",
       "total": 5,
       "passando": 5,
       "falhando": 0,
-      "arquivos": [
-        "src/components/confirm-dialog.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/confirm-dialog.browser.test.tsx"]
     },
     "context-menu": {
       "status": "passando",
       "total": 6,
       "passando": 6,
       "falhando": 0,
-      "arquivos": [
-        "src/components/context-menu.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/context-menu.browser.test.tsx"]
     },
     "copy-button": {
       "status": "passando",
       "total": 4,
       "passando": 4,
       "falhando": 0,
-      "arquivos": [
-        "src/components/copy-button.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/copy-button.browser.test.tsx"]
     },
     "currency-input": {
       "status": "passando",
       "total": 5,
       "passando": 5,
       "falhando": 0,
-      "arquivos": [
-        "src/components/currency-input.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/currency-input.browser.test.tsx"]
     },
     "data-list": {
       "status": "passando",
       "total": 3,
       "passando": 3,
       "falhando": 0,
-      "arquivos": [
-        "src/components/data-list.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/data-list.browser.test.tsx"]
     },
     "data-table": {
       "status": "passando",
       "total": 7,
       "passando": 7,
       "falhando": 0,
-      "arquivos": [
-        "src/components/data-table.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/data-table.browser.test.tsx"]
     },
     "date-picker": {
       "status": "passando",
       "total": 5,
       "passando": 5,
       "falhando": 0,
-      "arquivos": [
-        "src/components/date-picker.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/date-picker.browser.test.tsx"]
     },
     "date-range-picker": {
       "status": "passando",
       "total": 7,
       "passando": 7,
       "falhando": 0,
-      "arquivos": [
-        "src/components/date-range-picker.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/date-range-picker.browser.test.tsx"]
     },
     "deployment-status": {
       "status": "passando",
       "total": 10,
       "passando": 10,
       "falhando": 0,
-      "arquivos": [
-        "src/components/deployment-status.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/deployment-status.browser.test.tsx"]
     },
     "dialog": {
       "status": "passando",
       "total": 2,
       "passando": 2,
       "falhando": 0,
-      "arquivos": [
-        "src/components/dialog.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/dialog.browser.test.tsx"]
     },
     "diff-viewer": {
       "status": "passando",
       "total": 4,
       "passando": 4,
       "falhando": 0,
-      "arquivos": [
-        "src/components/diff-viewer.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/diff-viewer.browser.test.tsx"]
     },
     "direction": {
       "status": "passando",
       "total": 3,
       "passando": 3,
       "falhando": 0,
-      "arquivos": [
-        "src/components/direction.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/direction.browser.test.tsx"]
     },
     "drawer": {
       "status": "passando",
       "total": 8,
       "passando": 8,
       "falhando": 0,
-      "arquivos": [
-        "src/components/drawer.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/drawer.browser.test.tsx"]
     },
     "dropdown-menu": {
       "status": "passando",
       "total": 2,
       "passando": 2,
       "falhando": 0,
-      "arquivos": [
-        "src/components/dropdown-menu.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/dropdown-menu.browser.test.tsx"]
     },
     "empty": {
       "status": "passando",
       "total": 2,
       "passando": 2,
       "falhando": 0,
-      "arquivos": [
-        "src/components/empty.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/empty.browser.test.tsx"]
     },
     "field": {
       "status": "passando",
       "total": 2,
       "passando": 2,
       "falhando": 0,
-      "arquivos": [
-        "src/components/field.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/field.browser.test.tsx"]
     },
     "file-upload": {
       "status": "passando",
       "total": 7,
       "passando": 7,
       "falhando": 0,
-      "arquivos": [
-        "src/components/file-upload.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/file-upload.browser.test.tsx"]
     },
     "filter-bar": {
       "status": "passando",
       "total": 5,
       "passando": 5,
       "falhando": 0,
-      "arquivos": [
-        "src/components/filter-bar.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/filter-bar.browser.test.tsx"]
     },
     "form": {
       "status": "passando",
       "total": 2,
       "passando": 2,
       "falhando": 0,
-      "arquivos": [
-        "src/components/form.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/form.browser.test.tsx"]
     },
     "hover-card": {
       "status": "passando",
       "total": 4,
       "passando": 4,
       "falhando": 0,
-      "arquivos": [
-        "src/components/hover-card.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/hover-card.browser.test.tsx"]
     },
     "input": {
       "status": "passando",
       "total": 8,
       "passando": 8,
       "falhando": 0,
-      "arquivos": [
-        "src/components/input.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/input.browser.test.tsx"]
     },
     "input-group": {
       "status": "passando",
       "total": 5,
       "passando": 5,
       "falhando": 0,
-      "arquivos": [
-        "src/components/input-group.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/input-group.browser.test.tsx"]
     },
     "input-otp": {
       "status": "passando",
       "total": 4,
       "passando": 4,
       "falhando": 0,
-      "arquivos": [
-        "src/components/input-otp.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/input-otp.browser.test.tsx"]
     },
     "item": {
       "status": "passando",
       "total": 2,
       "passando": 2,
       "falhando": 0,
-      "arquivos": [
-        "src/components/item.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/item.browser.test.tsx"]
     },
     "kbd": {
       "status": "passando",
       "total": 2,
       "passando": 2,
       "falhando": 0,
-      "arquivos": [
-        "src/components/kbd.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/kbd.browser.test.tsx"]
     },
     "label": {
       "status": "passando",
       "total": 3,
       "passando": 3,
       "falhando": 0,
-      "arquivos": [
-        "src/components/label.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/label.browser.test.tsx"]
     },
     "marker": {
       "status": "passando",
       "total": 5,
       "passando": 5,
       "falhando": 0,
-      "arquivos": [
-        "src/components/marker.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/marker.browser.test.tsx"]
     },
     "menubar": {
       "status": "passando",
       "total": 6,
       "passando": 6,
       "falhando": 0,
-      "arquivos": [
-        "src/components/menubar.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/menubar.browser.test.tsx"]
     },
     "message": {
       "status": "passando",
       "total": 4,
       "passando": 4,
       "falhando": 0,
-      "arquivos": [
-        "src/components/message.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/message.browser.test.tsx"]
     },
     "message-scroller": {
       "status": "passando",
       "total": 4,
       "passando": 4,
       "falhando": 0,
-      "arquivos": [
-        "src/components/message-scroller.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/message-scroller.browser.test.tsx"]
     },
     "multi-select": {
       "status": "passando",
       "total": 7,
       "passando": 7,
       "falhando": 0,
-      "arquivos": [
-        "src/components/multi-select.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/multi-select.browser.test.tsx"]
     },
     "native-select": {
       "status": "passando",
       "total": 6,
       "passando": 6,
       "falhando": 0,
-      "arquivos": [
-        "src/components/native-select.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/native-select.browser.test.tsx"]
     },
     "nav-tree": {
       "status": "passando",
       "total": 3,
       "passando": 3,
       "falhando": 0,
-      "arquivos": [
-        "src/components/nav-tree.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/nav-tree.browser.test.tsx"]
     },
     "navigation-menu": {
       "status": "passando",
       "total": 7,
       "passando": 7,
       "falhando": 0,
-      "arquivos": [
-        "src/components/navigation-menu.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/navigation-menu.browser.test.tsx"]
     },
     "number-field": {
       "status": "passando",
       "total": 5,
       "passando": 5,
       "falhando": 0,
-      "arquivos": [
-        "src/components/number-field.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/number-field.browser.test.tsx"]
     },
     "package-install": {
       "status": "passando",
       "total": 5,
       "passando": 5,
       "falhando": 0,
-      "arquivos": [
-        "src/components/package-install.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/package-install.browser.test.tsx"]
     },
     "page-header": {
       "status": "passando",
       "total": 3,
       "passando": 3,
       "falhando": 0,
-      "arquivos": [
-        "src/components/page-header.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/page-header.browser.test.tsx"]
     },
     "page-state": {
       "status": "passando",
       "total": 7,
       "passando": 7,
       "falhando": 0,
-      "arquivos": [
-        "src/components/page-state.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/page-state.browser.test.tsx"]
     },
     "pagination": {
       "status": "passando",
       "total": 4,
       "passando": 4,
       "falhando": 0,
-      "arquivos": [
-        "src/components/pagination.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/pagination.browser.test.tsx"]
     },
     "password-input": {
       "status": "passando",
       "total": 5,
       "passando": 5,
       "falhando": 0,
-      "arquivos": [
-        "src/components/password-input.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/password-input.browser.test.tsx"]
     },
     "pixel-blast": {
       "status": "passando",
       "total": 12,
       "passando": 12,
       "falhando": 0,
-      "arquivos": [
-        "src/components/pixel-blast.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/pixel-blast.browser.test.tsx"]
     },
     "popover": {
       "status": "passando",
       "total": 2,
       "passando": 2,
       "falhando": 0,
-      "arquivos": [
-        "src/components/popover.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/popover.browser.test.tsx"]
     },
     "progress": {
       "status": "passando",
       "total": 4,
       "passando": 4,
       "falhando": 0,
-      "arquivos": [
-        "src/components/progress.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/progress.browser.test.tsx"]
     },
     "radio-group": {
       "status": "passando",
       "total": 3,
       "passando": 3,
       "falhando": 0,
-      "arquivos": [
-        "src/components/radio-group.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/radio-group.browser.test.tsx"]
     },
     "resizable": {
       "status": "passando",
       "total": 4,
       "passando": 4,
       "falhando": 0,
-      "arquivos": [
-        "src/components/resizable.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/resizable.browser.test.tsx"]
     },
     "resource-card": {
       "status": "passando",
       "total": 2,
       "passando": 2,
       "falhando": 0,
-      "arquivos": [
-        "src/components/resource-card.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/resource-card.browser.test.tsx"]
     },
     "scroll-area": {
       "status": "passando",
       "total": 3,
       "passando": 3,
       "falhando": 0,
-      "arquivos": [
-        "src/components/scroll-area.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/scroll-area.browser.test.tsx"]
     },
     "search-input": {
       "status": "passando",
       "total": 6,
       "passando": 6,
       "falhando": 0,
-      "arquivos": [
-        "src/components/search-input.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/search-input.browser.test.tsx"]
     },
     "section-header": {
       "status": "passando",
       "total": 3,
       "passando": 3,
       "falhando": 0,
-      "arquivos": [
-        "src/components/section-header.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/section-header.browser.test.tsx"]
     },
     "select": {
       "status": "passando",
       "total": 2,
       "passando": 2,
       "falhando": 0,
-      "arquivos": [
-        "src/components/select.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/select.browser.test.tsx"]
     },
     "separator": {
       "status": "passando",
       "total": 5,
       "passando": 5,
       "falhando": 0,
-      "arquivos": [
-        "src/components/separator.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/separator.browser.test.tsx"]
     },
     "sheet": {
       "status": "passando",
       "total": 2,
       "passando": 2,
       "falhando": 0,
-      "arquivos": [
-        "src/components/sheet.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/sheet.browser.test.tsx"]
     },
     "sidebar": {
       "status": "passando",
       "total": 5,
       "passando": 5,
       "falhando": 0,
-      "arquivos": [
-        "src/components/sidebar.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/sidebar.browser.test.tsx"]
     },
     "skeleton": {
       "status": "passando",
       "total": 1,
       "passando": 1,
       "falhando": 0,
-      "arquivos": [
-        "src/components/skeleton.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/skeleton.browser.test.tsx"]
     },
     "slider": {
       "status": "passando",
       "total": 5,
       "passando": 5,
       "falhando": 0,
-      "arquivos": [
-        "src/components/slider.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/slider.browser.test.tsx"]
     },
     "sonner": {
       "status": "passando",
       "total": 4,
       "passando": 4,
       "falhando": 0,
-      "arquivos": [
-        "src/components/sonner.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/sonner.browser.test.tsx"]
     },
     "spinner": {
       "status": "passando",
       "total": 3,
       "passando": 3,
       "falhando": 0,
-      "arquivos": [
-        "src/components/spinner.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/spinner.browser.test.tsx"]
     },
     "stat": {
       "status": "passando",
       "total": 2,
       "passando": 2,
       "falhando": 0,
-      "arquivos": [
-        "src/components/stat.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/stat.browser.test.tsx"]
     },
     "status": {
       "status": "passando",
       "total": 10,
       "passando": 10,
       "falhando": 0,
-      "arquivos": [
-        "src/components/status.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/status.browser.test.tsx"]
     },
     "stepper": {
       "status": "passando",
       "total": 2,
       "passando": 2,
       "falhando": 0,
-      "arquivos": [
-        "src/components/stepper.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/stepper.browser.test.tsx"]
     },
     "switch": {
       "status": "passando",
       "total": 5,
       "passando": 5,
       "falhando": 0,
-      "arquivos": [
-        "src/components/switch.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/switch.browser.test.tsx"]
     },
     "table": {
       "status": "passando",
       "total": 2,
       "passando": 2,
       "falhando": 0,
-      "arquivos": [
-        "src/components/table.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/table.browser.test.tsx"]
     },
     "tabs": {
       "status": "passando",
       "total": 6,
       "passando": 6,
       "falhando": 0,
-      "arquivos": [
-        "src/components/tabs.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/tabs.browser.test.tsx"]
     },
     "terminal": {
       "status": "passando",
       "total": 3,
       "passando": 3,
       "falhando": 0,
-      "arquivos": [
-        "src/components/terminal.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/terminal.browser.test.tsx"]
     },
     "textarea": {
       "status": "passando",
       "total": 3,
       "passando": 3,
       "falhando": 0,
-      "arquivos": [
-        "src/components/textarea.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/textarea.browser.test.tsx"]
     },
     "theme-provider": {
       "status": "passando",
       "total": 3,
       "passando": 3,
       "falhando": 0,
-      "arquivos": [
-        "src/components/theme-provider.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/theme-provider.browser.test.tsx"]
     },
     "theme-toggle": {
       "status": "passando",
       "total": 2,
       "passando": 2,
       "falhando": 0,
-      "arquivos": [
-        "src/components/theme-toggle.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/theme-toggle.browser.test.tsx"]
     },
     "timeline": {
       "status": "passando",
       "total": 2,
       "passando": 2,
       "falhando": 0,
-      "arquivos": [
-        "src/components/timeline.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/timeline.browser.test.tsx"]
     },
     "toggle": {
       "status": "passando",
       "total": 8,
       "passando": 8,
       "falhando": 0,
-      "arquivos": [
-        "src/components/toggle.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/toggle.browser.test.tsx"]
     },
     "toggle-group": {
       "status": "passando",
       "total": 4,
       "passando": 4,
       "falhando": 0,
-      "arquivos": [
-        "src/components/toggle-group.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/toggle-group.browser.test.tsx"]
     },
     "tooltip": {
       "status": "passando",
       "total": 2,
       "passando": 2,
       "falhando": 0,
-      "arquivos": [
-        "src/components/tooltip.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/tooltip.browser.test.tsx"]
     },
     "typography": {
       "status": "passando",
       "total": 9,
       "passando": 9,
       "falhando": 0,
-      "arquivos": [
-        "src/components/typography.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/typography.browser.test.tsx"]
     },
     "usage-card": {
       "status": "passando",
       "total": 2,
       "passando": 2,
       "falhando": 0,
-      "arquivos": [
-        "src/components/usage-card.browser.test.tsx"
-      ]
+      "arquivos": ["src/components/usage-card.browser.test.tsx"]
     }
   }
 }
