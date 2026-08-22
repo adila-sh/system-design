@@ -1,0 +1,4 @@
+interface:
+  display_name: "Testar Adila UI"
+  short_description: "Testes Vitest rápidos e assertivos para Adila UI"
+  default_prompt: "Use $test-adila-ui para criar ou validar testes objetivos para este componente."

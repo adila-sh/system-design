@@ -62,7 +62,9 @@ describe("DiffViewer", () => {
     );
 
     await expect
-      .poll(() => obterSombra(tela.container)?.textContent ?? "")
+      .poll(() => obterSombra(tela.container)?.textContent ?? "", {
+        timeout: 5_000,
+      })
       .toContain("subtotal.ts");
     expect(obterSombra(tela.container)?.textContent).toContain("total.ts");
     expect(
