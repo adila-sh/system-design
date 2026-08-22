@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "./adila-tokens.css";
+@import "./code-theme.css";
 
 /* Alinha a variante `dark:` com a forma como o tema realmente troca.
    Os tokens vivem em `.dark` (adila-tokens.css) e quem alterna é uma classe no

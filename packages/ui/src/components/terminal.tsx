@@ -7,7 +7,7 @@ function Terminal({ className, ...props }: React.ComponentProps<"div">) {
     <div
       data-slot="terminal"
       className={cn(
-        "overflow-hidden rounded-lg border border-[var(--code-border,#292e42)] bg-[var(--code-bg,#1a1b26)] font-mono text-[13px] text-[var(--code-fg,#c0caf5)] shadow-sm transition-colors",
+        "overflow-hidden rounded-lg border border-[var(--code-border)] bg-[var(--code-bg)] font-mono text-[13px] text-[var(--code-fg)] shadow-sm transition-colors",
         className,
       )}
       {...props}
@@ -20,7 +20,7 @@ function TerminalHeader({ className, ...props }: React.ComponentProps<"div">) {
     <div
       data-slot="terminal-header"
       className={cn(
-        "flex min-h-10 items-center gap-3 border-b border-[var(--code-border,#292e42)] px-3 text-xs text-[var(--code-muted,#565f89)]",
+        "flex min-h-10 items-center gap-3 border-b border-[var(--code-border)] px-3 text-xs text-[var(--code-muted)]",
         className,
       )}
       {...props}
@@ -39,9 +39,9 @@ function TerminalControls({
       className={cn("flex items-center gap-1.5", className)}
       {...props}
     >
-      <span className="size-2.5 rounded-full bg-[#ff5f57]" />
-      <span className="size-2.5 rounded-full bg-[#febc2e]" />
-      <span className="size-2.5 rounded-full bg-[#28c840]" />
+      <span className="size-2.5 rounded-full bg-[var(--terminal-dot-close)]" />
+      <span className="size-2.5 rounded-full bg-[var(--terminal-dot-minimize)]" />
+      <span className="size-2.5 rounded-full bg-[var(--terminal-dot-maximize)]" />
     </div>
   );
 }
@@ -92,7 +92,7 @@ function TerminalPrompt({ className, ...props }: React.ComponentProps<"span">) {
       data-slot="terminal-prompt"
       aria-hidden="true"
       className={cn(
-        "mr-2 shrink-0 text-[var(--code-success,#9ece6a)] select-none",
+        "mr-2 shrink-0 text-[var(--code-success)] select-none",
         className,
       )}
       {...props}
@@ -107,7 +107,7 @@ function TerminalCommand({
   return (
     <code
       data-slot="terminal-command"
-      className={cn("whitespace-pre text-[var(--code-fg,#c0caf5)]", className)}
+      className={cn("whitespace-pre text-[var(--code-fg)]", className)}
       {...props}
     />
   );
@@ -117,10 +117,7 @@ function TerminalOutput({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="terminal-output"
-      className={cn(
-        "whitespace-pre-wrap text-[var(--code-muted,#565f89)]",
-        className,
-      )}
+      className={cn("whitespace-pre-wrap text-[var(--code-muted)]", className)}
       {...props}
     />
   );

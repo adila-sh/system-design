@@ -1,0 +1,39 @@
+/* ------------------------------------------------------------------ */
+/* Paleta padrão das superfícies de código (CodeBlock, Terminal,        */
+/* PackageInstall, DiffViewer).                                         */
+/*                                                                      */
+/* NÃO são tokens do design system e por isso não moram em              */
+/* adila-tokens.css: são o Tokyo Night, um tema de terceiro, e os        */
+/* valores têm que bater com o do Shiki. Aqui eles são DADO, não escolha */
+/* de design — a razão de estarem em hex e não em OKLCH.                */
+/*                                                                      */
+/* Existem no :root para que as superfícies de código funcionem soltas,  */
+/* sem CodeThemeProvider. Com provider, ele redeclara as mesmas          */
+/* variáveis na própria div e ganha por especificidade.                  */
+/*                                                                      */
+/* Antes deste arquivo, este mesmo conjunto estava escrito duas vezes:   */
+/* aqui em `themeClasses["tokyo-night"]` (code-theme.tsx) e de novo como */
+/* 41 fallbacks `var(--code-fg, #c0caf5)` espalhados por três outros     */
+/* componentes. Duas cópias que ninguém sincronizava.                    */
+/* ------------------------------------------------------------------ */
+
+:root {
+  --code-bg: #1a1b26;
+  --code-fg: #c0caf5;
+  --code-muted: #565f89;
+  --code-border: #292e42;
+  --code-comment: #565f89;
+  --code-keyword: #bb9af7;
+  --code-string: #9ece6a;
+  --code-function: #7aa2f7;
+  --code-number: #ff9e64;
+  --code-accent: #7aa2f7;
+  --code-success: #9ece6a;
+  --code-selection: #283457;
+
+  /* Semáforos do macOS, na barra de título do Terminal. Também são dado
+     externo: são as cores do sistema, não uma paleta nossa. */
+  --terminal-dot-close: #ff5f57;
+  --terminal-dot-minimize: #febc2e;
+  --terminal-dot-maximize: #28c840;
+}

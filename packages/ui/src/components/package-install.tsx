@@ -42,7 +42,7 @@ function PackageInstall({
     <div
       data-slot="package-install"
       className={cn(
-        "overflow-hidden rounded-lg border border-[var(--code-border,#292e42)] bg-[var(--code-bg,#1a1b26)] transition-colors",
+        "overflow-hidden rounded-lg border border-[var(--code-border)] bg-[var(--code-bg)] transition-colors",
         className,
       )}
       {...props}
@@ -50,7 +50,7 @@ function PackageInstall({
       <div
         role="tablist"
         aria-label="Gerenciador de pacotes"
-        className="flex items-center border-b border-[var(--code-border,#292e42)] px-2"
+        className="flex items-center border-b border-[var(--code-border)] px-2"
       >
         {available.map((item) => (
           <button
@@ -59,7 +59,7 @@ function PackageInstall({
             role="tab"
             aria-selected={activeManager === item}
             onClick={() => select(item)}
-            className="relative h-10 px-3 font-mono text-xs text-[var(--code-muted,#565f89)] transition-colors hover:text-[var(--code-fg,#c0caf5)] aria-selected:text-[var(--code-fg,#c0caf5)] aria-selected:after:absolute aria-selected:after:right-2 aria-selected:after:bottom-0 aria-selected:after:left-2 aria-selected:after:h-0.5 aria-selected:after:bg-[var(--code-accent,#7aa2f7)]"
+            className="relative h-10 px-3 font-mono text-xs text-[var(--code-muted)] transition-colors hover:text-[var(--code-fg)] aria-selected:text-[var(--code-fg)] aria-selected:after:absolute aria-selected:after:right-2 aria-selected:after:bottom-0 aria-selected:after:left-2 aria-selected:after:h-0.5 aria-selected:after:bg-[var(--code-accent)]"
           >
             {item}
           </button>
@@ -69,15 +69,12 @@ function PackageInstall({
           variant="ghost"
           size="icon-xs"
           aria-label="Copiar comando de instalação"
-          className="ml-auto text-[var(--code-muted,#565f89)] hover:bg-[var(--code-selection,#283457)] hover:text-[var(--code-fg,#c0caf5)]"
+          className="ml-auto text-[var(--code-muted)] hover:bg-[var(--code-selection)] hover:text-[var(--code-fg)]"
         />
       </div>
       <div role="tabpanel" className="overflow-x-auto p-4">
-        <code className="font-mono text-[13px] whitespace-pre text-[var(--code-fg,#c0caf5)]">
-          <span
-            className="mr-2 text-[var(--code-success,#9ece6a)]"
-            aria-hidden="true"
-          >
+        <code className="font-mono text-[13px] whitespace-pre text-[var(--code-fg)]">
+          <span className="mr-2 text-[var(--code-success)]" aria-hidden="true">
             $
           </span>
           {command}
