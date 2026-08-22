@@ -34,7 +34,7 @@
     "test:coverage": "vitest run --coverage",
     "test:changed": "vitest run --changed",
     "test:related": "vitest related --run",
-    "test:shuffle": "vitest run --sequence.shuffle",
+    "test:shuffle": "vitest run --sequence.shuffle.tests",
     "test:watch": "vitest",
     "test:json": "vitest run --reporter=json --outputFile=test-results.json",
     "typecheck": "bun run check:dropdown-menu && bun run check:tokens && tsc --noEmit"
