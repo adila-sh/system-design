@@ -44,9 +44,9 @@ html > body[data-scroll-locked] {
   background-color: color-mix(in oklch, var(--border), var(--foreground) 30%);
 }
 
-/* Navbar sobre o hero (Pixel Blast) — só na home.
-   O blast pinta --primary (indigo) nos DOIS temas, então a navbar fica sobre
-   fundo escuro mesmo no tema claro, onde o foreground da lib é quase preto.
+/* Navbar sobre o hero editorial — só na home.
+   O wallpaper recebe um overlay escuro nos DOIS temas, então a navbar fica
+   sobre fundo escuro mesmo no tema claro, onde o foreground é quase preto.
 
    O critério aqui é a SUPERFÍCIE, não o elemento. Corrigir controle a controle
    já regrediu duas vezes neste mesmo bloco (primeiro o Kbd "Ctrl K", depois o
@@ -104,11 +104,61 @@ html > body[data-scroll-locked] {
 
 /* Mesma origem do defeito acima: a lib aplica blur e borda inferior no header
    mesmo com transparentMode="top", o que deixa uma emenda visível (faixa lisa
-   e borrada) contra o campo pixelado do blast logo abaixo. Sobre o hero, nem
+   e borrada) contra o wallpaper logo abaixo. Sobre o hero, nem
    um nem outro fazem sentido. */
 .home-hero-nav #nd-nav > div {
   backdrop-filter: none;
   border-bottom-color: transparent;
+}
+
+@keyframes home-wallpaper-drift {
+  from {
+    transform: scale(1.03) translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: scale(1.08) translate3d(-0.8%, -0.6%, 0);
+  }
+}
+
+@keyframes home-editorial-shimmer {
+  from {
+    background-position: 180% 0;
+  }
+
+  to {
+    background-position: -80% 0;
+  }
+}
+
+.home-wallpaper-motion {
+  animation: home-wallpaper-drift 18s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+.home-editorial-shimmer {
+  color: transparent;
+  background-image: linear-gradient(
+    110deg,
+    white 35%,
+    color-mix(in oklch, white 35%, transparent) 48%,
+    white 61%
+  );
+  background-size: 220% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+.home-editorial-shimmer:hover,
+.home-editorial-shimmer:focus-visible {
+  animation: home-editorial-shimmer 1.8s ease-in-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-wallpaper-motion,
+  .home-editorial-shimmer {
+    animation: none;
+  }
 }
 
 /* O indicador ativo da sidebar acompanha a rota sem animar a página inteira. */
