@@ -36,7 +36,7 @@ function FormMessage({ className, ...props }: React.ComponentProps<"div">) {
       data-slot="form-message"
       role="alert"
       className={cn(
-        "rounded-md border border-destructive/25 bg-destructive/5 px-3 py-2 text-sm text-destructive",
+        "rounded-md border border-destructive/25 bg-destructive-tint px-3 py-2 text-sm text-destructive-tint-foreground",
         className,
       )}
       {...props}
