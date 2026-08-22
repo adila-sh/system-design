@@ -1,5 +1,13 @@
 # @adila-sh/ui
 
+## 0.6.0
+
+### Minor Changes
+
+- 9d633be: Exporta `ThemeProvider` e `useTheme` com os defaults visuais da Adila, mantendo
+  a integração com `next-themes` dentro do design system. Os tipos públicos do
+  provider e do hook também passam a fazer parte do pacote.
+
 ## 0.5.0
 
 ### Minor Changes
