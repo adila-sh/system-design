@@ -4,15 +4,6 @@ import { Switch } from "./switch";
 import { MINIMO, contrasteDoPreenchimento } from "../../test/contrast";
 import { TEMAS } from "../../test/variantes";
 
-// O trilho desligado usa --input (com 80% no escuro) e quase se funde ao fundo.
-// O tamanho não muda a cor, então os dois tamanhos compartilham os mesmos pisos.
-const TRILHO_DESLIGADO_ABAIXO_DO_MINIMO = new Map([
-  ["light/sm", 1.23],
-  ["light/default", 1.23],
-  ["dark/sm", 1.39],
-  ["dark/default", 1.39],
-]);
-
 describe.each(TEMAS)("Switch no tema %s", (tema) => {
   afterEach(() => {
     document.documentElement.classList.remove("dark");
@@ -37,17 +28,9 @@ describe.each(TEMAS)("Switch no tema %s", (tema) => {
       const ligado = switches[1];
       const polegar = ligado?.querySelector('[data-slot="switch-thumb"]');
 
-      const contrasteDesligado = contrasteDoPreenchimento(desligado);
-      const piso = TRILHO_DESLIGADO_ABAIXO_DO_MINIMO.get(`${tema}/${size}`);
-      if (piso === undefined) {
-        expect(contrasteDesligado).toBeGreaterThanOrEqual(MINIMO.naoTexto);
-      } else {
-        expect(contrasteDesligado).toBeGreaterThanOrEqual(piso);
-        expect(
-          contrasteDesligado,
-          `${tema}/${size} agora passa em 1.4.11 — remova a entrada`,
-        ).toBeLessThan(MINIMO.naoTexto);
-      }
+      expect(contrasteDoPreenchimento(desligado)).toBeGreaterThanOrEqual(
+        MINIMO.naoTexto,
+      );
 
       expect(contrasteDoPreenchimento(ligado)).toBeGreaterThanOrEqual(
         MINIMO.naoTexto,
