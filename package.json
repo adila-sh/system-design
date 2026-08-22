@@ -24,6 +24,9 @@
     "*.{ts,tsx,js,jsx,mjs,cjs}": [
       "oxfmt --write",
       "oxlint --fix"
+    ],
+    "*.css": [
+      "oxfmt --write"
     ]
   },
   "overrides": {

@@ -185,7 +185,11 @@
      Opacos pelo mesmo motivo das tintas: `bg-muted/50` compõe com o que estiver
      atrás, então a mesma linha de tabela mudava de cor conforme a superfície. */
   --primary-hover: color-mix(in oklab, var(--primary), var(--foreground) 5%);
-  --secondary-hover: color-mix(in oklab, var(--secondary), var(--foreground) 5%);
+  --secondary-hover: color-mix(
+    in oklab,
+    var(--secondary),
+    var(--foreground) 5%
+  );
   --muted-hover: color-mix(in oklab, var(--muted), var(--foreground) 5%);
   --input-hover: color-mix(in oklab, var(--input), var(--foreground) 5%);
   --sidebar-accent-hover: color-mix(
