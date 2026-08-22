@@ -1,13 +1,13 @@
 {
-  "geradoEm": "2026-08-22T17:57:18.747Z",
+  "geradoEm": "2026-08-22T18:33:52.290Z",
   "origem": "vitest",
   "resumo": {
     "componentes": 108,
     "comTestes": 108,
     "semTestes": 0,
-    "testes": 516,
+    "testes": 526,
     "falhando": 0,
-    "testesNaSuite": 560
+    "testesNaSuite": 570
   },
   "componentes": {
     "accordion": {
@@ -208,8 +208,8 @@
     },
     "chart": {
       "status": "passando",
-      "total": 8,
-      "passando": 8,
+      "total": 18,
+      "passando": 18,
       "falhando": 0,
       "arquivos": ["src/components/chart.browser.test.tsx"]
     },
