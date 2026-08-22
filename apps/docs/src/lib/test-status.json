@@ -8,9 +8,9 @@
     "semExecucao": 1,
     "coberturaParcial": 81,
     "coberturaCompleta": 26,
-    "testes": 535,
+    "testes": 543,
     "falhando": 0,
-    "testesNaSuite": 579
+    "testesNaSuite": 587
   },
   "componentes": {
     "accordion": {
@@ -2065,26 +2065,26 @@
     },
     "search-input": {
       "status": "passando",
-      "total": 6,
-      "passando": 6,
+      "total": 14,
+      "passando": 14,
       "falhando": 0,
       "arquivos": ["src/components/search-input.browser.test.tsx"],
       "cobertura": {
         "status": "parcial",
         "linhas": {
-          "total": 16,
-          "cobertas": 7,
-          "percentual": 43.75
+          "total": 20,
+          "cobertas": 20,
+          "percentual": 100
         },
         "funcoes": {
-          "total": 8,
-          "cobertas": 3,
-          "percentual": 37.5
+          "total": 9,
+          "cobertas": 9,
+          "percentual": 100
         },
         "branches": {
           "total": 21,
-          "cobertas": 12,
-          "percentual": 57.14
+          "cobertas": 19,
+          "percentual": 90.47
         }
       }
     },
