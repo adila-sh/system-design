@@ -10,7 +10,7 @@ function ResourceCard({
     <article
       data-slot="resource-card"
       className={cn(
-        "flex min-w-0 flex-col gap-4 rounded-lg border bg-card p-4 text-card-foreground transition-colors hover:border-foreground/20",
+        "flex min-w-0 flex-col gap-4 rounded-md border bg-card p-4 text-card-foreground transition-colors hover:border-foreground/20",
         className,
       )}
       {...props}

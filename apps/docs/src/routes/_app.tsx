@@ -126,7 +126,7 @@ function AppSidebar({ onOpenCommand }: { onOpenCommand: () => void }) {
           <SidebarMenu>
             <SidebarMenuItem>
               <SidebarMenuButton size="lg">
-                <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
+                <div className="flex aspect-square size-8 items-center justify-center rounded-md bg-primary text-primary-foreground">
                   <Sparkles className="size-4" />
                 </div>
                 <div className="grid flex-1 text-left leading-tight">
@@ -223,8 +223,8 @@ function AppSidebar({ onOpenCommand }: { onOpenCommand: () => void }) {
               <DropdownMenuTrigger
                 render={
                   <SidebarMenuButton size="lg">
-                    <Avatar className="size-8 rounded-lg">
-                      <AvatarFallback className="rounded-lg">JS</AvatarFallback>
+                    <Avatar className="size-8 rounded-md">
+                      <AvatarFallback className="rounded-md">JS</AvatarFallback>
                     </Avatar>
                     <div className="grid flex-1 text-left leading-tight">
                       <span className="truncate font-medium">João Sousa</span>

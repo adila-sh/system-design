@@ -58,4 +58,22 @@ describe("AsciiBadge distingue as variantes", () => {
       `variantes sem cor própria: ${repetidas.join(", ")}`,
     ).toHaveLength(0);
   });
+
+  /**
+   * A `info` já esteve colada em --primary: enquanto o token de estado
+   * informativo não existia, ela reusava --primary-tint-foreground e pintava
+   * "informação" com a cor da marca. Isso passa em qualquer teste de contraste
+   * e em qualquer teste de "tem cor própria" — a cor era própria, só não era
+   * dela. O que pega é comparar com a cor da marca diretamente.
+   */
+  test("info não usa a cor da marca", async () => {
+    const tela = await render(<AsciiBadge variant="info" label="PRONTO" />);
+    const el = tela.container.querySelector('[data-slot="ascii-badge"]');
+
+    const marca = getComputedStyle(document.documentElement)
+      .getPropertyValue("--primary-tint-foreground")
+      .trim();
+
+    expect(getComputedStyle(el as Element).color).not.toBe(marca);
+  });
 });

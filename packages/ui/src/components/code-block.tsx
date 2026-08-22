@@ -132,18 +132,18 @@ function CodeBlock({
     <figure
       data-slot="code-block"
       className={cn(
-        "relative overflow-hidden rounded-lg border border-[var(--code-border,#292e42)] bg-[var(--code-bg,#1a1b26)] text-[var(--code-fg,#c0caf5)] shadow-sm transition-colors",
+        "relative overflow-hidden rounded-md border border-[var(--code-border)] bg-[var(--code-bg)] text-[var(--code-fg)] shadow-sm transition-colors",
         className,
       )}
       {...props}
     >
       {!hideHeader ? (
-        <figcaption className="flex min-h-10 items-center gap-3 border-b border-[var(--code-border,#292e42)] px-3">
-          <span className="min-w-0 flex-1 truncate font-mono text-xs text-[var(--code-muted,#565f89)]">
+        <figcaption className="flex min-h-10 items-center gap-3 border-b border-[var(--code-border)] px-3">
+          <span className="min-w-0 flex-1 truncate font-mono text-xs text-[var(--code-muted)]">
             {filename ?? language}
           </span>
           {filename ? (
-            <span className="font-mono text-[10px] tracking-wide text-[var(--code-muted,#565f89)] uppercase">
+            <span className="font-mono text-[10px] tracking-wide text-[var(--code-muted)] uppercase">
               {language}
             </span>
           ) : null}
@@ -152,7 +152,7 @@ function CodeBlock({
             variant="ghost"
             size="icon-xs"
             aria-label="Copiar código"
-            className="text-[var(--code-muted,#565f89)] hover:bg-[var(--code-selection,#283457)] hover:text-[var(--code-fg,#c0caf5)]"
+            className="text-[var(--code-muted)] hover:bg-[var(--code-selection)] hover:text-[var(--code-fg)]"
           />
         </figcaption>
       ) : (
@@ -161,13 +161,13 @@ function CodeBlock({
           variant="ghost"
           size="icon-xs"
           aria-label="Copiar código"
-          className="absolute top-2 right-2 z-10 text-[var(--code-muted,#565f89)] hover:bg-[var(--code-selection,#283457)] hover:text-[var(--code-fg,#c0caf5)]"
+          className="absolute top-2 right-2 z-10 text-[var(--code-muted)] hover:bg-[var(--code-selection)] hover:text-[var(--code-fg)]"
         />
       )}
       <pre
         tabIndex={0}
         className={cn(
-          "overflow-x-auto py-4 text-[13px] leading-6 outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring",
+          "overflow-x-auto py-4 text-[13px] leading-6 outline-none focus-ring-inset",
           codeClassName,
         )}
       >
@@ -179,12 +179,12 @@ function CodeBlock({
                 key={number}
                 data-slot="code-block-line"
                 data-highlighted={highlighted.has(number) || undefined}
-                className="flex min-w-max px-4 data-[highlighted=true]:bg-[var(--code-selection,#283457)] data-[highlighted=true]:shadow-[inset_2px_0_0_var(--code-accent,#7aa2f7)]"
+                className="flex min-w-max px-4 data-[highlighted=true]:bg-[var(--code-selection)] data-[highlighted=true]:shadow-[inset_2px_0_0_var(--code-accent)]"
               >
                 {showLineNumbers ? (
                   <span
                     aria-hidden="true"
-                    className="mr-4 w-[2ch] shrink-0 text-right text-[var(--code-muted,#565f89)] select-none"
+                    className="mr-4 w-[2ch] shrink-0 text-right text-[var(--code-muted)] select-none"
                   >
                     {number}
                   </span>
@@ -196,17 +196,14 @@ function CodeBlock({
                       data-token={token.kind}
                       className={cn(
                         token.kind === "comment" &&
-                          "text-[var(--code-comment,#565f89)] italic",
+                          "text-[var(--code-comment)] italic",
                         token.kind === "function" &&
-                          "text-[var(--code-function,#7aa2f7)]",
+                          "text-[var(--code-function)]",
                         token.kind === "keyword" &&
-                          "text-[var(--code-keyword,#bb9af7)]",
-                        token.kind === "number" &&
-                          "text-[var(--code-number,#ff9e64)]",
-                        token.kind === "string" &&
-                          "text-[var(--code-string,#9ece6a)]",
-                        token.kind === "tag" &&
-                          "text-[var(--code-success,#9ece6a)]",
+                          "text-[var(--code-keyword)]",
+                        token.kind === "number" && "text-[var(--code-number)]",
+                        token.kind === "string" && "text-[var(--code-string)]",
+                        token.kind === "tag" && "text-[var(--code-success)]",
                       )}
                     >
                       {token.value}

@@ -24,7 +24,7 @@ function BulkActionBar({
       role="toolbar"
       aria-label="Ações para itens selecionados"
       className={cn(
-        "flex w-full flex-wrap items-center gap-2 rounded-lg border bg-popover p-2 text-popover-foreground shadow-lg",
+        "flex w-full flex-wrap items-center gap-2 rounded-md border bg-popover p-2 text-popover-foreground shadow-lg",
         className,
       )}
       {...props}

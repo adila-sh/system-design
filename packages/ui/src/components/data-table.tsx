@@ -83,14 +83,14 @@ export function DataTable<TData extends RowData>({
 
   if (data.length === 0) {
     return (
-      <div className="rounded-lg border border-border px-6 py-12 text-center text-sm text-muted-foreground">
+      <div className="rounded-md border border-border px-6 py-12 text-center text-sm text-muted-foreground">
         {empty}
       </div>
     );
   }
 
   return (
-    <div className="overflow-hidden rounded-lg border border-border">
+    <div className="overflow-hidden rounded-md border border-border">
       <div className="overflow-x-auto">
         <table className="w-full text-left text-sm">
           <thead className="border-b bg-muted/40 text-xs text-muted-foreground">
@@ -117,7 +117,7 @@ export function DataTable<TData extends RowData>({
             {table.getRowModel().rows.map((row) => (
               <tr
                 key={row.id}
-                className="hover:bg-muted/20 data-[selected=true]:bg-muted/30"
+                className="hover:bg-muted-hover data-[selected=true]:bg-muted/30"
                 data-selected={row.getIsSelected()}
               >
                 {row.getAllCells().map((cell) => (

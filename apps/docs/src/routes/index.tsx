@@ -59,7 +59,7 @@ function Home() {
               }
             />
           </div>
-          <code className="mt-2 rounded-lg border border-white/20 bg-white/10 px-4 py-2 font-mono text-sm text-white backdrop-blur-sm">
+          <code className="mt-2 rounded-md border border-white/20 bg-white/10 px-4 py-2 font-mono text-sm text-white backdrop-blur-sm">
             bun add @adila-sh/ui
           </code>
         </div>

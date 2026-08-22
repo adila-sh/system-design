@@ -117,7 +117,7 @@ function FileUpload({
           setDragging(false);
           if (!disabled) add(event.dataTransfer.files);
         }}
-        className="flex flex-col items-center justify-center gap-3 rounded-lg border border-dashed p-6 text-center transition-colors data-[dragging=true]:border-primary data-[dragging=true]:bg-primary/5 data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50"
+        className="flex flex-col items-center justify-center gap-3 rounded-md border border-dashed p-6 text-center transition-colors data-[dragging=true]:border-primary data-[dragging=true]:bg-primary/5 data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50"
       >
         <div className="flex size-10 items-center justify-center rounded-full bg-muted text-muted-foreground">
           <UploadSimpleIcon className="size-5" aria-hidden="true" />
