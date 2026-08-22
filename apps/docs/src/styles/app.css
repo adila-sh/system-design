@@ -44,24 +44,6 @@ html > body[data-scroll-locked] {
   background-color: color-mix(in oklch, var(--border), var(--foreground) 30%);
 }
 
-/* A home segue a mesma superfície editorial do header da Identity: a navbar
-   tem cor própria, mantém o wallpaper visível e preserva os contrastes do tema. */
-.home-editorial-layout #nd-nav > div {
-  background-color: color-mix(
-    in oklch,
-    var(--color-fd-background) 82%,
-    transparent
-  );
-  border-bottom-color: color-mix(
-    in oklch,
-    var(--color-fd-border) 70%,
-    transparent
-  );
-  box-shadow: 0 1px 0
-    color-mix(in oklch, var(--color-fd-foreground) 8%, transparent);
-  backdrop-filter: blur(24px) saturate(140%);
-}
-
 @keyframes home-wallpaper-drift {
   from {
     transform: scale(1.03) translate3d(0, 0, 0);

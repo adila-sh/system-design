@@ -3,6 +3,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { HomeLayout } from "fumadocs-ui/layouts/home";
 import { Button } from "@adila-sh/ui";
 import { HomeFooter } from "@/components/home-footer";
+import { HomeNavbar } from "@/components/home-navbar";
 import { baseOptions } from "@/lib/layout.shared";
 
 export const Route = createFileRoute("/")({
@@ -31,7 +32,7 @@ function Home() {
   const options = baseOptions();
 
   return (
-    <HomeLayout {...options} className="home-editorial-layout">
+    <HomeLayout {...options} nav={{ component: <HomeNavbar /> }}>
       <main className="bg-background">
         <section className="relative isolate -mt-14 flex min-h-svh w-full items-end overflow-hidden bg-foreground text-white">
           <img
