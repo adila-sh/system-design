@@ -494,6 +494,23 @@
   }
 }
 
+/* Só o fallback de alto contraste, sem tocar no desenho normal.
+   Existe para os contêineres que espelham o foco de um filho via `has-[...]`:
+   InputGroup e NumberField. Eles não podem usar `focus-ring`, porque a
+   utilitária traz o próprio `:focus-visible` e a variante `has-` não compõe com
+   isso — mas são justamente eles que precisam do fallback, já que o controle
+   interno suprime o próprio anel (`focus-visible:ring-0`). Sem isto, em
+   forced-colors o box-shadow do contêiner some e o campo fica sem indicador
+   nenhum. */
+@utility focus-ring-has-fallback {
+  @media (forced-colors: active) {
+    &:has(:focus-visible) {
+      outline: 2px solid;
+      outline-offset: 2px;
+    }
+  }
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
