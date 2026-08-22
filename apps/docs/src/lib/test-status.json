@@ -1,13 +1,13 @@
 {
-  "geradoEm": "2026-08-22T17:27:49.117Z",
+  "geradoEm": "2026-08-22T17:41:22.096Z",
   "origem": "vitest",
   "resumo": {
     "componentes": 108,
     "comTestes": 108,
     "semTestes": 0,
-    "testes": 510,
+    "testes": 516,
     "falhando": 0,
-    "testesNaSuite": 553
+    "testesNaSuite": 559
   },
   "componentes": {
     "accordion": {
@@ -117,8 +117,8 @@
     },
     "autocomplete": {
       "status": "passando",
-      "total": 5,
-      "passando": 5,
+      "total": 6,
+      "passando": 6,
       "falhando": 0,
       "arquivos": ["src/components/autocomplete.browser.test.tsx"]
     },
@@ -243,8 +243,8 @@
     },
     "combobox": {
       "status": "passando",
-      "total": 5,
-      "passando": 5,
+      "total": 6,
+      "passando": 6,
       "falhando": 0,
       "arquivos": ["src/components/combobox.browser.test.tsx"]
     },
@@ -264,8 +264,8 @@
     },
     "context-menu": {
       "status": "passando",
-      "total": 5,
-      "passando": 5,
+      "total": 6,
+      "passando": 6,
       "falhando": 0,
       "arquivos": ["src/components/context-menu.browser.test.tsx"]
     },
@@ -446,8 +446,8 @@
     },
     "menubar": {
       "status": "passando",
-      "total": 5,
-      "passando": 5,
+      "total": 6,
+      "passando": 6,
       "falhando": 0,
       "arquivos": ["src/components/menubar.browser.test.tsx"]
     },
@@ -467,8 +467,8 @@
     },
     "multi-select": {
       "status": "passando",
-      "total": 6,
-      "passando": 6,
+      "total": 7,
+      "passando": 7,
       "falhando": 0,
       "arquivos": ["src/components/multi-select.browser.test.tsx"]
     },
@@ -488,8 +488,8 @@
     },
     "navigation-menu": {
       "status": "passando",
-      "total": 6,
-      "passando": 6,
+      "total": 7,
+      "passando": 7,
       "falhando": 0,
       "arquivos": ["src/components/navigation-menu.browser.test.tsx"]
     },

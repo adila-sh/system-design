@@ -1,4 +1,5 @@
 import { describe, expect, test, vi } from "vitest";
+import { userEvent } from "vitest/browser";
 import { render } from "vitest-browser-react";
 import {
   Menubar,
@@ -95,5 +96,33 @@ describe("Menubar", () => {
     await expect.element(item).toHaveAttribute("aria-checked", "true");
     await item.click();
     expect(alterar).toHaveBeenCalledWith(false, expect.anything());
+  });
+
+  test("abre, percorre e fecha o menu pelo teclado", async () => {
+    const tela = await render(<ExemploMenubar />);
+    const arquivo = tela.getByRole("menuitem", { name: "Arquivo" });
+
+    arquivo.element().focus();
+    await userEvent.keyboard("{Enter}");
+
+    await expect.element(tela.getByRole("menu")).toBeVisible();
+    await expect.element(arquivo).toHaveAttribute("aria-expanded", "true");
+    expect(document.activeElement).toBe(
+      tela.getByRole("menuitem", { name: /Novo/ }).element(),
+    );
+
+    await userEvent.keyboard("{ArrowDown}");
+    expect(document.activeElement).toBe(
+      tela
+        .getByRole("menuitemcheckbox", {
+          name: "Salvamento automático",
+        })
+        .element(),
+    );
+
+    await userEvent.keyboard("{Escape}");
+    await expect.element(tela.getByRole("menu")).not.toBeInTheDocument();
+    await expect.element(arquivo).toHaveAttribute("aria-expanded", "false");
+    expect(document.activeElement).toBe(arquivo.element());
   });
 });

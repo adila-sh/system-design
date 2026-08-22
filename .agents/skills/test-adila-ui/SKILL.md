@@ -37,6 +37,51 @@ Select only what the behavior needs:
 
 Follow nearby naming and fixture patterns. Use `test.each` or `describe.each` when the same contract applies to a finite matrix of variants, sizes, orientations, or themes.
 
+### Copyable helper patterns
+
+For one text target across variants and both themes:
+
+```tsx
+import { descreverContrasteDeTexto } from "../../test/variantes";
+import { Badge } from "./badge";
+
+const VARIANTES = ["default", "secondary", "outline"] as const;
+
+descreverContrasteDeTexto({
+  nome: "Badge",
+  variantes: VARIANTES,
+  montar: (variant) => <Badge variant={variant}>Em revisão</Badge>,
+  seletor: '[data-slot="badge"]',
+});
+```
+
+For composite text inside an animated portal, open it in the fixture and point
+`raiz` at the portalled content. The helper waits for it to reach full opacity:
+
+```tsx
+import { descreverContrasteDosTextos } from "../../test/textos";
+import { Select, SelectContent, SelectItem, SelectTrigger } from "./select";
+
+descreverContrasteDosTextos({
+  nome: "Select",
+  montar: () => (
+    <Select defaultOpen defaultValue="pix">
+      <SelectTrigger aria-label="Pagamento" />
+      <SelectContent>
+        <SelectItem value="pix">Pix</SelectItem>
+      </SelectContent>
+    </Select>
+  ),
+  raiz: '[data-slot="select-content"]',
+});
+```
+
+For a single border, fill, or placeholder contract, render in a
+`*.browser.test.tsx`, select the painted element, and assert the relevant
+function from `test/contrast.ts` against `MINIMO.naoTexto` or `MINIMO.texto`.
+Do not add a regression-floor map for a new failure; those maps only preserve
+already accepted design findings.
+
 ## Assert user-visible contracts
 
 - Query by role and accessible name when possible. Verify relevant state and relationships such as `aria-checked`, `aria-expanded`, `aria-current`, `aria-controls`, or label association.
@@ -60,6 +105,18 @@ Use `{ concurrent: true }` or `test.concurrent` only when all of these are true:
 - repeated execution demonstrates no flakiness.
 
 Concurrent snapshots and asynchronous assertions must use `expect` from the local test context, as required by the Vitest API. Benchmark wall-clock time before keeping a concurrency change; synchronous tests gain nothing.
+
+The safe shape is limited to independent asynchronous unit work:
+
+```ts
+test.concurrent.each(cases)("normalizes $name", async (entry, { expect }) => {
+  const result = await normalizeAsync(entry.input);
+  expect(result).toEqual(entry.output);
+});
+```
+
+Do not copy that shape into a browser test that calls `render`, changes the
+theme class, opens a portal, controls timers, or stubs globals.
 
 If a new dependency is imported by browser setup code, predeclare it in `optimizeDeps.include`. A Vite dependency reload during a test invalidates the run.
 
