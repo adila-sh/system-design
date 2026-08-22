@@ -2,6 +2,7 @@ import { ArrowRightIcon } from "@phosphor-icons/react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { HomeLayout } from "fumadocs-ui/layouts/home";
 import { Button } from "@adila-sh/ui";
+import { HomeFooter } from "@/components/home-footer";
 import { baseOptions } from "@/lib/layout.shared";
 
 export const Route = createFileRoute("/")({
@@ -51,11 +52,7 @@ function Home() {
 
           <div className="mx-auto flex min-h-svh w-full max-w-[1600px] flex-col justify-end px-6 pt-32 pb-8 sm:px-10 sm:pb-10 lg:px-16">
             <div className="py-12 sm:py-16">
-              <p className="mb-8 font-mono text-xs tracking-[0.18em] text-white/75 uppercase sm:text-sm">
-                React · Acessibilidade · Open source
-              </p>
-
-              <h1 className="max-w-[calc(100vw-2rem)] text-[clamp(4.4rem,25vw,7rem)] leading-[0.8] font-light tracking-[-0.09em] text-balance sm:max-w-6xl sm:text-[clamp(6rem,15vw,14rem)] sm:leading-[0.76]">
+              <h1 className="max-w-[calc(100vw-2rem)] text-[clamp(4.4rem,25vw,7rem)] leading-[0.92] font-light tracking-[-0.09em] text-balance sm:max-w-6xl sm:text-[clamp(6rem,15vw,14rem)] sm:leading-[0.88]">
                 <span className="home-editorial-shimmer block">Design</span>
                 <span className="home-editorial-shimmer ml-[10vw] block sm:ml-[18vw]">
                   System
@@ -180,6 +177,8 @@ function Home() {
             </div>
           </div>
         </section>
+
+        <HomeFooter />
       </main>
     </HomeLayout>
   );
