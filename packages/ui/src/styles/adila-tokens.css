@@ -60,6 +60,13 @@
   --amber-837: oklch(0.8369 0.1644 84.43);
   --amber-769: oklch(0.7686 0.1647 70.08);
 
+  /* Azul frio — o estado informativo. Matiz 237, 33 graus do indigo da marca,
+     para que "informação" não se confunda com "ação primária". O croma é o
+     máximo que o sRGB comporta nesses degraus: azul é a região mais apertada
+     do gamut, e forçar mais aqui só produz uma cor que o navegador recorta. */
+  --blue-550: oklch(0.55 0.12 237);
+  --blue-500: oklch(0.5 0.1 237);
+
   /* Verde — sucesso e a quinta série de gráfico. */
   --green-773: oklch(0.7729 0.1535 163.22);
   --green-696: oklch(0.6959 0.1491 162.48);
@@ -110,6 +117,13 @@
   --success: var(--green-500);
   --success-foreground: var(--gray-1000);
 
+  /* Completa o quarteto de estado. Faltava só ele, e havia consumidor
+     esperando: `Status variant="info"` e `AsciiBadge variant="info"` apontavam
+     para os tokens de --primary, ou seja, pintavam "informação" com a cor da
+     marca. */
+  --info: var(--blue-500);
+  --info-foreground: var(--gray-1000);
+
   /* Tintas — superfície suave + texto sobre ela.
      Existem porque um par único (`bg-x/10 text-x`) é insolúvel no tema escuro:
      ali a tinta é a cor sobre fundo escuro, então o texto pede cor CLARA
@@ -146,6 +160,9 @@
 
   --success-tint: color-mix(in oklab, var(--success) 10%, var(--background));
   --success-tint-foreground: oklch(from var(--success) 0.48 c h);
+
+  --info-tint: color-mix(in oklab, var(--info) 10%, var(--background));
+  --info-tint-foreground: oklch(from var(--info) 0.47 c h);
 
   /* O amarelo do preenchimento é claro demais para virar texto — mede 2.15:1
      sobre o fundo da página. Em vez de cair no preto do --warning-foreground,
@@ -249,6 +266,9 @@
   --success: var(--green-536);
   --success-foreground: var(--gray-1000);
 
+  --info: var(--blue-550);
+  --info-foreground: var(--gray-1000);
+
   /* Aqui está o motivo destes tokens existirem: a superfície é a mesma de antes
      (color-mix a 10%, idêntica ao utilitário), mas o texto precisa ser MAIS
      CLARO que a cor de preenchimento, e não pode ser a própria cor — que serve
@@ -271,6 +291,9 @@
 
   --success-tint: color-mix(in oklab, var(--success) 10%, var(--background));
   --success-tint-foreground: oklch(from var(--success) 0.6 c h);
+
+  --info-tint: color-mix(in oklab, var(--info) 10%, var(--background));
+  --info-tint-foreground: oklch(from var(--info) 0.62 c h);
 
   /* No escuro o amarelo já funciona como texto sobre a própria tinta. */
   --warning-tint: color-mix(in oklab, var(--warning) 15%, var(--background));
@@ -323,6 +346,8 @@
   --color-warning-foreground: var(--warning-foreground);
   --color-success: var(--success);
   --color-success-foreground: var(--success-foreground);
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
 
   /* Tintas: superfície suave e o texto que vai sobre ela. */
   --color-primary-tint: var(--primary-tint);
@@ -334,6 +359,8 @@
   --color-warning-tint-foreground: var(--warning-tint-foreground);
   --color-success-tint: var(--success-tint);
   --color-success-tint-foreground: var(--success-tint-foreground);
+  --color-info-tint: var(--info-tint);
+  --color-info-tint-foreground: var(--info-tint-foreground);
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
