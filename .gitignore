@@ -60,3 +60,11 @@ packages/ui/src/index.ts
 
 # relatório JSON do vitest — insumo de gen-test-status, não é fonte
 packages/ui/test-results.json
+
+# skills de terceiros baixadas por `npx skills add` — são dependência externa,
+# mesmo contrato de node_modules: `skills-lock.json` é a fonte (source + hash),
+# o código baixado não. Sem isto, código de terceiro entra no repo e trava o
+# `bun run lint`.
+# O default aqui é IGNORAR: uma skill escrita por nós precisa de um `!` abaixo.
+.agents/skills/*
+!.agents/skills/use-adila-sidebar/

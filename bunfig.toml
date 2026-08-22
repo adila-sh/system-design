@@ -1,0 +1,2 @@
+[install.scopes]
+"@adila-sh" = { url = "https://npm.pkg.github.com" }

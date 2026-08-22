@@ -78,7 +78,7 @@ function ConfirmDialog({
       <AlertDialogContent>
         <AlertDialogHeader>
           {variant === "destructive" ? (
-            <AlertDialogMedia className="bg-destructive/10 text-destructive">
+            <AlertDialogMedia className="bg-destructive-tint text-destructive-tint-foreground">
               <WarningIcon />
             </AlertDialogMedia>
           ) : null}

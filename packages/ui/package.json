@@ -21,15 +21,16 @@
   "scripts": {
     "gen:barrel": "node scripts/gen-barrel.mjs",
     "check:dropdown-menu": "node scripts/check-dropdown-menu-labels.mjs",
+    "check:tokens": "node scripts/check-token-layers.mjs",
     "build:js": "bun run gen:barrel && tsup",
     "build:css": "tailwindcss -i src/styles/index.css -o dist/style.css --minify && node scripts/append-font-import.mjs",
-    "build": "bun run check:dropdown-menu && bun run build:js && bun run build:css",
+    "build": "bun run check:dropdown-menu && bun run check:tokens && bun run build:js && bun run build:css",
     "prepublishOnly": "bun run build",
     "dev": "bun run gen:barrel && tsup --watch",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:json": "vitest run --reporter=json --outputFile=test-results.json",
-    "typecheck": "bun run check:dropdown-menu && tsc --noEmit"
+    "typecheck": "bun run check:dropdown-menu && bun run check:tokens && tsc --noEmit"
   },
   "peerDependencies": {
     "react": "^19.2.7",

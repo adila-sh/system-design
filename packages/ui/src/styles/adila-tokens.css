@@ -4,46 +4,110 @@
 /* Neutros são grayscale puro (chroma 0) — sem tinta azul; o dark é preto de fato. */
 /* Consumidos pelos componentes shadcn E pelo tema Fumadocs (via         */
 /* fumadocs-ui/css/shadcn.css, que mapeia --color-fd-* -> estes tokens). */
-/* Espelhados no item `registry:base` (adila-theme) por gen-registry.mjs.  */
+/* Este arquivo é a ÚNICA fonte dos tokens: não há mais registry HTTP    */
+/* espelhando estes valores (removido em 0cc733f).                       */
+/* ------------------------------------------------------------------ */
+
+/* ------------------------------------------------------------------ */
+/* CAMADA 1 — primitivos.                                                */
+/*                                                                       */
+/* Valores crus, sem significado atribuído. O sufixo do nome é a          */
+/* luminosidade OKLCH x1000, então `--gray-928` é literalmente L 0.928 —  */
+/* a rampa não finge degraus regulares que a paleta não tem.             */
+/*                                                                       */
+/* Vivem só aqui, no :root: primitivo não muda com o tema. O que o        */
+/* `.dark` faz é reapontar a camada semântica para outros degraus.        */
+/*                                                                       */
+/* Nenhum literal oklch() deve existir fora deste bloco, com uma exceção: */
+/* as tintas usam `oklch(from ...)`, que é derivação de um token, não     */
+/* valor novo.                                                            */
+/* ------------------------------------------------------------------ */
+
+:root {
+  /* Neutros — grayscale puro (chroma 0), sem tinta azul. */
+  --gray-1000: oklch(1 0 0);
+  --gray-982: oklch(0.9821 0 0);
+  --gray-976: oklch(0.9764 0 0);
+  --gray-950: oklch(0.95 0 0);
+  --gray-945: oklch(0.9445 0 0);
+  --gray-928: oklch(0.9276 0 0);
+  --gray-772: oklch(0.7715 0 0);
+  --gray-653: oklch(0.6527 0 0);
+  --gray-551: oklch(0.551 0 0);
+  --gray-545: oklch(0.545 0 0);
+  --gray-320: oklch(0.32 0 0);
+  --gray-280: oklch(0.28 0 0);
+  --gray-270: oklch(0.27 0 0);
+  --gray-220: oklch(0.22 0 0);
+  --gray-210: oklch(0.2101 0 0);
+  --gray-200: oklch(0.2 0 0);
+  --gray-175: oklch(0.175 0 0);
+  --gray-145: oklch(0.145 0 0);
+
+  /* Indigo adila.co (#3A4BE5) — o acento da marca. */
+  --indigo-708: oklch(0.708 0.2298 270.42);
+  --indigo-550: oklch(0.55 0.2298 270.42);
+  --indigo-506: oklch(0.506 0.2298 270.42);
+
+  /* Vermelho — destrutivo e a segunda série de gráfico. */
+  --red-711: oklch(0.7106 0.1661 22.22);
+  --red-637: oklch(0.6368 0.2078 25.33);
+  --red-587: oklch(0.587 0.1661 22.22);
+  --red-490: oklch(0.49 0.2078 25.33);
+
+  /* Âmbar — aviso e a terceira série de gráfico. */
+  --amber-837: oklch(0.8369 0.1644 84.43);
+  --amber-769: oklch(0.7686 0.1647 70.08);
+
+  /* Verde — sucesso e a quinta série de gráfico. */
+  --green-773: oklch(0.7729 0.1535 163.22);
+  --green-696: oklch(0.6959 0.1491 162.48);
+  --green-536: oklch(0.536 0.1535 163.22);
+  --green-500: oklch(0.5 0.1491 162.48);
+}
+
+/* ------------------------------------------------------------------ */
+/* CAMADA 2 — semânticos. Cada um aponta para um primitivo e para mais   */
+/* nada: é o que permite trocar o acento da marca em um lugar só.        */
 /* ------------------------------------------------------------------ */
 
 :root {
   --radius: 0.375rem;
 
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.2101 0 0);
+  --background: var(--gray-1000);
+  --foreground: var(--gray-210);
 
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.2101 0 0);
+  --card: var(--gray-1000);
+  --card-foreground: var(--gray-210);
 
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.2101 0 0);
+  --popover: var(--gray-1000);
+  --popover-foreground: var(--gray-210);
 
-  --primary: oklch(0.506 0.2298 270.42);
-  --primary-foreground: oklch(1 0 0);
+  --primary: var(--indigo-506);
+  --primary-foreground: var(--gray-1000);
 
-  --secondary: oklch(0.9764 0 0);
-  --secondary-foreground: oklch(0.2101 0 0);
+  --secondary: var(--gray-976);
+  --secondary-foreground: var(--gray-210);
 
-  --muted: oklch(0.9764 0 0);
+  --muted: var(--gray-976);
   /* 0.551 dava 4.49:1 sobre --muted, 0.01 abaixo do mínimo de texto. */
-  --muted-foreground: oklch(0.545 0 0);
+  --muted-foreground: var(--gray-545);
 
-  --accent: oklch(0.9764 0 0);
-  --accent-foreground: oklch(0.2101 0 0);
+  --accent: var(--gray-976);
+  --accent-foreground: var(--gray-210);
 
   /* Matiz e croma preservados; só a luminosidade desce, o mínimo necessário
      para que o texto colorido atinja 4.5:1 sobre a própria tinta
      (bg-destructive/10 e /20), sem quebrar o branco sobre o preenchimento
      sólido — que continua passando porque a cor ficou mais escura. */
-  --destructive: oklch(0.49 0.2078 25.33);
-  --destructive-foreground: oklch(1 0 0);
+  --destructive: var(--red-490);
+  --destructive-foreground: var(--gray-1000);
 
-  --warning: oklch(0.7686 0.1647 70.08);
-  --warning-foreground: oklch(0.2101 0 0);
+  --warning: var(--amber-769);
+  --warning-foreground: var(--gray-210);
 
-  --success: oklch(0.5 0.1491 162.48);
-  --success-foreground: oklch(1 0 0);
+  --success: var(--green-500);
+  --success-foreground: var(--gray-1000);
 
   /* Tintas — superfície suave + texto sobre ela.
      Existem porque um par único (`bg-x/10 text-x`) é insolúvel no tema escuro:
@@ -89,24 +153,24 @@
   --warning-tint: color-mix(in oklab, var(--warning) 15%, var(--background));
   --warning-tint-foreground: oklch(from var(--warning) 0.5 c h);
 
-  --border: oklch(0.9276 0 0);
-  --input: oklch(0.9276 0 0);
-  --ring: oklch(0.506 0.2298 270.42);
+  --border: var(--gray-928);
+  --input: var(--gray-928);
+  --ring: var(--indigo-506);
 
-  --chart-1: oklch(0.506 0.2298 270.42);
-  --chart-2: oklch(0.6368 0.2078 25.33);
-  --chart-3: oklch(0.7686 0.1647 70.08);
-  --chart-4: oklch(0.551 0 0);
-  --chart-5: oklch(0.6959 0.1491 162.48);
+  --chart-1: var(--indigo-506);
+  --chart-2: var(--red-637);
+  --chart-3: var(--amber-769);
+  --chart-4: var(--gray-551);
+  --chart-5: var(--green-696);
 
-  --sidebar: oklch(0.9821 0 0);
-  --sidebar-foreground: oklch(0.2101 0 0);
-  --sidebar-primary: oklch(0.506 0.2298 270.42);
-  --sidebar-primary-foreground: oklch(1 0 0);
-  --sidebar-accent: oklch(0.95 0 0);
-  --sidebar-accent-foreground: oklch(0.2101 0 0);
-  --sidebar-border: oklch(0.9276 0 0);
-  --sidebar-ring: oklch(0.506 0.2298 270.42);
+  --sidebar: var(--gray-982);
+  --sidebar-foreground: var(--gray-210);
+  --sidebar-primary: var(--indigo-506);
+  --sidebar-primary-foreground: var(--gray-1000);
+  --sidebar-accent: var(--gray-950);
+  --sidebar-accent-foreground: var(--gray-210);
+  --sidebar-border: var(--gray-928);
+  --sidebar-ring: var(--indigo-506);
 
   --font-sans: "Adila Std", "SF Pro Text", "Segoe UI", system-ui, sans-serif;
   --font-mono: "Adila Code", "JetBrains Mono", "Fira Code", Consolas, monospace;
@@ -114,35 +178,35 @@
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.9445 0 0);
+  --background: var(--gray-145);
+  --foreground: var(--gray-945);
 
-  --card: oklch(0.22 0 0);
-  --card-foreground: oklch(0.9445 0 0);
+  --card: var(--gray-220);
+  --card-foreground: var(--gray-945);
 
-  --popover: oklch(0.2 0 0);
-  --popover-foreground: oklch(0.9445 0 0);
+  --popover: var(--gray-200);
+  --popover-foreground: var(--gray-945);
 
-  --primary: oklch(0.55 0.2298 270.42);
-  --primary-foreground: oklch(1 0 0);
+  --primary: var(--indigo-550);
+  --primary-foreground: var(--gray-1000);
 
-  --secondary: oklch(0.27 0 0);
-  --secondary-foreground: oklch(0.9445 0 0);
+  --secondary: var(--gray-270);
+  --secondary-foreground: var(--gray-945);
 
-  --muted: oklch(0.27 0 0);
-  --muted-foreground: oklch(0.7715 0 0);
+  --muted: var(--gray-270);
+  --muted-foreground: var(--gray-772);
 
-  --accent: oklch(0.27 0 0);
-  --accent-foreground: oklch(0.9445 0 0);
+  --accent: var(--gray-270);
+  --accent-foreground: var(--gray-945);
 
-  --destructive: oklch(0.587 0.1661 22.22);
-  --destructive-foreground: oklch(1 0 0);
+  --destructive: var(--red-587);
+  --destructive-foreground: var(--gray-1000);
 
-  --warning: oklch(0.8369 0.1644 84.43);
-  --warning-foreground: oklch(0.2101 0 0);
+  --warning: var(--amber-837);
+  --warning-foreground: var(--gray-210);
 
-  --success: oklch(0.536 0.1535 163.22);
-  --success-foreground: oklch(1 0 0);
+  --success: var(--green-536);
+  --success-foreground: var(--gray-1000);
 
   /* Aqui está o motivo destes tokens existirem: a superfície é a mesma de antes
      (color-mix a 10%, idêntica ao utilitário), mas o texto precisa ser MAIS
@@ -171,25 +235,25 @@
   --warning-tint: color-mix(in oklab, var(--warning) 15%, var(--background));
   --warning-tint-foreground: var(--warning);
 
-  --border: oklch(0.28 0 0);
-  --input: oklch(0.32 0 0);
+  --border: var(--gray-280);
+  --input: var(--gray-320);
   /* ring mais claro no dark: anel de foco legível sobre bg e cards (WCAG 1.4.11) */
-  --ring: oklch(0.708 0.2298 270.42);
+  --ring: var(--indigo-708);
 
-  --chart-1: oklch(0.55 0.2298 270.42);
-  --chart-2: oklch(0.7106 0.1661 22.22);
-  --chart-3: oklch(0.8369 0.1644 84.43);
-  --chart-4: oklch(0.6527 0 0);
-  --chart-5: oklch(0.7729 0.1535 163.22);
+  --chart-1: var(--indigo-550);
+  --chart-2: var(--red-711);
+  --chart-3: var(--amber-837);
+  --chart-4: var(--gray-653);
+  --chart-5: var(--green-773);
 
-  --sidebar: oklch(0.175 0 0);
-  --sidebar-foreground: oklch(0.9445 0 0);
-  --sidebar-primary: oklch(0.55 0.2298 270.42);
-  --sidebar-primary-foreground: oklch(1 0 0);
-  --sidebar-accent: oklch(0.27 0 0);
-  --sidebar-accent-foreground: oklch(0.9445 0 0);
-  --sidebar-border: oklch(0.28 0 0);
-  --sidebar-ring: oklch(0.708 0.2298 270.42);
+  --sidebar: var(--gray-175);
+  --sidebar-foreground: var(--gray-945);
+  --sidebar-primary: var(--indigo-550);
+  --sidebar-primary-foreground: var(--gray-1000);
+  --sidebar-accent: var(--gray-270);
+  --sidebar-accent-foreground: var(--gray-945);
+  --sidebar-border: var(--gray-280);
+  --sidebar-ring: var(--indigo-708);
 }
 
 @theme inline {

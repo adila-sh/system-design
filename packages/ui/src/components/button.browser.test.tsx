@@ -85,3 +85,42 @@ describe.each(TEMAS)("Button desabilitado no tema %s", (tema) => {
     ).toBeLessThan(MINIMO.naoTexto);
   });
 });
+
+/**
+ * Cada `size` de texto tem um `icon-*` de mesma altura — é o que permite pôr um
+ * botão de ícone ao lado de um de texto sem degrau.
+ *
+ * Os dois degraus de baixo sempre bateram; `default`/`icon` e `lg`/`icon-lg`
+ * não, e ficavam 8px e 12px fora. Como a regra já valia para metade da escala,
+ * era bug, não decisão — e este teste é o que impede a divergência de voltar,
+ * já que ela é invisível em qualquer página que não coloque os dois lado a lado.
+ */
+const PARES_DE_ALTURA = [
+  ["xs", "icon-xs"],
+  ["sm", "icon-sm"],
+  ["default", "icon"],
+  ["lg", "icon-lg"],
+] as const;
+
+describe("Button: altura do ícone acompanha a do texto", () => {
+  test.each(PARES_DE_ALTURA)(
+    "size=%s e size=%s têm a mesma altura",
+    async (texto, icone) => {
+      const tela = await render(
+        <>
+          <Button size={texto}>Salvar</Button>
+          <Button size={icone} aria-label="Salvar">
+            <svg />
+          </Button>
+        </>,
+      );
+
+      const [alturaTexto, alturaIcone] = Array.from(
+        tela.container.querySelectorAll("button"),
+        (botao) => botao.getBoundingClientRect().height,
+      );
+
+      expect(alturaIcone).toBe(alturaTexto);
+    },
+  );
+});

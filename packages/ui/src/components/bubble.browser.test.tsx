@@ -12,6 +12,7 @@ const VARIANTES = [
   "tinted",
   "outline",
   "ghost",
+  "destructive",
 ] as const;
 
 /**
