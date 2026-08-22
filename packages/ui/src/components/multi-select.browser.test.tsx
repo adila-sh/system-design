@@ -1,4 +1,5 @@
 import { describe, expect, test, vi } from "vitest";
+import { userEvent } from "vitest/browser";
 import { render } from "vitest-browser-react";
 import { MultiSelect } from "./multi-select";
 import { descreverContrasteDosTextos } from "../../test/textos";
@@ -84,5 +85,37 @@ describe("MultiSelect", () => {
     await expect
       .element(tela.getByRole("combobox", { name: "Permissões" }))
       .toBeDisabled();
+  });
+
+  test("adiciona a opção destacada usando apenas o teclado", async () => {
+    const aoMudar = vi.fn();
+    const tela = await render(
+      <MultiSelect
+        options={OPCOES}
+        onValueChange={aoMudar}
+        placeholder="Permissões"
+      />,
+    );
+    const campo = tela.getByRole("combobox", { name: "Permissões" });
+
+    campo.element().focus();
+    await userEvent.keyboard("{ArrowDown}");
+
+    await expect.element(tela.getByRole("listbox")).toBeVisible();
+    const destacada = document.querySelector(
+      '[role="option"][data-highlighted]',
+    );
+    expect(destacada).not.toBeNull();
+    const rotulo = destacada!.textContent?.trim();
+
+    await userEvent.keyboard("{Enter}");
+
+    expect(
+      Array.from(
+        tela.container.querySelectorAll('[data-slot="combobox-chip"]'),
+        (chip) => chip.textContent?.trim(),
+      ),
+    ).toContain(rotulo);
+    expect(aoMudar).toHaveBeenCalledOnce();
   });
 });

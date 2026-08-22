@@ -1,4 +1,5 @@
 import { describe, expect, test, vi } from "vitest";
+import { userEvent } from "vitest/browser";
 import { render } from "vitest-browser-react";
 import {
   ContextMenu,
@@ -30,7 +31,7 @@ function ExemploContextMenu({
 }) {
   return (
     <ContextMenu defaultOpen={defaultOpen}>
-      <ContextMenuTrigger className="h-20 w-60">
+      <ContextMenuTrigger className="h-20 w-60" tabIndex={0}>
         Área do arquivo
       </ContextMenuTrigger>
       <ContextMenuContent>
@@ -115,5 +116,25 @@ describe("ContextMenu", () => {
     await render(<ExemploContextMenu defaultOpen onValueChange={escolher} />);
     await lista.click();
     expect(escolher).toHaveBeenCalledWith("lista", expect.anything());
+  });
+
+  test("abre pelo atalho de contexto, percorre e fecha com Escape", async () => {
+    const tela = await render(<ExemploContextMenu />);
+    const gatilho = tela.getByText("Área do arquivo").element() as HTMLElement;
+
+    gatilho.focus();
+    await userEvent.keyboard("{Shift>}{F10}{/Shift}");
+
+    const menu = tela.getByRole("menu");
+    await expect.element(menu).toBeVisible();
+    expect(document.activeElement).toBe(menu.element());
+
+    await userEvent.keyboard("{ArrowDown}");
+    expect(document.activeElement?.getAttribute("role")).toMatch(/^menuitem/);
+
+    await userEvent.keyboard("{Escape}");
+
+    await expect.element(tela.getByRole("menu")).not.toBeInTheDocument();
+    expect(document.activeElement).toBe(gatilho);
   });
 });

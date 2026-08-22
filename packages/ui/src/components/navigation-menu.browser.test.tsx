@@ -1,4 +1,5 @@
 import { describe, expect, test, vi } from "vitest";
+import { userEvent } from "vitest/browser";
 import { render } from "vitest-browser-react";
 import {
   NavigationMenu,
@@ -83,5 +84,31 @@ describe("NavigationMenu", () => {
 
     await tela.getByRole("button", { name: "Produtos" }).click();
     expect(aoAbrir).toHaveBeenCalledOnce();
+  });
+
+  test("abre, percorre e fecha o painel pelo teclado", async () => {
+    const tela = await render(<ExemploNavegacao />);
+    const gatilho = tela.getByRole("button", { name: "Produtos" });
+
+    gatilho.element().focus();
+    await userEvent.keyboard("{Enter}");
+
+    await expect
+      .element(tela.getByRole("link", { name: "Analytics" }))
+      .toBeVisible();
+    await expect.element(gatilho).toHaveAttribute("aria-expanded", "true");
+
+    await userEvent.keyboard("{ArrowDown}");
+    expect([
+      tela.getByRole("link", { name: "Analytics" }).element(),
+      tela.getByRole("link", { name: "Automações" }).element(),
+    ]).toContain(document.activeElement);
+
+    await userEvent.keyboard("{Escape}");
+
+    await expect
+      .element(tela.getByRole("link", { name: "Analytics" }))
+      .not.toBeInTheDocument();
+    await expect.element(gatilho).toHaveAttribute("aria-expanded", "false");
   });
 });

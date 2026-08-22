@@ -1,4 +1,5 @@
 import { describe, expect, test, vi } from "vitest";
+import { userEvent } from "vitest/browser";
 import { render } from "vitest-browser-react";
 import {
   Combobox,
@@ -89,5 +90,26 @@ describe("Combobox", () => {
 
     await expect.element(tela.getByText("Nenhum resultado.")).toBeVisible();
     expect(document.querySelectorAll('[role="option"]')).toHaveLength(0);
+  });
+
+  test("abre, percorre e seleciona opções pelo teclado", async () => {
+    const aoMudar = vi.fn();
+    const tela = await render(<ExemploCombobox onValueChange={aoMudar} />);
+    const campo = tela.getByRole("combobox", { name: "Framework" });
+
+    campo.element().focus();
+    await userEvent.keyboard("{ArrowDown}");
+
+    await expect.element(tela.getByRole("listbox")).toBeVisible();
+    const destacada = document.querySelector(
+      '[role="option"][data-highlighted]',
+    );
+    expect(destacada).not.toBeNull();
+    const rotulo = destacada!.textContent?.trim();
+
+    await userEvent.keyboard("{Enter}");
+
+    expect((campo.element() as HTMLInputElement).value).toBe(rotulo);
+    expect(aoMudar).toHaveBeenCalledWith(rotulo, expect.anything());
   });
 });

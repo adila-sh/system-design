@@ -1,4 +1,5 @@
 import { describe, expect, test, vi } from "vitest";
+import { userEvent } from "vitest/browser";
 import { render } from "vitest-browser-react";
 import { Autocomplete } from "./autocomplete";
 import {
@@ -91,5 +92,28 @@ describe("Autocomplete", () => {
     expect(
       document.querySelector('[data-slot="autocomplete-content"]'),
     ).toBeNull();
+  });
+
+  test("navega e confirma uma sugestão pelo teclado", async () => {
+    const aoMudar = vi.fn();
+    const tela = await render(
+      <Autocomplete options={CIDADES} onValueChange={aoMudar} />,
+    );
+    const campo = tela.getByRole("combobox");
+
+    campo.element().focus();
+    await userEvent.keyboard("{ArrowDown}");
+
+    await expect.element(tela.getByRole("listbox")).toBeVisible();
+    const destacada = document.querySelector(
+      '[role="option"][data-highlighted]',
+    );
+    expect(destacada).not.toBeNull();
+    const rotulo = destacada!.textContent?.trim();
+
+    await userEvent.keyboard("{Enter}");
+
+    expect((campo.element() as HTMLInputElement).value).toBe(rotulo);
+    expect(aoMudar).toHaveBeenLastCalledWith(rotulo);
   });
 });

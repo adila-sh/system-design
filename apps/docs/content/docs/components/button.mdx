@@ -30,6 +30,27 @@ export function Example() {
 }
 ```
 
+## Button como link
+
+`variant="link"` muda apenas a aparência. Para renderizar uma âncora, passe-a
+em `render`; o `Button` detecta o link e configura `nativeButton={false}`
+automaticamente:
+
+```tsx
+<Button render={<a href="/planos" role="link" />}>Ver planos</Button>
+```
+
+O `role="link"` explícito é importante quando a ação navega. Por padrão, o
+Base UI atribui `role="button"` a qualquer elemento não nativo renderizado pelo
+`Button`, inclusive uma âncora com `href`. Esse padrão preserva a semântica e o
+acionamento por Espaço de um botão. Passar `role="link"` mantém a semântica
+nativa de navegação; nesse caso, Enter ativa o link e Espaço continua rolando a
+página.
+
+Omita `role="link"` somente quando a âncora deve deliberadamente se comportar e
+ser anunciada como botão. Um `role` fornecido pelo consumidor sempre prevalece
+sobre o padrão do Base UI.
+
 ## Tamanhos
 
 <Preview>
