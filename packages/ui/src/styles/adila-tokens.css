@@ -366,6 +366,47 @@
   --font-pixel: var(--font-pixel);
 }
 
+/* ------------------------------------------------------------------ */
+/* Motion.                                                               */
+/*                                                                       */
+/* Antes eram 8 durações (0, 100, 150, 200, 300, 400, 450, 1000) e 5     */
+/* cubic-bezier arbitrários escritos dentro de className. Não dava para  */
+/* responder "quanto tempo dura um hover neste sistema".                 */
+/*                                                                       */
+/* As curvas viram utilitárias `ease-*` de graça, porque `--ease-*` é um */
+/* namespace que o Tailwind v4 já conhece. As durações NÃO: `duration-*` */
+/* só aceita número, então os degraus nomeados precisam do @utility no   */
+/* fim deste arquivo. Verificado nos dois casos compilando.              */
+/* ------------------------------------------------------------------ */
+@theme {
+  --duration-fast: 150ms;
+  --duration-normal: 200ms;
+  --duration-slow: 300ms;
+  --duration-slower: 450ms;
+
+  /* A única curva que já se repetia: 5 usos entre Drawer e NavigationMenu,
+     mais uma sexta quase idêntica (0.23, 1, 0.32, 1) no MessageScroller. */
+  --ease-emphasized: cubic-bezier(0.22, 1, 0.36, 1);
+  /* Saída acelerada, para o que some da tela. */
+  --ease-exit: cubic-bezier(0.7, 0, 0.84, 0);
+  /* Curvas do Drawer: a do arrasto e a que passa um pouco do fim. */
+  --ease-swipe: cubic-bezier(0.32, 0.72, 0, 1);
+  --ease-overshoot: cubic-bezier(0.45, 1.005, 0, 1.005);
+}
+
+@utility duration-fast {
+  transition-duration: var(--duration-fast);
+}
+@utility duration-normal {
+  transition-duration: var(--duration-normal);
+}
+@utility duration-slow {
+  transition-duration: var(--duration-slow);
+}
+@utility duration-slower {
+  transition-duration: var(--duration-slower);
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

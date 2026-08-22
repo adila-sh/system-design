@@ -36,9 +36,9 @@ export const navTreeRail =
  * terminar no próprio conector em vez de vazar para baixo.
  */
 export const navTreeItem = cn(
-  "relative pl-4 transition-colors duration-300 ease-linear",
-  "before:absolute before:top-1/2 before:left-2 before:h-0.5 before:w-3 before:rounded-full before:bg-sidebar-border before:transition-colors before:duration-300 before:content-['']",
-  "after:absolute after:top-0 after:bottom-0 after:left-2 after:w-0.5 after:rounded-full after:bg-transparent after:transition-colors after:duration-300 after:content-['']",
+  "relative pl-4 transition-colors duration-slow ease-linear",
+  "before:absolute before:top-1/2 before:left-2 before:h-0.5 before:w-3 before:rounded-full before:bg-sidebar-border before:transition-colors before:duration-slow before:content-['']",
+  "after:absolute after:top-0 after:bottom-0 after:left-2 after:w-0.5 after:rounded-full after:bg-transparent after:transition-colors after:duration-slow after:content-['']",
   "has-data-active:before:bg-foreground has-data-active:after:bg-foreground",
   "last:has-data-active:after:bottom-1/2",
 );
@@ -57,7 +57,7 @@ export function NavActiveGlow({ className }: { className?: string }) {
       aria-hidden="true"
       data-slot="nav-active-glow"
       className={cn(
-        "pointer-events-none absolute inset-0 -z-10 rounded-[inherit] bg-gradient-to-r from-white/35 via-white/10 to-gray-500/25 opacity-0 transition-opacity duration-300 ease-linear dark:from-white/20 dark:via-white/5 dark:to-gray-500/30",
+        "pointer-events-none absolute inset-0 -z-10 rounded-[inherit] bg-gradient-to-r from-white/35 via-white/10 to-gray-500/25 opacity-0 transition-opacity duration-slow ease-linear dark:from-white/20 dark:via-white/5 dark:to-gray-500/30",
         // Os três grupos que podem comandar o realce, listados por extenso
         // porque o Tailwind não enxerga classe montada em template. Os dois
         // primeiros são os botões da Sidebar; o terceiro, sem nome, atende quem
@@ -78,7 +78,7 @@ export function NavCaret({ className }: { className?: string }) {
     <CaretDownIcon
       data-slot="nav-caret"
       className={cn(
-        "ml-auto size-3.5 shrink-0 transition-transform duration-200 group-data-open/collapsible:rotate-180",
+        "ml-auto size-3.5 shrink-0 transition-transform duration-normal group-data-open/collapsible:rotate-180",
         className,
       )}
     />
