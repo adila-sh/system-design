@@ -61,14 +61,35 @@ function Carousel({
     },
     plugins,
   );
-  const [canScrollPrev, setCanScrollPrev] = React.useState(false);
-  const [canScrollNext, setCanScrollNext] = React.useState(false);
+  /* O que o Embla sabe sobre poder rolar é estado EXTERNO, e ler isso com
+     useSyncExternalStore em vez de espelhar em useState resolve três coisas de
+     uma vez: some o `onSelect(api)` síncrono dentro do efeito, que era o que o
+     oxlint apontava; some o render extra que ele causava a cada montagem; e o
+     primeiro render passa a trazer o valor certo em vez de `false` para os dois
+     botões, que é o que fazia as setas nascerem desabilitadas por um frame. */
+  const assinarEmbla = React.useCallback(
+    (aoMudar: () => void) => {
+      if (!api) return () => undefined;
+      api.on("reInit", aoMudar);
+      api.on("select", aoMudar);
+      return () => {
+        api.off("reInit", aoMudar);
+        api.off("select", aoMudar);
+      };
+    },
+    [api],
+  );
 
-  const onSelect = React.useCallback((api: CarouselApi) => {
-    if (!api) return;
-    setCanScrollPrev(api.canScrollPrev());
-    setCanScrollNext(api.canScrollNext());
-  }, []);
+  const canScrollPrev = React.useSyncExternalStore(
+    assinarEmbla,
+    () => api?.canScrollPrev() ?? false,
+    () => false,
+  );
+  const canScrollNext = React.useSyncExternalStore(
+    assinarEmbla,
+    () => api?.canScrollNext() ?? false,
+    () => false,
+  );
 
   const scrollPrev = React.useCallback(() => {
     api?.scrollPrev();
@@ -95,18 +116,6 @@ function Carousel({
     if (!api || !setApi) return;
     setApi(api);
   }, [api, setApi]);
-
-  React.useEffect(() => {
-    if (!api) return;
-    onSelect(api);
-    api.on("reInit", onSelect);
-    api.on("select", onSelect);
-
-    return () => {
-      api.off("reInit", onSelect);
-      api.off("select", onSelect);
-    };
-  }, [api, onSelect]);
 
   return (
     <CarouselContext.Provider
