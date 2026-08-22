@@ -36,7 +36,7 @@
     "test:related": "vitest related --run",
     "test:shuffle": "vitest run --sequence.shuffle.tests",
     "test:watch": "vitest",
-    "test:json": "vitest run --browser.fileParallelism=false --reporter=json --outputFile=test-results.json",
+    "test:json": "vitest run --browser.fileParallelism=false --coverage --coverage.reporter=json-summary --reporter=json --outputFile=test-results.json",
     "typecheck": "bun run check:dropdown-menu && bun run check:tokens && tsc --noEmit"
   },
   "peerDependencies": {

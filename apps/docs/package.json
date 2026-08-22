@@ -9,7 +9,8 @@
     "start": "node .output/server/index.mjs",
     "typecheck": "fumadocs-mdx && tsc --noEmit",
     "gen:docs": "node scripts/gen-docs.mjs",
-    "gen:test-status": "node scripts/gen-test-status.mjs"
+    "gen:test-status": "node scripts/gen-test-status.mjs",
+    "test:test-status": "node --test scripts/test-status-core.test.mjs"
   },
   "dependencies": {
     "@adila-sh/ui": "workspace:*",
