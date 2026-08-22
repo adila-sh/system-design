@@ -1,0 +1,13 @@
+/*
+ * Entrada Tailwind para aplicações consumidoras.
+ *
+ * Diferente de style.css, este arquivo preserva as diretivas `@theme` e
+ * `@utility` para que o Tailwind da aplicação gere classes a partir dos tokens
+ * canônicos da Adila. Importe os dois arquivos: style.css contém os componentes
+ * compilados; theme.css ensina o compilador sobre os tokens usados pelo app.
+ */
+@import "./adila-tokens.css";
+
+@custom-variant dark (&:where(.dark, .dark *));
+@custom-variant data-horizontal (&[data-orientation="horizontal"]);
+@custom-variant data-vertical (&[data-orientation="vertical"]);

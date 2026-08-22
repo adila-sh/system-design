@@ -23,6 +23,20 @@ export function App({ children }: { children: React.ReactNode }) {
 }
 ```
 
+Importe também os dois estilos na entrada da aplicação. O primeiro contém os
+componentes compilados; o segundo expõe os tokens e utilitários para o Tailwind
+do projeto consumidor:
+
+```tsx
+import "@adila-sh/ui/style.css";
+import "./styles.css";
+```
+
+```css title="styles.css"
+@import "tailwindcss";
+@import "@adila-sh/ui/theme.css";
+```
+
 ## Hook
 
 ```tsx
@@ -44,6 +58,25 @@ export function ThemeToggle() {
 
 Todas as propriedades do `next-themes` continuam disponíveis no provider para
 temas customizados, outra chave de persistência ou outro atributo no documento.
+
+## Controle pronto
+
+Para o caso padrão claro/escuro/sistema, use o controle publicado pelo pacote:
+
+```tsx
+import { ThemeToggle } from "@adila-sh/ui";
+
+<ThemeToggle />;
+```
+
+Os rótulos e o nome acessível podem ser personalizados:
+
+```tsx
+<ThemeToggle
+  triggerLabel="Escolher aparência"
+  labels={{ light: "Dia", dark: "Noite", system: "Automático" }}
+/>;
+```
 
 > `CodeThemeProvider` é independente: ele seleciona a paleta de blocos de
 > código, terminais e diffs, não o tema visual da aplicação.
