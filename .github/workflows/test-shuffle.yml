@@ -1,0 +1,33 @@
+name: Test randomized order
+
+on:
+  schedule:
+    # Segunda-feira, 04:17 em America/Sao_Paulo (07:17 UTC).
+    - cron: "17 7 * * 1"
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  shuffle:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Install Chromium (Playwright)
+        run: bunx playwright install --with-deps chromium
+
+      - name: Test in randomized order
+        run: bun run test:shuffle

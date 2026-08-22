@@ -31,6 +31,10 @@
     "prepublishOnly": "bun run build",
     "dev": "bun run gen:barrel && tsup --watch",
     "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "test:changed": "vitest run --changed",
+    "test:related": "vitest related --run",
+    "test:shuffle": "vitest run --sequence.shuffle",
     "test:watch": "vitest",
     "test:json": "vitest run --reporter=json --outputFile=test-results.json",
     "typecheck": "bun run check:dropdown-menu && bun run check:tokens && tsc --noEmit"
@@ -68,6 +72,7 @@
     "@types/react-dom": "^19.2.3",
     "@vitest/browser": "4",
     "@vitest/browser-playwright": "4.1.10",
+    "@vitest/coverage-v8": "4.1.10",
     "playwright": "^1.62.1",
     "tailwindcss": "^4.3.2",
     "tsup": "^8.5.1",

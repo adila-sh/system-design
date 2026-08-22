@@ -50,8 +50,38 @@ export default defineConfig({
     alias: { "@": SRC },
     dedupe: ["react", "react-dom"],
   },
-  optimizeDeps: { include: dependenciasExternas() },
+  optimizeDeps: {
+    include: [...dependenciasExternas(), "vitest-browser-react/pure"],
+  },
   test: {
+    // Impede que spies, mocks, globals e variáveis de ambiente vazem entre
+    // testes. O DOM continua sendo limpo explicitamente em test/setup.ts.
+    clearMocks: true,
+    restoreMocks: true,
+    unstubEnvs: true,
+    unstubGlobals: true,
+    experimental: {
+      // Exibe somente os imports lentos, sem poluir a saída normal da suíte.
+      importDurations: {
+        print: "on-warn",
+        limit: 10,
+        thresholds: { warn: 100, danger: 500 },
+      },
+    },
+    coverage: {
+      provider: "v8",
+      include: ["src/**/*.{ts,tsx}"],
+      exclude: ["src/**/*.test.{ts,tsx}", "src/index.ts"],
+      reporter: ["text", "html", "json-summary"],
+      reportOnFailure: true,
+      // Baseline atual: o CI não deixa a cobertura regredir silenciosamente.
+      thresholds: {
+        statements: 74,
+        branches: 65,
+        functions: 81,
+        lines: 74,
+      },
+    },
     projects: [
       {
         extends: true,
@@ -67,6 +97,9 @@ export default defineConfig({
           name: "browser",
           include: ["src/**/*.browser.test.tsx"],
           setupFiles: ["./test/setup.ts"],
+          // Reutiliza os workers/iframes entre os muitos arquivos pequenos.
+          // test/setup.ts limpa cada render antes do teste seguinte.
+          isolate: false,
           browser: {
             enabled: true,
             provider: playwright(),
