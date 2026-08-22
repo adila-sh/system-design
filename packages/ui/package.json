@@ -16,6 +16,11 @@
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
     },
+    "./*": {
+      "types": "./dist/*.d.ts",
+      "import": "./dist/*.js",
+      "require": "./dist/*.cjs"
+    },
     "./style.css": "./dist/style.css",
     "./theme.css": "./dist/theme.css"
   },
@@ -25,9 +30,10 @@
     "check:tokens": "node scripts/check-token-layers.mjs",
     "check:focus": "node scripts/check-focus-fallback.mjs",
     "check:tints": "node scripts/check-tint-fallback.mjs",
+    "check:exports": "node scripts/check-package-exports.mjs",
     "build:js": "bun run gen:barrel && tsup",
     "build:css": "tailwindcss -i src/styles/index.css -o dist/style.css --minify && node scripts/append-font-import.mjs && node scripts/copy-theme-css.mjs",
-    "build": "bun run check:dropdown-menu && bun run check:tokens && bun run build:js && bun run build:css && bun run check:focus && bun run check:tints",
+    "build": "bun run check:dropdown-menu && bun run check:tokens && bun run build:js && bun run build:css && bun run check:focus && bun run check:tints && bun run check:exports",
     "prepublishOnly": "bun run build",
     "dev": "bun run gen:barrel && tsup --watch",
     "test": "vitest run",
@@ -36,7 +42,7 @@
     "test:related": "vitest related --run",
     "test:shuffle": "vitest run --sequence.shuffle.tests",
     "test:watch": "vitest",
-    "test:json": "vitest run --browser.fileParallelism=false --reporter=json --outputFile=test-results.json",
+    "test:json": "vitest run --browser.fileParallelism=false --coverage --coverage.reporter=json-summary --reporter=json --outputFile=test-results.json",
     "typecheck": "bun run check:dropdown-menu && bun run check:tokens && tsc --noEmit"
   },
   "peerDependencies": {

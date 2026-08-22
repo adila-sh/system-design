@@ -13,6 +13,18 @@ export type StatusDeTestes = {
   passando?: number;
   falhando?: number;
   arquivos?: string[];
+  cobertura?: {
+    status: "indisponivel" | "nao-executada" | "parcial" | "completa";
+    linhas?: MetricaDeCobertura;
+    funcoes?: MetricaDeCobertura;
+    branches?: MetricaDeCobertura;
+  };
+};
+
+type MetricaDeCobertura = {
+  total: number;
+  cobertas: number;
+  percentual: number;
 };
 
 const COMPONENTES = manifesto.componentes as Record<string, StatusDeTestes>;
@@ -58,23 +70,30 @@ export function TestStatusBadgeContent({ dados }: { dados?: StatusDeTestes }) {
   }
 
   const plural = dados.total === 1 ? "teste" : "testes";
-  const conteudo =
-    dados.status === "falhando"
-      ? `${dados.falhando} de ${dados.total} ${plural} falhando`
-      : `${dados.total} ${plural} passando`;
+  const cobertura = dados.cobertura ?? { status: "indisponivel" as const };
+  let conteudo = `${dados.total} ${plural} passando`;
+  let tom: keyof typeof TONS = "ok";
+  let icone = <CheckCircleIcon weight="fill" />;
+
+  if (dados.status === "falhando") {
+    conteudo = `${dados.falhando} de ${dados.total} ${plural} falhando`;
+    tom = "erro";
+    icone = <XCircleIcon weight="fill" />;
+  } else if (cobertura.status === "nao-executada") {
+    conteudo = `${dados.total} ${plural} passam, fonte não executada`;
+    tom = "atencao";
+    icone = <WarningIcon weight="fill" />;
+  } else if (cobertura.status === "parcial") {
+    conteudo = `${dados.total} ${plural} passando · ${cobertura.linhas?.percentual ?? 0}% linhas · ${cobertura.branches?.percentual ?? 0}% branches`;
+    tom = "atencao";
+    icone = <WarningIcon weight="fill" />;
+  } else if (cobertura.status === "completa") {
+    conteudo = `${dados.total} ${plural} passando · cobertura completa`;
+  }
 
   const arquivo = dados.arquivos?.[0];
   const selo = (
-    <Selo
-      tom={dados.status === "falhando" ? "erro" : "ok"}
-      icone={
-        dados.status === "falhando" ? (
-          <XCircleIcon weight="fill" />
-        ) : (
-          <CheckCircleIcon weight="fill" />
-        )
-      }
-    >
+    <Selo tom={tom} icone={icone}>
       {conteudo}
     </Selo>
   );
@@ -97,6 +116,8 @@ export function TestStatusBadgeContent({ dados }: { dados?: StatusDeTestes }) {
 const TONS = {
   ok: "border-emerald-500/30 bg-emerald-500/10 text-emerald-700 dark:text-emerald-400",
   erro: "border-red-500/30 bg-red-500/10 text-red-700 dark:text-red-400",
+  atencao:
+    "border-amber-500/30 bg-amber-500/10 text-amber-700 dark:text-amber-400",
   neutro: "border-fd-border bg-fd-muted text-fd-muted-foreground",
 } as const;
 

@@ -16,7 +16,7 @@
     "test:changed": "bun run --cwd packages/ui test:changed",
     "test:related": "bun run --cwd packages/ui test:related",
     "test:shuffle": "bun run --cwd packages/ui test:shuffle",
-    "test:status": "bun run --cwd packages/ui test:json && bun run --cwd apps/docs gen:test-status",
+    "test:status": "bun run --cwd apps/docs test:test-status && bun run --cwd packages/ui test:json && bun run --cwd apps/docs gen:test-status",
     "typecheck": "bun run --cwd packages/ui typecheck && bun run --cwd apps/docs typecheck",
     "format": "oxfmt --write .",
     "format:check": "oxfmt --check .",

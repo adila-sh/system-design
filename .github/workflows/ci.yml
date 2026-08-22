@@ -49,3 +49,6 @@ jobs:
 
       - name: Test docs
         run: bun run --cwd apps/docs test
+
+      - name: Test status generator
+        run: bun run --cwd apps/docs test:test-status

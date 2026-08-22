@@ -116,6 +116,117 @@ ${colorConfig
 
 const ChartTooltip = RechartsPrimitive.Tooltip;
 
+type ChartTooltipContentProps = React.ComponentProps<
+  typeof RechartsPrimitive.Tooltip
+> &
+  React.ComponentProps<"div"> & {
+    hideLabel?: boolean;
+    hideIndicator?: boolean;
+    indicator?: "line" | "dot" | "dashed";
+    nameKey?: string;
+    labelKey?: string;
+  } & Omit<
+    RechartsPrimitive.DefaultTooltipContentProps<
+      TooltipValueType,
+      TooltipNameType
+    >,
+    "accessibilityLayer"
+  >;
+
+type ChartTooltipPayload = NonNullable<
+  ChartTooltipContentProps["payload"]
+>[number];
+
+function ChartTooltipItem({
+  config,
+  item,
+  index,
+  indicator,
+  hideIndicator,
+  formatter,
+  color,
+  nameKey,
+  nestLabel,
+  tooltipLabel,
+}: {
+  config: ChartConfig;
+  item: ChartTooltipPayload;
+  index: number;
+  indicator: NonNullable<ChartTooltipContentProps["indicator"]>;
+  hideIndicator: boolean;
+  formatter: ChartTooltipContentProps["formatter"];
+  color: ChartTooltipContentProps["color"];
+  nameKey: ChartTooltipContentProps["nameKey"];
+  nestLabel: boolean;
+  tooltipLabel: React.ReactNode;
+}) {
+  const key = `${nameKey ?? item.name ?? item.dataKey ?? "value"}`;
+  const itemConfig = getPayloadConfigFromPayload(config, item, key);
+  const indicatorColor = color ?? item.payload?.fill ?? item.color;
+
+  return (
+    <div
+      data-slot="chart-tooltip-item"
+      className={cn(
+        "flex w-full flex-wrap items-stretch gap-2 [&>svg]:h-2.5 [&>svg]:w-2.5 [&>svg]:text-muted-foreground",
+        indicator === "dot" && "items-center",
+      )}
+    >
+      {formatter && item.value !== undefined && item.name ? (
+        formatter(item.value, item.name, item, index, item.payload)
+      ) : (
+        <>
+          {itemConfig?.icon ? (
+            <itemConfig.icon />
+          ) : (
+            !hideIndicator && (
+              <div
+                data-slot="chart-tooltip-indicator"
+                className={cn(
+                  "shrink-0 rounded-sm border-(--color-border) bg-(--color-bg)",
+                  {
+                    "h-2.5 w-2.5": indicator === "dot",
+                    "w-1": indicator === "line",
+                    "w-0 border-[1.5px] border-dashed bg-transparent":
+                      indicator === "dashed",
+                    "my-0.5": nestLabel && indicator === "dashed",
+                  },
+                )}
+                style={
+                  {
+                    "--color-bg": indicatorColor,
+                    "--color-border": indicatorColor,
+                  } as React.CSSProperties
+                }
+              />
+            )
+          )}
+          <div
+            className={cn(
+              "flex flex-1 justify-between leading-none",
+              nestLabel ? "items-end" : "items-center",
+            )}
+          >
+            <div className="grid gap-1.5">
+              {nestLabel ? tooltipLabel : null}
+              <span className="text-muted-foreground">
+                {itemConfig?.label ?? item.name}
+              </span>
+            </div>
+            {item.value != null && (
+              <span className="font-mono font-medium text-foreground tabular-nums">
+                {typeof item.value === "number"
+                  ? item.value.toLocaleString()
+                  : String(item.value)}
+              </span>
+            )}
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
+
 function ChartTooltipContent({
   active,
   payload,
@@ -130,20 +241,7 @@ function ChartTooltipContent({
   color,
   nameKey,
   labelKey,
-}: React.ComponentProps<typeof RechartsPrimitive.Tooltip> &
-  React.ComponentProps<"div"> & {
-    hideLabel?: boolean;
-    hideIndicator?: boolean;
-    indicator?: "line" | "dot" | "dashed";
-    nameKey?: string;
-    labelKey?: string;
-  } & Omit<
-    RechartsPrimitive.DefaultTooltipContentProps<
-      TooltipValueType,
-      TooltipNameType
-    >,
-    "accessibilityLayer"
-  >) {
+}: ChartTooltipContentProps) {
   const { config } = useChart();
 
   const tooltipLabel = React.useMemo(() => {
@@ -190,6 +288,7 @@ function ChartTooltipContent({
 
   return (
     <div
+      data-slot="chart-tooltip-content"
       className={cn(
         "grid min-w-32 items-start gap-1.5 rounded-md border border-border/50 bg-background px-2.5 py-1.5 text-xs",
         className,
@@ -199,72 +298,21 @@ function ChartTooltipContent({
       <div className="grid gap-1.5">
         {payload
           .filter((item) => item.type !== "none")
-          .map((item, index) => {
-            const key = `${nameKey ?? item.name ?? item.dataKey ?? "value"}`;
-            const itemConfig = getPayloadConfigFromPayload(config, item, key);
-            const indicatorColor = color ?? item.payload?.fill ?? item.color;
-
-            return (
-              <div
-                key={index}
-                className={cn(
-                  "flex w-full flex-wrap items-stretch gap-2 [&>svg]:h-2.5 [&>svg]:w-2.5 [&>svg]:text-muted-foreground",
-                  indicator === "dot" && "items-center",
-                )}
-              >
-                {formatter && item?.value !== undefined && item.name ? (
-                  formatter(item.value, item.name, item, index, item.payload)
-                ) : (
-                  <>
-                    {itemConfig?.icon ? (
-                      <itemConfig.icon />
-                    ) : (
-                      !hideIndicator && (
-                        <div
-                          className={cn(
-                            "shrink-0 rounded-sm border-(--color-border) bg-(--color-bg)",
-                            {
-                              "h-2.5 w-2.5": indicator === "dot",
-                              "w-1": indicator === "line",
-                              "w-0 border-[1.5px] border-dashed bg-transparent":
-                                indicator === "dashed",
-                              "my-0.5": nestLabel && indicator === "dashed",
-                            },
-                          )}
-                          style={
-                            {
-                              "--color-bg": indicatorColor,
-                              "--color-border": indicatorColor,
-                            } as React.CSSProperties
-                          }
-                        />
-                      )
-                    )}
-                    <div
-                      className={cn(
-                        "flex flex-1 justify-between leading-none",
-                        nestLabel ? "items-end" : "items-center",
-                      )}
-                    >
-                      <div className="grid gap-1.5">
-                        {nestLabel ? tooltipLabel : null}
-                        <span className="text-muted-foreground">
-                          {itemConfig?.label ?? item.name}
-                        </span>
-                      </div>
-                      {item.value != null && (
-                        <span className="font-mono font-medium text-foreground tabular-nums">
-                          {typeof item.value === "number"
-                            ? item.value.toLocaleString()
-                            : String(item.value)}
-                        </span>
-                      )}
-                    </div>
-                  </>
-                )}
-              </div>
-            );
-          })}
+          .map((item, index) => (
+            <ChartTooltipItem
+              key={`${item.dataKey ?? item.name ?? "value"}-${index}`}
+              config={config}
+              item={item}
+              index={index}
+              indicator={indicator}
+              hideIndicator={hideIndicator}
+              formatter={formatter}
+              color={color}
+              nameKey={nameKey}
+              nestLabel={nestLabel}
+              tooltipLabel={tooltipLabel}
+            />
+          ))}
       </div>
     </div>
   );
@@ -290,6 +338,7 @@ function ChartLegendContent({
 
   return (
     <div
+      data-slot="chart-legend-content"
       className={cn(
         "flex items-center justify-center gap-4",
         verticalAlign === "top" ? "pb-3" : "pt-3",

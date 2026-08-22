@@ -80,6 +80,27 @@ export default defineConfig({
         branches: 65,
         functions: 81,
         lines: 74,
+        "src/components/search-input.tsx": {
+          statements: 100,
+          branches: 90,
+          functions: 100,
+          lines: 100,
+        },
+        "src/components/pixel-blast.tsx": {
+          statements: 98,
+          branches: 90,
+          functions: 100,
+          lines: 100,
+        },
+        // O chart concentra resolução de payload, formatadores e variantes de
+        // tooltip. O piso dedicado impede que a média global esconda de novo
+        // um módulo público inteiro sem execução.
+        "src/components/chart.tsx": {
+          statements: 90,
+          branches: 80,
+          functions: 100,
+          lines: 90,
+        },
       },
     },
     projects: [

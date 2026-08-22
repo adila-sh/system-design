@@ -1,10 +1,10 @@
 // Gera src/index.ts re-exportando todo componente em src/components e os
 // utilitários que fazem parte da API pública.
-import { readdirSync, writeFileSync } from "node:fs";
+import { writeFileSync } from "node:fs";
 import { join } from "node:path";
+import { listComponentNames } from "./component-catalog.mjs";
 
 const ROOT = process.cwd();
-const COMPONENTS_DIR = join(ROOT, "src/components");
 const OUT_FILE = join(ROOT, "src/index.ts");
 
 // Nomes exportados em namespace por colidirem com outro componente no barrel.
@@ -16,10 +16,7 @@ const NAMESPACED = new Set(["typography"]);
 // Testes moram ao lado do componente (*.browser.test.tsx) e NÃO podem entrar no
 // barrel — o tsup empacota a partir dele, então um teste no index viraria código
 // publicado, arrastando vitest pro bundle.
-const names = readdirSync(COMPONENTS_DIR)
-  .filter((f) => f.endsWith(".tsx") && !f.includes(".test."))
-  .map((f) => f.replace(/\.tsx$/, ""))
-  .sort();
+const names = listComponentNames(ROOT);
 
 const lines = names.map((name) =>
   NAMESPACED.has(name)
