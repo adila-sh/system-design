@@ -133,7 +133,7 @@
      A superfície usa color-mix com os mesmos 10% que o utilitário aplicava, e
      por isso é pixel a pixel o que já era exibido — o que muda é só o texto.
      No tema claro o texto já passava, então aponta para o próprio token. */
-  --primary-tint: color-mix(in oklab, var(--primary) 10%, var(--background));
+  --primary-tint: var(--background);
   --primary-tint-foreground: var(--primary);
 
   /* O indigo passa como texto sobre o fundo da página (6.33:1), mas o vermelho e
@@ -142,33 +142,25 @@
      arrastar --destructive e --success junto — o preenchimento sólido segue
      igual. */
 
-  --destructive-tint: color-mix(
-    in oklab,
-    var(--destructive) 10%,
-    var(--background)
-  );
+  --destructive-tint: var(--background);
   /* Nível mais forte, para o preenchimento suave do Button e do Badge, que
      sempre usaram 20% em vez de 10%. Opaco pelo mesmo motivo da tinta normal:
      `bg-destructive/20` compõe com o que estiver atrás, então o mesmo botão
      mudava de contraste conforme a superfície em que fosse colocado. */
-  --destructive-tint-strong: color-mix(
-    in oklab,
-    var(--destructive) 20%,
-    var(--background)
-  );
+  --destructive-tint-strong: var(--background);
   --destructive-tint-foreground: oklch(from var(--destructive) 0.47 c h);
 
-  --success-tint: color-mix(in oklab, var(--success) 10%, var(--background));
+  --success-tint: var(--background);
   --success-tint-foreground: oklch(from var(--success) 0.48 c h);
 
-  --info-tint: color-mix(in oklab, var(--info) 10%, var(--background));
+  --info-tint: var(--background);
   --info-tint-foreground: oklch(from var(--info) 0.47 c h);
 
   /* O amarelo do preenchimento é claro demais para virar texto — mede 2.15:1
      sobre o fundo da página. Em vez de cair no preto do --warning-foreground,
      que apagaria a semântica de aviso, desce na mesma matiz até um âmbar
      escuro: 6.18:1 sobre a página e 5.57:1 sobre a própria tinta. */
-  --warning-tint: color-mix(in oklab, var(--warning) 15%, var(--background));
+  --warning-tint: var(--background);
   --warning-tint-foreground: oklch(from var(--warning) 0.5 c h);
 
   --border: var(--gray-928);
@@ -237,6 +229,31 @@
   --font-sans: "Adila Std", "SF Pro Text", "Segoe UI", system-ui, sans-serif;
   --font-mono: "Adila Code", "JetBrains Mono", "Fira Code", Consolas, monospace;
   --font-pixel: "Adila Pixel", "Adila Code", monospace;
+
+  /* A mistura fica atrás de um @supports escrito à mão, e o valor de cima é
+     o fallback de verdade. Sem isso o Tailwind gera o fallback sozinho, e ele
+     é a cor SEM a mistura — `--destructive-tint` virava vermelho opaco onde se
+     queria 10% dele. Cair no fundo da página é a degradação certa: some a
+     superfície colorida, e o texto continua legível porque `-tint-foreground`
+     é, por definição, a cor que se lê sobre o fundo.
+     Verificado que o Tailwind não acrescenta fallback próprio quando já existe
+     um @supports nosso. */
+  @supports (color: color-mix(in oklab, red, red)) {
+    --info-tint: color-mix(in oklab, var(--info) 10%, var(--background));
+    --primary-tint: color-mix(in oklab, var(--primary) 10%, var(--background));
+    --destructive-tint: color-mix(
+      in oklab,
+      var(--destructive) 10%,
+      var(--background)
+    );
+    --destructive-tint-strong: color-mix(
+      in oklab,
+      var(--destructive) 20%,
+      var(--background)
+    );
+    --success-tint: color-mix(in oklab, var(--success) 10%, var(--background));
+    --warning-tint: color-mix(in oklab, var(--warning) 15%, var(--background));
+  }
 }
 
 .dark {
@@ -278,29 +295,21 @@
      CLARO que a cor de preenchimento, e não pode ser a própria cor — que serve
      de fundo para o branco no estado sólido. Matiz e croma preservados; só a
      luminosidade sobe, o mínimo para passar de 5:1 sobre a tinta. */
-  --primary-tint: color-mix(in oklab, var(--primary) 10%, var(--background));
+  --primary-tint: var(--background);
   --primary-tint-foreground: oklch(from var(--primary) 0.65 c h);
 
-  --destructive-tint: color-mix(
-    in oklab,
-    var(--destructive) 10%,
-    var(--background)
-  );
-  --destructive-tint-strong: color-mix(
-    in oklab,
-    var(--destructive) 20%,
-    var(--background)
-  );
+  --destructive-tint: var(--background);
+  --destructive-tint-strong: var(--background);
   --destructive-tint-foreground: oklch(from var(--destructive) 0.64 c h);
 
-  --success-tint: color-mix(in oklab, var(--success) 10%, var(--background));
+  --success-tint: var(--background);
   --success-tint-foreground: oklch(from var(--success) 0.6 c h);
 
-  --info-tint: color-mix(in oklab, var(--info) 10%, var(--background));
+  --info-tint: var(--background);
   --info-tint-foreground: oklch(from var(--info) 0.62 c h);
 
   /* No escuro o amarelo já funciona como texto sobre a própria tinta. */
-  --warning-tint: color-mix(in oklab, var(--warning) 15%, var(--background));
+  --warning-tint: var(--background);
   --warning-tint-foreground: var(--warning);
 
   --border: var(--gray-280);
@@ -322,6 +331,31 @@
   --sidebar-accent-foreground: var(--gray-945);
   --sidebar-border: var(--gray-280);
   --sidebar-ring: var(--indigo-708);
+
+  /* A mistura fica atrás de um @supports escrito à mão, e o valor de cima é
+     o fallback de verdade. Sem isso o Tailwind gera o fallback sozinho, e ele
+     é a cor SEM a mistura — `--destructive-tint` virava vermelho opaco onde se
+     queria 10% dele. Cair no fundo da página é a degradação certa: some a
+     superfície colorida, e o texto continua legível porque `-tint-foreground`
+     é, por definição, a cor que se lê sobre o fundo.
+     Verificado que o Tailwind não acrescenta fallback próprio quando já existe
+     um @supports nosso. */
+  @supports (color: color-mix(in oklab, red, red)) {
+    --info-tint: color-mix(in oklab, var(--info) 10%, var(--background));
+    --primary-tint: color-mix(in oklab, var(--primary) 10%, var(--background));
+    --destructive-tint: color-mix(
+      in oklab,
+      var(--destructive) 10%,
+      var(--background)
+    );
+    --destructive-tint-strong: color-mix(
+      in oklab,
+      var(--destructive) 20%,
+      var(--background)
+    );
+    --success-tint: color-mix(in oklab, var(--success) 10%, var(--background));
+    --warning-tint: color-mix(in oklab, var(--warning) 15%, var(--background));
+  }
 }
 
 @theme inline {
