@@ -4,7 +4,8 @@
 /* Neutros são grayscale puro (chroma 0) — sem tinta azul; o dark é preto de fato. */
 /* Consumidos pelos componentes shadcn E pelo tema Fumadocs (via         */
 /* fumadocs-ui/css/shadcn.css, que mapeia --color-fd-* -> estes tokens). */
-/* Espelhados no item `registry:base` (adila-theme) por gen-registry.mjs.  */
+/* Este arquivo é a ÚNICA fonte dos tokens: não há mais registry HTTP    */
+/* espelhando estes valores (removido em 0cc733f).                       */
 /* ------------------------------------------------------------------ */
 
 :root {
