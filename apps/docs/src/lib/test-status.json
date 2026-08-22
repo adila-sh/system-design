@@ -1,10 +1,13 @@
 {
-  "geradoEm": "2026-08-22T19:37:43.842Z",
-  "origem": "vitest",
+  "origem": "vitest+coverage",
   "resumo": {
     "componentes": 108,
     "comTestes": 108,
     "semTestes": 0,
+    "protegidos": 107,
+    "semExecucao": 1,
+    "coberturaParcial": 81,
+    "coberturaCompleta": 26,
     "testes": 535,
     "falhando": 0,
     "testesNaSuite": 579
@@ -15,756 +18,2700 @@
       "total": 2,
       "passando": 2,
       "falhando": 0,
-      "arquivos": ["src/components/accordion.browser.test.tsx"]
+      "arquivos": ["src/components/accordion.browser.test.tsx"],
+      "cobertura": {
+        "status": "completa",
+        "linhas": {
+          "total": 5,
+          "cobertas": 5,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 4,
+          "cobertas": 4,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 0,
+          "cobertas": 0,
+          "percentual": 100
+        }
+      }
     },
     "alert": {
       "status": "passando",
       "total": 8,
       "passando": 8,
       "falhando": 0,
-      "arquivos": ["src/components/alert.browser.test.tsx"]
+      "arquivos": ["src/components/alert.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 6,
+          "cobertas": 5,
+          "percentual": 83.33
+        },
+        "funcoes": {
+          "total": 5,
+          "cobertas": 4,
+          "percentual": 80
+        },
+        "branches": {
+          "total": 5,
+          "cobertas": 3,
+          "percentual": 60
+        }
+      }
     },
     "alert-dialog": {
       "status": "passando",
       "total": 7,
       "passando": 7,
       "falhando": 0,
-      "arquivos": ["src/components/alert-dialog.browser.test.tsx"]
+      "arquivos": ["src/components/alert-dialog.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 13,
+          "cobertas": 13,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 13,
+          "cobertas": 13,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 8,
+          "cobertas": 6,
+          "percentual": 75
+        }
+      }
     },
     "api-request": {
       "status": "passando",
       "total": 10,
       "passando": 10,
       "falhando": 0,
-      "arquivos": ["src/components/api-request.browser.test.tsx"]
+      "arquivos": ["src/components/api-request.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 11,
+          "cobertas": 3,
+          "percentual": 27.27
+        },
+        "funcoes": {
+          "total": 10,
+          "cobertas": 2,
+          "percentual": 20
+        },
+        "branches": {
+          "total": 9,
+          "cobertas": 6,
+          "percentual": 66.66
+        }
+      }
     },
     "ascii-badge": {
       "status": "passando",
       "total": 14,
       "passando": 14,
       "falhando": 0,
-      "arquivos": ["src/components/ascii-badge.browser.test.tsx"]
+      "arquivos": ["src/components/ascii-badge.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 4,
+          "cobertas": 4,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 2,
+          "cobertas": 2,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 11,
+          "cobertas": 8,
+          "percentual": 72.72
+        }
+      }
     },
     "ascii-collapsible": {
       "status": "passando",
       "total": 3,
       "passando": 3,
       "falhando": 0,
-      "arquivos": ["src/components/ascii-collapsible.browser.test.tsx"]
+      "arquivos": ["src/components/ascii-collapsible.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 6,
+          "cobertas": 6,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 3,
+          "cobertas": 3,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 12,
+          "cobertas": 10,
+          "percentual": 83.33
+        }
+      }
     },
     "ascii-divider": {
       "status": "passando",
       "total": 3,
       "passando": 3,
       "falhando": 0,
-      "arquivos": ["src/components/ascii-divider.browser.test.tsx"]
+      "arquivos": ["src/components/ascii-divider.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 3,
+          "cobertas": 3,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 2,
+          "cobertas": 2,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 12,
+          "cobertas": 8,
+          "percentual": 66.66
+        }
+      }
     },
     "ascii-gauge": {
       "status": "passando",
       "total": 3,
       "passando": 3,
       "falhando": 0,
-      "arquivos": ["src/components/ascii-gauge.browser.test.tsx"]
+      "arquivos": ["src/components/ascii-gauge.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 29,
+          "cobertas": 29,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 6,
+          "cobertas": 6,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 32,
+          "cobertas": 22,
+          "percentual": 68.75
+        }
+      }
     },
     "ascii-heatmap": {
       "status": "passando",
       "total": 3,
       "passando": 3,
       "falhando": 0,
-      "arquivos": ["src/components/ascii-heatmap.browser.test.tsx"]
+      "arquivos": ["src/components/ascii-heatmap.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 15,
+          "cobertas": 15,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 6,
+          "cobertas": 6,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 21,
+          "cobertas": 14,
+          "percentual": 66.66
+        }
+      }
     },
     "ascii-progress": {
       "status": "passando",
       "total": 3,
       "passando": 3,
       "falhando": 0,
-      "arquivos": ["src/components/ascii-progress.browser.test.tsx"]
+      "arquivos": ["src/components/ascii-progress.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 26,
+          "cobertas": 26,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 6,
+          "cobertas": 6,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 35,
+          "cobertas": 23,
+          "percentual": 65.71
+        }
+      }
     },
     "ascii-sparkline": {
       "status": "passando",
       "total": 12,
       "passando": 12,
       "falhando": 0,
-      "arquivos": ["src/components/ascii-sparkline.browser.test.tsx"]
+      "arquivos": ["src/components/ascii-sparkline.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 18,
+          "cobertas": 18,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 4,
+          "cobertas": 4,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 40,
+          "cobertas": 26,
+          "percentual": 65
+        }
+      }
     },
     "ascii-spinner": {
       "status": "passando",
       "total": 3,
       "passando": 3,
       "falhando": 0,
-      "arquivos": ["src/components/ascii-spinner.browser.test.tsx"]
+      "arquivos": ["src/components/ascii-spinner.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 10,
+          "cobertas": 10,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 6,
+          "cobertas": 6,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 10,
+          "cobertas": 6,
+          "percentual": 60
+        }
+      }
     },
     "ascii-tree": {
       "status": "passando",
       "total": 3,
       "passando": 3,
       "falhando": 0,
-      "arquivos": ["src/components/ascii-tree.browser.test.tsx"]
+      "arquivos": ["src/components/ascii-tree.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 8,
+          "cobertas": 8,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 5,
+          "cobertas": 5,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 22,
+          "cobertas": 20,
+          "percentual": 90.9
+        }
+      }
     },
     "aspect-ratio": {
       "status": "passando",
       "total": 5,
       "passando": 5,
       "falhando": 0,
-      "arquivos": ["src/components/aspect-ratio.browser.test.tsx"]
+      "arquivos": ["src/components/aspect-ratio.browser.test.tsx"],
+      "cobertura": {
+        "status": "completa",
+        "linhas": {
+          "total": 2,
+          "cobertas": 2,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 1,
+          "cobertas": 1,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 0,
+          "cobertas": 0,
+          "percentual": 100
+        }
+      }
     },
     "attachment": {
       "status": "passando",
       "total": 2,
       "passando": 2,
       "falhando": 0,
-      "arquivos": ["src/components/attachment.browser.test.tsx"]
+      "arquivos": ["src/components/attachment.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 12,
+          "cobertas": 8,
+          "percentual": 66.66
+        },
+        "funcoes": {
+          "total": 10,
+          "cobertas": 6,
+          "percentual": 60
+        },
+        "branches": {
+          "total": 16,
+          "cobertas": 6,
+          "percentual": 37.5
+        }
+      }
     },
     "autocomplete": {
       "status": "passando",
       "total": 6,
       "passando": 6,
       "falhando": 0,
-      "arquivos": ["src/components/autocomplete.browser.test.tsx"]
+      "arquivos": ["src/components/autocomplete.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 5,
+          "cobertas": 5,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 5,
+          "cobertas": 5,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 13,
+          "cobertas": 11,
+          "percentual": 84.61
+        }
+      }
     },
     "avatar": {
       "status": "passando",
       "total": 2,
       "passando": 2,
       "falhando": 0,
-      "arquivos": ["src/components/avatar.browser.test.tsx"]
+      "arquivos": ["src/components/avatar.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 7,
+          "cobertas": 5,
+          "percentual": 71.42
+        },
+        "funcoes": {
+          "total": 7,
+          "cobertas": 5,
+          "percentual": 71.42
+        },
+        "branches": {
+          "total": 6,
+          "cobertas": 4,
+          "percentual": 66.66
+        }
+      }
     },
     "badge": {
       "status": "passando",
       "total": 12,
       "passando": 12,
       "falhando": 0,
-      "arquivos": ["src/components/badge.browser.test.tsx"]
+      "arquivos": ["src/components/badge.browser.test.tsx"],
+      "cobertura": {
+        "status": "completa",
+        "linhas": {
+          "total": 2,
+          "cobertas": 2,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 1,
+          "cobertas": 1,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 1,
+          "cobertas": 1,
+          "percentual": 100
+        }
+      }
     },
     "bottom-bar": {
       "status": "passando",
       "total": 4,
       "passando": 4,
       "falhando": 0,
-      "arquivos": ["src/components/bottom-bar.browser.test.tsx"]
+      "arquivos": ["src/components/bottom-bar.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 10,
+          "cobertas": 7,
+          "percentual": 70
+        },
+        "funcoes": {
+          "total": 9,
+          "cobertas": 6,
+          "percentual": 66.66
+        },
+        "branches": {
+          "total": 10,
+          "cobertas": 6,
+          "percentual": 60
+        }
+      }
     },
     "brand-icons": {
       "status": "passando",
       "total": 2,
       "passando": 2,
       "falhando": 0,
-      "arquivos": ["src/components/brand-icons.browser.test.tsx"]
+      "arquivos": ["src/components/brand-icons.browser.test.tsx"],
+      "cobertura": {
+        "status": "completa",
+        "linhas": {
+          "total": 2,
+          "cobertas": 2,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 2,
+          "cobertas": 2,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 0,
+          "cobertas": 0,
+          "percentual": 100
+        }
+      }
     },
     "breadcrumb": {
       "status": "passando",
       "total": 2,
       "passando": 2,
       "falhando": 0,
-      "arquivos": ["src/components/breadcrumb.browser.test.tsx"]
+      "arquivos": ["src/components/breadcrumb.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 8,
+          "cobertas": 7,
+          "percentual": 87.5
+        },
+        "funcoes": {
+          "total": 8,
+          "cobertas": 7,
+          "percentual": 87.5
+        },
+        "branches": {
+          "total": 7,
+          "cobertas": 5,
+          "percentual": 71.42
+        }
+      }
     },
     "bubble": {
       "status": "passando",
       "total": 14,
       "passando": 14,
       "falhando": 0,
-      "arquivos": ["src/components/bubble.browser.test.tsx"]
+      "arquivos": ["src/components/bubble.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 7,
+          "cobertas": 5,
+          "percentual": 71.42
+        },
+        "funcoes": {
+          "total": 5,
+          "cobertas": 3,
+          "percentual": 60
+        },
+        "branches": {
+          "total": 9,
+          "cobertas": 5,
+          "percentual": 55.55
+        }
+      }
     },
     "bulk-action-bar": {
       "status": "passando",
       "total": 6,
       "passando": 6,
       "falhando": 0,
-      "arquivos": ["src/components/bulk-action-bar.browser.test.tsx"]
+      "arquivos": ["src/components/bulk-action-bar.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 3,
+          "cobertas": 3,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 2,
+          "cobertas": 2,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 11,
+          "cobertas": 9,
+          "percentual": 81.81
+        }
+      }
     },
     "button": {
       "status": "passando",
       "total": 18,
       "passando": 18,
       "falhando": 0,
-      "arquivos": ["src/components/button.browser.test.tsx"]
+      "arquivos": ["src/components/button.browser.test.tsx"],
+      "cobertura": {
+        "status": "completa",
+        "linhas": {
+          "total": 3,
+          "cobertas": 3,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 1,
+          "cobertas": 1,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 2,
+          "cobertas": 2,
+          "percentual": 100
+        }
+      }
     },
     "button-group": {
       "status": "passando",
       "total": 4,
       "passando": 4,
       "falhando": 0,
-      "arquivos": ["src/components/button-group.browser.test.tsx"]
+      "arquivos": ["src/components/button-group.browser.test.tsx"],
+      "cobertura": {
+        "status": "completa",
+        "linhas": {
+          "total": 5,
+          "cobertas": 5,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 3,
+          "cobertas": 3,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 1,
+          "cobertas": 1,
+          "percentual": 100
+        }
+      }
     },
     "calendar": {
       "status": "passando",
       "total": 6,
       "passando": 6,
       "falhando": 0,
-      "arquivos": ["src/components/calendar.browser.test.tsx"]
+      "arquivos": ["src/components/calendar.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 17,
+          "cobertas": 14,
+          "percentual": 82.35
+        },
+        "funcoes": {
+          "total": 9,
+          "cobertas": 7,
+          "percentual": 77.77
+        },
+        "branches": {
+          "total": 22,
+          "cobertas": 17,
+          "percentual": 77.27
+        }
+      }
     },
     "card": {
       "status": "passando",
       "total": 2,
       "passando": 2,
       "falhando": 0,
-      "arquivos": ["src/components/card.browser.test.tsx"]
+      "arquivos": ["src/components/card.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 8,
+          "cobertas": 8,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 8,
+          "cobertas": 8,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 6,
+          "cobertas": 4,
+          "percentual": 66.66
+        }
+      }
     },
     "carousel": {
       "status": "passando",
       "total": 6,
       "passando": 6,
       "falhando": 0,
-      "arquivos": ["src/components/carousel.browser.test.tsx"]
+      "arquivos": ["src/components/carousel.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 43,
+          "cobertas": 33,
+          "percentual": 76.74
+        },
+        "funcoes": {
+          "total": 18,
+          "cobertas": 14,
+          "percentual": 77.77
+        },
+        "branches": {
+          "total": 40,
+          "cobertas": 30,
+          "percentual": 75
+        }
+      }
     },
     "chart": {
       "status": "passando",
       "total": 18,
       "passando": 18,
       "falhando": 0,
-      "arquivos": ["src/components/chart.browser.test.tsx"]
+      "arquivos": ["src/components/chart.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 62,
+          "cobertas": 58,
+          "percentual": 93.54
+        },
+        "funcoes": {
+          "total": 16,
+          "cobertas": 16,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 113,
+          "cobertas": 92,
+          "percentual": 81.41
+        }
+      }
     },
     "checkbox": {
       "status": "passando",
       "total": 8,
       "passando": 8,
       "falhando": 0,
-      "arquivos": ["src/components/checkbox.browser.test.tsx"]
+      "arquivos": ["src/components/checkbox.browser.test.tsx"],
+      "cobertura": {
+        "status": "completa",
+        "linhas": {
+          "total": 2,
+          "cobertas": 2,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 1,
+          "cobertas": 1,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 0,
+          "cobertas": 0,
+          "percentual": 100
+        }
+      }
     },
     "code-block": {
       "status": "passando",
       "total": 8,
       "passando": 8,
       "falhando": 0,
-      "arquivos": ["src/components/code-block.browser.test.tsx"]
+      "arquivos": ["src/components/code-block.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 35,
+          "cobertas": 35,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 7,
+          "cobertas": 7,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 51,
+          "cobertas": 47,
+          "percentual": 92.15
+        }
+      }
     },
     "code-theme": {
       "status": "passando",
       "total": 4,
       "passando": 4,
       "falhando": 0,
-      "arquivos": ["src/components/code-theme.browser.test.tsx"]
+      "arquivos": ["src/components/code-theme.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 18,
+          "cobertas": 12,
+          "percentual": 66.66
+        },
+        "funcoes": {
+          "total": 10,
+          "cobertas": 5,
+          "percentual": 50
+        },
+        "branches": {
+          "total": 12,
+          "cobertas": 10,
+          "percentual": 83.33
+        }
+      }
     },
     "collapsible": {
       "status": "passando",
       "total": 3,
       "passando": 3,
       "falhando": 0,
-      "arquivos": ["src/components/collapsible.browser.test.tsx"]
+      "arquivos": ["src/components/collapsible.browser.test.tsx"],
+      "cobertura": {
+        "status": "completa",
+        "linhas": {
+          "total": 4,
+          "cobertas": 4,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 3,
+          "cobertas": 3,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 0,
+          "cobertas": 0,
+          "percentual": 100
+        }
+      }
     },
     "combobox": {
       "status": "passando",
       "total": 6,
       "passando": 6,
       "falhando": 0,
-      "arquivos": ["src/components/combobox.browser.test.tsx"]
+      "arquivos": ["src/components/combobox.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 18,
+          "cobertas": 13,
+          "percentual": 72.22
+        },
+        "funcoes": {
+          "total": 17,
+          "cobertas": 12,
+          "percentual": 70.58
+        },
+        "branches": {
+          "total": 19,
+          "cobertas": 16,
+          "percentual": 84.21
+        }
+      }
     },
     "command": {
       "status": "passando",
       "total": 4,
       "passando": 4,
       "falhando": 0,
-      "arquivos": ["src/components/command.browser.test.tsx"]
+      "arquivos": ["src/components/command.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 10,
+          "cobertas": 9,
+          "percentual": 90
+        },
+        "funcoes": {
+          "total": 10,
+          "cobertas": 9,
+          "percentual": 90
+        },
+        "branches": {
+          "total": 8,
+          "cobertas": 3,
+          "percentual": 37.5
+        }
+      }
     },
     "confirm-dialog": {
       "status": "passando",
       "total": 5,
       "passando": 5,
       "falhando": 0,
-      "arquivos": ["src/components/confirm-dialog.browser.test.tsx"]
+      "arquivos": ["src/components/confirm-dialog.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 18,
+          "cobertas": 18,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 4,
+          "cobertas": 4,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 36,
+          "cobertas": 30,
+          "percentual": 83.33
+        }
+      }
     },
     "context-menu": {
       "status": "passando",
       "total": 6,
       "passando": 6,
       "falhando": 0,
-      "arquivos": ["src/components/context-menu.browser.test.tsx"]
+      "arquivos": ["src/components/context-menu.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 16,
+          "cobertas": 12,
+          "percentual": 75
+        },
+        "funcoes": {
+          "total": 16,
+          "cobertas": 12,
+          "percentual": 75
+        },
+        "branches": {
+          "total": 10,
+          "cobertas": 8,
+          "percentual": 80
+        }
+      }
     },
     "copy-button": {
       "status": "passando",
       "total": 4,
       "passando": 4,
       "falhando": 0,
-      "arquivos": ["src/components/copy-button.browser.test.tsx"]
+      "arquivos": ["src/components/copy-button.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 10,
+          "cobertas": 10,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 5,
+          "cobertas": 5,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 16,
+          "cobertas": 14,
+          "percentual": 87.5
+        }
+      }
     },
     "currency-input": {
       "status": "passando",
       "total": 5,
       "passando": 5,
       "falhando": 0,
-      "arquivos": ["src/components/currency-input.browser.test.tsx"]
+      "arquivos": ["src/components/currency-input.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 2,
+          "cobertas": 2,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 2,
+          "cobertas": 2,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 13,
+          "cobertas": 11,
+          "percentual": 84.61
+        }
+      }
     },
     "data-list": {
       "status": "passando",
       "total": 3,
       "passando": 3,
       "falhando": 0,
-      "arquivos": ["src/components/data-list.browser.test.tsx"]
+      "arquivos": ["src/components/data-list.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 5,
+          "cobertas": 5,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 5,
+          "cobertas": 5,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 5,
+          "cobertas": 3,
+          "percentual": 60
+        }
+      }
     },
     "data-table": {
       "status": "passando",
       "total": 7,
       "passando": 7,
       "falhando": 0,
-      "arquivos": ["src/components/data-table.browser.test.tsx"]
+      "arquivos": ["src/components/data-table.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 18,
+          "cobertas": 18,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 12,
+          "cobertas": 12,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 11,
+          "cobertas": 10,
+          "percentual": 90.9
+        }
+      }
     },
     "date-picker": {
       "status": "passando",
       "total": 5,
       "passando": 5,
       "falhando": 0,
-      "arquivos": ["src/components/date-picker.browser.test.tsx"]
+      "arquivos": ["src/components/date-picker.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 13,
+          "cobertas": 11,
+          "percentual": 84.61
+        },
+        "funcoes": {
+          "total": 5,
+          "cobertas": 4,
+          "percentual": 80
+        },
+        "branches": {
+          "total": 37,
+          "cobertas": 28,
+          "percentual": 75.67
+        }
+      }
     },
     "date-range-picker": {
       "status": "passando",
       "total": 7,
       "passando": 7,
       "falhando": 0,
-      "arquivos": ["src/components/date-range-picker.browser.test.tsx"]
+      "arquivos": ["src/components/date-range-picker.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 9,
+          "cobertas": 9,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 4,
+          "cobertas": 4,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 24,
+          "cobertas": 21,
+          "percentual": 87.5
+        }
+      }
     },
     "deployment-status": {
       "status": "passando",
       "total": 10,
       "passando": 10,
       "falhando": 0,
-      "arquivos": ["src/components/deployment-status.browser.test.tsx"]
+      "arquivos": ["src/components/deployment-status.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 5,
+          "cobertas": 5,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 2,
+          "cobertas": 2,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 12,
+          "cobertas": 9,
+          "percentual": 75
+        }
+      }
     },
     "dialog": {
       "status": "passando",
       "total": 2,
       "passando": 2,
       "falhando": 0,
-      "arquivos": ["src/components/dialog.browser.test.tsx"]
+      "arquivos": ["src/components/dialog.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 11,
+          "cobertas": 10,
+          "percentual": 90.9
+        },
+        "funcoes": {
+          "total": 11,
+          "cobertas": 10,
+          "percentual": 90.9
+        },
+        "branches": {
+          "total": 13,
+          "cobertas": 9,
+          "percentual": 69.23
+        }
+      }
     },
     "diff-viewer": {
       "status": "passando",
       "total": 4,
       "passando": 4,
       "falhando": 0,
-      "arquivos": ["src/components/diff-viewer.browser.test.tsx"]
+      "arquivos": ["src/components/diff-viewer.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 9,
+          "cobertas": 9,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 5,
+          "cobertas": 5,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 10,
+          "cobertas": 8,
+          "percentual": 80
+        }
+      }
     },
     "direction": {
       "status": "passando",
       "total": 3,
       "passando": 3,
       "falhando": 0,
-      "arquivos": ["src/components/direction.browser.test.tsx"]
+      "arquivos": ["src/components/direction.browser.test.tsx"],
+      "cobertura": {
+        "status": "nao-executada",
+        "linhas": {
+          "total": 0,
+          "cobertas": 0,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 0,
+          "cobertas": 0,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 0,
+          "cobertas": 0,
+          "percentual": 100
+        }
+      }
     },
     "drawer": {
       "status": "passando",
       "total": 8,
       "passando": 8,
       "falhando": 0,
-      "arquivos": ["src/components/drawer.browser.test.tsx"]
+      "arquivos": ["src/components/drawer.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 22,
+          "cobertas": 21,
+          "percentual": 95.45
+        },
+        "funcoes": {
+          "total": 14,
+          "cobertas": 14,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 24,
+          "cobertas": 18,
+          "percentual": 75
+        }
+      }
     },
     "dropdown-menu": {
       "status": "passando",
       "total": 2,
       "passando": 2,
       "falhando": 0,
-      "arquivos": ["src/components/dropdown-menu.browser.test.tsx"]
+      "arquivos": ["src/components/dropdown-menu.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 16,
+          "cobertas": 11,
+          "percentual": 68.75
+        },
+        "funcoes": {
+          "total": 16,
+          "cobertas": 11,
+          "percentual": 68.75
+        },
+        "branches": {
+          "total": 14,
+          "cobertas": 8,
+          "percentual": 57.14
+        }
+      }
     },
     "empty": {
       "status": "passando",
       "total": 2,
       "passando": 2,
       "falhando": 0,
-      "arquivos": ["src/components/empty.browser.test.tsx"]
+      "arquivos": ["src/components/empty.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 8,
+          "cobertas": 7,
+          "percentual": 87.5
+        },
+        "funcoes": {
+          "total": 6,
+          "cobertas": 5,
+          "percentual": 83.33
+        },
+        "branches": {
+          "total": 1,
+          "cobertas": 0,
+          "percentual": 0
+        }
+      }
     },
     "field": {
       "status": "passando",
       "total": 2,
       "passando": 2,
       "falhando": 0,
-      "arquivos": ["src/components/field.browser.test.tsx"]
+      "arquivos": ["src/components/field.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 25,
+          "cobertas": 14,
+          "percentual": 56
+        },
+        "funcoes": {
+          "total": 13,
+          "cobertas": 9,
+          "percentual": 69.23
+        },
+        "branches": {
+          "total": 14,
+          "cobertas": 4,
+          "percentual": 28.57
+        }
+      }
     },
     "file-upload": {
       "status": "passando",
       "total": 7,
       "passando": 7,
       "falhando": 0,
-      "arquivos": ["src/components/file-upload.browser.test.tsx"]
+      "arquivos": ["src/components/file-upload.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 46,
+          "cobertas": 37,
+          "percentual": 80.43
+        },
+        "funcoes": {
+          "total": 18,
+          "cobertas": 13,
+          "percentual": 72.22
+        },
+        "branches": {
+          "total": 49,
+          "cobertas": 38,
+          "percentual": 77.55
+        }
+      }
     },
     "filter-bar": {
       "status": "passando",
       "total": 5,
       "passando": 5,
       "falhando": 0,
-      "arquivos": ["src/components/filter-bar.browser.test.tsx"]
+      "arquivos": ["src/components/filter-bar.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 5,
+          "cobertas": 5,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 5,
+          "cobertas": 5,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 5,
+          "cobertas": 3,
+          "percentual": 60
+        }
+      }
     },
     "form": {
       "status": "passando",
       "total": 2,
       "passando": 2,
       "falhando": 0,
-      "arquivos": ["src/components/form.browser.test.tsx"]
+      "arquivos": ["src/components/form.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 4,
+          "cobertas": 2,
+          "percentual": 50
+        },
+        "funcoes": {
+          "total": 4,
+          "cobertas": 2,
+          "percentual": 50
+        },
+        "branches": {
+          "total": 5,
+          "cobertas": 3,
+          "percentual": 60
+        }
+      }
     },
     "hover-card": {
       "status": "passando",
       "total": 4,
       "passando": 4,
       "falhando": 0,
-      "arquivos": ["src/components/hover-card.browser.test.tsx"]
+      "arquivos": ["src/components/hover-card.browser.test.tsx"],
+      "cobertura": {
+        "status": "completa",
+        "linhas": {
+          "total": 4,
+          "cobertas": 4,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 3,
+          "cobertas": 3,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 4,
+          "cobertas": 4,
+          "percentual": 100
+        }
+      }
     },
     "input": {
       "status": "passando",
       "total": 8,
       "passando": 8,
       "falhando": 0,
-      "arquivos": ["src/components/input.browser.test.tsx"]
+      "arquivos": ["src/components/input.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 2,
+          "cobertas": 2,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 2,
+          "cobertas": 2,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 7,
+          "cobertas": 4,
+          "percentual": 57.14
+        }
+      }
     },
     "input-group": {
       "status": "passando",
       "total": 5,
       "passando": 5,
       "falhando": 0,
-      "arquivos": ["src/components/input-group.browser.test.tsx"]
+      "arquivos": ["src/components/input-group.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 12,
+          "cobertas": 12,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 8,
+          "cobertas": 8,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 11,
+          "cobertas": 9,
+          "percentual": 81.81
+        }
+      }
     },
     "input-otp": {
       "status": "passando",
       "total": 4,
       "passando": 4,
       "falhando": 0,
-      "arquivos": ["src/components/input-otp.browser.test.tsx"]
+      "arquivos": ["src/components/input-otp.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 7,
+          "cobertas": 7,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 5,
+          "cobertas": 5,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 11,
+          "cobertas": 7,
+          "percentual": 63.63
+        }
+      }
     },
     "item": {
       "status": "passando",
       "total": 2,
       "passando": 2,
       "falhando": 0,
-      "arquivos": ["src/components/item.browser.test.tsx"]
+      "arquivos": ["src/components/item.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 13,
+          "cobertas": 9,
+          "percentual": 69.23
+        },
+        "funcoes": {
+          "total": 11,
+          "cobertas": 7,
+          "percentual": 63.63
+        },
+        "branches": {
+          "total": 8,
+          "cobertas": 5,
+          "percentual": 62.5
+        }
+      }
     },
     "kbd": {
       "status": "passando",
       "total": 2,
       "passando": 2,
       "falhando": 0,
-      "arquivos": ["src/components/kbd.browser.test.tsx"]
+      "arquivos": ["src/components/kbd.browser.test.tsx"],
+      "cobertura": {
+        "status": "completa",
+        "linhas": {
+          "total": 3,
+          "cobertas": 3,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 2,
+          "cobertas": 2,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 0,
+          "cobertas": 0,
+          "percentual": 100
+        }
+      }
     },
     "label": {
       "status": "passando",
       "total": 3,
       "passando": 3,
       "falhando": 0,
-      "arquivos": ["src/components/label.browser.test.tsx"]
+      "arquivos": ["src/components/label.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 2,
+          "cobertas": 2,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 2,
+          "cobertas": 2,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 5,
+          "cobertas": 3,
+          "percentual": 60
+        }
+      }
     },
     "marker": {
       "status": "passando",
       "total": 5,
       "passando": 5,
       "falhando": 0,
-      "arquivos": ["src/components/marker.browser.test.tsx"]
+      "arquivos": ["src/components/marker.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 5,
+          "cobertas": 5,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 4,
+          "cobertas": 4,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 6,
+          "cobertas": 4,
+          "percentual": 66.66
+        }
+      }
     },
     "menubar": {
       "status": "passando",
       "total": 6,
       "passando": 6,
       "falhando": 0,
-      "arquivos": ["src/components/menubar.browser.test.tsx"]
+      "arquivos": ["src/components/menubar.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 17,
+          "cobertas": 9,
+          "percentual": 52.94
+        },
+        "funcoes": {
+          "total": 17,
+          "cobertas": 9,
+          "percentual": 52.94
+        },
+        "branches": {
+          "total": 9,
+          "cobertas": 7,
+          "percentual": 77.77
+        }
+      }
     },
     "message": {
       "status": "passando",
       "total": 4,
       "passando": 4,
       "falhando": 0,
-      "arquivos": ["src/components/message.browser.test.tsx"]
+      "arquivos": ["src/components/message.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 7,
+          "cobertas": 7,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 7,
+          "cobertas": 7,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 6,
+          "cobertas": 4,
+          "percentual": 66.66
+        }
+      }
     },
     "message-scroller": {
       "status": "passando",
       "total": 4,
       "passando": 4,
       "falhando": 0,
-      "arquivos": ["src/components/message-scroller.browser.test.tsx"]
+      "arquivos": ["src/components/message-scroller.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 7,
+          "cobertas": 7,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 7,
+          "cobertas": 7,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 15,
+          "cobertas": 12,
+          "percentual": 80
+        }
+      }
     },
     "multi-select": {
       "status": "passando",
       "total": 7,
       "passando": 7,
       "falhando": 0,
-      "arquivos": ["src/components/multi-select.browser.test.tsx"]
+      "arquivos": ["src/components/multi-select.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 10,
+          "cobertas": 10,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 9,
+          "cobertas": 9,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 8,
+          "cobertas": 6,
+          "percentual": 75
+        }
+      }
     },
     "native-select": {
       "status": "passando",
       "total": 6,
       "passando": 6,
       "falhando": 0,
-      "arquivos": ["src/components/native-select.browser.test.tsx"]
+      "arquivos": ["src/components/native-select.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 4,
+          "cobertas": 4,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 4,
+          "cobertas": 4,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 6,
+          "cobertas": 4,
+          "percentual": 66.66
+        }
+      }
     },
     "nav-tree": {
       "status": "passando",
       "total": 3,
       "passando": 3,
       "falhando": 0,
-      "arquivos": ["src/components/nav-tree.browser.test.tsx"]
+      "arquivos": ["src/components/nav-tree.browser.test.tsx"],
+      "cobertura": {
+        "status": "completa",
+        "linhas": {
+          "total": 5,
+          "cobertas": 5,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 2,
+          "cobertas": 2,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 0,
+          "cobertas": 0,
+          "percentual": 100
+        }
+      }
     },
     "navigation-menu": {
       "status": "passando",
       "total": 7,
       "passando": 7,
       "falhando": 0,
-      "arquivos": ["src/components/navigation-menu.browser.test.tsx"]
+      "arquivos": ["src/components/navigation-menu.browser.test.tsx"],
+      "cobertura": {
+        "status": "completa",
+        "linhas": {
+          "total": 10,
+          "cobertas": 10,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 8,
+          "cobertas": 8,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 5,
+          "cobertas": 5,
+          "percentual": 100
+        }
+      }
     },
     "number-field": {
       "status": "passando",
       "total": 5,
       "passando": 5,
       "falhando": 0,
-      "arquivos": ["src/components/number-field.browser.test.tsx"]
+      "arquivos": ["src/components/number-field.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 8,
+          "cobertas": 7,
+          "percentual": 87.5
+        },
+        "funcoes": {
+          "total": 8,
+          "cobertas": 7,
+          "percentual": 87.5
+        },
+        "branches": {
+          "total": 9,
+          "cobertas": 7,
+          "percentual": 77.77
+        }
+      }
     },
     "package-install": {
       "status": "passando",
       "total": 5,
       "passando": 5,
       "falhando": 0,
-      "arquivos": ["src/components/package-install.browser.test.tsx"]
+      "arquivos": ["src/components/package-install.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 12,
+          "cobertas": 12,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 6,
+          "cobertas": 6,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 16,
+          "cobertas": 12,
+          "percentual": 75
+        }
+      }
     },
     "page-header": {
       "status": "passando",
       "total": 3,
       "passando": 3,
       "falhando": 0,
-      "arquivos": ["src/components/page-header.browser.test.tsx"]
+      "arquivos": ["src/components/page-header.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 7,
+          "cobertas": 7,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 7,
+          "cobertas": 7,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 5,
+          "cobertas": 3,
+          "percentual": 60
+        }
+      }
     },
     "page-state": {
       "status": "passando",
       "total": 7,
       "passando": 7,
       "falhando": 0,
-      "arquivos": ["src/components/page-state.browser.test.tsx"]
+      "arquivos": ["src/components/page-state.browser.test.tsx"],
+      "cobertura": {
+        "status": "completa",
+        "linhas": {
+          "total": 12,
+          "cobertas": 12,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 10,
+          "cobertas": 10,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 1,
+          "cobertas": 1,
+          "percentual": 100
+        }
+      }
     },
     "pagination": {
       "status": "passando",
       "total": 4,
       "passando": 4,
       "falhando": 0,
-      "arquivos": ["src/components/pagination.browser.test.tsx"]
+      "arquivos": ["src/components/pagination.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 8,
+          "cobertas": 8,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 8,
+          "cobertas": 8,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 12,
+          "cobertas": 10,
+          "percentual": 83.33
+        }
+      }
     },
     "password-input": {
       "status": "passando",
       "total": 5,
       "passando": 5,
       "falhando": 0,
-      "arquivos": ["src/components/password-input.browser.test.tsx"]
+      "arquivos": ["src/components/password-input.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 12,
+          "cobertas": 12,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 8,
+          "cobertas": 8,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 16,
+          "cobertas": 14,
+          "percentual": 87.5
+        }
+      }
     },
     "pixel-blast": {
       "status": "passando",
       "total": 12,
       "passando": 12,
       "falhando": 0,
-      "arquivos": ["src/components/pixel-blast.browser.test.tsx"]
+      "arquivos": ["src/components/pixel-blast.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 175,
+          "cobertas": 175,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 13,
+          "cobertas": 13,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 62,
+          "cobertas": 57,
+          "percentual": 91.93
+        }
+      }
     },
     "popover": {
       "status": "passando",
       "total": 2,
       "passando": 2,
       "falhando": 0,
-      "arquivos": ["src/components/popover.browser.test.tsx"]
+      "arquivos": ["src/components/popover.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 7,
+          "cobertas": 7,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 7,
+          "cobertas": 7,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 9,
+          "cobertas": 7,
+          "percentual": 77.77
+        }
+      }
     },
     "progress": {
       "status": "passando",
       "total": 4,
       "passando": 4,
       "falhando": 0,
-      "arquivos": ["src/components/progress.browser.test.tsx"]
+      "arquivos": ["src/components/progress.browser.test.tsx"],
+      "cobertura": {
+        "status": "completa",
+        "linhas": {
+          "total": 6,
+          "cobertas": 6,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 5,
+          "cobertas": 5,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 0,
+          "cobertas": 0,
+          "percentual": 100
+        }
+      }
     },
     "radio-group": {
       "status": "passando",
       "total": 3,
       "passando": 3,
       "falhando": 0,
-      "arquivos": ["src/components/radio-group.browser.test.tsx"]
+      "arquivos": ["src/components/radio-group.browser.test.tsx"],
+      "cobertura": {
+        "status": "completa",
+        "linhas": {
+          "total": 3,
+          "cobertas": 3,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 2,
+          "cobertas": 2,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 0,
+          "cobertas": 0,
+          "percentual": 100
+        }
+      }
     },
     "resizable": {
       "status": "passando",
       "total": 4,
       "passando": 4,
       "falhando": 0,
-      "arquivos": ["src/components/resizable.browser.test.tsx"]
+      "arquivos": ["src/components/resizable.browser.test.tsx"],
+      "cobertura": {
+        "status": "completa",
+        "linhas": {
+          "total": 4,
+          "cobertas": 4,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 3,
+          "cobertas": 3,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 2,
+          "cobertas": 2,
+          "percentual": 100
+        }
+      }
     },
     "resource-card": {
       "status": "passando",
       "total": 2,
       "passando": 2,
       "falhando": 0,
-      "arquivos": ["src/components/resource-card.browser.test.tsx"]
+      "arquivos": ["src/components/resource-card.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 9,
+          "cobertas": 7,
+          "percentual": 77.77
+        },
+        "funcoes": {
+          "total": 9,
+          "cobertas": 7,
+          "percentual": 77.77
+        },
+        "branches": {
+          "total": 5,
+          "cobertas": 3,
+          "percentual": 60
+        }
+      }
     },
     "scroll-area": {
       "status": "passando",
       "total": 3,
       "passando": 3,
       "falhando": 0,
-      "arquivos": ["src/components/scroll-area.browser.test.tsx"]
+      "arquivos": ["src/components/scroll-area.browser.test.tsx"],
+      "cobertura": {
+        "status": "completa",
+        "linhas": {
+          "total": 3,
+          "cobertas": 3,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 2,
+          "cobertas": 2,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 1,
+          "cobertas": 1,
+          "percentual": 100
+        }
+      }
     },
     "search-input": {
       "status": "passando",
       "total": 6,
       "passando": 6,
       "falhando": 0,
-      "arquivos": ["src/components/search-input.browser.test.tsx"]
+      "arquivos": ["src/components/search-input.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 16,
+          "cobertas": 7,
+          "percentual": 43.75
+        },
+        "funcoes": {
+          "total": 8,
+          "cobertas": 3,
+          "percentual": 37.5
+        },
+        "branches": {
+          "total": 21,
+          "cobertas": 12,
+          "percentual": 57.14
+        }
+      }
     },
     "section-header": {
       "status": "passando",
       "total": 3,
       "passando": 3,
       "falhando": 0,
-      "arquivos": ["src/components/section-header.browser.test.tsx"]
+      "arquivos": ["src/components/section-header.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 6,
+          "cobertas": 6,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 6,
+          "cobertas": 6,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 5,
+          "cobertas": 3,
+          "percentual": 60
+        }
+      }
     },
     "select": {
       "status": "passando",
       "total": 2,
       "passando": 2,
       "falhando": 0,
-      "arquivos": ["src/components/select.browser.test.tsx"]
+      "arquivos": ["src/components/select.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 24,
+          "cobertas": 20,
+          "percentual": 83.33
+        },
+        "funcoes": {
+          "total": 12,
+          "cobertas": 11,
+          "percentual": 91.66
+        },
+        "branches": {
+          "total": 36,
+          "cobertas": 19,
+          "percentual": 52.77
+        }
+      }
     },
     "separator": {
       "status": "passando",
       "total": 5,
       "passando": 5,
       "falhando": 0,
-      "arquivos": ["src/components/separator.browser.test.tsx"]
+      "arquivos": ["src/components/separator.browser.test.tsx"],
+      "cobertura": {
+        "status": "completa",
+        "linhas": {
+          "total": 2,
+          "cobertas": 2,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 1,
+          "cobertas": 1,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 1,
+          "cobertas": 1,
+          "percentual": 100
+        }
+      }
     },
     "sheet": {
       "status": "passando",
       "total": 2,
       "passando": 2,
       "falhando": 0,
-      "arquivos": ["src/components/sheet.browser.test.tsx"]
+      "arquivos": ["src/components/sheet.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 11,
+          "cobertas": 10,
+          "percentual": 90.9
+        },
+        "funcoes": {
+          "total": 11,
+          "cobertas": 10,
+          "percentual": 90.9
+        },
+        "branches": {
+          "total": 9,
+          "cobertas": 7,
+          "percentual": 77.77
+        }
+      }
     },
     "sidebar": {
       "status": "passando",
       "total": 5,
       "passando": 5,
       "falhando": 0,
-      "arquivos": ["src/components/sidebar.browser.test.tsx"]
+      "arquivos": ["src/components/sidebar.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 79,
+          "cobertas": 67,
+          "percentual": 84.81
+        },
+        "funcoes": {
+          "total": 35,
+          "cobertas": 26,
+          "percentual": 74.28
+        },
+        "branches": {
+          "total": 83,
+          "cobertas": 65,
+          "percentual": 78.31
+        }
+      }
     },
     "skeleton": {
       "status": "passando",
       "total": 1,
       "passando": 1,
       "falhando": 0,
-      "arquivos": ["src/components/skeleton.browser.test.tsx"]
+      "arquivos": ["src/components/skeleton.browser.test.tsx"],
+      "cobertura": {
+        "status": "completa",
+        "linhas": {
+          "total": 2,
+          "cobertas": 2,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 1,
+          "cobertas": 1,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 0,
+          "cobertas": 0,
+          "percentual": 100
+        }
+      }
     },
     "slider": {
       "status": "passando",
       "total": 5,
       "passando": 5,
       "falhando": 0,
-      "arquivos": ["src/components/slider.browser.test.tsx"]
+      "arquivos": ["src/components/slider.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 4,
+          "cobertas": 4,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 2,
+          "cobertas": 2,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 6,
+          "cobertas": 4,
+          "percentual": 66.66
+        }
+      }
     },
     "sonner": {
       "status": "passando",
       "total": 4,
       "passando": 4,
       "falhando": 0,
-      "arquivos": ["src/components/sonner.browser.test.tsx"]
+      "arquivos": ["src/components/sonner.browser.test.tsx"],
+      "cobertura": {
+        "status": "completa",
+        "linhas": {
+          "total": 4,
+          "cobertas": 4,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 1,
+          "cobertas": 1,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 1,
+          "cobertas": 1,
+          "percentual": 100
+        }
+      }
     },
     "spinner": {
       "status": "passando",
       "total": 3,
       "passando": 3,
       "falhando": 0,
-      "arquivos": ["src/components/spinner.browser.test.tsx"]
+      "arquivos": ["src/components/spinner.browser.test.tsx"],
+      "cobertura": {
+        "status": "completa",
+        "linhas": {
+          "total": 2,
+          "cobertas": 2,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 1,
+          "cobertas": 1,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 0,
+          "cobertas": 0,
+          "percentual": 100
+        }
+      }
     },
     "stat": {
       "status": "passando",
       "total": 2,
       "passando": 2,
       "falhando": 0,
-      "arquivos": ["src/components/stat.browser.test.tsx"]
+      "arquivos": ["src/components/stat.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 10,
+          "cobertas": 8,
+          "percentual": 80
+        },
+        "funcoes": {
+          "total": 10,
+          "cobertas": 8,
+          "percentual": 80
+        },
+        "branches": {
+          "total": 6,
+          "cobertas": 4,
+          "percentual": 66.66
+        }
+      }
     },
     "status": {
       "status": "passando",
       "total": 10,
       "passando": 10,
       "falhando": 0,
-      "arquivos": ["src/components/status.browser.test.tsx"]
+      "arquivos": ["src/components/status.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 3,
+          "cobertas": 3,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 2,
+          "cobertas": 2,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 7,
+          "cobertas": 5,
+          "percentual": 71.42
+        }
+      }
     },
     "stepper": {
       "status": "passando",
       "total": 2,
       "passando": 2,
       "falhando": 0,
-      "arquivos": ["src/components/stepper.browser.test.tsx"]
+      "arquivos": ["src/components/stepper.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 8,
+          "cobertas": 6,
+          "percentual": 75
+        },
+        "funcoes": {
+          "total": 8,
+          "cobertas": 6,
+          "percentual": 75
+        },
+        "branches": {
+          "total": 8,
+          "cobertas": 6,
+          "percentual": 75
+        }
+      }
     },
     "switch": {
       "status": "passando",
       "total": 5,
       "passando": 5,
       "falhando": 0,
-      "arquivos": ["src/components/switch.browser.test.tsx"]
+      "arquivos": ["src/components/switch.browser.test.tsx"],
+      "cobertura": {
+        "status": "completa",
+        "linhas": {
+          "total": 2,
+          "cobertas": 2,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 1,
+          "cobertas": 1,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 1,
+          "cobertas": 1,
+          "percentual": 100
+        }
+      }
     },
     "table": {
       "status": "passando",
       "total": 2,
       "passando": 2,
       "falhando": 0,
-      "arquivos": ["src/components/table.browser.test.tsx"]
+      "arquivos": ["src/components/table.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 9,
+          "cobertas": 9,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 9,
+          "cobertas": 9,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 5,
+          "cobertas": 3,
+          "percentual": 60
+        }
+      }
     },
     "tabs": {
       "status": "passando",
       "total": 6,
       "passando": 6,
       "falhando": 0,
-      "arquivos": ["src/components/tabs.browser.test.tsx"]
+      "arquivos": ["src/components/tabs.browser.test.tsx"],
+      "cobertura": {
+        "status": "completa",
+        "linhas": {
+          "total": 6,
+          "cobertas": 6,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 4,
+          "cobertas": 4,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 2,
+          "cobertas": 2,
+          "percentual": 100
+        }
+      }
     },
     "terminal": {
       "status": "passando",
       "total": 3,
       "passando": 3,
       "falhando": 0,
-      "arquivos": ["src/components/terminal.browser.test.tsx"]
+      "arquivos": ["src/components/terminal.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 11,
+          "cobertas": 10,
+          "percentual": 90.9
+        },
+        "funcoes": {
+          "total": 11,
+          "cobertas": 10,
+          "percentual": 90.9
+        },
+        "branches": {
+          "total": 5,
+          "cobertas": 3,
+          "percentual": 60
+        }
+      }
     },
     "textarea": {
       "status": "passando",
       "total": 3,
       "passando": 3,
       "falhando": 0,
-      "arquivos": ["src/components/textarea.browser.test.tsx"]
+      "arquivos": ["src/components/textarea.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 2,
+          "cobertas": 2,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 2,
+          "cobertas": 2,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 5,
+          "cobertas": 3,
+          "percentual": 60
+        }
+      }
     },
     "theme-provider": {
       "status": "passando",
       "total": 3,
       "passando": 3,
       "falhando": 0,
-      "arquivos": ["src/components/theme-provider.browser.test.tsx"]
+      "arquivos": ["src/components/theme-provider.browser.test.tsx"],
+      "cobertura": {
+        "status": "completa",
+        "linhas": {
+          "total": 3,
+          "cobertas": 3,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 2,
+          "cobertas": 2,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 0,
+          "cobertas": 0,
+          "percentual": 100
+        }
+      }
     },
     "theme-toggle": {
       "status": "passando",
       "total": 2,
       "passando": 2,
       "falhando": 0,
-      "arquivos": ["src/components/theme-toggle.browser.test.tsx"]
+      "arquivos": ["src/components/theme-toggle.browser.test.tsx"],
+      "cobertura": {
+        "status": "completa",
+        "linhas": {
+          "total": 5,
+          "cobertas": 5,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 1,
+          "cobertas": 1,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 3,
+          "cobertas": 3,
+          "percentual": 100
+        }
+      }
     },
     "timeline": {
       "status": "passando",
       "total": 2,
       "passando": 2,
       "falhando": 0,
-      "arquivos": ["src/components/timeline.browser.test.tsx"]
+      "arquivos": ["src/components/timeline.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 10,
+          "cobertas": 8,
+          "percentual": 80
+        },
+        "funcoes": {
+          "total": 10,
+          "cobertas": 8,
+          "percentual": 80
+        },
+        "branches": {
+          "total": 6,
+          "cobertas": 3,
+          "percentual": 50
+        }
+      }
     },
     "toggle": {
       "status": "passando",
       "total": 8,
       "passando": 8,
       "falhando": 0,
-      "arquivos": ["src/components/toggle.browser.test.tsx"]
+      "arquivos": ["src/components/toggle.browser.test.tsx"],
+      "cobertura": {
+        "status": "completa",
+        "linhas": {
+          "total": 3,
+          "cobertas": 3,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 1,
+          "cobertas": 1,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 2,
+          "cobertas": 2,
+          "percentual": 100
+        }
+      }
     },
     "toggle-group": {
       "status": "passando",
       "total": 4,
       "passando": 4,
       "falhando": 0,
-      "arquivos": ["src/components/toggle-group.browser.test.tsx"]
+      "arquivos": ["src/components/toggle-group.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 5,
+          "cobertas": 5,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 3,
+          "cobertas": 3,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 17,
+          "cobertas": 15,
+          "percentual": 88.23
+        }
+      }
     },
     "tooltip": {
       "status": "passando",
       "total": 2,
       "passando": 2,
       "falhando": 0,
-      "arquivos": ["src/components/tooltip.browser.test.tsx"]
+      "arquivos": ["src/components/tooltip.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 5,
+          "cobertas": 4,
+          "percentual": 80
+        },
+        "funcoes": {
+          "total": 4,
+          "cobertas": 3,
+          "percentual": 75
+        },
+        "branches": {
+          "total": 5,
+          "cobertas": 4,
+          "percentual": 80
+        }
+      }
     },
     "typography": {
       "status": "passando",
       "total": 9,
       "passando": 9,
       "falhando": 0,
-      "arquivos": ["src/components/typography.browser.test.tsx"]
+      "arquivos": ["src/components/typography.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 15,
+          "cobertas": 15,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 13,
+          "cobertas": 13,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 6,
+          "cobertas": 4,
+          "percentual": 66.66
+        }
+      }
     },
     "usage-card": {
       "status": "passando",
       "total": 2,
       "passando": 2,
       "falhando": 0,
-      "arquivos": ["src/components/usage-card.browser.test.tsx"]
+      "arquivos": ["src/components/usage-card.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 5,
+          "cobertas": 5,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 3,
+          "cobertas": 3,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 24,
+          "cobertas": 18,
+          "percentual": 75
+        }
+      }
     }
   }
 }
