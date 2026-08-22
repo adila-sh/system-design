@@ -1,5 +1,13 @@
 # @adila-sh/ui
 
+## 0.7.0
+
+### Minor Changes
+
+- 39e71de: Publica a entrada Tailwind `@adila-sh/ui/theme.css` e centraliza fundações
+  reutilizadas pelas aplicações: `cn`, `toast`, `ThemeToggle`,
+  `GoogleBrandIcon` e `GitHubBrandIcon`.
+
 ## 0.6.0
 
 ### Minor Changes
