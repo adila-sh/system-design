@@ -33,3 +33,15 @@ bun run typecheck
 Se testes forem adicionados ou removidos, atualize o manifesto das docs a
 partir da raiz com `bun run test:status`. Verifique a formatação dos arquivos
 alterados com `bunx oxfmt --check <arquivos>`.
+
+### Regressão visual
+
+Prefira contratos determinísticos de CSS computado, contraste, geometria e
+estado acessível. Não versione screenshot quando essas invariantes descrevem a
+mudança: baselines de pixels variam entre plataformas e escondem a causa da
+regressão.
+
+Use `toMatchScreenshot` somente quando a composição visual não puder ser
+expressa por essas medidas. Nesse caso, fixe o viewport no próprio teste e gere
+a baseline com a mesma versão de Chromium/Linux usada pelo CI; não aceite uma
+baseline nova sem revisar o diff visual.

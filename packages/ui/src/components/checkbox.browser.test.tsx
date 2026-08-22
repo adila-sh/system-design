@@ -15,18 +15,6 @@ import { TEMAS } from "../../test/variantes";
  * pede 3:1 para o limite do componente, então o alvo aqui é a BORDA no estado
  * desmarcado e o preenchimento no marcado — não há rótulo para medir.
  */
-/**
- * A borda do controle desmarcado vem de `--input`, e não chega perto do mínimo
- * de 3:1 em nenhum dos temas. Não é defeito de um componente: é o token, e ele
- * desenha a borda de TODO campo do sistema — input, textarea, select, checkbox,
- * radio. Escurecê-lo é decisão de design com efeito visível em toda interface,
- * então fica registrado com o valor medido em vez de corrigido por conta.
- */
-const BORDA_ABAIXO_DO_MINIMO = new Map([
-  ["light", 1.23],
-  ["dark", 1.56],
-]);
-
 const DESMARCADOS = [
   {
     nome: "Checkbox",
@@ -57,18 +45,9 @@ describe.each(TEMAS)("Controles de seleção no tema %s", (tema) => {
       const el = tela.container.querySelector(seletor);
       expect(el, `nada casou ${seletor}`).not.toBeNull();
 
-      const contraste = contrasteDaBorda(el as Element);
-      const piso = BORDA_ABAIXO_DO_MINIMO.get(tema);
-
-      if (piso === undefined) {
-        expect(contraste).toBeGreaterThanOrEqual(MINIMO.naoTexto);
-        return;
-      }
-      expect(contraste).toBeGreaterThanOrEqual(piso);
-      expect(
-        contraste,
-        `borda no tema ${tema} agora passa em 1.4.11 — remova a entrada`,
-      ).toBeLessThan(MINIMO.naoTexto);
+      expect(contrasteDaBorda(el as Element)).toBeGreaterThanOrEqual(
+        MINIMO.naoTexto,
+      );
     },
   );
 

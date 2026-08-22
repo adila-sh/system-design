@@ -1,5 +1,5 @@
 {
-  "geradoEm": "2026-08-22T17:44:33.977Z",
+  "geradoEm": "2026-08-22T17:57:18.747Z",
   "origem": "vitest",
   "resumo": {
     "componentes": 108,
@@ -7,7 +7,7 @@
     "semTestes": 0,
     "testes": 516,
     "falhando": 0,
-    "testesNaSuite": 559
+    "testesNaSuite": 560
   },
   "componentes": {
     "accordion": {

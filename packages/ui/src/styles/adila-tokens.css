@@ -33,6 +33,7 @@
   --gray-928: oklch(0.9276 0 0);
   --gray-772: oklch(0.7715 0 0);
   --gray-653: oklch(0.6527 0 0);
+  --gray-580: oklch(0.58 0 0);
   --gray-551: oklch(0.551 0 0);
   --gray-545: oklch(0.545 0 0);
   --gray-320: oklch(0.32 0 0);
@@ -54,11 +55,13 @@
   --red-711: oklch(0.7106 0.1661 22.22);
   --red-637: oklch(0.6368 0.2078 25.33);
   --red-587: oklch(0.587 0.1661 22.22);
+  --red-510: oklch(0.51 0.2078 25.33);
   --red-490: oklch(0.49 0.2078 25.33);
 
   /* Âmbar — aviso e a terceira série de gráfico. */
   --amber-837: oklch(0.8369 0.1644 84.43);
   --amber-769: oklch(0.7686 0.1647 70.08);
+  --amber-600: oklch(0.6 0.1644 84.43);
 
   /* Azul frio — o estado informativo. Matiz 237, 33 graus do indigo da marca,
      para que "informação" não se confunda com "ação primária". O croma é o
@@ -164,7 +167,9 @@
   --warning-tint-foreground: oklch(from var(--warning) 0.5 c h);
 
   --border: var(--gray-928);
-  --input: var(--gray-928);
+  /* Limite de campos e controles, não superfície decorativa: 3:1 contra o
+     fundo claro para que a forma continue perceptível sem depender de foco. */
+  --input: var(--gray-653);
   --ring: var(--indigo-506);
 
   /* Hover — uma regra só: a superfície anda 5% na direção do texto.
@@ -201,11 +206,9 @@
      não suprimia nada, e o modal dependia inteiramente da borda, da sombra e do
      backdrop-blur para se separar da página.
 
-     Um achado que a medição expôs e que este número NÃO resolve: no tema escuro
-     subir o scrim quase não aumenta a separação entre o diálogo e a página
-     (1,10 para 1,13 mesmo a 60%), porque --popover está em L 0,2 contra L 0,145
-     do fundo. A hierarquia de superfícies do escuro cabe toda em 0,075 de
-     luminosidade, e isso é assunto de outra issue.
+     A separação no tema escuro é complementada pela hierarquia semântica de
+     superfícies: background < sidebar < card < popover. O scrim suprime o
+     conteúdo de trás; a luminosidade do popover identifica o plano flutuante.
 
      Usa `oklch(from ...)` e não `color-mix` de propósito. Para color-mix o
      Tailwind gera um fallback automático com o valor SEM a mistura — aqui
@@ -218,10 +221,10 @@
   --overlay: oklch(from var(--gray-0) l c h / 40%);
 
   --chart-1: var(--indigo-506);
-  --chart-2: var(--red-637);
-  --chart-3: var(--amber-769);
-  --chart-4: var(--gray-551);
-  --chart-5: var(--green-696);
+  --chart-2: var(--red-510);
+  --chart-3: var(--amber-600);
+  --chart-4: var(--blue-500);
+  --chart-5: var(--green-500);
 
   --sidebar: var(--gray-982);
   --sidebar-foreground: var(--gray-210);
@@ -269,7 +272,9 @@
   --card: var(--gray-220);
   --card-foreground: var(--gray-945);
 
-  --popover: var(--gray-200);
+  /* Escada de elevação: 0.145 < 0.175 < 0.220 < 0.270. O plano flutuante
+     fica acima do card também por luminosidade, não apenas por borda/sombra. */
+  --popover: var(--gray-270);
   --popover-foreground: var(--gray-945);
 
   --primary: var(--indigo-550);
@@ -306,7 +311,9 @@
 
   --destructive-tint: var(--background);
   --destructive-tint-strong: var(--background);
-  --destructive-tint-foreground: oklch(from var(--destructive) 0.64 c h);
+  /* Também precisa permanecer legível sobre --popover, o plano mais claro da
+     hierarquia escura; L 0.68 preserva a matiz e passa em ambos os fundos. */
+  --destructive-tint-foreground: oklch(from var(--destructive) 0.68 c h);
 
   --success-tint: var(--background);
   --success-tint-foreground: oklch(from var(--success) 0.6 c h);
@@ -319,15 +326,17 @@
   --warning-tint-foreground: var(--warning);
 
   --border: var(--gray-280);
-  --input: var(--gray-320);
+  /* 3:1 contra o fundo escuro; o preenchimento continua suave onde os
+     componentes usam bg-input/30. */
+  --input: var(--gray-580);
   /* ring mais claro no dark: anel de foco legível sobre bg e cards (WCAG 1.4.11) */
   --ring: var(--indigo-708);
 
   --chart-1: var(--indigo-550);
-  --chart-2: var(--red-711);
-  --chart-3: var(--amber-837);
-  --chart-4: var(--gray-653);
-  --chart-5: var(--green-773);
+  --chart-2: var(--red-510);
+  --chart-3: var(--amber-600);
+  --chart-4: var(--blue-550);
+  --chart-5: var(--green-536);
 
   --sidebar: var(--gray-175);
   --sidebar-foreground: var(--gray-945);
