@@ -8,7 +8,7 @@ function FilterBar({ className, ...props }: React.ComponentProps<"div">) {
       data-slot="filter-bar"
       role="search"
       className={cn(
-        "flex w-full flex-col gap-2 rounded-lg border bg-card p-3 sm:flex-row sm:items-center",
+        "flex w-full flex-col gap-2 rounded-md border bg-card p-3 sm:flex-row sm:items-center",
         className,
       )}
       {...props}

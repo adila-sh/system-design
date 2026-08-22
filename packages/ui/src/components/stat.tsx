@@ -7,7 +7,7 @@ function StatGroup({ className, ...props }: React.ComponentProps<"div">) {
     <div
       data-slot="stat-group"
       className={cn(
-        "grid grid-cols-1 divide-y overflow-hidden rounded-lg border bg-card text-card-foreground sm:grid-cols-2 sm:divide-x sm:divide-y-0 lg:grid-cols-4",
+        "grid grid-cols-1 divide-y overflow-hidden rounded-md border bg-card text-card-foreground sm:grid-cols-2 sm:divide-x sm:divide-y-0 lg:grid-cols-4",
         className,
       )}
       {...props}
