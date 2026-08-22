@@ -132,7 +132,7 @@ function CodeBlock({
     <figure
       data-slot="code-block"
       className={cn(
-        "relative overflow-hidden rounded-lg border border-[var(--code-border)] bg-[var(--code-bg)] text-[var(--code-fg)] shadow-sm transition-colors",
+        "relative overflow-hidden rounded-md border border-[var(--code-border)] bg-[var(--code-bg)] text-[var(--code-fg)] shadow-sm transition-colors",
         className,
       )}
       {...props}

@@ -232,7 +232,7 @@ function AnimationShowcase() {
         </CardHeader>
         <CardContent>
           <div className="adila-aurora-border rounded-xl p-px">
-            <div className="flex min-h-40 flex-col justify-between rounded-[11px] bg-card p-5">
+            <div className="flex min-h-40 flex-col justify-between rounded-xl bg-card p-5">
               <div className="flex items-center justify-between">
                 <span className="text-sm font-medium">Pipeline de deploy</span>
                 <ArrowUpRight className="size-4 text-muted-foreground" />
@@ -566,7 +566,7 @@ export function CustomerStatus({ active }: { active: boolean }) {
               <CardDescription>{s.label}</CardDescription>
               <CardTitle className="text-2xl tabular-nums">{s.value}</CardTitle>
               <CardAction>
-                <div className="flex size-8 items-center justify-center rounded-lg bg-muted text-muted-foreground">
+                <div className="flex size-8 items-center justify-center rounded-md bg-muted text-muted-foreground">
                   <s.icon className="size-4" />
                 </div>
               </CardAction>

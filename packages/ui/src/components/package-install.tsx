@@ -42,7 +42,7 @@ function PackageInstall({
     <div
       data-slot="package-install"
       className={cn(
-        "overflow-hidden rounded-lg border border-[var(--code-border)] bg-[var(--code-bg)] transition-colors",
+        "overflow-hidden rounded-md border border-[var(--code-border)] bg-[var(--code-bg)] transition-colors",
         className,
       )}
       {...props}

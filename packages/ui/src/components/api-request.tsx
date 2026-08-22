@@ -8,7 +8,7 @@ function ApiRequest({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="api-request"
-      className={cn("overflow-hidden rounded-lg border bg-card", className)}
+      className={cn("overflow-hidden rounded-md border bg-card", className)}
       {...props}
     />
   );
