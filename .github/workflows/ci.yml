@@ -47,5 +47,8 @@ jobs:
       - name: Test with coverage thresholds
         run: bun run test:coverage
 
+      - name: Test docs
+        run: bun run --cwd apps/docs test
+
       - name: Test status generator
         run: bun run --cwd apps/docs test:test-status

@@ -7,7 +7,7 @@ import { cn } from "@/lib/cn";
 import { gitConfig } from "@/lib/shared";
 import manifesto from "@/lib/test-status.json";
 
-type StatusDeTestes = {
+export type StatusDeTestes = {
   status: "passando" | "falhando" | "sem-testes" | "desconhecido";
   total: number;
   passando?: number;
@@ -54,7 +54,11 @@ export function TestStatusBadge({ path }: { path: string }) {
   const slug = slugDoPath(path);
   if (!slug) return null;
 
-  const dados = COMPONENTES[slug];
+  return <TestStatusBadgeContent dados={COMPONENTES[slug]} />;
+}
+
+/** Renderização isolada para manter os estados do manifesto testáveis. */
+export function TestStatusBadgeContent({ dados }: { dados?: StatusDeTestes }) {
   if (!dados || dados.status === "desconhecido") return null;
 
   if (dados.status === "sem-testes") {

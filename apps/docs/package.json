@@ -7,6 +7,7 @@
     "dev": "vite dev",
     "build": "vite build && node scripts/fix-tslib.mjs",
     "start": "node .output/server/index.mjs",
+    "test": "vitest run",
     "typecheck": "fumadocs-mdx && tsc --noEmit",
     "gen:docs": "node scripts/gen-docs.mjs",
     "gen:test-status": "node scripts/gen-test-status.mjs",
@@ -44,6 +45,7 @@
     "fumadocs-mdx": "^15.1.0",
     "nitro": "^3.0.260610-beta",
     "typescript": "^5.9.3",
-    "vite": "^8.1.4"
+    "vite": "^8.1.4",
+    "vitest": "4"
   }
 }

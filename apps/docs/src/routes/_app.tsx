@@ -89,6 +89,12 @@ import {
   TooltipTrigger,
 } from "@adila-sh/ui";
 import { CodeThemeProvider } from "@adila-sh/ui";
+import {
+  appNavigation,
+  getPageMetadata,
+  handleCommandMenuShortcut,
+  isActiveNavigation,
+} from "@/lib/app-shell";
 
 const getSidebarDefaultOpen = createServerFn({ method: "GET" }).handler(
   () => getCookie("sidebar_state") !== "false",
@@ -100,15 +106,10 @@ export const Route = createFileRoute("/_app")({
 });
 
 const navMain = [
-  {
-    title: "Visão geral",
-    icon: LayoutDashboard,
-    href: "/showcase",
-    badge: null,
-  },
-  { title: "Analytics", icon: LineChart, href: "/analytics", badge: "3" },
-  { title: "Clientes", icon: Users, href: "/clientes", badge: null },
-  { title: "Produtos", icon: Package, href: "/produtos", badge: "12" },
+  { ...appNavigation[0], icon: LayoutDashboard },
+  { ...appNavigation[1], icon: LineChart },
+  { ...appNavigation[2], icon: Users },
+  { ...appNavigation[3], icon: Package },
 ];
 
 /* ------------------------------------------------------------------ */
@@ -171,7 +172,7 @@ function AppSidebar({ onOpenCommand }: { onOpenCommand: () => void }) {
               {navMain.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton
-                    isActive={pathname === item.href}
+                    isActive={isActiveNavigation(pathname, item.href)}
                     tooltip={item.title}
                     render={<Link to={item.href} />}
                   >
@@ -279,7 +280,7 @@ function AppBottomBar({ onOpenCommand }: { onOpenCommand: () => void }) {
         {navMain.slice(0, 3).map((item) => (
           <BottomBarItem key={item.title}>
             <BottomBarButton
-              isActive={pathname === item.href}
+              isActive={isActiveNavigation(pathname, item.href)}
               render={<Link to={item.href} />}
             >
               <item.icon />
@@ -329,7 +330,9 @@ function AppBottomBar({ onOpenCommand }: { onOpenCommand: () => void }) {
                       <Link
                         to={item.href}
                         aria-current={
-                          pathname === item.href ? "page" : undefined
+                          isActiveNavigation(pathname, item.href)
+                            ? "page"
+                            : undefined
                         }
                         className="flex items-center gap-3 rounded-md px-3 py-2.5 text-sm hover:bg-muted aria-[current=page]:bg-muted aria-[current=page]:text-primary"
                       />
@@ -379,41 +382,19 @@ function AppBottomBar({ onOpenCommand }: { onOpenCommand: () => void }) {
   );
 }
 
-const pageMetadata: Record<string, { title: string; description: string }> = {
-  "/showcase": {
-    title: "Visão geral",
-    description: "Bem-vindo de volta, João",
-  },
-  "/analytics": { title: "Analytics", description: "Performance e adoção" },
-  "/clientes": { title: "Clientes", description: "Contas e relacionamentos" },
-  "/produtos": {
-    title: "Produtos",
-    description: "Catálogo do ecossistema",
-  },
-  "/configuracoes": {
-    title: "Configurações",
-    description: "Preferências do workspace",
-  },
-  "/ajuda": { title: "Ajuda", description: "Documentação e suporte" },
-};
-
 function AppShell() {
   const sidebarDefaultOpen = Route.useLoaderData();
   const pathname = useRouterState({
     select: (state) => state.location.pathname,
   });
-  const { title, description } =
-    pageMetadata[pathname] ?? pageMetadata["/showcase"];
+  const { title, description } = getPageMetadata(pathname);
   const { resolvedTheme, setTheme } = useTheme();
   const isDark = resolvedTheme === "dark";
   const [cmdOpen, setCmdOpen] = useState(false);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
-        e.preventDefault();
-        setCmdOpen((open) => !open);
-      }
+      handleCommandMenuShortcut(e, () => setCmdOpen((open) => !open));
     };
     document.addEventListener("keydown", onKey);
     return () => document.removeEventListener("keydown", onKey);

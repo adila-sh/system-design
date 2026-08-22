@@ -1,4 +1,5 @@
 import { source } from "@/lib/source";
+import { createLlmsIndexResponse } from "@/lib/llm-responses";
 import { createFileRoute } from "@tanstack/react-router";
 import { llms } from "fumadocs-core/source";
 
@@ -49,11 +50,7 @@ export const Route = createFileRoute("/llms.txt")({
           .map((node) => docs.indexNode(node))
           .join("\n");
 
-        return new Response(`${packageGuide}\n${documentationIndex}\n`, {
-          headers: {
-            "Content-Type": "text/markdown; charset=utf-8",
-          },
-        });
+        return createLlmsIndexResponse(packageGuide, documentationIndex);
       },
     },
   },
