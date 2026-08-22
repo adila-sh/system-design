@@ -13,14 +13,14 @@ export function baseOptions(): BaseLayoutProps {
             alt=""
             width={20}
             height={20}
-            className="rounded-[4px] dark:hidden"
+            className="rounded-md dark:hidden"
           />
           <img
             src="/logo-dark-40.png"
             alt=""
             width={20}
             height={20}
-            className="hidden rounded-[4px] dark:block"
+            className="hidden rounded-md dark:block"
           />
           {appName}
         </>

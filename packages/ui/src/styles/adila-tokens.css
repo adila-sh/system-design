@@ -133,7 +133,7 @@
      A superfície usa color-mix com os mesmos 10% que o utilitário aplicava, e
      por isso é pixel a pixel o que já era exibido — o que muda é só o texto.
      No tema claro o texto já passava, então aponta para o próprio token. */
-  --primary-tint: color-mix(in oklab, var(--primary) 10%, var(--background));
+  --primary-tint: var(--background);
   --primary-tint-foreground: var(--primary);
 
   /* O indigo passa como texto sobre o fundo da página (6.33:1), mas o vermelho e
@@ -142,33 +142,25 @@
      arrastar --destructive e --success junto — o preenchimento sólido segue
      igual. */
 
-  --destructive-tint: color-mix(
-    in oklab,
-    var(--destructive) 10%,
-    var(--background)
-  );
+  --destructive-tint: var(--background);
   /* Nível mais forte, para o preenchimento suave do Button e do Badge, que
      sempre usaram 20% em vez de 10%. Opaco pelo mesmo motivo da tinta normal:
      `bg-destructive/20` compõe com o que estiver atrás, então o mesmo botão
      mudava de contraste conforme a superfície em que fosse colocado. */
-  --destructive-tint-strong: color-mix(
-    in oklab,
-    var(--destructive) 20%,
-    var(--background)
-  );
+  --destructive-tint-strong: var(--background);
   --destructive-tint-foreground: oklch(from var(--destructive) 0.47 c h);
 
-  --success-tint: color-mix(in oklab, var(--success) 10%, var(--background));
+  --success-tint: var(--background);
   --success-tint-foreground: oklch(from var(--success) 0.48 c h);
 
-  --info-tint: color-mix(in oklab, var(--info) 10%, var(--background));
+  --info-tint: var(--background);
   --info-tint-foreground: oklch(from var(--info) 0.47 c h);
 
   /* O amarelo do preenchimento é claro demais para virar texto — mede 2.15:1
      sobre o fundo da página. Em vez de cair no preto do --warning-foreground,
      que apagaria a semântica de aviso, desce na mesma matiz até um âmbar
      escuro: 6.18:1 sobre a página e 5.57:1 sobre a própria tinta. */
-  --warning-tint: color-mix(in oklab, var(--warning) 15%, var(--background));
+  --warning-tint: var(--background);
   --warning-tint-foreground: oklch(from var(--warning) 0.5 c h);
 
   --border: var(--gray-928);
@@ -200,24 +192,30 @@
 
   /* Scrim do Dialog, AlertDialog, Sheet e Drawer, que repetiam `bg-black/10`.
      Fica no :root e NÃO é reapontado no `.dark`, e isso é medido, não intuído:
-     o trabalho do scrim é suprimir o conteúdo de trás, e 10% de preto derruba o
-     contraste do texto da página em 8,1% no claro contra 8,9% no escuro. Os
-     dois temas se comportam igual porque o scrim multiplica as duas
-     luminosidades, a do texto e a do fundo, na mesma proporção.
-     Vale registrar que 8% é um scrim FRACO em termos absolutos — quem separa o
-     diálogo aqui é a borda, a sombra e o backdrop-blur, não o escurecimento.
-     Subir isso muda a aparência nos dois temas, então é decisão de design e não
-     entrou junto da tokenização.
+     o trabalho do scrim é suprimir o conteúdo de trás, e a supressão é
+     praticamente idêntica nos dois temas — o scrim multiplica a luminosidade do
+     texto e a do fundo na mesma proporção. Por isso um valor só, sem `.dark`.
+
+     Está em 40%, que derruba o contraste do texto da página em 34% no claro e
+     36% no escuro. Antes eram 10%, que derrubavam 8% — um scrim que praticamente
+     não suprimia nada, e o modal dependia inteiramente da borda, da sombra e do
+     backdrop-blur para se separar da página.
+
+     Um achado que a medição expôs e que este número NÃO resolve: no tema escuro
+     subir o scrim quase não aumenta a separação entre o diálogo e a página
+     (1,10 para 1,13 mesmo a 60%), porque --popover está em L 0,2 contra L 0,145
+     do fundo. A hierarquia de superfícies do escuro cabe toda em 0,075 de
+     luminosidade, e isso é assunto de outra issue.
 
      Usa `oklch(from ...)` e não `color-mix` de propósito. Para color-mix o
      Tailwind gera um fallback automático com o valor SEM a mistura — aqui
      seria `var(--gray-0)`, preto opaco, e um navegador sem suporte cobriria a
-     página inteira em vez de escurecê-la em 10%. Com relative color syntax não
+     página inteira em vez de escurecê-la em 40%. Com relative color syntax não
      há fallback gerado: se o navegador não entender, a utilitária fica
      inválida e o scrim simplesmente não aparece, que é o modo de falhar certo
      para um overlay. Declarar um fallback à mão não resolve — o Tailwind
      colapsa declarações repetidas da mesma custom property. */
-  --overlay: oklch(from var(--gray-0) l c h / 10%);
+  --overlay: oklch(from var(--gray-0) l c h / 40%);
 
   --chart-1: var(--indigo-506);
   --chart-2: var(--red-637);
@@ -237,6 +235,31 @@
   --font-sans: "Adila Std", "SF Pro Text", "Segoe UI", system-ui, sans-serif;
   --font-mono: "Adila Code", "JetBrains Mono", "Fira Code", Consolas, monospace;
   --font-pixel: "Adila Pixel", "Adila Code", monospace;
+
+  /* A mistura fica atrás de um @supports escrito à mão, e o valor de cima é
+     o fallback de verdade. Sem isso o Tailwind gera o fallback sozinho, e ele
+     é a cor SEM a mistura — `--destructive-tint` virava vermelho opaco onde se
+     queria 10% dele. Cair no fundo da página é a degradação certa: some a
+     superfície colorida, e o texto continua legível porque `-tint-foreground`
+     é, por definição, a cor que se lê sobre o fundo.
+     Verificado que o Tailwind não acrescenta fallback próprio quando já existe
+     um @supports nosso. */
+  @supports (color: color-mix(in oklab, red, red)) {
+    --info-tint: color-mix(in oklab, var(--info) 10%, var(--background));
+    --primary-tint: color-mix(in oklab, var(--primary) 10%, var(--background));
+    --destructive-tint: color-mix(
+      in oklab,
+      var(--destructive) 10%,
+      var(--background)
+    );
+    --destructive-tint-strong: color-mix(
+      in oklab,
+      var(--destructive) 20%,
+      var(--background)
+    );
+    --success-tint: color-mix(in oklab, var(--success) 10%, var(--background));
+    --warning-tint: color-mix(in oklab, var(--warning) 15%, var(--background));
+  }
 }
 
 .dark {
@@ -278,29 +301,21 @@
      CLARO que a cor de preenchimento, e não pode ser a própria cor — que serve
      de fundo para o branco no estado sólido. Matiz e croma preservados; só a
      luminosidade sobe, o mínimo para passar de 5:1 sobre a tinta. */
-  --primary-tint: color-mix(in oklab, var(--primary) 10%, var(--background));
+  --primary-tint: var(--background);
   --primary-tint-foreground: oklch(from var(--primary) 0.65 c h);
 
-  --destructive-tint: color-mix(
-    in oklab,
-    var(--destructive) 10%,
-    var(--background)
-  );
-  --destructive-tint-strong: color-mix(
-    in oklab,
-    var(--destructive) 20%,
-    var(--background)
-  );
+  --destructive-tint: var(--background);
+  --destructive-tint-strong: var(--background);
   --destructive-tint-foreground: oklch(from var(--destructive) 0.64 c h);
 
-  --success-tint: color-mix(in oklab, var(--success) 10%, var(--background));
+  --success-tint: var(--background);
   --success-tint-foreground: oklch(from var(--success) 0.6 c h);
 
-  --info-tint: color-mix(in oklab, var(--info) 10%, var(--background));
+  --info-tint: var(--background);
   --info-tint-foreground: oklch(from var(--info) 0.62 c h);
 
   /* No escuro o amarelo já funciona como texto sobre a própria tinta. */
-  --warning-tint: color-mix(in oklab, var(--warning) 15%, var(--background));
+  --warning-tint: var(--background);
   --warning-tint-foreground: var(--warning);
 
   --border: var(--gray-280);
@@ -322,12 +337,46 @@
   --sidebar-accent-foreground: var(--gray-945);
   --sidebar-border: var(--gray-280);
   --sidebar-ring: var(--indigo-708);
+
+  /* A mistura fica atrás de um @supports escrito à mão, e o valor de cima é
+     o fallback de verdade. Sem isso o Tailwind gera o fallback sozinho, e ele
+     é a cor SEM a mistura — `--destructive-tint` virava vermelho opaco onde se
+     queria 10% dele. Cair no fundo da página é a degradação certa: some a
+     superfície colorida, e o texto continua legível porque `-tint-foreground`
+     é, por definição, a cor que se lê sobre o fundo.
+     Verificado que o Tailwind não acrescenta fallback próprio quando já existe
+     um @supports nosso. */
+  @supports (color: color-mix(in oklab, red, red)) {
+    --info-tint: color-mix(in oklab, var(--info) 10%, var(--background));
+    --primary-tint: color-mix(in oklab, var(--primary) 10%, var(--background));
+    --destructive-tint: color-mix(
+      in oklab,
+      var(--destructive) 10%,
+      var(--background)
+    );
+    --destructive-tint-strong: color-mix(
+      in oklab,
+      var(--destructive) 20%,
+      var(--background)
+    );
+    --success-tint: color-mix(in oklab, var(--success) 10%, var(--background));
+    --warning-tint: color-mix(in oklab, var(--warning) 15%, var(--background));
+  }
 }
 
 @theme inline {
+  /* Escala de raio: 2 / 6 / 10 e o pill.
+     Eram quatro degraus, 2/4/6/10, mas `md` (4px) e `lg` (6px) estavam a 2px um
+     do outro e juntos carregavam 107 dos 192 usos — a escolha entre os dois era
+     arbitrária para quem escrevia componente, e a diferença não comunicava
+     nada. Foram fundidos no degrau padrão, que é o próprio --radius.
+     `--radius-lg` continua declarado de propósito, apontando para o mesmo
+     valor: sem ele, um `rounded-lg` esquecido cairia no default do Tailwind
+     (0.5rem, 8px) e reintroduziria em silêncio o degrau que acabou de sair.
+     O nome em uso é `rounded-md`. */
   --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
+  --radius-md: var(--radius);
+  --radius-lg: var(--radius-md);
   --radius-xl: calc(var(--radius) + 4px);
 
   --color-background: var(--background);
@@ -488,6 +537,23 @@
     @apply border-ring ring-3 ring-ring/50 outline-none;
 
     @media (forced-colors: active) {
+      outline: 2px solid;
+      outline-offset: 2px;
+    }
+  }
+}
+
+/* Só o fallback de alto contraste, sem tocar no desenho normal.
+   Existe para os contêineres que espelham o foco de um filho via `has-[...]`:
+   InputGroup e NumberField. Eles não podem usar `focus-ring`, porque a
+   utilitária traz o próprio `:focus-visible` e a variante `has-` não compõe com
+   isso — mas são justamente eles que precisam do fallback, já que o controle
+   interno suprime o próprio anel (`focus-visible:ring-0`). Sem isto, em
+   forced-colors o box-shadow do contêiner some e o campo fica sem indicador
+   nenhum. */
+@utility focus-ring-has-fallback {
+  @media (forced-colors: active) {
+    &:has(:focus-visible) {
       outline: 2px solid;
       outline-offset: 2px;
     }
