@@ -4,13 +4,13 @@
     "componentes": 108,
     "comTestes": 108,
     "semTestes": 0,
-    "protegidos": 106,
-    "semExecucao": 2,
-    "coberturaParcial": 80,
+    "protegidos": 107,
+    "semExecucao": 1,
+    "coberturaParcial": 81,
     "coberturaCompleta": 26,
-    "testes": 516,
+    "testes": 535,
     "falhando": 0,
-    "testesNaSuite": 560
+    "testesNaSuite": 579
   },
   "componentes": {
     "accordion": {
@@ -298,13 +298,13 @@
         "status": "parcial",
         "linhas": {
           "total": 10,
-          "cobertas": 9,
-          "percentual": 90
+          "cobertas": 10,
+          "percentual": 100
         },
         "funcoes": {
           "total": 6,
-          "cobertas": 4,
-          "percentual": 66.66
+          "cobertas": 6,
+          "percentual": 100
         },
         "branches": {
           "total": 10,
@@ -715,26 +715,26 @@
     },
     "chart": {
       "status": "passando",
-      "total": 8,
-      "passando": 8,
+      "total": 18,
+      "passando": 18,
       "falhando": 0,
       "arquivos": ["src/components/chart.browser.test.tsx"],
       "cobertura": {
-        "status": "nao-executada",
+        "status": "parcial",
         "linhas": {
-          "total": 61,
-          "cobertas": 0,
-          "percentual": 0
+          "total": 62,
+          "cobertas": 58,
+          "percentual": 93.54
         },
         "funcoes": {
-          "total": 14,
-          "cobertas": 0,
-          "percentual": 0
+          "total": 16,
+          "cobertas": 16,
+          "percentual": 100
         },
         "branches": {
-          "total": 105,
-          "cobertas": 0,
-          "percentual": 0
+          "total": 113,
+          "cobertas": 92,
+          "percentual": 81.41
         }
       }
     },
@@ -1890,26 +1890,26 @@
     },
     "pixel-blast": {
       "status": "passando",
-      "total": 3,
-      "passando": 3,
+      "total": 12,
+      "passando": 12,
       "falhando": 0,
       "arquivos": ["src/components/pixel-blast.browser.test.tsx"],
       "cobertura": {
         "status": "parcial",
         "linhas": {
-          "total": 164,
-          "cobertas": 33,
-          "percentual": 20.12
+          "total": 175,
+          "cobertas": 175,
+          "percentual": 100
         },
         "funcoes": {
-          "total": 12,
-          "cobertas": 2,
-          "percentual": 16.66
+          "total": 13,
+          "cobertas": 13,
+          "percentual": 100
         },
         "branches": {
-          "total": 51,
-          "cobertas": 6,
-          "percentual": 11.76
+          "total": 62,
+          "cobertas": 57,
+          "percentual": 91.93
         }
       }
     },
