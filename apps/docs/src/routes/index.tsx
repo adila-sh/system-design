@@ -31,12 +31,7 @@ function Home() {
   const options = baseOptions();
 
   return (
-    <HomeLayout
-      {...options}
-      nav={{ ...options.nav, transparentMode: "top" }}
-      // Escopo dos overrides de contraste da navbar sobre o wallpaper.
-      className="home-hero-nav"
-    >
+    <HomeLayout {...options} className="home-editorial-layout">
       <main className="bg-background">
         <section className="relative isolate -mt-14 flex min-h-svh w-full items-end overflow-hidden bg-foreground text-white">
           <img
@@ -52,7 +47,7 @@ function Home() {
 
           <div className="mx-auto flex min-h-svh w-full max-w-[1600px] flex-col justify-end px-6 pt-32 pb-8 sm:px-10 sm:pb-10 lg:px-16">
             <div className="py-12 sm:py-16">
-              <h1 className="max-w-[calc(100vw-2rem)] text-[clamp(4.4rem,25vw,7rem)] leading-[0.92] font-light tracking-[-0.09em] text-balance sm:max-w-6xl sm:text-[clamp(6rem,15vw,14rem)] sm:leading-[0.88]">
+              <h1 className="max-w-[calc(100vw-2rem)] text-[clamp(4.4rem,25vw,7rem)] leading-[1.08] font-light tracking-[-0.09em] text-balance sm:max-w-6xl sm:text-[clamp(6rem,15vw,14rem)] sm:leading-[1.05]">
                 <span className="home-editorial-shimmer block">Design</span>
                 <span className="home-editorial-shimmer ml-[10vw] block sm:ml-[18vw]">
                   System
