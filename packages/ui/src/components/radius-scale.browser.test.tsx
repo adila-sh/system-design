@@ -2,21 +2,15 @@ import { describe, expect, test } from "vitest";
 import { render } from "vitest-browser-react";
 
 /**
- * A escala tinha quatro degraus — 2/4/6/10 — e os dois do meio estavam a 2px um
- * do outro, carregando juntos 107 dos 192 usos. A escolha entre `md` e `lg` era
- * arbitrária para quem escrevia componente, e a diferença não comunicava nada.
- * Foram fundidos.
- *
- * Este teste existe porque a fusão é fácil de desfazer sem querer: `--radius-lg`
- * segue declarado (senão um `rounded-lg` esquecido cairia no default do
- * Tailwind, 8px, reintroduzindo em silêncio o degrau que saiu), e basta alguém
- * dar um valor próprio a ele para a escala voltar a ter quatro degraus.
+ * A escala separa detalhes (8px), controles (12px) e painéis (20px).
+ * md e lg continuam sendo aliases para não introduzir um degrau implícito
+ * nos componentes existentes. O teste mede o CSS publicado no Chromium.
  */
 const ESPERADO = {
-  "rounded-sm": "2px",
-  "rounded-md": "6px",
-  "rounded-lg": "6px", // alias defensivo — tem que valer o mesmo que md
-  "rounded-xl": "10px",
+  "rounded-sm": "8px",
+  "rounded-md": "12px",
+  "rounded-lg": "12px", // alias defensivo — tem que valer o mesmo que md
+  "rounded-xl": "20px",
 } as const;
 
 describe("Escala de raio", () => {

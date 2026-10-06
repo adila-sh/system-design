@@ -33,6 +33,13 @@ describe("ThemeToggle", () => {
       .poll(() => document.documentElement.classList.contains("dark"))
       .toBe(true);
     expect(localStorage.getItem(STORAGE_KEY)).toBe("dark");
+    await expect
+      .element(tela.getByRole("menuitemradio", { name: "Escuro" }))
+      .not.toBeInTheDocument();
+    await tela.getByRole("button", { name: "Alternar tema" }).click();
+    await expect
+      .element(tela.getByRole("menuitemradio", { name: "Claro" }))
+      .toBeVisible();
   });
 
   test("permite customizar os textos públicos", async () => {

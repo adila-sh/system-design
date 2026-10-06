@@ -55,13 +55,13 @@ function ThemeToggle({
       </DropdownMenuTrigger>
       <DropdownMenuContent align={align}>
         <DropdownMenuRadioGroup value={theme} onValueChange={setTheme}>
-          <DropdownMenuRadioItem value="light">
+          <DropdownMenuRadioItem closeOnClick value="light">
             {text.light}
           </DropdownMenuRadioItem>
-          <DropdownMenuRadioItem value="dark">
+          <DropdownMenuRadioItem closeOnClick value="dark">
             {text.dark}
           </DropdownMenuRadioItem>
-          <DropdownMenuRadioItem value="system">
+          <DropdownMenuRadioItem closeOnClick value="system">
             {text.system}
           </DropdownMenuRadioItem>
         </DropdownMenuRadioGroup>

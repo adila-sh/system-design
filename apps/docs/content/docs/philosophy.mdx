@@ -57,3 +57,19 @@ abstrações que tentaram adivinhar seu caso de uso.
   <Card title="Como consumir" href="/docs/installation" />
   <Card title="Componentes" href="/docs/components/button" />
 </Cards>
+
+## Geometria e densidade
+
+O sistema usa três raios: **8 px** para detalhes, **12 px** para campos e
+controles e **20 px** para painéis. Botões continuam com formato pill.
+`--radius` controla a escala inteira, sem exigir ajustes em cada componente.
+
+Campos, ações e tabs compartilham **40 px** de altura. Controles compactos usam
+**32 px**, e ações grandes usam **48 px**. Cards têm **24 px** de espaçamento,
+ou **16 px** na versão compacta. Esses valores vivem nos tokens
+`--control-height`, `--control-height-sm`, `--control-height-lg`,
+`--control-padding-inline`, `--panel-spacing` e `--panel-spacing-sm`.
+
+No tema claro, o branco dos campos e cards se separa das superfícies neutras.
+No escuro, a hierarquia entre página, sidebar, card e popover continua explícita.
+As cores de estado e os anéis de foco mantêm seus contratos de contraste.

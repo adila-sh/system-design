@@ -10,7 +10,7 @@
     "coberturaCompleta": 26,
     "testes": 543,
     "falhando": 0,
-    "testesNaSuite": 587
+    "testesNaSuite": 589
   },
   "componentes": {
     "accordion": {
@@ -298,13 +298,13 @@
         "status": "parcial",
         "linhas": {
           "total": 10,
-          "cobertas": 10,
-          "percentual": 100
+          "cobertas": 9,
+          "percentual": 90
         },
         "funcoes": {
           "total": 6,
-          "cobertas": 6,
-          "percentual": 100
+          "cobertas": 4,
+          "percentual": 66.66
         },
         "branches": {
           "total": 10,
