@@ -12,7 +12,7 @@ const siteUrl = "https://ds.adila.co";
 const siteTitle = "DS | Adila.co";
 const siteDescription =
   "Design system adila.co para React, distribuído via GitHub Packages com tema indigo e modos light e dark.";
-const ogImage = `${siteUrl}/icon-512.png`;
+const ogImage = `${siteUrl}/icon-512.png?v=floral-a`;
 
 export const Route = createRootRoute({
   head: () => ({
@@ -64,36 +64,36 @@ export const Route = createRootRoute({
         rel: "icon",
         type: "image/png",
         sizes: "32x32",
-        href: "/favicon-32-light.png",
+        href: "/favicon-32-light.png?v=floral-a",
         media: "(prefers-color-scheme: light)",
       },
       {
         rel: "icon",
         type: "image/png",
         sizes: "16x16",
-        href: "/favicon-16-light.png",
+        href: "/favicon-16-light.png?v=floral-a",
         media: "(prefers-color-scheme: light)",
       },
       {
         rel: "icon",
         type: "image/png",
         sizes: "32x32",
-        href: "/favicon-32-dark.png",
+        href: "/favicon-32-dark.png?v=floral-a",
         media: "(prefers-color-scheme: dark)",
       },
       {
         rel: "icon",
         type: "image/png",
         sizes: "16x16",
-        href: "/favicon-16-dark.png",
+        href: "/favicon-16-dark.png?v=floral-a",
         media: "(prefers-color-scheme: dark)",
       },
       // Fallback universal — precisa vir depois dos com `media`.
-      { rel: "icon", href: "/favicon.ico", sizes: "48x48" },
+      { rel: "icon", href: "/favicon.ico?v=floral-a", sizes: "48x48" },
       {
         rel: "apple-touch-icon",
         sizes: "180x180",
-        href: "/apple-touch-icon.png",
+        href: "/apple-touch-icon.png?v=floral-a",
       },
     ],
   }),
