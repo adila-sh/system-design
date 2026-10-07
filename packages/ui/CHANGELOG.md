@@ -1,5 +1,37 @@
 # @adila-sh/ui
 
+## 0.8.0
+
+### Minor Changes
+
+- 9536ee3: Reorganiza as superfícies do tema escuro numa hierarquia explícita, aumenta o
+  contraste das bordas de campos e substitui a série neutra da paleta de gráficos
+  por uma cor categórica. Os tokens de gráfico também passam a respeitar a banda
+  de luminosidade e contraste de cada tema.
+- 85c666c: Adiciona exports granulares em `@adila-sh/ui/<componente>` para ESM, CommonJS
+  e TypeScript, preservando o entrypoint raiz e os exports de estilos existentes.
+- 49bc06f: Moderniza a escala de raios para 8, 12 e 20 px e centraliza altura, padding de
+  controles e espaçamento de painéis. Cards ganham mais respiro, campos usam uma
+  superfície consistente nos dois temas e botões compactos e tabs ficam mais
+  confortáveis. Mantém as APIs públicas e a paleta semântica da marca.
+  
+  O seletor de tema fecha o menu após a escolha, liberando a navegação imediatamente.
+- b773208: Adiciona Toast do Base UI e Questionnaire ao catálogo, com tokens Adila,
+  textos em português, foco acessível e layout responsivo. Atualiza
+  `@shadcn/react` para disponibilizar o primitive de questionários.
+  
+  Toast mantém `Toaster` e `toast` no subpath `@adila-sh/ui/toast` e usa
+  `ToastToaster` e `toastManager` no barrel, preservando os exports do Sonner.
+
+### Patch Changes
+
+- 8062dba: Reduz a complexidade interna do tooltip de gráficos e adiciona slots estáveis
+  para o conteúdo do tooltip, seus itens, indicadores e legenda.
+- f1e5c20: Isola a interação do PixelBlast em cada canvas e garante a liberação dos
+  recursos WebGL quando a inicialização falha ou o componente é desmontado.
+- a796507: Mantém o debounce do SearchInput estável quando a identidade de `onSearch`
+  muda e documenta que a montagem inicial não dispara uma busca.
+
 ## 0.7.1
 
 ### Patch Changes
