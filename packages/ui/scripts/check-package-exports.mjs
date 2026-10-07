@@ -31,6 +31,25 @@ const [raizEsm, buttonEsm] = await Promise.all([
   import("@adila-sh/ui/button"),
 ]);
 const buttonCjs = require("@adila-sh/ui/button");
+const [toastEsm, sonnerEsm, questionnaireEsm] = await Promise.all([
+  import("@adila-sh/ui/toast"),
+  import("@adila-sh/ui/sonner"),
+  import("@adila-sh/ui/questionnaire"),
+]);
+assert.equal(raizEsm.ToastToaster, toastEsm.Toaster);
+assert.equal(raizEsm.toastManager, toastEsm.toast);
+assert.equal(
+  raizEsm.Toaster,
+  sonnerEsm.Toaster,
+  "Toaster do Sonner foi substituído",
+);
+assert.equal(raizEsm.toast, sonnerEsm.toast, "toast do Sonner foi substituído");
+assert.equal(raizEsm.Questionnaire, questionnaireEsm.Questionnaire);
+assert.equal(typeof require("@adila-sh/ui/toast").toast.add, "function");
+assert.equal(
+  typeof require("@adila-sh/ui/questionnaire").Questionnaire,
+  "function",
+);
 
 assert.equal(buttonEsm.Button, raizEsm.Button, "Button ESM divergiu do barrel");
 assert.equal(typeof buttonCjs.Button, "function", "Button CJS não carregou");

@@ -17,6 +17,9 @@ export default defineConfig({
   sourcemap: true,
   clean: true,
   external: ["react", "react-dom"],
+  // Phosphor 2.1.10 aponta `require` para um .js CommonJS em um pacote ESM.
+  // Empacotar os ícones utilizados evita esse entrypoint inválido no Node.
+  noExternal: ["@phosphor-icons/react"],
   esbuildOptions(options) {
     options.alias = {
       "@": path.resolve(import.meta.dirname, "src"),

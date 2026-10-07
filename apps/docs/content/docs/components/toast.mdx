@@ -1,0 +1,89 @@
+---
+title: Toast
+description: Notificações do Base UI com empilhamento, ações e operações assíncronas.
+---
+
+import { ToastDemo } from '@/components/toast-demo';
+
+<Preview><ToastDemo /></Preview>
+
+Notificações breves para confirmar uma ação ou informar um problema sem interromper
+o fluxo. O exemplo acima é local e não envia dados a um servidor.
+
+## Uso
+
+Renderize um `Toaster` por aplicação e use o gerenciador para criar notificações.
+O import por componente mantém os nomes originais do shadcn.
+
+```tsx
+import { Toaster, toast } from '@adila-sh/ui/toast';
+
+export function App() {
+  return <Toaster><SuaAplicacao /></Toaster>;
+}
+
+toast.add({
+  title: 'Alterações salvas',
+  description: 'As preferências foram atualizadas.',
+  type: 'success',
+});
+```
+
+No import geral do pacote, use `ToastToaster` e `toastManager`. Os nomes
+`Toaster` e `toast` continuam apontando para o Sonner, preservando os produtos
+que já usam essa API.
+
+```tsx
+import { ToastToaster, toastManager } from '@adila-sh/ui';
+```
+
+## Ações e atualizações
+
+`add` retorna o identificador da notificação. Use `update` para atualizar o mesmo
+item e `close` para fechá-lo. O botão de ação pode desfazer uma mudança ou abrir
+um recurso relacionado.
+
+```tsx
+const id = toast.add({
+  title: 'Item removido',
+  actionProps: {
+    children: 'Desfazer',
+    onClick: () => {
+      restaurarItem();
+      toast.close(id);
+    },
+  },
+});
+
+toast.update(id, { title: 'Item restaurado', type: 'success' });
+```
+
+## Operações assíncronas
+
+`promise` troca o conteúdo de carregamento pelo resultado. O consumidor continua
+responsável por tratar o resultado da operação.
+
+```tsx
+try {
+  await toast.promise(salvarPreferencias(), {
+    loading: 'Salvando preferências…',
+    success: 'Preferências salvas',
+    error: 'Não foi possível salvar',
+  });
+} catch {
+  // Trate a falha no fluxo da aplicação.
+}
+```
+
+## Composição e acessibilidade
+
+- Tipos disponíveis no componente visual: `success`, `info`, `warning`, `error` e `loading`.
+- `timeout: 0` mantém a notificação aberta; `priority: 'high'` anuncia mensagens urgentes.
+- `createToastManager()` permite isolar notificações de uma área ou exemplo.
+- `ToastProvider`, `ToastPortal`, `ToastViewport`, `Toast`, `ToastContent`,
+  `ToastTitle`, `ToastDescription`, `ToastAction` e `ToastClose` permitem montar uma composição própria.
+- O componente oferece fechamento com rótulo em português, foco visível e redução de movimento.
+
+As notificações seguem os temas claro e escuro e os tokens semânticos do Adila.
+Consulte a [referência do shadcn](https://ui.shadcn.com/docs/components/base/toast)
+e a [API do Base UI](https://base-ui.com/react/components/toast).

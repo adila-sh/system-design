@@ -1,16 +1,16 @@
 {
   "origem": "vitest+coverage",
   "resumo": {
-    "componentes": 108,
-    "comTestes": 108,
+    "componentes": 110,
+    "comTestes": 110,
     "semTestes": 0,
-    "protegidos": 107,
+    "protegidos": 109,
     "semExecucao": 1,
-    "coberturaParcial": 81,
+    "coberturaParcial": 83,
     "coberturaCompleta": 26,
-    "testes": 543,
+    "testes": 560,
     "falhando": 0,
-    "testesNaSuite": 589
+    "testesNaSuite": 606
   },
   "componentes": {
     "accordion": {
@@ -1963,6 +1963,31 @@
         }
       }
     },
+    "questionnaire": {
+      "status": "passando",
+      "total": 6,
+      "passando": 6,
+      "falhando": 0,
+      "arquivos": ["src/components/questionnaire.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 18,
+          "cobertas": 18,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 17,
+          "cobertas": 17,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 28,
+          "cobertas": 25,
+          "percentual": 89.28
+        }
+      }
+    },
     "radio-group": {
       "status": "passando",
       "total": 3,
@@ -2585,6 +2610,31 @@
           "total": 6,
           "cobertas": 3,
           "percentual": 50
+        }
+      }
+    },
+    "toast": {
+      "status": "passando",
+      "total": 11,
+      "passando": 11,
+      "falhando": 0,
+      "arquivos": ["src/components/toast.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 31,
+          "cobertas": 31,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 14,
+          "cobertas": 14,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 22,
+          "cobertas": 20,
+          "percentual": 90.9
         }
       }
     },

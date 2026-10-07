@@ -1,0 +1,91 @@
+---
+title: Questionnaire
+description: Perguntas em etapas com seleção simples, múltipla, resposta livre e navegação por teclado.
+---
+
+import { QuestionnaireDemo } from '@/components/questionnaire-demo';
+
+<Preview><QuestionnaireDemo /></Preview>
+
+Um formulário que apresenta uma pergunta por vez. Experimente avançar, voltar,
+pular a etapa opcional e enviar. As respostas ficam apenas nesta página.
+Os números exibidos nas opções também funcionam como atalhos de teclado.
+
+## Uso
+
+Defina a coleção uma vez e passe a mesma ordem e os mesmos nomes para
+`Questionnaire` e suas partes. Isso permite renderizar progresso e navegação
+corretamente desde o HTML inicial.
+
+```tsx
+import {
+  Questionnaire, QuestionnaireActions, QuestionnaireChoice,
+  QuestionnaireChoices, QuestionnaireError, QuestionnaireItem,
+  QuestionnaireProgress, QuestionnaireSubmit, QuestionnaireTitle,
+} from '@adila-sh/ui/questionnaire';
+
+const items = [{
+  name: 'prioridade',
+  required: true,
+  choices: [{ value: 'consistencia' }, { value: 'acessibilidade' }],
+}] as const;
+
+export function Exemplo() {
+  return (
+    <Questionnaire items={items} onSubmit={(event) => {
+      event.preventDefault();
+      const respostas = new FormData(event.currentTarget);
+      // respostas.get('prioridade')
+    }}>
+      <QuestionnaireProgress />
+      <QuestionnaireItem name="prioridade" required>
+        <QuestionnaireTitle>Qual é a prioridade?</QuestionnaireTitle>
+        <QuestionnaireChoices>
+          <QuestionnaireChoice value="consistencia">Consistência</QuestionnaireChoice>
+          <QuestionnaireChoice value="acessibilidade">Acessibilidade</QuestionnaireChoice>
+        </QuestionnaireChoices>
+        <QuestionnaireError>Escolha uma resposta.</QuestionnaireError>
+      </QuestionnaireItem>
+      <QuestionnaireActions><QuestionnaireSubmit /></QuestionnaireActions>
+    </Questionnaire>
+  );
+}
+```
+
+Todos os componentes também estão disponíveis no import geral de `@adila-sh/ui`.
+
+## Tipos de resposta
+
+| Necessidade | Composição | Leitura no envio |
+| --- | --- | --- |
+| Uma opção | `QuestionnaireChoice` dentro de `QuestionnaireItem` | `FormData.get(name)` |
+| Várias opções | `multiple` no `QuestionnaireItem` | `FormData.getAll(name)` |
+| Resposta livre | `QuestionnaireInput` com um nome acessível | `FormData.get(name)` |
+| Pergunta opcional | Item sem `required` e `QuestionnaireSkip` | Resposta ausente quando pulada |
+
+Em seleção simples, escrever uma resposta livre substitui a escolha fixa.
+`QuestionnaireChoiceDescription` permite complementar o rótulo de uma opção.
+
+## Navegação e validação
+
+Use `QuestionnairePrevious`, `QuestionnaireSkip`, `QuestionnaireNext` e
+`QuestionnaireSubmit` dentro de `QuestionnaireActions`. A visibilidade acompanha
+a etapa atual. Uma pergunta obrigatória sem resposta apresenta o erro e impede
+o avanço; pular uma pergunta opcional remove suas respostas do envio.
+
+`item` e `onItemChange` permitem controlar a etapa ativa. `defaultItem` e as
+respostas iniciais (`defaultChecked` e `defaultValue`) permitem retomar um rascunho.
+O armazenamento e a integração com a aplicação ficam a cargo do consumidor.
+
+## Teclado e acessibilidade
+
+- As opções usam radios ou checkboxes nativos e a pergunta usa `fieldset` e `legend`.
+- Tab navega entre controles; Espaço seleciona; Enter avança ou envia.
+- `shortcuts="numbers"` e `shortcuts="letters"` habilitam os atalhos das opções.
+  Esses atalhos não interceptam a digitação em campos de texto.
+- Progresso, ações e erros têm textos em português. As escolhas mostram foco
+  visível, incluindo o modo de alto contraste.
+- As ações se reorganizam em telas estreitas, sem exigir rolagem horizontal.
+
+Consulte a [composição do shadcn](https://ui.shadcn.com/docs/components/base/questionnaire)
+e a [API do primitive](https://ui.shadcn.com/docs/react/questionnaire).
