@@ -4,23 +4,23 @@ import { appName, gitConfig } from "./shared";
 export function baseOptions(): BaseLayoutProps {
   return {
     nav: {
-      // Cada logo já embute o próprio fundo, então alternamos por visibilidade
-      // em vez de filtro. Decorativo ao lado do texto → alt vazio.
+      // Símbolo vetorial azul no tema claro e branco no escuro.
+      // Decorativo ao lado do texto → alt vazio.
       title: (
         <>
           <img
-            src="/logo-light-40.png"
+            src="/brand/adila.svg"
             alt=""
             width={20}
             height={20}
-            className="rounded-md dark:hidden"
+            className="dark:hidden"
           />
           <img
-            src="/logo-dark-40.png"
+            src="/brand/adila-light.svg"
             alt=""
             width={20}
             height={20}
-            className="hidden rounded-md dark:block"
+            className="hidden dark:block"
           />
           {appName}
         </>

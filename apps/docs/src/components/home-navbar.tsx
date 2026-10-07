@@ -31,18 +31,18 @@ export function HomeNavbar() {
           className="home-brand"
         >
           <img
-            src="/logo-light-40.png"
+            src="/brand/adila.svg"
             alt=""
             width={32}
             height={32}
-            className="rounded-md dark:hidden"
+            className="dark:hidden"
           />
           <img
-            src="/logo-dark-40.png"
+            src="/brand/adila-light.svg"
             alt=""
             width={32}
             height={32}
-            className="hidden rounded-md dark:block"
+            className="hidden dark:block"
           />
           <span>
             Adila.co<span className="home-brand-caption">Design System</span>

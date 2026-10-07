@@ -59,7 +59,7 @@ export const Route = createRootRoute({
       },
       { rel: "stylesheet", href: appCss },
       // Favicon dual: Safari/Firefox trocam com o tema do SO; Chrome ignora
-      // `media` em rel=icon e cai no .ico (fundo azul) — degradação aceitável.
+      // `media` em rel=icon e cai no .ico com a flor azul.
       {
         rel: "icon",
         type: "image/png",
