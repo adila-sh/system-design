@@ -1,16 +1,16 @@
 {
   "origem": "vitest+coverage",
   "resumo": {
-    "componentes": 110,
-    "comTestes": 110,
+    "componentes": 111,
+    "comTestes": 111,
     "semTestes": 0,
-    "protegidos": 109,
+    "protegidos": 110,
     "semExecucao": 1,
-    "coberturaParcial": 83,
+    "coberturaParcial": 84,
     "coberturaCompleta": 26,
-    "testes": 561,
+    "testes": 565,
     "falhando": 0,
-    "testesNaSuite": 607
+    "testesNaSuite": 611
   },
   "componentes": {
     "accordion": {
@@ -1510,6 +1510,31 @@
           "total": 0,
           "cobertas": 0,
           "percentual": 100
+        }
+      }
+    },
+    "kumo-input": {
+      "status": "passando",
+      "total": 4,
+      "passando": 4,
+      "falhando": 0,
+      "arquivos": ["src/components/kumo-input.browser.test.tsx"],
+      "cobertura": {
+        "status": "parcial",
+        "linhas": {
+          "total": 13,
+          "cobertas": 13,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 3,
+          "cobertas": 3,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 45,
+          "cobertas": 43,
+          "percentual": 95.55
         }
       }
     },

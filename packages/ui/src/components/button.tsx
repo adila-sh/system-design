@@ -62,7 +62,7 @@ function Button({
     return (
       <KumoButton
         data-slot="button"
-        variant="secondary"
+        variant="ghost"
         className={cn(buttonVariants({ variant, size, className }))}
         {...(props as React.ComponentProps<"button">)}
       />

@@ -21,6 +21,19 @@
 
 /* garante que o Tailwind resolva as classes usadas dentro dos componentes */
 @source "../components";
+@source "../../../../node_modules/@cloudflare/kumo/dist/chunks/input-*.js";
+@source "../../../../node_modules/@cloudflare/kumo/dist/chunks/field-*.js";
+@source "../../../../node_modules/@cloudflare/kumo/dist/chunks/label-*.js";
+
+@theme inline {
+  --color-kumo-control: var(--card);
+  --color-kumo-default: var(--foreground);
+  --color-kumo-line: var(--input);
+  --color-kumo-focus: var(--ring);
+  --color-kumo-disabled: var(--muted-foreground);
+  --color-kumo-danger: var(--destructive);
+  --color-kumo-subtle: var(--muted-foreground);
+}
 
 @layer base {
   html,
@@ -32,5 +45,39 @@
   body {
     @apply bg-background text-foreground font-sans antialiased;
     margin: 0;
+  }
+}
+
+/* Controles Kumo compartilhados, adaptados da interface do Pay. */
+.kumo-input-with-icon input {
+  padding-inline-start: 2.75rem;
+}
+.kumo-input-with-icon:has(input:disabled) .kumo-input-icon {
+  opacity: 0.5;
+}
+.kumo-input-with-clear input {
+  padding-inline-end: 2.75rem;
+}
+.kumo-input-with-clear input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}
+.kumo-input-clear {
+  width: 2.75rem;
+  height: 2.75rem;
+  cursor: pointer;
+}
+.kumo-input-clear[data-clearing] {
+  color: var(--destructive);
+  animation: kumo-input-clear-out 200ms ease-in forwards;
+}
+@keyframes kumo-input-clear-out {
+  0%,
+  35% {
+    opacity: 1;
+    scale: 1;
+  }
+  100% {
+    opacity: 0;
+    scale: 0.6;
   }
 }
