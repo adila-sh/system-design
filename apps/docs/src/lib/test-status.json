@@ -8,9 +8,9 @@
     "semExecucao": 1,
     "coberturaParcial": 83,
     "coberturaCompleta": 26,
-    "testes": 560,
+    "testes": 561,
     "falhando": 0,
-    "testesNaSuite": 606
+    "testesNaSuite": 607
   },
   "componentes": {
     "accordion": {
@@ -590,15 +590,15 @@
     },
     "button": {
       "status": "passando",
-      "total": 18,
-      "passando": 18,
+      "total": 19,
+      "passando": 19,
       "falhando": 0,
       "arquivos": ["src/components/button.browser.test.tsx"],
       "cobertura": {
         "status": "completa",
         "linhas": {
-          "total": 3,
-          "cobertas": 3,
+          "total": 5,
+          "cobertas": 5,
           "percentual": 100
         },
         "funcoes": {
@@ -607,8 +607,8 @@
           "percentual": 100
         },
         "branches": {
-          "total": 2,
-          "cobertas": 2,
+          "total": 8,
+          "cobertas": 8,
           "percentual": 100
         }
       }

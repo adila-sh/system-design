@@ -124,3 +124,10 @@ describe("Button: altura do ícone acompanha a do texto", () => {
     },
   );
 });
+
+test("usa Kumo no botão nativo e preserva o tipo padrão", async () => {
+  const tela = await render(<Button>Continuar</Button>);
+  const botao = tela.getByRole("button", { name: "Continuar" });
+  await expect.element(botao).toHaveAttribute("data-kumo-component", "Button");
+  await expect.element(botao).toHaveAttribute("type", "button");
+});

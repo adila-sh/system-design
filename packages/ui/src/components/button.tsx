@@ -1,4 +1,5 @@
 import { Button as ButtonPrimitive } from "@base-ui/react/button";
+import { Button as KumoButton } from "@cloudflare/kumo/components/button";
 import { cva, type VariantProps } from "class-variance-authority";
 
 import { resolveNativeButton } from "@/lib/native-button";
@@ -47,14 +48,33 @@ function Button({
   size = "default",
   render,
   nativeButton,
+  focusableWhenDisabled,
   ...props
 }: ButtonPrimitive.Props & VariantProps<typeof buttonVariants>) {
+  // Base UI remains necessary for custom render targets and native semantics.
+  // Kumo wraps titled buttons in a tooltip, so preserve the HTML title contract.
+  if (
+    !render &&
+    nativeButton !== false &&
+    !props.title &&
+    !focusableWhenDisabled
+  ) {
+    return (
+      <KumoButton
+        data-slot="button"
+        variant="secondary"
+        className={cn(buttonVariants({ variant, size, className }))}
+        {...(props as React.ComponentProps<"button">)}
+      />
+    );
+  }
   return (
     <ButtonPrimitive
       data-slot="button"
       className={cn(buttonVariants({ variant, size, className }))}
       render={render}
       nativeButton={resolveNativeButton(render, nativeButton)}
+      focusableWhenDisabled={focusableWhenDisabled}
       {...props}
     />
   );

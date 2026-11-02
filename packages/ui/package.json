@@ -51,6 +51,7 @@
   },
   "dependencies": {
     "@base-ui/react": "^1.6.0",
+    "@cloudflare/kumo": "2.15.0",
     "@phosphor-icons/react": "2.1.10",
     "@pierre/diffs": "^1.2.12",
     "@shadcn/react": "^0.3.1",
@@ -68,7 +69,8 @@
     "react-resizable-panels": "^4.12.1",
     "recharts": "^3.9.2",
     "sonner": "^2.0.7",
-    "tailwind-merge": "^3.6.0"
+    "tailwind-merge": "^3.6.0",
+    "use-sync-external-store": "^1.6.0"
   },
   "devDependencies": {
     "@tailwindcss/cli": "^4.3.3",

@@ -119,14 +119,19 @@ function alvosDeTexto(raiz: Element): Alvo[] {
       .join("")
       .trim();
 
-    const caixa = el.getBoundingClientRect();
+    const estilo = getComputedStyle(el);
+    // display: contents não gera caixa própria, mas seus textos são visíveis.
+    const caixa = (
+      estilo.display === "contents" ? (el.parentElement ?? el) : el
+    ).getBoundingClientRect();
     const visivel =
-      caixa.width > 0 &&
-      caixa.height > 0 &&
-      getComputedStyle(el).visibility !== "hidden";
+      caixa.width > 0 && caixa.height > 0 && estilo.visibility !== "hidden";
 
     if (proprio.length > 0 && visivel) {
-      alvos.push({ el, rotulo: proprio.slice(0, 28) });
+      alvos.push({
+        el: estilo.display === "contents" ? (el.parentElement ?? el) : el,
+        rotulo: proprio.slice(0, 28),
+      });
     }
     for (const filho of el.children) visitar(filho);
   };
