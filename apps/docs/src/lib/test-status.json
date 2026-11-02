@@ -1,16 +1,16 @@
 {
   "origem": "vitest+coverage",
   "resumo": {
-    "componentes": 112,
-    "comTestes": 112,
+    "componentes": 117,
+    "comTestes": 117,
     "semTestes": 0,
-    "protegidos": 111,
+    "protegidos": 116,
     "semExecucao": 1,
     "coberturaParcial": 84,
-    "coberturaCompleta": 27,
-    "testes": 566,
+    "coberturaCompleta": 32,
+    "testes": 578,
     "falhando": 0,
-    "testesNaSuite": 612
+    "testesNaSuite": 624
   },
   "componentes": {
     "accordion": {
@@ -1513,12 +1513,62 @@
         }
       }
     },
+    "kumo-banner": {
+      "status": "passando",
+      "total": 8,
+      "passando": 8,
+      "falhando": 0,
+      "arquivos": ["src/components/kumo-banner.browser.test.tsx"],
+      "cobertura": {
+        "status": "completa",
+        "linhas": {
+          "total": 1,
+          "cobertas": 1,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 0,
+          "cobertas": 0,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 0,
+          "cobertas": 0,
+          "percentual": 100
+        }
+      }
+    },
     "kumo-dialog": {
       "status": "passando",
       "total": 1,
       "passando": 1,
       "falhando": 0,
       "arquivos": ["src/components/kumo-dialog.browser.test.tsx"],
+      "cobertura": {
+        "status": "completa",
+        "linhas": {
+          "total": 1,
+          "cobertas": 1,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 0,
+          "cobertas": 0,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 0,
+          "cobertas": 0,
+          "percentual": 100
+        }
+      }
+    },
+    "kumo-empty": {
+      "status": "passando",
+      "total": 1,
+      "passando": 1,
+      "falhando": 0,
+      "arquivos": ["src/components/kumo-empty.browser.test.tsx"],
       "cobertura": {
         "status": "completa",
         "linhas": {
@@ -1560,6 +1610,81 @@
           "total": 45,
           "cobertas": 43,
           "percentual": 95.55
+        }
+      }
+    },
+    "kumo-pagination": {
+      "status": "passando",
+      "total": 1,
+      "passando": 1,
+      "falhando": 0,
+      "arquivos": ["src/components/kumo-pagination.browser.test.tsx"],
+      "cobertura": {
+        "status": "completa",
+        "linhas": {
+          "total": 1,
+          "cobertas": 1,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 0,
+          "cobertas": 0,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 0,
+          "cobertas": 0,
+          "percentual": 100
+        }
+      }
+    },
+    "kumo-select": {
+      "status": "passando",
+      "total": 1,
+      "passando": 1,
+      "falhando": 0,
+      "arquivos": ["src/components/kumo-select.browser.test.tsx"],
+      "cobertura": {
+        "status": "completa",
+        "linhas": {
+          "total": 1,
+          "cobertas": 1,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 0,
+          "cobertas": 0,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 0,
+          "cobertas": 0,
+          "percentual": 100
+        }
+      }
+    },
+    "kumo-table": {
+      "status": "passando",
+      "total": 1,
+      "passando": 1,
+      "falhando": 0,
+      "arquivos": ["src/components/kumo-table.browser.test.tsx"],
+      "cobertura": {
+        "status": "completa",
+        "linhas": {
+          "total": 6,
+          "cobertas": 6,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 2,
+          "cobertas": 2,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 1,
+          "cobertas": 1,
+          "percentual": 100
         }
       }
     },

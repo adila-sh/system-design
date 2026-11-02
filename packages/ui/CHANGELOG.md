@@ -1,5 +1,15 @@
 # @adila-sh/ui
 
+## 0.9.0
+
+### Minor Changes
+
+- Disponibiliza os componentes Kumo de campo, diálogo, banner, select, tabela, paginação e estado vazio com tokens Adila. Preserva compatibilidade do botão e dos exports ESM/CommonJS.
+
+### Patch Changes
+
+- 78b7a08: Adiciona documentação de instalação e uso ao pacote público no npm.
+
 ## 0.8.0
 
 ### Minor Changes

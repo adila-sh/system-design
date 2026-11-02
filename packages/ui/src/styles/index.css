@@ -26,8 +26,27 @@
 @source "../../../../node_modules/@cloudflare/kumo/dist/chunks/label-*.js";
 @source "../../../../node_modules/@cloudflare/kumo/dist/chunks/dialog-*.js";
 @source "../../../../node_modules/@cloudflare/kumo/dist/chunks/layer-card-*.js";
+@source "../../../../node_modules/@cloudflare/kumo/dist/chunks/banner-*.js";
+@source "../../../../node_modules/@cloudflare/kumo/dist/chunks/select-*.js";
+@source "../../../../node_modules/@cloudflare/kumo/dist/chunks/table-*.js";
+@source "../../../../node_modules/@cloudflare/kumo/dist/chunks/pagination-*.js";
+@source "../../../../node_modules/@cloudflare/kumo/dist/chunks/empty-*.js";
 
 @theme inline {
+  --color-kumo-brand: var(--primary);
+  --color-kumo-strong: var(--foreground);
+  --color-kumo-contrast: var(--primary-foreground);
+  --color-kumo-elevated: var(--card);
+  --color-kumo-fill: var(--muted);
+  --color-kumo-hairline: var(--border);
+  --color-kumo-interact: var(--muted);
+  --color-kumo-overlay: var(--overlay);
+  --color-kumo-tint: var(--background);
+  --color-kumo-info: var(--info-tint-foreground);
+  --color-kumo-info-tint: var(--info-tint);
+  --color-kumo-success: var(--success);
+  --color-kumo-warning: var(--warning-tint-foreground);
+  --color-kumo-warning-tint: var(--warning-tint);
   --color-kumo-base: var(--popover);
   --color-kumo-recessed: var(--overlay);
   --color-kumo-control: var(--card);
@@ -35,7 +54,8 @@
   --color-kumo-line: var(--input);
   --color-kumo-focus: var(--ring);
   --color-kumo-disabled: var(--muted-foreground);
-  --color-kumo-danger: var(--destructive);
+  --color-kumo-danger: var(--destructive-tint-foreground);
+  --color-kumo-danger-tint: var(--destructive-tint);
   --color-kumo-subtle: var(--muted-foreground);
 }
 
