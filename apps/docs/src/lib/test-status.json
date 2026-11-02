@@ -1,16 +1,16 @@
 {
   "origem": "vitest+coverage",
   "resumo": {
-    "componentes": 117,
-    "comTestes": 117,
+    "componentes": 120,
+    "comTestes": 120,
     "semTestes": 0,
-    "protegidos": 116,
+    "protegidos": 119,
     "semExecucao": 1,
     "coberturaParcial": 84,
-    "coberturaCompleta": 32,
-    "testes": 578,
+    "coberturaCompleta": 35,
+    "testes": 588,
     "falhando": 0,
-    "testesNaSuite": 624
+    "testesNaSuite": 634
   },
   "componentes": {
     "accordion": {
@@ -1538,6 +1538,31 @@
         }
       }
     },
+    "kumo-checkbox": {
+      "status": "passando",
+      "total": 4,
+      "passando": 4,
+      "falhando": 0,
+      "arquivos": ["src/components/kumo-checkbox.browser.test.tsx"],
+      "cobertura": {
+        "status": "completa",
+        "linhas": {
+          "total": 1,
+          "cobertas": 1,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 0,
+          "cobertas": 0,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 0,
+          "cobertas": 0,
+          "percentual": 100
+        }
+      }
+    },
     "kumo-dialog": {
       "status": "passando",
       "total": 1,
@@ -1663,6 +1688,31 @@
         }
       }
     },
+    "kumo-switch": {
+      "status": "passando",
+      "total": 2,
+      "passando": 2,
+      "falhando": 0,
+      "arquivos": ["src/components/kumo-switch.browser.test.tsx"],
+      "cobertura": {
+        "status": "completa",
+        "linhas": {
+          "total": 1,
+          "cobertas": 1,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 0,
+          "cobertas": 0,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 0,
+          "cobertas": 0,
+          "percentual": 100
+        }
+      }
+    },
     "kumo-table": {
       "status": "passando",
       "total": 1,
@@ -1684,6 +1734,31 @@
         "branches": {
           "total": 1,
           "cobertas": 1,
+          "percentual": 100
+        }
+      }
+    },
+    "kumo-tabs": {
+      "status": "passando",
+      "total": 3,
+      "passando": 3,
+      "falhando": 0,
+      "arquivos": ["src/components/kumo-tabs.browser.test.tsx"],
+      "cobertura": {
+        "status": "completa",
+        "linhas": {
+          "total": 1,
+          "cobertas": 1,
+          "percentual": 100
+        },
+        "funcoes": {
+          "total": 0,
+          "cobertas": 0,
+          "percentual": 100
+        },
+        "branches": {
+          "total": 0,
+          "cobertas": 0,
           "percentual": 100
         }
       }
@@ -2690,8 +2765,8 @@
     },
     "textarea": {
       "status": "passando",
-      "total": 3,
-      "passando": 3,
+      "total": 4,
+      "passando": 4,
       "falhando": 0,
       "arquivos": ["src/components/textarea.browser.test.tsx"],
       "cobertura": {
@@ -2707,9 +2782,9 @@
           "percentual": 100
         },
         "branches": {
-          "total": 5,
-          "cobertas": 3,
-          "percentual": 60
+          "total": 7,
+          "cobertas": 4,
+          "percentual": 57.14
         }
       }
     },

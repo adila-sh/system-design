@@ -1,3 +1,4 @@
+import { createRef } from "react";
 import { afterEach, describe, expect, test, vi } from "vitest";
 import { render } from "vitest-browser-react";
 import { Textarea } from "./textarea";
@@ -46,4 +47,28 @@ describe("Textarea interativo", () => {
       "Novo resumo da atividade",
     );
   });
+});
+
+test("preserva ref, name e submissão de formulário", async () => {
+  const ref = createRef<HTMLTextAreaElement>();
+  const tela = await render(
+    <form aria-label="Comentário">
+      <Textarea
+        ref={ref}
+        name="note"
+        aria-label="Nota"
+        defaultValue="Rascunho"
+      />
+    </form>,
+  );
+  const campo = tela.getByRole("textbox", { name: "Nota" });
+  expect(ref.current).toBe(campo.element());
+  await campo.fill("Texto final");
+  expect(
+    new FormData(
+      tela
+        .getByRole("form", { name: "Comentário" })
+        .element() as HTMLFormElement,
+    ).get("note"),
+  ).toBe("Texto final");
 });

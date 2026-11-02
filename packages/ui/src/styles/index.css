@@ -31,11 +31,16 @@
 @source "../../../../node_modules/@cloudflare/kumo/dist/chunks/table-*.js";
 @source "../../../../node_modules/@cloudflare/kumo/dist/chunks/pagination-*.js";
 @source "../../../../node_modules/@cloudflare/kumo/dist/chunks/empty-*.js";
+@source "../../../../node_modules/@cloudflare/kumo/dist/chunks/switch-*.js";
+@source "../../../../node_modules/@cloudflare/kumo/dist/chunks/checkbox-*.js";
+@source "../../../../node_modules/@cloudflare/kumo/dist/chunks/tabs-*.js";
 
 @theme inline {
   --color-kumo-brand: var(--primary);
   --color-kumo-strong: var(--foreground);
-  --color-kumo-contrast: var(--primary-foreground);
+  --color-kumo-inactive: var(--muted-foreground);
+  --color-kumo-inverse: var(--background);
+  --color-kumo-contrast: var(--foreground);
   --color-kumo-elevated: var(--card);
   --color-kumo-fill: var(--muted);
   --color-kumo-hairline: var(--border);
@@ -48,7 +53,7 @@
   --color-kumo-warning: var(--warning-tint-foreground);
   --color-kumo-warning-tint: var(--warning-tint);
   --color-kumo-base: var(--popover);
-  --color-kumo-recessed: var(--overlay);
+  --color-kumo-recessed: var(--muted);
   --color-kumo-control: var(--card);
   --color-kumo-default: var(--foreground);
   --color-kumo-line: var(--input);
@@ -104,4 +109,37 @@
     opacity: 0;
     scale: 0.6;
   }
+}
+
+/* Switches do Pay mantêm geometria redonda e a cor da marca. */
+[data-kumo-component="Switch"],
+[data-kumo-component="Switch"] > div {
+  border-radius: 9999px;
+}
+[data-kumo-component="Switch"][aria-checked="true"] {
+  background-color: var(--primary);
+  --tw-ring-color: var(--primary);
+}
+[data-kumo-component="Switch"][aria-checked="false"] {
+  background-color: var(--input);
+  --tw-ring-color: var(--input);
+}
+[data-kumo-component="Switch"] > div {
+  background-color: var(--background);
+}
+
+/* Superfície rebaixada e backdrop têm papéis distintos no tema Adila. */
+.fixed.inset-0.bg-kumo-recessed {
+  background-color: var(--overlay);
+}
+
+[data-kumo-component="Checkbox"][role="checkbox"]:is(
+    [aria-checked="true"],
+    [aria-checked="mixed"]
+  ) {
+  background-color: var(--primary);
+  --tw-ring-color: var(--primary);
+}
+[data-kumo-component="Checkbox"][role="checkbox"] > span {
+  color: var(--primary-foreground);
 }
