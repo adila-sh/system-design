@@ -24,8 +24,12 @@
 @source "../../../../node_modules/@cloudflare/kumo/dist/chunks/input-*.js";
 @source "../../../../node_modules/@cloudflare/kumo/dist/chunks/field-*.js";
 @source "../../../../node_modules/@cloudflare/kumo/dist/chunks/label-*.js";
+@source "../../../../node_modules/@cloudflare/kumo/dist/chunks/dialog-*.js";
+@source "../../../../node_modules/@cloudflare/kumo/dist/chunks/layer-card-*.js";
 
 @theme inline {
+  --color-kumo-base: var(--popover);
+  --color-kumo-recessed: var(--overlay);
   --color-kumo-control: var(--card);
   --color-kumo-default: var(--foreground);
   --color-kumo-line: var(--input);
