@@ -1,17 +1,15 @@
 # adila.co Design System
 
-Design system adila.co publicado como pacote npm (`@adila-sh/ui`) no GitHub
-Packages, com um app de documentação (`apps/docs`, Fumadocs + TanStack Start)
+Design system adila.co distribuído como pacote público npm (`@adila-sh/ui`), com um app de documentação (`apps/docs`, Fumadocs + TanStack Start)
 mantido no mesmo monorepo.
+
+[Documentação](https://ds.adila.co/docs) · [npm](https://www.npmjs.com/package/@adila-sh/ui)
 
 ## Instalar o pacote
 
 ```bash
-# .npmrc do projeto consumidor
-echo '@adila-sh:registry=https://npm.pkg.github.com' >> .npmrc
-echo '//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}' >> .npmrc
-
 bun add @adila-sh/ui
+# ou: npm install @adila-sh/ui
 ```
 
 ```tsx
@@ -19,7 +17,7 @@ import '@adila-sh/ui/style.css';
 import { Button } from '@adila-sh/ui';
 ```
 
-Nenhuma configuração de Tailwind é necessária — o CSS já vem pré-compilado
+O pacote requer React e React DOM `^19.2.7`. Nenhuma configuração de Tailwind é necessária — o CSS já vem pré-compilado
 (tokens adila.co: indigo, neutros ChatGPT, Adila Std / Adila Code / Adila
 Pixel, light + dark).
 
@@ -27,7 +25,7 @@ Pixel, light + dark).
 
 ```
 apps/docs/    # site de documentação (Fumadocs) + landing — privado, não publicado
-packages/ui/  # @adila-sh/ui — pacote publicado no GitHub Packages
+packages/ui/  # @adila-sh/ui — pacote npm público
 ```
 
 ## Desenvolvimento
@@ -41,9 +39,6 @@ bun run --cwd apps/docs dev       # site de docs em localhost:3000
 ## Adicionar um componente ao DS
 
 ```bash
-cd packages/ui
-bun add @adila-sh/ui
-cd ../..
 bun run --cwd apps/docs gen:docs     # cria a doc-base + atualiza meta.json
 ```
 
@@ -69,7 +64,12 @@ adicionar ou remover testes, senão o selo fica desatualizado.
 - Versionamento via Changesets: `bunx changeset add` descreve a mudança;
   merge na `main` dispara o workflow `.github/workflows/release.yml`, que
   abre um PR de versão e, quando esse PR é merged, publica automaticamente
-  `@adila-sh/ui` no GitHub Packages.
+  `@adila-sh/ui` no npm. A publicação automática exige o secret `NPM_TOKEN`
+  no GitHub, com permissão de publicação no npm.
+
+## Licença
+
+O pacote `@adila-sh/ui` está disponível sob a [licença MIT](packages/ui/LICENSE).
 
 ## Deploy (Railway) do app de docs
 

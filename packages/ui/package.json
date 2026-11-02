@@ -1,8 +1,10 @@
 {
   "name": "@adila-sh/ui",
   "version": "0.8.0",
+  "description": "Componentes React e estilos do design system da adila.co",
+  "homepage": "https://ds.adila.co/docs",
   "type": "module",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "sideEffects": false,
   "files": [
     "dist"
@@ -90,6 +92,7 @@
     "vitest-browser-react": "^2.2.0"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
+    "registry": "https://registry.npmjs.org",
+    "access": "public"
   }
 }
