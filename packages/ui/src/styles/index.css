@@ -34,9 +34,29 @@
 @source "../../../../node_modules/@cloudflare/kumo/dist/chunks/switch-*.js";
 @source "../../../../node_modules/@cloudflare/kumo/dist/chunks/checkbox-*.js";
 @source "../../../../node_modules/@cloudflare/kumo/dist/chunks/tabs-*.js";
+@source "../../../../node_modules/@cloudflare/kumo/dist/chunks/popover-*.js";
+@source "../../../../node_modules/@cloudflare/kumo/dist/chunks/tooltip-*.js";
+@source "../../../../node_modules/@cloudflare/kumo/dist/chunks/badge-*.js";
+@source "../../../../node_modules/@cloudflare/kumo/dist/chunks/button-*.js";
 
 @theme inline {
   --color-kumo-brand: var(--primary);
+  --color-kumo-brand-hover: var(--primary-hover);
+  --color-kumo-link: var(--primary-tint-foreground);
+  --color-kumo-arrow-edge: var(--border);
+  --color-kumo-arrow-stroke: var(--border);
+  --color-kumo-badge-inverted: var(--primary);
+  --text-color-kumo-badge-inverted: var(--primary-foreground);
+  --text-color-kumo-badge-neutral-subtle: var(--muted-foreground);
+  --color-kumo-badge-neutral: oklch(from var(--foreground) min(l, 0.42) c h);
+  --color-kumo-badge-red: oklch(from var(--destructive) min(l, 0.42) c h);
+  --color-kumo-badge-green: oklch(from var(--success) min(l, 0.42) c h);
+  --color-kumo-badge-blue: oklch(from var(--info) min(l, 0.42) c h);
+  --color-kumo-badge-purple: oklch(from var(--primary) min(l, 0.42) c h);
+  --color-kumo-badge-teal: oklch(from var(--success) min(l, 0.42) c h);
+  --color-kumo-badge-orange: var(--warning);
+  --color-kumo-badge-teal-subtle: var(--success-tint);
+  --text-color-kumo-badge-teal-subtle: var(--success-tint-foreground);
   --color-kumo-strong: var(--foreground);
   --color-kumo-inactive: var(--muted-foreground);
   --color-kumo-inverse: var(--background);
@@ -49,7 +69,8 @@
   --color-kumo-tint: var(--background);
   --color-kumo-info: var(--info-tint-foreground);
   --color-kumo-info-tint: var(--info-tint);
-  --color-kumo-success: var(--success);
+  --color-kumo-success: var(--success-tint-foreground);
+  --color-kumo-success-tint: var(--success-tint);
   --color-kumo-warning: var(--warning-tint-foreground);
   --color-kumo-warning-tint: var(--warning-tint);
   --color-kumo-base: var(--popover);

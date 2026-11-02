@@ -10,16 +10,17 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary-hover",
+        default:
+          "bg-primary text-primary-foreground disabled:text-primary-foreground hover:bg-primary-hover",
         outline:
-          "border-border bg-transparent hover:bg-muted hover:text-foreground aria-expanded:text-foreground dark:border-input  dark:hover:bg-input-hover",
+          "border-border bg-transparent disabled:text-foreground hover:bg-muted hover:text-foreground aria-expanded:text-foreground dark:border-input  dark:hover:bg-input-hover",
         secondary:
-          "bg-secondary text-secondary-foreground hover:bg-secondary-hover aria-expanded:bg-secondary aria-expanded:text-secondary-foreground",
+          "bg-secondary text-secondary-foreground disabled:text-secondary-foreground hover:bg-secondary-hover aria-expanded:bg-secondary aria-expanded:text-secondary-foreground",
         ghost:
-          "text-muted-foreground hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground",
+          "text-muted-foreground disabled:text-muted-foreground hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground",
         destructive:
-          "bg-destructive-tint-strong text-destructive-tint-foreground hover:text-destructive-foreground  hover:bg-destructive focus-visible:border-destructive/40 focus-visible:ring-destructive/20 dark:hover:bg-destructive dark:hover:text-destructive-foreground dark:focus-visible:ring-destructive/40",
-        link: "text-primary-tint-foreground underline-offset-4 underline",
+          "bg-destructive-tint-strong text-destructive-tint-foreground disabled:text-destructive-tint-foreground hover:text-destructive-foreground  hover:bg-destructive focus-visible:border-destructive/40 focus-visible:ring-destructive/20 dark:hover:bg-destructive dark:hover:text-destructive-foreground dark:focus-visible:ring-destructive/40",
+        link: "text-primary-tint-foreground disabled:text-primary-tint-foreground underline-offset-4 underline",
       },
       size: {
         default:
