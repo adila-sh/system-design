@@ -1,5 +1,12 @@
 # @adila-sh/ui
 
+## 0.10.0
+
+### Minor Changes
+
+- 6062422: Adiciona KumoPopover, KumoTooltip, KumoBadge, KumoField e KumoLinkButton. Mantém foco e descrição acessível do tooltip, preserva referências e ajusta contraste dos badges e dos links de ação nos temas claro e escuro.
+- 4562939: Adiciona KumoSwitch, KumoCheckbox e KumoTabs com tokens Adila, seleção por teclado e estados acessíveis. Migra a implementação de Textarea para Kumo preservando props, ref e submissão de formulário. Separa a superfície rebaixada do backdrop e ajusta contraste e geometria dos controles de seleção.
+
 ## 0.9.0
 
 ### Minor Changes
